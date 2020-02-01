@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>git小白入门</title>
+	</head>
+	<body>
+		<h3>
+			一、git下载与安装
+			<hr />
+		</h3>
+		<p>
+			<ol>
+			<li>百度git官网，<a href="https://git-scm.com/download">下载链接</a>，根据自己电脑系统下载相应的安装包</li>
+			<br/>
+			<li>点击下载好的安装包安装这个软件</li>
+			<br/>
+			<li>一直点击next，直到出现install，点击install，安装完成后点击finish</li>
+			<br>
+			<li>安装好后在桌面界面点击鼠标右键，会出现如下界面</li>
+			<img  src="img/75team-favicon.png"  >
+			<br/>
+			<li>检查git是否安装OK</li>
+			<br/>
+			<ul>
+				<li>在桌面或其他地方右键，Git Bash Here</li>
+				<br/>
+				<li>输入git，回车,出现以下界面说明安装成功</li>				
+			</ul>
+			<img src="img/%7BFD7EA2B6-5821-4B81-ABEF-22FAB3CFCEEE%7D.png.jpg" width="300" height="200">
+			</ol>
+		</p>
+		<br/>
+		<h3>
+			二、环境配置
+			<hr />
+		</h3>
+		<p>
+			<ol>
+				<li>git安装好去GitHub上注册一个账号，注册好后创建一个仓库</li>
+				<li >
+					<pre>
+						# 配置用户名
+						git config --global user.name "username"    //（ "username"是自己的账户名，）											
+					</pre>
+						
+					<pre>
+						# 配置邮箱
+						git config --global user.email "username@email.com"     //("username@email.com"注册账号时用的邮箱)
+					</pre>
+
+				</li>
+				<li>生成ssh</li>
+				<pre>
+					ssh-keygen -t rsa
+				</pre>
+				<p>
+					然后连敲三次回车键，结束后去系统盘目录下（一般在 C:\Users\你的用户名.ssh）(mac: /Users/用户/.ssh）查看是否有。ssh文件夹生成，此文件夹中以下两个文件
+				</p>
+				<img src="img/%7B40637A4A-5022-4435-A594-3CFE05B9F972%7D.png.jpg" >
+				<li>将ssh文件夹中的公钥（ id_rsa.pub）添加到GitHub管理平台中，在GitHub的个人账户的设置中找到如下界面</li>
+				<img src="./img/20181012202024433.png" >
+				<li>测试一下配置是否成功，在Git Bush命令框（就是刚才配置账号和邮箱的命令框）中继续输入以下命令，回车</li>
+				<pre>
+					ssh -T git@github.com
+				</pre>
+				<p>有时需要输入yes确认</p>
+				<p>要是看见下面的这句话就说明配置好啦</p>
+				<img src="./img/20181012203134666.png" >
+			</ol>
+		</p>
+		<br/>
+		<h3>三、Git与Github</h3>
+		<hr />
+		<ol>
+			<li>创建本地仓库</li>
+			<p>注：需要先创建一个文件夹，然后再这个文件夹内Git Bash Here，再执行 git init</p>
+			<pre>
+				$ git init
+			</pre>
+			<li>把文件添加到仓库：</li>
+			<p>注：文件必须在之前的创建的文件夹里，才可以通过命令添加到仓库</p>
+			<pre>
+				$ git add readme.md
+			</pre>
+			<p>Git 命令行添加整个文件夹及目录</p>
+			<p>添加整个文件夹及内容</p>
+			<pre>
+				git add 文件夹/    	
+			</pre>
+			<p>添加目录中所有某种类型的文件</p>
+			<pre>
+				git add *.文件类型   
+			</pre>	
+				
+			<li>把文件提交到仓库：</li>
+			<p>git commit命令，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。</p>
+			<pre>
+				$ git commit -m “add readme”
+			</pre>
+			<hr />
+			<li>git之删除仓库文件</li>
+				<p>
+					上传错文件的现象很正常 可能直接使用git add .方便，但也可能传入了一些不想传入的东西					
+					简单的介绍一下删除仓库的文件
+				</p>
+				<pre>
+					<code>git rm -r  你的文件名</code>
+				</pre>
+				<p>
+					例如 <code>git rm -r README.md</code>
+				</p>
+				<p>删除之后需要请求提交</p>
+				<pre>
+					git commit -m "remove folder and file list"
+				</pre>
+				<p>然后再push</p>
+				<pre>
+					git push
+				</pre>
+			<hr />
+			<li>同步上传到Github</li>
+			<br/>
+			<ul>
+				确定上传的仓库地址
+				<p>例如我们给一个叫Test的仓库同步</p>
+				
+			</ul>
+			<pre>
+				$ git remote add origin    git@github.com:Zfqwb/Zfqwb.github.io.git
+			</pre>
+			<ul>
+				推送到你的仓库
+			</ul>
+			<pre>
+				$ git push -u origin master
+			</pre>
+			<p>注：第一次推送时，我们要添加-u
+之后我们可以这条命令</p>
+			<pre>
+				$ git push origin master
+			</pre>
+			<li>从github上下载到本地</li>
+			<pre>
+				$ git clone git@github.com:Zfqwb/Zfqwb.github.io.git
+			</pre>
+		</ol>
+	</body>
+</html>
