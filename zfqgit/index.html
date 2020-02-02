@@ -19,8 +19,9 @@
 			<li>一直点击next，直到出现install，点击install，安装完成后点击finish</li>
 			<br>
 			<li>安装好后在桌面界面点击鼠标右键，会出现如下界面</li>
-			<img  src="img/75team-favicon.png"  >
 			<br/>
+			<img  src="img/75team-favicon.png"  >
+
 			<li>检查git是否安装OK</li>
 			<br/>
 			<ul>
@@ -28,7 +29,9 @@
 				<br/>
 				<li>输入git，回车,出现以下界面说明安装成功</li>				
 			</ul>
+			
 			<img src="img/%7BFD7EA2B6-5821-4B81-ABEF-22FAB3CFCEEE%7D.png.jpg" width="300" height="200">
+			<br/>
 			</ol>
 		</p>
 		<br/>
@@ -180,6 +183,19 @@
 			<pre>
 				$ git clone git@github.com:Zfqwb/Zfqwb.github.io.git
 			</pre>
+			<li>【git】强制覆盖本地代码（与git远程仓库保持一致）</li>
+			<p>git强制覆盖：</p>			 
+			<pre>
+				git fetch --all
+			</pre>
+			<pre>
+				git reset --hard origin/master
+			</pre>
+			<pre>
+				git pull
+			</pre>
+			<p>git强制覆盖本地命令（单条执行）：</p>
+			    <code>git fetch --all && git reset --hard origin/master && git pull</code>		    
 		</ol>
 	</body>
 </html>
