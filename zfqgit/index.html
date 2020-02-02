@@ -119,6 +119,41 @@
 				<pre>
 					git push
 				</pre>
+				<li>Git中文件的修改与提交</li>
+				<ul>
+					<li>查看文件版本库中的文件状态：</li>
+					<code>git status</code>
+					<br/>
+					<img src="https://img-blog.csdn.net/20171129112359829?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWlkdV9mYW5jaGVu/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" >
+					<p>文件处于未修改状态</p>
+					<li>修改文件，再次查看版本库中文件的状态：</li>
+					<br/>
+					<img src="https://img-blog.csdn.net/20171129112412154?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWlkdV9mYW5jaGVu/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" >
+					<p>提示文件已经被修改过，但是还没有进行提交。</p>
+					<li>提交修改内容与提交新文件是一样的两步</li>
+					<code> git add 文件名</code>
+					<br/>
+					<code> git commit -m "add a line"</code>
+					<li>提交后，再次<code>git status</code>查看版本库当前状态，会看到文件没有需要提交的更改。</li>
+					<li>撤销操作</li>
+					<p>有时候，我们提交完成后发现漏掉几个文件没有添加，或者信息写错了，这时候就需要对操作进行撤销。</p>
+											<code>git commit --amend</code>
+											<p>
+												例如
+												<pre>
+													git add file
+												</pre>
+												<pre>
+													git commit -m 'xxxxx'
+												</pre>
+												<pre>
+													git commit --amend
+												</pre>
+											</p>
+											<p>最后附图我修改文件的上传的全过程</p>
+											<br>
+											<img src="img/xg.jpg" >
+				</ul>
 			<hr />
 			<li>同步上传到Github</li>
 			<br/>
