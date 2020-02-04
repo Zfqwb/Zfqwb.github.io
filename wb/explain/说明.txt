@@ -1,0 +1,194 @@
+图标
+
+<i class="fa fa-camera-retro fa-lg"></i>
+
+
+视频  <i class="fa fa-file-video-o fa-lg"></i>
+
+音乐  <i class="fa fa-file-audio-o fa-lg"></i>
+
+读书  <i class="fa fa-file-text fa-lg"></i>
+
+图片  <i class="fa fa-file-image-o fa-lg"></i>
+
+软件  <i class="fa fa-windows fa-lg"></i>
+
+编程  <i class="fa fa-file-code-o fa-lg"></i>
+
+博客  <i class="fa fa-wpforms fa-lg"></i>
+
+云服务  <i class="fa fa-cloud fa-lg"></i>
+
+网盘  <i class="fa fa-database fa-lg"></i>
+
+
+
+内容块
+
+
+<a target="_blank" href="https://www.xd0.com/">
+<!--地址-->
+                            <div class="item">
+							<!--定义圆角矩形块-->
+                                <div class="logo"><img src="img/csdn.ico" alt="小刀娱乐网"> 小刀娱乐网</div>  
+								<!--图标加标题-->
+                                <div class="desc">中国最大的娱乐网</div>
+								<!--标题下的说明-->
+                            </div>
+</a>
+
+
+视频
+1
+
+<a target="_blank" href="https://www.iqiyi.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="爱奇艺"> 爱奇艺</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+2
+
+<a target="_blank" href="https://v.qq.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="腾讯视频"> 腾讯视频</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+3
+
+<a target="_blank" href="https://www.youku.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="优酷"> 优酷</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+4
+
+<a target="_blank" href="https://www.pptv.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="PP视频"> PP视频</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+5
+
+<a target="_blank" href="https://www.88btbtt.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="BT之家"> BT之家</div>  
+                                <div class="desc"> 有广告 </div>
+                            </div>
+</a>
+
+6
+
+<a target="_blank" href="http://www.zimuku.la/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="字幕库"> 字幕库</div>  
+                                <div class="desc"> 有广告 </div>
+                            </div>
+</a>
+
+7
+
+<a target="_blank" href="https://subhd.tv/sub0/new">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="最新字幕"> 最新字幕</div>  
+                                <div class="desc"> 有广告 </div>
+                            </div>
+</a>
+
+8
+
+<a target="_blank" href="http://www.taicishe.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="英语台词社"> 英语台词社</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+9
+
+<a target="_blank" href="https://www.bilibili.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="哔哩哔哩"> 哔哩哔哩</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+10
+
+<a target="_blank" href="https://www.acfun.cn/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="ACFUN"> ACFUN</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+11
+
+<a target="_blank" href="http://www.imomoe.in/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="樱花动漫"> 樱花动漫</div>  
+                                <div class="desc"> 有广告 </div>
+                            </div>
+</a>
+
+12
+
+<a target="_blank" href="https://bt.acgzero.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="零度动漫"> 零度动漫</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+音乐
+
+1
+
+<a target="_blank" href="https://y.qq.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="QQ音乐"> QQ音乐</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+2
+
+<a target="_blank" href="https://music.163.com/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="网易云音乐"> 网易云音乐</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+3
+
+<a target="_blank" href="https://www.huiyi8.com/yinxiao/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="破解绘艺素材"> 破解绘艺素材</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+读书
+
+1
+
+<a target="_blank" href="https://www.huiyi8.com/yinxiao/">
+                            <div class="item">							
+                                <div class="logo"><img src="img/csdn.ico" alt="破解绘艺素材"> 破解绘艺素材</div>  
+                                <div class="desc">  </div>
+                            </div>
+</a>
+
+
+
+
+
+
