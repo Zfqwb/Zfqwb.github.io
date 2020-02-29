@@ -9,15 +9,24 @@
     <link rel="shortcut icon" href="favcion.ico" />
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/style.css">
+	
 </head>
 
 <body>
+	<!--需求：把百度搜索框内嵌到自己的网页中-->
+			 		<!--解决方案分析-->
+			 		<!--input type="text" 表示是一个输入框-->
+			 		<!--input type="submit" 表示一个提交按钮 相当于一个开关告诉form要发送数据-->
+			 		<form action="https://www.baidu.com/s" style="text-align:center">
+			 			<input type="text" name="wd"/><input type="submit"  value="百度一下"/>
+			 		</form>
+
     <div class="container" id="container">
         <aside class="left-bar" id="leftBar">
             <div class="title">
                 <p>我的自制导航网站</p>
             </div>
-            <nav class="nav">
+			
                 <div class="item active"><a href=""><i class="iconfont icon-daohang2"></i>nitto</a><i class="line"></i></div>
                 <ul class="nav-item" id="navItem">
                     <li><a href="#bbs" class="active"><i class="fa fa-file-video-o fa-lg"></i>  视频</a></li>
@@ -465,6 +474,7 @@
         	}
         }
         </script>
+		
 </body>
 
 </html>
