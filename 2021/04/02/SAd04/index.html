@@ -20,7 +20,7 @@
   <meta name="author" content="nitto">
   <meta name="keywords" content="">
   
-  <title>JavaSE进阶-Day04 - Hexo</title>
+  <title>JavaSE进阶-Day04 内部类&amp;Lambda - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -177,7 +177,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="JavaSE进阶-Day04">
+            <span class="h2" id="subtitle" title="JavaSE进阶-Day04 内部类&Lambda">
               
             </span>
 
@@ -199,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      660 字
     </span>
   
 
@@ -209,12 +209,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      7
        分钟
     </span>
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -239,10 +247,26 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">JavaSE进阶-Day04</h1>
+            <h1 style="display: none">JavaSE进阶-Day04 内部类&amp;Lambda</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 小时前
+                
+              </p>
             
             <div class="markdown-body">
-              
+              <h1 id="内部类-amp-Lambda"><a href="#内部类-amp-Lambda" class="headerlink" title="内部类&amp;Lambda"></a>内部类&amp;Lambda</h1><p>内部类<br>    概述<br>        方在类的内部的类,就称之为”内部类”<br>    分类<br>        成员内部类<br>            类中方法外的内部类<br>        局部内部类<br>            方法中的内部类</p>
+<p>成员内部类(了解)<br>    位置<br>        类中方法外<br>    语法<br>        创建对象<br>            外部类名.内部类名 对象名 = new 外部类名().new 内部类名();<br>        使用对象<br>            对象名.成员变量<br>            对象名.成员方法<br>    分类<br>        静态内部类<br>            被static修饰的成员内部类<br>            外部类.内部类 对象名 = new 外部类.内部类();<br>        私有内部类<br>            被private修饰的成员内部类<br>            只能在他所在的外部类中,创建对象并使用.</p>
+<p>局部内部类<br>    位置<br>        方法内部<br>    注意<br>        只能在方法内部进行使用<br>        局部内部类使用完毕之后, 会被立即销毁<br>    场景<br>        临时性的创建子类对象<br>        用完之后立即销毁</p>
+<p>匿名内部类<br>    概述<br>        没有名字的局部内部类<br>        是局部内部类的简化写法<br>    格式</p>
+<div class="hljs code-wrapper"><pre><code>注意
+    匿名内部类本质上是&quot;一个继承父类或实现接口的子类的对象&quot;
+</code></pre></div>
+<p>Lambda<br>    概述<br>        可以理解为”是对匿名内部类的再次简化”<br>    要求<br>        父级必须是接口<br>        接口中有且仅有一个抽象方法<br>    格式<br>        (  )    -&gt;    {  }<br>        (  ) : “重写的方法”的形参<br>        {  } : “重写的方法”的方法体<br>    省略规则<br>        参数的数据类型可以省略<br>        如果参数只有一个,则()可以省略<br>        如果方法体只有一句话,则可以同时省略”{},分号和return”</p>
+<p>Math<br>    概述<br>        包含了很多数学运算的工具类.<br>    方法<br>        public static int abs(int num);<br>            //求绝对值<br>        public static double ceil(double num);<br>                 //向上取整(取大于等于num的最小整数的double类型形式)<br>        public static double floor(double num);<br>             //向下取整(取小于等于num的最大整数的double类型形式)<br>        public static int max(int a,int b);<br>            //求两个数的最大值<br>        public static double round(double num);<br>            //四舍五入<br>        public static double pow(double a, double b);<br>            //计算a的b次幂<br>        public static double random();<br>            //产生0.0-1.0之间的随机数,包含0.0,不包含1.0</p>
+<p>System<br>    概述<br>        包含了很多和系统有关系的方法<br>    方法<br>        public static void exit(int num);<br>            //停止虚拟机.(0代表正常停止,其他代表异常停止)<br>        public static long currentTimeMillis();<br>             //获取当前系统时间所代表的毫秒值(从1970.01.01.00:00:00开始计算)<br>        public static void arraycopy(数据源数组, 起始索引, 目的地数组, 起始索引, 拷贝长度);<br>             //数组拷贝</p>
+
             </div>
             <hr>
             <div>
@@ -259,7 +283,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog-public/tags/JavaSE%E8%BF%9B%E9%98%B6/">JavaSE进阶</a>
+                      <a class="hover-with-bg" href="/blog-public/tags/%E5%86%85%E9%83%A8%E7%B1%BB/">内部类</a>
+                    
+                      <a class="hover-with-bg" href="/blog-public/tags/Lambda/">Lambda</a>
                     
                   </div>
                 
@@ -278,7 +304,7 @@
                     
                       <a href="/blog-public/2021/04/02/SAd05/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaSE进阶-Day05</span>
+                        <span class="hidden-mobile">JavaSE进阶-Day05 常用API</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -287,7 +313,7 @@
                     
                     
                       <a href="/blog-public/2021/04/02/SAd03/">
-                        <span class="hidden-mobile">JavaSE进阶-Day03</span>
+                        <span class="hidden-mobile">JavaSE进阶-Day03 接口&多态</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -577,13 +603,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({"theme":"default"});
-    }
-  </script>
 
 
 

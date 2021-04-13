@@ -16,11 +16,11 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="IO流">
   <meta name="author" content="nitto">
   <meta name="keywords" content="">
   
-  <title>JavaSE进阶-Day11 - Hexo</title>
+  <title>JavaSE进阶-Day11 IO流 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -177,7 +177,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="JavaSE进阶-Day11">
+            <span class="h2" id="subtitle" title="JavaSE进阶-Day11 IO流">
               
             </span>
 
@@ -199,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      2.3k 字
     </span>
   
 
@@ -209,12 +209,20 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      33
        分钟
     </span>
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
   
 </div>
 
@@ -239,10 +247,183 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">JavaSE进阶-Day11</h1>
+            <h1 style="display: none">JavaSE进阶-Day11 IO流</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：4 天前
+                
+              </p>
             
             <div class="markdown-body">
-              
+              <h1 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h1><span id="more"></span>
+
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li><p><input disabled="" type="checkbox">  I: Input输入</p>
+<div class="hljs code-wrapper"><pre><code>    把文件上的数据读取到内存中
+</code></pre></div>
+</li>
+<li><p><input disabled="" type="checkbox">  O: Output输出</p>
+<div class="hljs code-wrapper"><pre><code>    把内存中的数据写出去的技术
+</code></pre></div>
+</li>
+</ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="根据流向分类"><a href="#根据流向分类" class="headerlink" title="根据流向分类"></a>根据流向分类</h3><h4 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h4><p>​            就是把数据读取到内存中的流<br>​                所有输入流都有read方法</p>
+<h4 id="输出流"><a href="#输出流" class="headerlink" title="输出流"></a>输出流</h4><p>​            就是把内存中的数据写出去的流<br>​                所有输出流都有write方法</p>
+<h3 id="根据单位分类"><a href="#根据单位分类" class="headerlink" title="根据单位分类"></a>根据单位分类</h3><h4 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a>字节流</h4><p>​            不论读写,操作的都是字节<br>​                可以操作任何文件</p>
+<h4 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h4><p>​            不论读写,操作的都是字符<br>​                只能操作文本类文件</p>
+<h2 id="基本字节流"><a href="#基本字节流" class="headerlink" title="基本字节流"></a>基本字节流</h2><h3 id="字节输出流"><a href="#字节输出流" class="headerlink" title="字节输出流"></a>字节输出流</h3><h4 id="类名"><a href="#类名" class="headerlink" title="类名"></a>类名</h4><p>​            <code>FileOutputStream</code></p>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><table>
+<thead>
+<tr>
+<th align="center">构造方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public FileOutputStream(String path)</td>
+<td align="center">直接指向一个文件,表示要向文件中输出内容</td>
+</tr>
+<tr>
+<td align="center">public FileOutputStream(String path, boolean append)</td>
+<td align="center">直接指向一个文件,表示要向文件中输出内容<br/>                append表示是否追加. true表示追加</td>
+</tr>
+</tbody></table>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><p>​            </p>
+<table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">void write( int b)</td>
+<td align="center">写出一个字节b到文件输出流</td>
+</tr>
+<tr>
+<td align="center">void write( byte[ ]  b)</td>
+<td align="center">写出一个字节数组中的所有字节</td>
+</tr>
+<tr>
+<td align="center">void write( byte[ ]  b,int off,int len)</td>
+<td align="center">写出字节数组的一部分,从off开始,写len个</td>
+</tr>
+</tbody></table>
+<h5 id="test1"><a href="#test1" class="headerlink" title="test1"></a>test1</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.FileNotFoundException;<br><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo1</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        <span class="hljs-comment">//1.创建字节输出流的对象 --- 告诉虚拟机我要往哪个文件中写数据了</span><br>        FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;D:\\a.txt&quot;</span>);<br>        <span class="hljs-comment">//FileOutputStream fos = new FileOutputStream(new File(&quot;D:\\a.txt&quot;));</span><br><br>        <span class="hljs-comment">//2,写数据</span><br>        fos.write(<span class="hljs-number">97</span>);<br><br>        <span class="hljs-comment">//3,释放资源</span><br>        fos.close();<br><br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="test2"><a href="#test2" class="headerlink" title="test2"></a>test2</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo2</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        <span class="hljs-comment">//1.创建字节输出流的对象</span><br>                        <span class="hljs-comment">//注意点:如果文件不存在,会帮我们自动创建出来.</span><br>                        <span class="hljs-comment">//       如果文件存在,会把文件清空.</span><br>        FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;C:\\itheima\\a.txt&quot;</span>);<br><br>        <span class="hljs-comment">//2,写数据     传递一个整数时,那么实际上写到文件中的,是这个整数在码表中对应的那个字符.</span><br>        fos.write(<span class="hljs-number">98</span>);<br><br>        <span class="hljs-comment">//3,释放资源</span><br>        fos.close(); <span class="hljs-comment">//告诉操作系统,我现在已经不要再用这个文件了.</span><br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="test3"><a href="#test3" class="headerlink" title="test3"></a>test3</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo3</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;bytestream\\a.txt&quot;</span>);<br>        fos.write(<span class="hljs-number">97</span>);<br>        fos.write(<span class="hljs-number">98</span>);<br>        fos.write(<span class="hljs-number">99</span>);<br><br>        fos.close();<br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="test4"><a href="#test4" class="headerlink" title="test4"></a>test4</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo4</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;bytestream\\a.txt&quot;</span>);<br><br>        <span class="hljs-comment">/*byte [] bys = &#123;97,98,99&#125;;</span><br><span class="hljs-comment">        fos.write(bys);*/</span><br><br>        <span class="hljs-keyword">byte</span> [] bys = &#123;<span class="hljs-number">97</span>,<span class="hljs-number">98</span>,<span class="hljs-number">99</span>,<span class="hljs-number">100</span>,<span class="hljs-number">101</span>,<span class="hljs-number">102</span>,<span class="hljs-number">103</span>&#125;;<br>        fos.write(bys,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);<br><br>        fos.close();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="tset5"><a href="#tset5" class="headerlink" title="tset5"></a>tset5</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileNotFoundException;<br><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo5</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        <span class="hljs-comment">//第二个参数就是续写开关,如果没有传递,默认就是false,</span><br>        <span class="hljs-comment">//表示不打开续写功能,那么创建对象的这行代码会清空文件.</span><br><br>        <span class="hljs-comment">//如果第二个参数为true,表示打开续写功能</span><br>        <span class="hljs-comment">//那么创建对象的这行代码不会清空文件.</span><br>        FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;bytestream\\a.txt&quot;</span>,<span class="hljs-keyword">true</span>);<br><br>        fos.write(<span class="hljs-number">97</span>);<br>        <span class="hljs-comment">//能加一个换行</span><br>        fos.write(<span class="hljs-string">&quot;\r\n&quot;</span>.getBytes());<br>        fos.write(<span class="hljs-number">98</span>);<br>        <span class="hljs-comment">//能加一个换行</span><br>        fos.write(<span class="hljs-string">&quot;\r\n&quot;</span>.getBytes());<br>        fos.write(<span class="hljs-number">99</span>);<br>        <span class="hljs-comment">//能加一个换行</span><br>        fos.write(<span class="hljs-string">&quot;\r\n&quot;</span>.getBytes());<br>        fos.write(<span class="hljs-number">100</span>);<br>        <span class="hljs-comment">//能加一个换行</span><br>        fos.write(<span class="hljs-string">&quot;\r\n&quot;</span>.getBytes());<br>        fos.write(<span class="hljs-number">101</span>);<br>        <span class="hljs-comment">//能加一个换行</span><br>        fos.write(<span class="hljs-string">&quot;\r\n&quot;</span>.getBytes());<br><br>        fos.close();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="test6"><a href="#test6" class="headerlink" title="test6"></a>test6</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo6</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        FileOutputStream fos = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//System.out.println(2/0);</span><br>            fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;D:\\a.txt&quot;</span>);<br>            fos.write(<span class="hljs-number">97</span>);<br>        &#125;<span class="hljs-keyword">catch</span>(IOException e)&#123;<br>           e.printStackTrace();<br>        &#125;<span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-comment">//finally语句里面的代码,一定会被执行.</span><br>            <span class="hljs-keyword">if</span>(fos != <span class="hljs-keyword">null</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    fos.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="字节输入流"><a href="#字节输入流" class="headerlink" title="字节输入流"></a>字节输入流</h3><h4 id="类名-1"><a href="#类名-1" class="headerlink" title="类名"></a>类名</h4><p>​            <code>FileInputStream</code></p>
+<h4 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a>构造方法</h4><table>
+<thead>
+<tr>
+<th align="center">构造方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public FileInputStream(String path)</td>
+<td align="center">直接指向一个文件,表示要从文件中读取内容</td>
+</tr>
+</tbody></table>
+<p>​<br>​                </p>
+<h4 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h4><table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">int read()</td>
+<td align="center">一次读取一个字节,返回值为读取字节的int值,读到-1时结束</td>
+</tr>
+<tr>
+<td align="center">int read(byte [] b)</td>
+<td align="center">一次读取一个字节数组,返回值为读取到的字节个数,读到-1时结束</td>
+</tr>
+</tbody></table>
+<h5 id="test1-1"><a href="#test1-1" class="headerlink" title="test1"></a>test1</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileInputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo7</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        <span class="hljs-comment">//如果文件存在,那么就不会报错.</span><br>        <span class="hljs-comment">//如果文件不存在,那么就直接报错.</span><br>        FileInputStream fis = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;bytestream\\a.txt&quot;</span>);<br><br>        <span class="hljs-keyword">int</span> read = fis.read();<br>        <span class="hljs-comment">//一次读取一个字节,返回值就是本次读到的那个字节数据.</span><br>        <span class="hljs-comment">//也就是字符在码表中对应的那个数字.</span><br>        <span class="hljs-comment">//如果我们想要看到的是字符数据,那么一定要强转成char</span><br><br><br>        System.out.println((<span class="hljs-keyword">char</span>)read);<br><br>        <span class="hljs-comment">//释放资源</span><br>        fis.close();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="test2-1"><a href="#test2-1" class="headerlink" title="test2"></a>test2</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileInputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo8</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        FileInputStream fis = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;bytestream\\a.txt&quot;</span>);<br>        <span class="hljs-comment">//1,文件中多个字节我怎么办?</span><br>        <span class="hljs-comment">/*while(true)&#123;</span><br><span class="hljs-comment">            int i1 = fis.read();</span><br><span class="hljs-comment">            System.out.println(i1);</span><br><span class="hljs-comment">        &#125;*/</span><br><br>        <span class="hljs-keyword">int</span> b;<br>        <span class="hljs-keyword">while</span> ((b = fis.read())!=-<span class="hljs-number">1</span>)&#123;<br>            System.out.println((<span class="hljs-keyword">char</span>) b);<br>        &#125;<br>        fis.close();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h2><h3 id="单字节拷贝"><a href="#单字节拷贝" class="headerlink" title="单字节拷贝"></a>单字节拷贝</h3><h4 id="思路与格式"><a href="#思路与格式" class="headerlink" title="思路与格式"></a>思路与格式</h4><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"> <span class="hljs-comment">//创建输入流,表示要读取&quot;E:\itcast\mn.jpg&quot;</span><br>    FileInputStream fis = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;E:\\itcast\\mn.jpg&quot;</span>);<br>    <span class="hljs-comment">//创建输出流,表示要把读取到的数据写入&quot;myByteStream\\mn.jpg&quot;</span><br>    FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;myByteStream\\\\mn.jpg&quot;</span>);<br>    <span class="hljs-comment">//输入流读取数据,输出流写出数据(一次读取一个字节,一次写入一个字节)</span><br>    <span class="hljs-keyword">int</span> by;<br>    <span class="hljs-keyword">while</span> ((by = fis.read()) != -<span class="hljs-number">1</span>) &#123;<br>        fos.write(by);<br>    &#125;<br>    <span class="hljs-comment">//释放资源</span><br>    fos.close();<br>    fis.close();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="test1-2"><a href="#test1-2" class="headerlink" title="test1"></a>test1</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileInputStream;<br><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo9</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        <span class="hljs-comment">//创建了字节输入流,准备读数据.</span><br>        FileInputStream fis = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;C:\\itheima\\a.avi&quot;</span>);<br>        <span class="hljs-comment">//创建了字节输出流,准备写数据.</span><br>        FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;bytestream\\a.avi&quot;</span>);<br><br>        <span class="hljs-keyword">int</span> b;<br>        <span class="hljs-keyword">while</span>((b = fis.read())!=-<span class="hljs-number">1</span>)&#123;<br>            fos.write(b);<br>        &#125;<br><br>        fis.close();<br>        fos.close();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="字节数组拷贝"><a href="#字节数组拷贝" class="headerlink" title="字节数组拷贝"></a>字节数组拷贝</h3><h4 id="思路与格式-1"><a href="#思路与格式-1" class="headerlink" title="思路与格式"></a>思路与格式</h4><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//创建输入流,表示要读取&quot;E:\itcast\mn.jpg&quot;</span><br>       FileInputStream fis = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;E:\\itcast\\mn.jpg&quot;</span>);<br>       <span class="hljs-comment">//创建输出流,表示要把读取到的数据写入&quot;myByteStream\\mn.jpg&quot;</span><br>       FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;myByteStream\\\\mn.jpg&quot;</span>);<br>       <span class="hljs-comment">//输入流读取数据,输出流写出数据(一次读取一个字节数组,一次写入一个字节数组的一部分)</span><br>       <span class="hljs-keyword">byte</span>[] bys = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];<br>       <span class="hljs-keyword">int</span> len;<br>       <span class="hljs-keyword">while</span> ((len = fis.read(bys)) != -<span class="hljs-number">1</span>) &#123;<br>           fos.write(bys, <span class="hljs-number">0</span>, len);<br>       &#125;<br>       <span class="hljs-comment">//释放资源</span><br>       fos.close();<br>       fis.close();<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="test1-3"><a href="#test1-3" class="headerlink" title="test1"></a>test1</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.FileInputStream;<br><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo10</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        FileInputStream fis = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;C:\\itheima\\a.avi&quot;</span>);<br>        FileOutputStream fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;bytestream\\a.avi&quot;</span>);<br><br>        <span class="hljs-keyword">byte</span> [] bytes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-keyword">int</span> len;<span class="hljs-comment">//本次读到的有效字节个数 --- 这次读了几个字节</span><br><br>        <span class="hljs-keyword">while</span>((len = fis.read(bytes))!=-<span class="hljs-number">1</span>)&#123;<br>            fos.write(bytes,<span class="hljs-number">0</span>,len);<br>        &#125;<br><br>        fis.close();<br>        fos.close();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="字节缓冲流"><a href="#字节缓冲流" class="headerlink" title="字节缓冲流"></a>字节缓冲流</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>​        缓冲流  =  基本流 + 缓冲区(数组)</p>
+<h3 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h3><h4 id="缓冲输入流-BufferedInputStream"><a href="#缓冲输入流-BufferedInputStream" class="headerlink" title="缓冲输入流: BufferedInputStream"></a>缓冲输入流: BufferedInputStream</h4><h5 id="构造"><a href="#构造" class="headerlink" title="构造:"></a>构造:</h5><p>​                public BufferedInputStream(InputStream is);</p>
+<h5 id="本质"><a href="#本质" class="headerlink" title="本质:"></a>本质:</h5><p>​                BufferedInputStream = InputStream + 8K数组;</p>
+<h4 id="缓冲输出流-BufferedOutputStream"><a href="#缓冲输出流-BufferedOutputStream" class="headerlink" title="缓冲输出流: BufferedOutputStream"></a>缓冲输出流: BufferedOutputStream</h4><h5 id="构造-1"><a href="#构造-1" class="headerlink" title="构造:"></a>构造:</h5><p>​                public BufferedOutputStream(OutputStream os);</p>
+<h5 id="本质-1"><a href="#本质-1" class="headerlink" title="本质:"></a>本质:</h5><p>​                BufferedOutputStream = OutputStream + 8K数组;</p>
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><h4 id="test1-4"><a href="#test1-4" class="headerlink" title="test1"></a>test1</h4><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo11</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        <span class="hljs-comment">//就要利用缓冲流去拷贝文件</span><br><br>        <span class="hljs-comment">//创建一个字节缓冲输入流</span><br>        <span class="hljs-comment">//在底层创建了一个默认长度为8192的字节数组。</span><br>        BufferedInputStream bis = <span class="hljs-keyword">new</span> BufferedInputStream(<span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;bytestream\\a.avi&quot;</span>));<br>        <span class="hljs-comment">//创建一个字节缓冲输出流</span><br>        <span class="hljs-comment">//在底层也创建了一个默认长度为8192的字节数组。</span><br>        BufferedOutputStream bos = <span class="hljs-keyword">new</span> BufferedOutputStream(<span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;bytestream\\copy.avi&quot;</span>));<br><br>        <span class="hljs-keyword">int</span> b;<br>        <span class="hljs-keyword">while</span>((b = bis.read()) != -<span class="hljs-number">1</span>)&#123;<br>            bos.write(b);<br>        &#125;<br><br>        <span class="hljs-comment">//方法的底层会把字节流给关闭。</span><br>        bis.close();<br>        bos.close();<br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="test2-2"><a href="#test2-2" class="headerlink" title="test2"></a>test2</h4><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputDemo12</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>        <span class="hljs-comment">//缓冲流结合数组，进行文件拷贝</span><br><br>        <span class="hljs-comment">//创建一个字节缓冲输入流</span><br>        BufferedInputStream bis = <span class="hljs-keyword">new</span> BufferedInputStream(<span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">&quot;bytestream\\a.avi&quot;</span>));<br><br>        <span class="hljs-comment">//创建一个字节缓冲输出流</span><br>        BufferedOutputStream bos = <span class="hljs-keyword">new</span> BufferedOutputStream(<span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;bytestream\\copy.avi&quot;</span>));<br><br>        <span class="hljs-keyword">byte</span> [] bytes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-keyword">int</span> len;<br>        <span class="hljs-keyword">while</span>((len = bis.read(bytes)) != -<span class="hljs-number">1</span>)&#123;<br>            bos.write(bytes,<span class="hljs-number">0</span>,len);<br>        &#125;<br><br>        bis.close();<br>        bos.close();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="编解码"><a href="#编解码" class="headerlink" title="编解码"></a>编解码</h2><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>​        该编解码操作指的都是对String的操作</p>
+<h4 id="编码"><a href="#编码" class="headerlink" title="编码:"></a>编码:</h4><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public byte[] getBytes();</td>
+<td align="center">//按照”默认编码格式”进行编码.</td>
+</tr>
+<tr>
+<td align="center">public byte[] getBytes(String charsetName)</td>
+<td align="center">//按照”指定编码格式charsetName”编码</td>
+</tr>
+</tbody></table>
+<p>​    </p>
+<h3 id="解码"><a href="#解码" class="headerlink" title="解码:"></a>解码:</h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public String(byte[] bys);</td>
+<td align="center">//按照”默认编码格式”进行解码.</td>
+</tr>
+<tr>
+<td align="center">public String(byte[] bys,String charsetName);</td>
+<td align="center">//按照”指定编码格式charsetName”进行解码.</td>
+</tr>
+</tbody></table>
+<p>​        </p>
+<h2 id="编码表"><a href="#编码表" class="headerlink" title="编码表"></a>编码表</h2><h3 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h3><p>​        就是字符和对应的数据组成的一张表。</p>
+<h3 id="常见的编码表"><a href="#常见的编码表" class="headerlink" title="常见的编码表"></a>常见的编码表</h3><h4 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a>ASCII</h4><p>​            最原始的编码表, 所有编码表都兼容<br>​            只包含英文字母,数字,和英文标点符号</p>
+<h4 id="ISO-8859-1"><a href="#ISO-8859-1" class="headerlink" title="ISO-8859-1"></a>ISO-8859-1</h4><p>​            欧洲常用编码表</p>
+<h4 id="GBK"><a href="#GBK" class="headerlink" title="GBK"></a>GBK</h4><p>​            简体中文编码表, 国内常用. </p>
+<h4 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h4><p>​            万国码, 包含了世界上大多数国家的文字和符号</p>
+<h2 id="Try-catah-finally"><a href="#Try-catah-finally" class="headerlink" title="Try-catah-finally"></a>Try-catah-finally</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式:"></a>格式:</h3><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">//可能会出现异常的代码</span><br>&#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>   <span class="hljs-comment">// e.printStackTrace();</span><br>    <span class="hljs-comment">//如果出现异常则执行catch</span><br>&#125; <span class="hljs-keyword">finally</span> &#123;<br><span class="hljs-comment">//无论是否出现异常,最终都会执行finally</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例:"></a>案例:</h3><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//1.创建输出流对象,并给予初始化值</span><br>FileOutputStream fos = <span class="hljs-keyword">null</span>;<br><span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">//2.关联文件</span><br>    fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">&quot;Mytest\\a.txt&quot;</span>);<br>    String s = <span class="hljs-string">&quot;我爱中国&quot;</span>;<br>    <span class="hljs-comment">//3.向文件输出内容</span><br>    fos.write(s.getBytes());<br>&#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>    e.printStackTrace();<br>&#125; <span class="hljs-keyword">finally</span> &#123;<br>    <span class="hljs-comment">//4.判断输出流是否创建成功(如果没有创建成功,则就没有必要关闭了)</span><br>    <span class="hljs-keyword">if</span> (fos != <span class="hljs-keyword">null</span>) &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            fos.close();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -259,7 +440,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog-public/tags/JavaSE%E8%BF%9B%E9%98%B6/">JavaSE进阶</a>
+                      <a class="hover-with-bg" href="/blog-public/tags/IO%E6%B5%81/">IO流</a>
                     
                   </div>
                 
@@ -278,7 +459,7 @@
                     
                       <a href="/blog-public/2021/04/02/SAd12/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaSE进阶-Day12</span>
+                        <span class="hidden-mobile">JavaSE进阶-Day12其他流</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -287,7 +468,7 @@
                     
                     
                       <a href="/blog-public/2021/04/02/SAd10/">
-                        <span class="hidden-mobile">JavaSE进阶-Day10</span>
+                        <span class="hidden-mobile">JavaSE进阶-Day10 Stream&File</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -577,13 +758,6 @@
 
 
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
-  <script>
-    if (window.mermaid) {
-      mermaid.initialize({"theme":"default"});
-    }
-  </script>
 
 
 
