@@ -16,7 +16,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="Collection集合">
   <meta name="author" content="nitto">
   <meta name="keywords" content="">
   
@@ -251,12 +251,14 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：13 小时前
+                  本文最后更新于：2 天前
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="Collection集合"><a href="#Collection集合" class="headerlink" title="Collection集合"></a>Collection集合</h1><h2 id="集合体系"><a href="#集合体系" class="headerlink" title="集合体系"></a>集合体系</h2><h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>​            单列集合顶层接口<br>​            就是集合中一次只能存取一个元素</p>
+              <h1 id="Collection集合"><a href="#Collection集合" class="headerlink" title="Collection集合"></a>Collection集合</h1><span id="more"></span>
+
+<h2 id="集合体系"><a href="#集合体系" class="headerlink" title="集合体系"></a>集合体系</h2><h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>​            单列集合顶层接口<br>​            就是集合中一次只能存取一个元素</p>
 <h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><h5 id="List"><a href="#List" class="headerlink" title="List"></a>List</h5><h6 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h6><p>​                    有序(存储和遍历的顺序一致)<br>​                    有索引<br>​                    元素可以重复</p>
 <h6 id="分支-1"><a href="#分支-1" class="headerlink" title="分支"></a>分支</h6><h6 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a><code>ArrayList</code></h6><p>​                        底层结构是数组,查询快,增删慢<br>​                        线程不安全,效率高.</p>
 <figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.ArrayList;<br><span class="hljs-keyword">import</span> java.util.Arrays;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCollectonDemo1</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-comment">//数组可以存储基本数据类型也可以存储引用数据类型</span><br>        <span class="hljs-keyword">int</span> [] arr1 = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;;<br>        String [] arr2 = &#123;<span class="hljs-string">&quot;a&quot;</span>,<span class="hljs-string">&quot;b&quot;</span>,<span class="hljs-string">&quot;c&quot;</span>&#125;;<br>        System.out.println(Arrays.toString(arr1));<br>        System.out.println(Arrays.toString(arr2));<br><br>        ArrayList&lt;String&gt; list1 = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>        list1.add(<span class="hljs-string">&quot;a&quot;</span>);<br>        list1.add(<span class="hljs-string">&quot;b&quot;</span>);<br>        list1.add(<span class="hljs-string">&quot;c&quot;</span>);<br><br>        System.out.println(list1);<br><br>        <span class="hljs-comment">//如果集合要存储基本数据类型,那么实际存储的是他们的包装类</span><br>        <span class="hljs-comment">//ArrayList&lt;int&gt; list2 = new ArrayList&lt;int&gt;();</span><br>        ArrayList&lt;Integer&gt; list2 = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>        list2.add(<span class="hljs-number">1</span>);<br>        list2.add(<span class="hljs-number">2</span>);<br>        list2.add(<span class="hljs-number">3</span>);<br>        System.out.println(list2);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
@@ -759,10 +761,14 @@
 
 
 
+  
+<script src="/blog-public/js/caidai.js"></script>
+
+
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/blog-public/js/boot.js" ></script>
 
-
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
 </body>
 </html>

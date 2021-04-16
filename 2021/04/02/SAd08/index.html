@@ -16,7 +16,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="Set集合">
   <meta name="author" content="nitto">
   <meta name="keywords" content="">
   
@@ -251,12 +251,14 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：15 小时前
+                  本文最后更新于：2 天前
                 
               </p>
             
             <div class="markdown-body">
-              <h1 id="Set集合"><a href="#Set集合" class="headerlink" title="Set集合"></a>Set集合</h1><h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h3 id="泛型概述"><a href="#泛型概述" class="headerlink" title="泛型概述"></a>泛型概述</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>​            可以变化的数据类型.<br>​            可以理解为”一个存储了数据类型的变量”</p>
+              <h1 id="Set集合"><a href="#Set集合" class="headerlink" title="Set集合"></a>Set集合</h1><span id="more"></span>
+
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><h3 id="泛型概述"><a href="#泛型概述" class="headerlink" title="泛型概述"></a>泛型概述</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>​            可以变化的数据类型.<br>​            可以理解为”一个存储了数据类型的变量”</p>
 <h4 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h4><p>​            泛型可以定义在类上,方法上,接口上.<br>​            创建有泛型的类的对象时,需要给泛型指定数据类型<br>​            当泛型被指定数据类型时, 类中所有该泛型均被替换为对应的数据类型</p>
 <h3 id="自定义泛型"><a href="#自定义泛型" class="headerlink" title="自定义泛型"></a>自定义泛型</h3><h4 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类:"></a>泛型类:</h4><p>​            public class 类名&lt;泛型&gt;{}</p>
 <h5 id="test1"><a href="#test1" class="headerlink" title="test1"></a>test1</h5><h6 id="测试类MyGenericityClass"><a href="#测试类MyGenericityClass" class="headerlink" title="测试类MyGenericityClass"></a>测试类MyGenericityClass</h6><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 自定义泛型类</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyGenericityClass</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        Box&lt;String&gt; box1 = <span class="hljs-keyword">new</span> Box&lt;&gt;();<br>        box1.setElement(<span class="hljs-string">&quot;给小丽的土味情话&quot;</span>);<br><br>        String element1 = box1.getElement();<br>        System.out.println(element1);<br><br><br>        Box&lt;Integer&gt; box2 = <span class="hljs-keyword">new</span> Box&lt;&gt;();<br>        box2.setElement(<span class="hljs-number">19</span>);<br><br>        Integer element2 = box2.getElement();<br>        System.out.println(element2);<br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
@@ -693,10 +695,14 @@
 
 
 
+  
+<script src="/blog-public/js/caidai.js"></script>
+
+
 
 <!-- 主题的启动项 保持在最底部 -->
 <script  src="/blog-public/js/boot.js" ></script>
 
-
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
 </body>
 </html>

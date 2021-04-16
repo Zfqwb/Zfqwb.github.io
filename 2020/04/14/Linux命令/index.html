@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog-public/img/favicon.png">
+  <link rel="icon" href="/blog-public/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>Linux-命令 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog-public/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog-public/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"wxqgm.gitee.io","root":"/blog-public/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/blog-public/js/utils.js" ></script>
+  <script  src="/blog-public/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog-public/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog-public/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Linux-命令">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-04-14 19:59" pubdate>
+        2020年4月14日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      62
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Linux-命令</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：3 小时前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="1-用户与账户相关"><a href="#1-用户与账户相关" class="headerlink" title="1 用户与账户相关"></a>1 用户与账户相关</h2><h3 id="1-1-账户管理"><a href="#1-1-账户管理" class="headerlink" title="1.1 账户管理"></a>1.1 账户管理</h3><h4 id="1-1-1-添加用户"><a href="#1-1-1-添加用户" class="headerlink" title="1.1.1 添加用户"></a>1.1.1 添加用户</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：useradd [参数] 用户名		<span class="hljs-comment">#添加用户</span><br>参数：<br> -c&lt;备注&gt;：设置用户帐号的备注。 <br> -e&lt;有效期限&gt;：设置帐号的有效期限。 <br> -g&lt;群组&gt;：设置用户所属的群组。 <br> -n：取消建立以用户名称为名的群组． <br></code></pre></div></td></tr></table></figure>
+
+<h4 id="1-1-2-密码管理"><a href="#1-1-2-密码管理" class="headerlink" title="1.1.2 密码管理"></a>1.1.2 密码管理</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：passwd [参数] 用户名	<span class="hljs-comment">#给指定用户设置密码</span><br>参数：<br> -d：删除密码。本参数仅有系统管理者才能使用。 <br> -f：强制该用户下次登录后修改密码<br> -l：锁住密码。 <br> -u：解开已上锁的帐号。<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="1-1-3-修改用户"><a href="#1-1-3-修改用户" class="headerlink" title="1.1.3 修改用户"></a>1.1.3 修改用户</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：usermod [参数] 用户名	<span class="hljs-comment">#修改用户相关信息</span><br>选项：<br> -c&lt;备注&gt;：修改用户帐号的备注文字。 <br> -e&lt;有效期限&gt;：修改帐号的有效期限。 <br> -g&lt;群组&gt;：修改用户所属的群组。 <br> -l&lt;帐号名称&gt;：修改用户帐号名称。 <br> -L：锁定用户密码，使密码无效。 <br> -U：解除密码锁定。<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="1-1-4-删除用户"><a href="#1-1-4-删除用户" class="headerlink" title="1.1.4 删除用户"></a>1.1.4 删除用户</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：userdel [参数] 用户名		<span class="hljs-comment">#删除用户</span><br>选项：<br> -r：删除主目录(家)和邮件箱<br> -f：删除用户的所有文件<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="1-2-用户组管理"><a href="#1-2-用户组管理" class="headerlink" title="1.2 用户组管理"></a>1.2 用户组管理</h3><h4 id="1-2-1-添加-删除组"><a href="#1-2-1-添加-删除组" class="headerlink" title="1.2.1 添加/删除组"></a>1.2.1 添加/删除组</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：<br> groupadd 用户组名	<span class="hljs-comment">#创建用户组</span><br> groupdel 用户组名	<span class="hljs-comment">#删除用户组</span><br> groups 用户名		 <span class="hljs-comment">#查询用户所属组</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="1-2-2-修改组"><a href="#1-2-2-修改组" class="headerlink" title="1.2.2 修改组"></a>1.2.2 修改组</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：groupmod [参数] 用户组名	<span class="hljs-comment">#修改用户组</span><br>参数：<br> -g &lt;组识编号&gt;：设置欲使用的群组识别码。 <br> -n &lt;新群组名称&gt;：设置欲使用的群组名称。 <br></code></pre></div></td></tr></table></figure>
+
+<h4 id="1-2-3-组成员管理"><a href="#1-2-3-组成员管理" class="headerlink" title="1.2.3 组成员管理"></a>1.2.3 组成员管理</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法： gpasswd [可选项] 用户名 组名		<span class="hljs-comment">#将一个用户添加到组或者从组中删除。</span><br>参数:<br> -a：添加用户到组；<br> -d：从组删除用户；<br> -A：指定管理员；<br> -M：指定组成员和-A的用途差不多；<br> -r：删除密码；<br> -R：限制用户登入组，只有组中的成员才可以用newgrp加入该组。<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="1-3-其他操作"><a href="#1-3-其他操作" class="headerlink" title="1.3 其他操作"></a>1.3 其他操作</h3><h4 id="1-3-1-显示用户"><a href="#1-3-1-显示用户" class="headerlink" title="1.3.1 显示用户"></a>1.3.1 显示用户</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：logname 	<span class="hljs-comment">#显示当前登录账号的信息</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="1-3-2-切换用户"><a href="#1-3-2-切换用户" class="headerlink" title="1.3.2 切换用户"></a>1.3.2 切换用户</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：su 用户名	<span class="hljs-comment">#切换用户</span><br>举例：<br> su 		<span class="hljs-comment">#切换到root用户 </span><br> su root	<span class="hljs-comment">#切换到root用户 </span><br> su itcast 	<span class="hljs-comment">#切换到itcast用户 </span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="1-3-3-详细信息"><a href="#1-3-3-详细信息" class="headerlink" title="1.3.3 详细信息"></a>1.3.3 详细信息</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：id 	<span class="hljs-comment">#查看当前用户的详细信息（用户id，群组id，所属组）</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="1-3-4-sudo"><a href="#1-3-4-sudo" class="headerlink" title="1.3.4 sudo"></a>1.3.4 sudo</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：sudo  	<span class="hljs-comment">#提高权限</span><br>用法：<br>sudo -l  			<span class="hljs-comment">#显示自己的权限</span><br>sudo 命令 		   <span class="hljs-comment">#让当前用户使用系统管理者的身份，去执行某个命令</span><br>sudo -u 用户名 命令	 <span class="hljs-comment">#以指定用户的身份，去执行某个命令</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="2-系统操作相关"><a href="#2-系统操作相关" class="headerlink" title="2 系统操作相关"></a>2 系统操作相关</h2><h3 id="2-1-日期管理"><a href="#2-1-日期管理" class="headerlink" title="2.1 日期管理"></a>2.1 日期管理</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：date [参数]	<span class="hljs-comment">#显示或修改系统时间</span><br>参数：<br> -s&lt;字符串&gt;：根据字符串来设置日期与时间。字符串前后必须加上双引号；<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="2-2-进程相关"><a href="#2-2-进程相关" class="headerlink" title="2.2 进程相关"></a>2.2 进程相关</h3><h4 id="2-2-1-top"><a href="#2-2-1-top" class="headerlink" title="2.2.1 top"></a>2.2.1 top</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：top	<span class="hljs-comment">#实时显示所有进程信息</span><br>举例:<br> top		<span class="hljs-comment">#实时显示所有的进程信息 </span><br> top –c		<span class="hljs-comment">#实现显示所有的进程信息(显示的是详细信息) </span><br> top –p PID <span class="hljs-comment">#实时显示指定进程的信息 </span><br> q			<span class="hljs-comment">#结束监控(Ctrl + C)</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="2-2-2-ps"><a href="#2-2-2-ps" class="headerlink" title="2.2.2 ps"></a>2.2.2 ps</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：ps [参数] 	<span class="hljs-comment">#查看进程信息</span><br>参数：<br> -A：进程信息信息（部分）<br> -u : 显示指定用户信息<br> -ef :显示所有进程信息（完整）<br>举例:<br> ps 			<span class="hljs-comment">#显示当前正在运行的进程信息</span><br> ps -A 		<span class="hljs-comment">#显示系统中所有的进程信息</span><br> ps -ef 		<span class="hljs-comment">#显示系统中所有的进程信息（完整信息）</span><br> ps –u 用户名 <span class="hljs-comment">#显示指定用户的进程信息</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="2-2-3-kill"><a href="#2-2-3-kill" class="headerlink" title="2.2.3 kill"></a>2.2.3 kill</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：<span class="hljs-built_in">kill</span> [参数] [进程] 	<span class="hljs-comment">#中断执行中的程序</span><br>参数：<br> -l&lt;信息编号&gt; ： 若不加信息编号选项，则-l参数会列出全部的信息名称，进程：可以是程序的PID或者PGID，也可以是工作编号<br> -u 用户名： 杀死这个用户中所有进程<br>举例：<br> <span class="hljs-built_in">kill</span> 进程PID 					<span class="hljs-comment">#杀死指定进程</span><br> <span class="hljs-built_in">kill</span> -9 进程PID 					<span class="hljs-comment">#彻底杀死指定进程</span><br> <span class="hljs-built_in">kill</span> -9 $(ps –ef | grep 用户名) 	<span class="hljs-comment">#彻底杀死指定用户所有进程</span><br> killall –u 用户名				 	<span class="hljs-comment">#杀死指定用户所有进程</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="2-3-关机命令"><a href="#2-3-关机命令" class="headerlink" title="2.3 关机命令"></a>2.3 关机命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：shutdown 	<span class="hljs-comment">#关机</span><br>举例:<br> shutdown					<span class="hljs-comment">#关机(不同的版本有所差异)</span><br> shutdown –h now			<span class="hljs-comment">#麻溜的立马关机</span><br> shutdown +1 <span class="hljs-string">&quot;警告信息&quot;</span> 	 <span class="hljs-comment">#墨迹一分钟再关机，并出现警告信息</span><br> shutdown –r +1 <span class="hljs-string">&quot;警告信息&quot;</span> 	 <span class="hljs-comment">#墨迹一分钟再重启，并出现警告信息</span><br> shutdown -c 				<span class="hljs-comment">#取消当前关机操作</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-4-重启命令"><a href="#2-4-重启命令" class="headerlink" title="2.4 重启命令"></a>2.4 重启命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：reboot 	<span class="hljs-comment">#重启</span><br>举例:<br> reboot 	<span class="hljs-comment">#立马重启</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-5-who命令"><a href="#2-5-who命令" class="headerlink" title="2.5 who命令"></a>2.5 who命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：who [参数] <span class="hljs-comment">#显示当前登录系统的用户</span><br>参数：<br> -H：显示标题信息<br> -u：显示闲置时间，如果一份之后有操作，则显示点，如果超过24小时无操作，则显示old字符串<br> -q：只显示登入系统的账号名称和总人数<br> -s：次参数将忽略不予处理，仅负责解决who指令其版本的兼容性问题<br> -w：显示用户的信息状态栏<br>举例:<br> who 	<span class="hljs-comment">#显示当前系统中登录的所有用户</span><br> who –H <span class="hljs-comment">#显示明细（标题）信息</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-6-timedatectl命令"><a href="#2-6-timedatectl命令" class="headerlink" title="2.6 timedatectl命令"></a>2.6 timedatectl命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：timedatectl 	<span class="hljs-comment">#校正服务器时间、时区</span><br>举例:<br> timedatectl status 						<span class="hljs-comment">#显示系统的当前时间和日期</span><br> timedatectl list-timezones 				<span class="hljs-comment">#查看所有可用的时区</span><br> timedatectl set-timezone <span class="hljs-string">&quot;Asia/Shanghai&quot;</span> 	<span class="hljs-comment">#设置本地时区</span><br> timedatectl set-ntp <span class="hljs-literal">false</span> 					<span class="hljs-comment">#禁用时间同步</span><br> timedatectl set-time <span class="hljs-string">&quot;2019-03-11 20:45:00&quot;</span> <span class="hljs-comment">#设置时间</span><br> timedatectl set-ntp <span class="hljs-literal">true</span> 					<span class="hljs-comment">#启用时间同步</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-7-clear命令"><a href="#2-7-clear命令" class="headerlink" title="2.7 clear命令"></a>2.7 clear命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：clear	<span class="hljs-comment">#清除当前屏幕; 也可以使用快捷键  ctrl+L</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="3-目录相关"><a href="#3-目录相关" class="headerlink" title="3 目录相关"></a>3 目录相关</h2><h3 id="3-1-目录相关命令"><a href="#3-1-目录相关命令" class="headerlink" title="3.1 目录相关命令"></a>3.1 目录相关命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">ls <span class="hljs-comment">#列出目录</span><br>	ls 显示不隐藏的文件与文件夹<br>    ls -l 显示不隐藏的文件与文件夹的详细信息(简化写法是ll)<br>    ll –a 显示所有文件与文件夹的详细信息<br>    ll –h 友好显示当前文件夹下所有的文件与文件夹<br>    <br><span class="hljs-built_in">cd</span> <span class="hljs-comment">#切换目录</span><br>	<span class="hljs-built_in">cd</span> [相对路径或绝对路径] 切换目录<br>	<br><span class="hljs-built_in">pwd</span> <span class="hljs-comment">#显示目前的目录</span><br>	<span class="hljs-built_in">pwd</span> –P 查看当前所在目录<br>	<br>mkdir <span class="hljs-comment">#创建新目录</span><br>	mkdir 文件夹名		<span class="hljs-comment">#创建单级文件夹</span><br>	mkdir -p 文件夹名	<span class="hljs-comment">#创建多级文件夹</span><br>	<br>rm <span class="hljs-comment">#删除文件或目录</span><br>	rm 文件名			<span class="hljs-comment">#删除文件</span><br>	rm -rfv 文件夹名    <span class="hljs-comment">#删除指定文件夹(不论文件夹是否为空,都进行删除)</span><br>	<br>cp <span class="hljs-comment">#复制文件或目录</span><br>	cp aaa/a.txt ccc 将aaa文件夹中的a.txt文件拷贝到ccc文件夹中<br>	cp –r aaa/* ccc 将aaa文件夹中所有内容拷贝到ccc文件夹中<br>	<br>mv <span class="hljs-comment">#移动文件或目录,修改文件或者目录的名字</span><br>	mv 数据源 目的地 改名、移动<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3-2-chgrp命令"><a href="#3-2-chgrp命令" class="headerlink" title="3.2 chgrp命令"></a>3.2 chgrp命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：chgrp [选项参数][所属群组][文件或目录...]  <span class="hljs-comment">#更改属组</span><br>参数：<br>-c：效果类似<span class="hljs-string">&quot;-v&quot;</span>参数，但仅回报更改的部分。<br>-f：不显示错误信息。<br>-h：只对符号连接的文件作修改，而不更动其他任何相关文件。<br>-R：递归处理，将指定目录下的所有文件及子目录一并处理。<br>-v：显示指令执行过程。<br>举例:<br>chgrp -v root aaa 	<span class="hljs-comment">#将aaa的属组改为root</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3-3-chown命令"><a href="#3-3-chown命令" class="headerlink" title="3.3 chown命令"></a>3.3 chown命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：chown [参数选项] 属主名 文件名 		<span class="hljs-comment">#更改属主</span><br>	 chown [参数选项] 属主名:属组名 文件名 	<span class="hljs-comment">#更改属主和属组</span><br>参数：<br> -R 处理指定目录以及其子目录下的所有文件<br>举例:<br> chown root aaa 		<span class="hljs-comment">#将aaa的属主改为root</span><br> chown root:root bbb  	<span class="hljs-comment">#将bbb的属主和属组改为root</span><br> chown –R root:root aaa <span class="hljs-comment">#将aaa文件夹和里面所有的属主和属组改为root</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3-4-chmod命令"><a href="#3-4-chmod命令" class="headerlink" title="3.4 chmod命令"></a>3.4 chmod命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：chmod [参数选项] 数字权限或符号权限 文件或目录		<span class="hljs-comment">#修改文件的权限（属主、属组、其他用户）</span><br>参数：<br> -c : 若该档案权限确实已经更改，才显示其更改动作<br> -f : 若该档案权限无法被更改也不要显示错误讯息<br> -v : 显示权限变更的详细资料<br> -R : 对目前目录下的所有档案与子目录进行相同的权限变更(即以递归的方式逐个变更) <br>数字权限: <br> 就是刚刚提到的数字类型的权限属性，为 rwx 对应数值相加的和。<br>符号权限:<br> u：user属主权限 <br> g：group属组权限 <br> o：others其他权限<br> a：全部身份 <br>举例：<br> chmod –R 770 aaa 			<span class="hljs-comment">#修改aaa文件夹及内容对属主和属组拥有所有权限,其他用户没有任何权限</span><br> chmod u=rwx,g=rx,o=r a.txt  <span class="hljs-comment">#修改a.txt文件对属主有所有权,属组拥有读和执行权限,其他用户只有读的权限</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3-5-touch命令"><a href="#3-5-touch命令" class="headerlink" title="3.5 touch命令"></a>3.5 touch命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><br>语法：touch [参数选项] 文件名	<span class="hljs-comment">#如果文件不存在就创建文件，如果存在就修改时间属性</span><br>参数：<br> -a 改变档案的读取时间记录。<br> -m 改变档案的修改时间记录。 <br> -c 假如目的档案不存在，不会建立新的档案。与 --no-create 的效果一样。<br> -d 设定时间与日期，可以使用各种不同的格式。 <br> -t 设定档案的时间记录，格式与 date 指令相同。 <br>举例:<br> touch a.txt 		<span class="hljs-comment">#不存在就创建，存在就修改时间属性</span><br> touch a&#123;1..10&#125;.txt <span class="hljs-comment">#批量创建空文件</span><br> <span class="hljs-built_in">stat</span> a.txt 		<span class="hljs-comment">#查看文件的详细信息</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="4-文档操作相关"><a href="#4-文档操作相关" class="headerlink" title="4 文档操作相关"></a>4 文档操作相关</h2><h3 id="4-1-vi-vim编辑器"><a href="#4-1-vi-vim编辑器" class="headerlink" title="4.1 vi/vim编辑器"></a>4.1 vi/vim编辑器</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-comment">#编辑文件</span><br>语法：vim 文件名	<span class="hljs-comment">#文件编辑器。如果文件存在就打开文件并编辑，如果文件不存在就创建并打开编辑</span><br><br><span class="hljs-comment">#模式切换</span><br>进入编辑模式  可以使用字母: i,a,o任意字母<br>退出编辑模式  可以按1次esc按键<br>进入底行模式  可以使用字母冒号 :<br>退出底行模式  可以按两次esc按键<br><br><span class="hljs-comment">#模式介绍:</span><br>编辑模式  处于此模式时,可以对文件的内容进行修改;<br>命令模式  处于此模式时,只能看文件的内容,同时此模式也是默认模式,是转换另外两种模式的中转站;<br>底行模式  处于此模式时,可以对文件本身操作,例如:文件保存,文件退出,等;<br><br><span class="hljs-comment">#底行模式的语法：</span><br> q 		<span class="hljs-comment">#不保存，并推出</span><br> q! 	<span class="hljs-comment">#不保存，并强制推出</span><br> wq 	<span class="hljs-comment">#保存，并推出</span><br> wq! 	<span class="hljs-comment">#保存，并强制推出</span><br><br><span class="hljs-comment">#异常处理:</span><br>如果vim异常退出, 在磁盘上可能会保存有交换文件, 需要将后缀名为.swp的文件删除即可恢复;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-2-文件查看"><a href="#4-2-文件查看" class="headerlink" title="4.2 文件查看"></a>4.2 文件查看</h3><h4 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：cat [参数选项] 文件 	<span class="hljs-comment">#查看小型文件，一次性显示全部</span><br>参数：<br> -n：由 1 开始对所有输出的行数编号。<br>举例:<br> cat a.txt 		<span class="hljs-comment">#查看a.txt的内容</span><br> cat –n a.txt 	<span class="hljs-comment">#查看a.txt的内容（加入行号）</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="less命令"><a href="#less命令" class="headerlink" title="less命令"></a>less命令</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：less [参数选项] 文件 	<span class="hljs-comment">#查看大文件(可以通过上下按键进行翻页)</span><br>参数选项：<br> -N：显示每行的行号<br>举例:<br> less a.txt 		<span class="hljs-comment">#查看a.txt的内容</span><br> less –N a.txt 	    <span class="hljs-comment">#查看a.txt的内容（加入行号）</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="tail命令"><a href="#tail命令" class="headerlink" title="tail命令"></a>tail命令</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：tail [参数选项] 文件 <span class="hljs-comment">#查看文件的最后部分，或动态显示文件最后内容</span><br>参数：<br> -数字：显示文件的最后几行<br> -f ：循环读取文档最后10行 <br> -n &lt;行数&gt;：显示文件的内容，从指定行至文件末尾<br> -c：显示最后指定的字节数<br>举例:<br> tail –3 big.txt 	<span class="hljs-comment">#显示文件最后3行</span><br> tail -f big.txt 	<span class="hljs-comment">#动态显示最后10行(必须掌握)</span><br> tail -4f big.txt 	<span class="hljs-comment">#动态显示最后4行</span><br> tail -n +2 big.txt <span class="hljs-comment">#显示文件a.txt 的内容，从第 2 行至文件末尾</span><br> tail -c 45 big.txt <span class="hljs-comment">#显示最后一些字符</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-3-grep命令"><a href="#4-3-grep命令" class="headerlink" title="4.3 grep命令"></a>4.3 grep命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：grep [参数选项] 关键字 文件 <span class="hljs-comment">#根据关键词,搜索文本文件内容(对内容进行筛选)</span><br>参数：<br> -n：把包含关键字的行展示出来<br> -i ：把包含关键字的行展示出来，搜索时，忽略大小写。<br> -v : 把不包含关键字的行展示出来<br>举例:<br> grep 关键字 small.txt 	<span class="hljs-comment">#把包含关键字的行展示出来</span><br> grep –i 关键字 small.txt 	<span class="hljs-comment">#把包含关键字的行展示出来，搜索时忽略大小写</span><br> grep –v 关键字 small.txt	<span class="hljs-comment">#把不包含关键字的行展示出来</span><br> grep –A数字 关键字 small.txt	<span class="hljs-comment">#把包含关键字的行展示出来,并且显示改行之后的&quot;数字&quot;行</span><br> grep –B数字 关键字 small.txt	<span class="hljs-comment">#把包含关键字的行展示出来,并且显示改行之前的&quot;数字&quot;行</span><br> ps -ef | grep 关键字 					<span class="hljs-comment">#查找指定的进程信息，包含grep进程</span><br> ps -ef | grep 关键字 | grep -v <span class="hljs-string">&quot;grep&quot;</span> <span class="hljs-comment">#查找指定的进程信息，不包含grep进程</span><br> ps -ef | grep -c sshd 	 			  <span class="hljs-comment">#查找进程个数</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-4-echo命令"><a href="#4-4-echo命令" class="headerlink" title="4.4 echo命令"></a>4.4 echo命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：<span class="hljs-built_in">echo</span> 字符串 	<span class="hljs-comment">#展示文本</span><br>举例:<br> <span class="hljs-built_in">echo</span> 字符串 &gt;文件名 				<span class="hljs-comment">#将字符串写到文件中（覆盖文件中内容）</span><br> <span class="hljs-built_in">echo</span> 字符串 &gt;&gt; 文件名 			<span class="hljs-comment">#将字符串写到文件中（不覆盖文件中内容）</span><br> cat 不存在的目录 &amp;&gt;&gt; error.log 	<span class="hljs-comment">#将命令的失败结果 追加 error.log文件的后面</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="4-5-awk命令"><a href="#4-5-awk命令" class="headerlink" title="4.5 awk命令"></a>4.5 awk命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-comment">#AWK是一种处理文本文件的语言，是一个强大的文本分析工具。一般配合cat命令可以对cat打开的文件内容进行分析展示;</span><br>语法：awk [参数选项] <span class="hljs-string">&quot;语法&quot;</span> 文件<br>参数：<br> -F <span class="hljs-string">&#x27;,&#x27;</span>  		<span class="hljs-comment">#使用逗号对文件内容进行分割</span><br> $+数字 		   <span class="hljs-comment">#可以获取分割后的第几段内容</span><br> <span class="hljs-variable">$0</span> 			<span class="hljs-comment">#表示获取当前行内容</span><br> OFS=<span class="hljs-string">&#x27;分隔符&#x27;</span> 	  <span class="hljs-comment">#以指定的分隔符连接分割的结果</span><br><br><span class="hljs-comment">#awk脚本:</span><br>BEGIN&#123; 这里面放的是执行前的语句 &#125;<br>&#123;这里面放的是处理每一行时要执行的语句&#125;<br>END &#123;这里面放的是处理完所有的行后要执行的语句 &#125;<br><br><span class="hljs-comment">#awk的方法:</span><br>toupper($数字)<br>tolower($数字)<br>length($数字)<br><br><span class="hljs-comment">#awk的特殊变量:</span><br>NR 表示行号,从1开始<br>可以直接在&#123;中使用自定义的变量名&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="5-压缩与解压操作"><a href="#5-压缩与解压操作" class="headerlink" title="5 压缩与解压操作"></a>5 压缩与解压操作</h2><h3 id="5-1-ln命令"><a href="#5-1-ln命令" class="headerlink" title="5.1 ln命令"></a>5.1 ln命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-comment">#创建软连接，也就是windows中的快捷方式;</span><br>语法：ln -s 目标文件路径 快捷方式路径<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="5-2-find命令"><a href="#5-2-find命令" class="headerlink" title="5.2 find命令"></a>5.2 find命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：find [参数选项] &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定内容&gt; <span class="hljs-comment">#在指定目录下查找文件</span><br>参数选项：<br> -name filename 	<span class="hljs-comment">#查找名为filename的文件</span><br> -ctime -n或+n 	   <span class="hljs-comment">#按时间来查找文件，-n指n行以内，+n指n行以前</span><br>例如:<br> find . -name <span class="hljs-string">&quot;*.java&quot;</span>  将当前目录及其子目录下所有后缀名是java的文件罗列出来<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="5-3-gz压缩与解压命令"><a href="#5-3-gz压缩与解压命令" class="headerlink" title="5.3 gz压缩与解压命令"></a>5.3 gz压缩与解压命令</h3><h4 id="5-3-1-gzip压缩"><a href="#5-3-1-gzip压缩" class="headerlink" title="5.3.1 gzip压缩"></a>5.3.1 gzip压缩</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：gzip [参数选项] [文件] 	<span class="hljs-comment">#压缩文件</span><br>参数：<br> 不加任何参数表示压缩文件<br> -d 解压缩<br> -v 显示指令执行过程<br>举例：<br> gizp a.txt	<span class="hljs-comment">#压缩a.txt文件</span><br> gzip *			<span class="hljs-comment">#压缩当前目录下所有文件</span><br> gzip -dv *		<span class="hljs-comment">#解压当前文件夹下所有压缩文件并列出详细信息</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="5-3-2-gunzip解压"><a href="#5-3-2-gunzip解压" class="headerlink" title="5.3.2 gunzip解压"></a>5.3.2 gunzip解压</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：gunzip [参数] [文件]		<span class="hljs-comment">#解压文件</span><br>参数：<br> -v 显示指令执行过程<br>举例：<br> gunzip a.gz	<span class="hljs-comment">#解压a文件;</span><br> gunzip *		<span class="hljs-comment">#解压当前文件夹下所有压缩文件并列出详细信息</span><br><br><br>gunzip 专门解压文件;<br>例如:<br>gunzip a.gz   解压a文件, *可以表示所有文件;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="5-4-tar打包并压缩命令-掌握"><a href="#5-4-tar打包并压缩命令-掌握" class="headerlink" title="5.4 tar打包并压缩命令[掌握]"></a>5.4 tar打包并压缩命令[掌握]</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：<br> tar -zcvf 压缩文件名 文件名/文件夹名 	<span class="hljs-comment">#打包，并压缩</span><br> tar –zxvf 压缩文件名  		<span class="hljs-comment">#解压缩,解压到当前文件夹下</span><br> tar –zxvf 压缩文件名 -C 路径 <span class="hljs-comment">#解压缩,解压到指定文件夹下</span><br>参数：<br> -c：建立新的压缩文件<br> -v：显示指令执行过程<br> -f&lt;备份文件&gt;：指定压缩文件<br> -z：通过gzip指令处理压缩文件。<br> -t：列出压缩文件中的内容<br> -x：表示解压<br>举例:<br> tar -q -r a.zip a <span class="hljs-comment">#将a文件夹压缩成a.zip文件</span><br> <br>注意：<br> tar本身不具有压缩功能。他是调用gzip压缩功能实现的 。<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="5-5-zip格式解压与压缩"><a href="#5-5-zip格式解压与压缩" class="headerlink" title="5.5 zip格式解压与压缩"></a>5.5 zip格式解压与压缩</h3><h4 id="5-5-1-zip压缩"><a href="#5-5-1-zip压缩" class="headerlink" title="5.5.1 zip压缩"></a>5.5.1 zip压缩</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：zip [必要参数][选择参数][文件] <span class="hljs-comment">#压缩文件</span><br>参数：<br> -q 不显示指令执行过程。<br> -r 递归处理，将指定目录下的所有文件和子目录一并处理。<br>举例:<br> zip -q -r a.zip a <span class="hljs-comment">#将a文件夹压缩成a.zip文件</span><br> <br>注意：<br> 压缩出来的是<span class="hljs-string">&quot;.zip&quot;</span>扩展名的压缩文件。<br> zip是个在windows中使用广泛的压缩程序(linux中一般使用tar.gz方式压缩文件)，<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="5-5-2-unzip解压缩"><a href="#5-5-2-unzip解压缩" class="headerlink" title="5.5.2 unzip解压缩"></a>5.5.2 unzip解压缩</h4><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：unzip [必要参数][选择参数][文件] <span class="hljs-comment">#解压</span><br>参数：<br> -l 显示压缩文件内所包含的文件。<br> -d&lt;目录&gt; 指定文件解压缩后所要存储的目录<br>举例:<br> unzip  a.zip 		<span class="hljs-comment">#将a.zip解压到当前文件夹中</span><br> unzip -d bb a.zip  <span class="hljs-comment">#将a.zip解压到bb文件夹中</span><br><br>注意：只能解压<span class="hljs-string">&quot;.zip&quot;</span>扩展名的压缩文件。<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="6-网络相关"><a href="#6-网络相关" class="headerlink" title="6 网络相关"></a>6 网络相关</h2><h3 id="6-1-ifconfig命令"><a href="#6-1-ifconfig命令" class="headerlink" title="6.1 ifconfig命令"></a>6.1 ifconfig命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">ifconfig 显示激活的网卡信息<br>ifconfig ens37 down 关闭网卡<br>ifconfig ens37 up 启动网卡<br>ifconfig ens37 192.168.23.199 配置ip地址<br>ifconfig ens37 192.168.23.133 netmask 255.255.255.0 配置ip地址和子网掩码<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="6-2-ping命令"><a href="#6-2-ping命令" class="headerlink" title="6.2 ping命令"></a>6.2 ping命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：ping [参数选项]  ip地址  <span class="hljs-comment">#检测是否与主机连通</span><br>参数选项：<br> -c&lt;完成次数&gt;：设置完成要求回应的次数。<br>例如:<br> ping www.baidu.com 	 <span class="hljs-comment">#检测是否与百度连通</span><br> ping -c 2 www.baidu.com <span class="hljs-comment">#指定接收包的次数</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="6-3-netstat命令"><a href="#6-3-netstat命令" class="headerlink" title="6.3 netstat命令"></a>6.3 netstat命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：netstat [参数选项] <span class="hljs-comment">#显示网络状态</span><br>参数：<br> -a 显示所有连线中的Socket<br> -i 显示网卡列表<br>举例:<br> netstat –a <span class="hljs-comment">#显示详细的连接状况</span><br> netstat –i <span class="hljs-comment">#显示网卡列表</span><br> netstat -ap <span class="hljs-comment">#Linux系统显示当前网络连接状况(带PID)</span><br> netstat -ano <span class="hljs-comment">#Windows系统显示当前网络连接状况(带PID)</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="7-硬盘相关"><a href="#7-硬盘相关" class="headerlink" title="7 硬盘相关"></a>7 硬盘相关</h2><h3 id="7-1-lsblk命令"><a href="#7-1-lsblk命令" class="headerlink" title="7.1 lsblk命令"></a>7.1 lsblk命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：lsblk [参数选项]	 <span class="hljs-comment">#列出硬盘的使用情况，理解为&quot;list block&quot;的英文缩写</span><br>参数：<br> -f 显示系统信息<br>例如:<br> lsblk 		<span class="hljs-comment">#列出硬盘的使用情况</span><br> lsblk –f 	<span class="hljs-comment">#显示系统信息</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="7-2-df命令"><a href="#7-2-df命令" class="headerlink" title="7.2 df命令"></a>7.2 df命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh">语法：df [参数选项] 	<span class="hljs-comment">#显示目前在Linux系统上，硬盘的使用情况</span><br>参数选项：<br> --total：显示所有的信息<br> -h：换算成KB，MB，GB等形式进行展示（方便阅读）<br>例如:<br> df 		<span class="hljs-comment">#显示整个硬盘使用情况</span><br> df 文件夹   <span class="hljs-comment">#显示文件夹使用情况</span><br> df –total  <span class="hljs-comment">#显示所有的信息</span><br> df -h 		<span class="hljs-comment">#将结果变成KB，MB，GB形式展示，利于阅读</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="7-3-mount命令-掌握"><a href="#7-3-mount命令-掌握" class="headerlink" title="7.3 mount命令[掌握]"></a>7.3 mount命令[掌握]</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-comment">#作用：挂载Linux系统外的文件。(可以理解为是将linux系统外的软件或硬件与linux系统连接在一起,并被linux系统识别的一系列操作,就是挂载,例如:你把U盘插入电脑,电脑识别U盘,并读取到U盘中的内容就是挂载了U盘)</span><br>语法：mount [参数选项] 目录 <span class="hljs-comment">#用于挂载Linux系统外的设备</span><br>例如:<br> mkdir 文件夹 					  <span class="hljs-comment">#创建文件夹（也是创建一个挂载点）</span><br> mount -t auto /dev/cdrom 文件夹 <span class="hljs-comment">#开始挂载</span><br> umount 文件夹 				  <span class="hljs-comment">#卸载</span><br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="8-软件下载安装与卸载"><a href="#8-软件下载安装与卸载" class="headerlink" title="8 软件下载安装与卸载"></a>8 软件下载安装与卸载</h2><h3 id="8-1-yum命令"><a href="#8-1-yum命令" class="headerlink" title="8.1 yum命令"></a>8.1 yum命令</h3><figure class="highlight sh"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs sh"><span class="hljs-comment">#Yum（全称为 Yellow dog Updater, Modified）是一个软件包管理器。能够从指定的服务器自动下载RPM软件安装包并且安装，还可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。 </span><br><span class="hljs-comment">#yum命令的作用: 可以完成软件的安装，下载或者卸载;</span><br><br><span class="hljs-comment">#yum常用命令：</span><br>yum check-update			<span class="hljs-comment">#列出所有可更新的软件清单</span><br>yum update					<span class="hljs-comment">#更新所有软件</span><br>yum install &lt;package_name&gt; 	<span class="hljs-comment">#仅安装指定的软件</span><br>yum update &lt;package_name&gt;	<span class="hljs-comment">#仅更新指定的软件</span><br>yum list 					<span class="hljs-comment">#列出所有可安裝的软件清单</span><br>yum remove &lt;package_name&gt;	<span class="hljs-comment">#删除软件包</span><br>yum search &lt;keyword&gt;		<span class="hljs-comment">#查找软件包：</span><br>yum clean packages: 		<span class="hljs-comment">#清除缓存目录下的软件包</span><br>yum clean headers  			<span class="hljs-comment">#清除缓存目录下的 headers </span><br>yum clean oldheaders 		<span class="hljs-comment">#清除缓存目录下旧的 headers </span><br>yum clean, yum clean all 	<span class="hljs-comment">#清除缓存目录下的软件包及旧的headers</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="8-2-rpm命令"><a href="#8-2-rpm命令" class="headerlink" title="8.2 rpm命令"></a>8.2 rpm命令</h3><p><strong>安装rpm软件包</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">rpm -ivh 软件全包名<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>卸载rpm软件包</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">rpm -e 软件全包名      <br></code></pre></div></td></tr></table></figure>
+
+<p><strong>列出所有安装过的包</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">rpm -qa<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>查询软件包信息</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">rpm -qi 软件全包名<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>查看文件安装位置</strong> </p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">rpm -ql 软件全包名<br></code></pre></div></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog-public/categories/Linux/">Linux</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog-public/tags/Linux/">Linux</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog-public/2021/04/01/h0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hexo安装与自定义主题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/blog-public/img/police_beian.png" srcset="/blog-public/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog-public/js/debouncer.js" ></script>
+<script  src="/blog-public/js/events.js" ></script>
+<script  src="/blog-public/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog-public/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/blog-public/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/blog-public/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/blog-public/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="/blog-public/js/caidai.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog-public/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>
