@@ -16,11 +16,11 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="docker安装">
+  <meta name="description" content="">
   <meta name="author" content="nitto">
   <meta name="keywords" content="">
   
-  <title>Docker安装配置及华为云镜像加速并部署Nextcloud - Hexo</title>
+  <title>Linux中安装JDK - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -183,7 +183,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Docker安装配置及华为云镜像加速并部署Nextcloud">
+            <span class="h2" id="subtitle" title="Linux中安装JDK">
               
             </span>
 
@@ -193,8 +193,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-04-16 10:09" pubdate>
-        2021年4月16日 上午
+      <time datetime="2020-04-19 08:50" pubdate>
+        2020年4月19日 早上
       </time>
     </span>
   
@@ -205,7 +205,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      173 字
     </span>
   
 
@@ -215,7 +215,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      2
        分钟
     </span>
   
@@ -253,90 +253,39 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Docker安装配置及华为云镜像加速并部署Nextcloud</h1>
+            <h1 style="display: none">Linux中安装JDK</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：3 天前
+                  本文最后更新于：39 分钟前
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="docker安装"><a href="#docker安装" class="headerlink" title="docker安装"></a>docker安装</h2><span id="more"></span>
+              <h1 id="Linux中安装JDK并配置环境变量"><a href="#Linux中安装JDK并配置环境变量" class="headerlink" title="Linux中安装JDK并配置环境变量"></a>Linux中安装JDK并配置环境变量</h1><h2 id="1-切换权限为root"><a href="#1-切换权限为root" class="headerlink" title="1,切换权限为root"></a>1,切换权限为root</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">su root<br></code></pre></div></td></tr></table></figure>
 
-<p>CentOS操作系统</p>
-<p>检查内核版本，必须是3.10及以上 ，采用命令“uname ‐r”</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">uname -r<br>3.10.0-957.el7.x86_64<br></code></pre></div></td></tr></table></figure>
+<h2 id="2-查看版本"><a href="#2-查看版本" class="headerlink" title="2,查看版本"></a>2,查看版本</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">java -version<br></code></pre></div></td></tr></table></figure>
 
-<h3 id="准备环境-安装依赖包"><a href="#准备环境-安装依赖包" class="headerlink" title="准备环境 安装依赖包"></a>准备环境 安装依赖包</h3><p>执行以下命令安装依赖包。</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></div></td></tr></table></figure>
+<h2 id="3-查看centos中自带的JDK"><a href="#3-查看centos中自带的JDK" class="headerlink" title="3,查看centos中自带的JDK"></a>3,查看centos中自带的JDK</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">rpm -qa | grep java<br></code></pre></div></td></tr></table></figure>
 
-<h3 id="执行安装"><a href="#执行安装" class="headerlink" title="执行安装"></a>执行安装</h3><h4 id="使用软件仓库安装"><a href="#使用软件仓库安装" class="headerlink" title="使用软件仓库安装"></a>使用软件仓库安装</h4><p>老版本的docker的命名为“docker”或 “docker-engine”，如果安装了这些版本，需要先卸载掉。<br>保存在“/var/lib/docker/”中的内容，包括图片、磁盘和网络配置等都会保留下来。</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate<br></code></pre></div></td></tr></table></figure>
+<h2 id="4-卸载-centos中自带的JDK"><a href="#4-卸载-centos中自带的JDK" class="headerlink" title="4,卸载 centos中自带的JDK"></a>4,卸载 centos中自带的JDK</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">rpm -e --nodeps java-1.X.0-openjdk...<br></code></pre></div></td></tr></table></figure>
 
-<h4 id="配置软件仓库。"><a href="#配置软件仓库。" class="headerlink" title="配置软件仓库。"></a>配置软件仓库。</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo<br></code></pre></div></td></tr></table></figure>
+<h2 id="5-检查是否删除成功"><a href="#5-检查是否删除成功" class="headerlink" title="5,检查是否删除成功"></a>5,检查是否删除成功</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">java -version<br></code></pre></div></td></tr></table></figure>
 
-<h4 id="安装docker-ce。"><a href="#安装docker-ce。" class="headerlink" title="安装docker-ce。"></a>安装docker-ce。</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo yum install docker-ce docker-ce-cli containerd.io<br></code></pre></div></td></tr></table></figure>
-
-<p>这个命令总是会安装最新版本的docker-ce，如果需要安装指定版本的可以参考下面的操作：</p>
-<p>sudo yum install docker-ce-<VERSION_STRING> docker-ce-cli-<VERSION_STRING> containerd.io</p>
-<h2 id="docker镜像加速（华为云实现）"><a href="#docker镜像加速（华为云实现）" class="headerlink" title="docker镜像加速（华为云实现）"></a>docker镜像加速（华为云实现）</h2><h4 id="1-登录华为云网站，注册华为云账户"><a href="#1-登录华为云网站，注册华为云账户" class="headerlink" title="1.登录华为云网站，注册华为云账户"></a>1.登录华为云网站，注册华为云账户</h4><p><a target="_blank" rel="noopener" href="https://www.huaweicloud.com/">https://www.huaweicloud.com</a></p>
-<h4 id="找到容器服务中的容器镜像服务，点击容器镜像服务"><a href="#找到容器服务中的容器镜像服务，点击容器镜像服务" class="headerlink" title="找到容器服务中的容器镜像服务，点击容器镜像服务"></a>找到容器服务中的容器镜像服务，点击容器镜像服务</h4><p><a target="_blank" rel="noopener" href="https://auth.huaweicloud.com/authui/login.html?service=https://console.huaweicloud.com/swr/?region=cn-south-1&cloud_route_state=/app/swr/huaweiOfficialList#/login">容器镜像服务控制台</a></p>
-<h4 id="点击镜像中心，然后添加镜像加速器"><a href="#点击镜像中心，然后添加镜像加速器" class="headerlink" title="点击镜像中心，然后添加镜像加速器"></a>点击镜像中心，然后添加镜像加速器</h4><h4 id="华为云官方会给出我们一个华为云加速地址"><a href="#华为云官方会给出我们一个华为云加速地址" class="headerlink" title="华为云官方会给出我们一个华为云加速地址"></a>华为云官方会给出我们一个华为云加速地址</h4><h4 id="最后把加速地址写入docker配置文件中"><a href="#最后把加速地址写入docker配置文件中" class="headerlink" title="最后把加速地址写入docker配置文件中"></a>最后把加速地址写入docker配置文件中</h4><h4 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h4><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">cp /lib/systemd/system/docker.service /etc/systemd/system/docker.service<br>chmod 777 /etc/systemd/system/docker.service<br>vi /etc/systemd/system/docker.service<br></code></pre></div></td></tr></table></figure>
+<h2 id="6-下载JDK"><a href="#6-下载JDK" class="headerlink" title="6,下载JDK"></a>6,下载JDK</h2><h2 id="7-把JDK上传至centos中"><a href="#7-把JDK上传至centos中" class="headerlink" title="7,把JDK上传至centos中"></a>7,把JDK上传至centos中</h2><h2 id="8-把压缩包解压到当前文件夹-并把解压出来的文件夹移动到-usr-java下"><a href="#8-把压缩包解压到当前文件夹-并把解压出来的文件夹移动到-usr-java下" class="headerlink" title="8,把压缩包解压到当前文件夹,并把解压出来的文件夹移动到/usr/java下"></a>8,把压缩包解压到当前文件夹,并把解压出来的文件夹移动到/usr/java下</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">tar –zxvf 压缩文件名<br>mv 数据源 目的地<br></code></pre></div></td></tr></table></figure>
 
 
-<p><code>把ExecStart这一行后面的改为</code><br><code>–registry-mirror=华为云加速网址</code></p>
-<p>把ExecStart这一行后面的改为<br>–registry-mirror=华为云加速网址</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">ExecStart=/usr/bin/dockerd --registry-mirror=你的华为云加速地址<br></code></pre></div></td></tr></table></figure>
 
-<h4 id="最后重启docker"><a href="#最后重启docker" class="headerlink" title="最后重启docker"></a>最后重启docker</h4><blockquote>
-<p>systemctl daemon-reload</p>
-</blockquote>
-<blockquote>
-<p>systemctl restart docker</p>
-</blockquote>
-<h4 id="验证docker加速配置情况"><a href="#验证docker加速配置情况" class="headerlink" title="验证docker加速配置情况"></a>验证docker加速配置情况</h4><figure class="highlight vim"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vim"><span class="hljs-keyword">ps</span> -ef | <span class="hljs-keyword">grep</span> docker<br></code></pre></div></td></tr></table></figure>
+<h2 id="9-配置环境变量"><a href="#9-配置环境变量" class="headerlink" title="9,配置环境变量"></a>9,配置环境变量</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">vim /etc/profile<br></code></pre></div></td></tr></table></figure>
 
-<p>这里我们看到了刚才配置的华为云docker加速地址</p>
-<h2 id="Docker方式部署Nextcloud"><a href="#Docker方式部署Nextcloud" class="headerlink" title="Docker方式部署Nextcloud"></a>Docker方式部署Nextcloud</h2><h3 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h3><p>在终端执行以下命令，拉取 Nextcloud 镜像：</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">docker pull nextcloud<br></code></pre></div></td></tr></table></figure>
 
-<p>拉取到的 Nextcloud 镜像的 tag 是 <code>latest</code>，显示以下信息即表示拉取成功：</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">Using default tag: latest<br>latest: Pulling from library/nextcloud<br>bc51dd8edc1b: Pull complete<br>a3224e2c3a89: Pull complete<br>be7a066df88f: Pull complete<br>bfdf741d72a9: Pull complete<br>a9e612a5f04c: Pull complete<br>c026d8d0e8cb: Pull complete<br>d94096c4941c: Pull complete<br>5a16031a7587: Pull complete<br>0cf1daf9efc0: Pull complete<br>b202acb13a6c: Pull complete<br>907001e30880: Pull complete<br>2e4b329c80b2: Pull complete<br>cd1ec92e7164: Pull complete<br>8cba435f5ca6: Pull complete<br>e15a177658f6: Pull complete<br>9b26736059ce: Pull complete<br>53dbece8c17a: Pull complete<br>07158f924c2a: Pull complete<br>5ea6266119b8: Pull complete<br>e377a8cc542f: Pull complete<br>5662efc30cde: Pull complete<br>Digest: sha256:fa863d16c10387f4bae140bdd38f5591aa4b88f1292593dcffa501b9e1a76e58<br>Status: Downloaded newer image for nextcloud:latest<br>docker.io/library/nextcloud:latest<br></code></pre></div></td></tr></table></figure>
 
-<h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><p>执行以下命令，启动 Nextcloud 容器：</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">docker run -d --restart=always --name nextcloud -p 80:80 nextcloud<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">export JAVA_HOME=你的安装路径(绝对路径)<br>export PATH=$JAVA_HOME/bin:$PATH<br>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar<br></code></pre></div></td></tr></table></figure>
 
-<p>简单解释一下上述命令：</p>
-<ul>
-<li>docker run ：启动一个容器</li>
-<li>-d：后台运行容器</li>
-<li>–restart=always：Docker 重启的时候容器也会重启</li>
-<li>–name nextcloud：命名容器的 name 为 nextcloud，可以替代容器 id 使用</li>
-<li>-p 80:80：将容器的 80 端口映射到服务器的 80 端口</li>
-<li>nextcloud：要启动的镜像名称</li>
-</ul>
-<p>更多参数可以参考：<a target="_blank" rel="noopener" href="https://hub.docker.com/_/nextcloud/">https://hub.docker.com/_/nextcloud/</a></p>
-<p>执行之后会显示一个类似下面的长串字符，表示启动成功：</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">526306c7a591205f6d2cd417384571b358e738e3c8b52c16c1fc6f1893c8535f<br></code></pre></div></td></tr></table></figure>
+<h2 id="10-让当前环境变量生效"><a href="#10-让当前环境变量生效" class="headerlink" title="10,让当前环境变量生效"></a>10,让当前环境变量生效</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">source /etc/profile <br></code></pre></div></td></tr></table></figure>
 
-<p>也可以使用下面命令查看容器是否正常运行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">docker ps<br></code></pre></div></td></tr></table></figure>
+<h2 id="11-检查是否安装成功"><a href="#11-检查是否安装成功" class="headerlink" title="11,检查是否安装成功"></a>11,检查是否安装成功</h2><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">java -version<br></code></pre></div></td></tr></table></figure>
 
-<p>如果显示以下内容，表明容器已经在运行中了：</p>
-<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES<br>619d34210996        nextcloud           &quot;/entrypoint.sh apac…&quot;   1 hours ago        Up 1 hours         0.0.0.0:80-&gt;80/tcp                  nextcloud<br></code></pre></div></td></tr></table></figure>
-
-<h3 id="初始化安装"><a href="#初始化安装" class="headerlink" title="初始化安装"></a>初始化安装</h3><p>需要注意的是，如果使用的阿里云或腾讯的服务器，要检查服务器的安全组是否开放了 80 端口，没有开放的需要开放一下。</p>
-<p>如果使用的是本地虚拟机，需要执行以下命令开放 80 端口对外访问：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs routeros">firewall-cmd <span class="hljs-attribute">--zone</span>=public <span class="hljs-attribute">--add-port</span>=80/tcp --permanent<br></code></pre></div></td></tr></table></figure>
-
-<p>然后更新防火墙规则：</p>
-<figure class="highlight ada"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ada">firewall-cmd <span class="hljs-comment">--reload</span><br></code></pre></div></td></tr></table></figure>
-
-<p>使用浏览器访问 http://服务器ip 即可进入初始化设置页面。</p>
-<p>直接输入管理员用户名和密码即可，数据库使用默认的 SQLite，后面有时间会写下怎么连 MySQL，安装推荐的应用勾不勾选无所谓，安装地址被墙了，即使勾选也不会安装。</p>
-<p>初始化成功后弹出一个欢迎页面，关闭之后就进入到首页了，</p>
-<p>想要外网访问就要用到闪库内网穿透,下篇文写教程</p>
 
             </div>
             <hr>
@@ -354,13 +303,11 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog-public/tags/Docker/">Docker</a>
+                      <a class="hover-with-bg" href="/blog-public/tags/Linux/">Linux</a>
                     
-                      <a class="hover-with-bg" href="/blog-public/tags/%E5%8D%8E%E4%B8%BA%E4%BA%91/">华为云</a>
+                      <a class="hover-with-bg" href="/blog-public/tags/JDK/">JDK</a>
                     
-                      <a class="hover-with-bg" href="/blog-public/tags/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/">镜像加速</a>
-                    
-                      <a class="hover-with-bg" href="/blog-public/tags/Nextcloud/">Nextcloud</a>
+                      <a class="hover-with-bg" href="/blog-public/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">环境变量</a>
                     
                   </div>
                 
@@ -377,9 +324,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog-public/2021/04/16/%E5%A4%96%E7%BD%91%E7%A9%BF%E9%80%8F%E5%86%85%E7%BD%91Linux%E7%B3%BB%E7%BB%9F22%E7%AB%AF%E5%8F%A3-SSH-%E6%95%99%E7%A8%8B/">
+                      <a href="/blog-public/2021/04/01/h1/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">外网穿透内网Linux系统22端口(SSH)教程</span>
+                        <span class="hidden-mobile">Hello Hexo</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -387,8 +334,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog-public/2021/04/15/CentOS7%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8Cyum%E6%BA%90/">
-                        <span class="hidden-mobile">CentOS7更换阿里yum源</span>
+                      <a href="/blog-public/2020/04/14/Linux%E5%91%BD%E4%BB%A4/">
+                        <span class="hidden-mobile">Linux-命令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
