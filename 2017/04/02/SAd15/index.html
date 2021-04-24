@@ -1,0 +1,793 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog-public/img/favicon.png">
+  <link rel="icon" href="/blog-public/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="多线程补充">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>JavaSE进阶-Day15多线程补充与单元测试与日志 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog-public/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog-public/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/blog-public/css/toubudaziji.css">
+<link rel="stylesheet" href="/blog-public/css/gundongtiao.css">
+<link rel="stylesheet" href="/blog-public/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"wxqgm.gitee.io","root":"/blog-public/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/blog-public/js/utils.js" ></script>
+  <script  src="/blog-public/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog-public/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog-public/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaSE进阶-Day15多线程补充与单元测试与日志">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-04-02 09:28" pubdate>
+        2017年4月2日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      37
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaSE进阶-Day15多线程补充与单元测试与日志</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：4 天前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="多线程补充"><a href="#多线程补充" class="headerlink" title="多线程补充"></a>多线程补充</h1><span id="more"></span>
+
+<h2 id="AtomicInteger"><a href="#AtomicInteger" class="headerlink" title="AtomicInteger"></a>AtomicInteger</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h3><p>​        是一个原子性的Integer类.<br>​        内部的操作可以保证多线程的原子性.</p>
+<h3 id="构造"><a href="#构造" class="headerlink" title="构造:"></a>构造:</h3><table>
+<thead>
+<tr>
+<th align="center">构造方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public AtomicInteger();</td>
+<td align="center">//默认值为0</td>
+</tr>
+<tr>
+<td align="center">public AtomicInteger(int num);</td>
+<td align="center">//默认值为num</td>
+</tr>
+</tbody></table>
+<h4 id="test1"><a href="#test1" class="headerlink" title="test1"></a>test1</h4><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.atomic.AtomicInteger;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAtomIntergerDemo1</span> </span>&#123;<br><span class="hljs-comment">//    public AtomicInteger()：                   初始化一个默认值为0的原子型Integer</span><br><span class="hljs-comment">//    public AtomicInteger(int initialValue)： 初始化一个指定值的原子型Integer</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        AtomicInteger ac = <span class="hljs-keyword">new</span> AtomicInteger();<br>        System.out.println(ac);<br><br>        AtomicInteger ac2 = <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">10</span>);<br>        System.out.println(ac2);<br>    &#125;<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h3><table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public int addAndGet(int delta);</td>
+<td align="center">//以原子方式将参数与对象中的值相加，并返回结果。</td>
+</tr>
+<tr>
+<td align="center">public int get();</td>
+<td align="center">//获取值</td>
+</tr>
+</tbody></table>
+<h4 id="test2"><a href="#test2" class="headerlink" title="test2"></a>test2</h4><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.reflect.Field;<br><span class="hljs-keyword">import</span> java.util.concurrent.atomic.AtomicInteger;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAtomIntergerDemo2</span> </span>&#123;<br><span class="hljs-comment">//    int get():                    获取值</span><br><span class="hljs-comment">//    int getAndIncrement():     以原子方式将当前值加1，注意，这里返回的是自增前的值。</span><br><span class="hljs-comment">//    int incrementAndGet():     以原子方式将当前值加1，注意，这里返回的是自增后的值。</span><br><span class="hljs-comment">//    int addAndGet(int data):     以原子方式将参数与对象中的值相加，并返回结果。</span><br><span class="hljs-comment">//    int getAndSet(int value):  以原子方式设置为newValue的值，并返回旧值。</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><span class="hljs-comment">//        AtomicInteger ac1 = new AtomicInteger(10);</span><br><span class="hljs-comment">//        System.out.println(ac1.get());</span><br><br><span class="hljs-comment">//        AtomicInteger ac2 = new AtomicInteger(10);</span><br><span class="hljs-comment">//        int andIncrement = ac2.getAndIncrement();</span><br><span class="hljs-comment">//        System.out.println(andIncrement);</span><br><span class="hljs-comment">//        System.out.println(ac2.get());</span><br><br><span class="hljs-comment">//        AtomicInteger ac3 = new AtomicInteger(10);</span><br><span class="hljs-comment">//        int i = ac3.incrementAndGet();</span><br><span class="hljs-comment">//        System.out.println(i);//自增后的值</span><br><span class="hljs-comment">//        System.out.println(ac3.get());</span><br><br><span class="hljs-comment">//        AtomicInteger ac4 = new AtomicInteger(10);</span><br><span class="hljs-comment">//        int i = ac4.addAndGet(20);</span><br><span class="hljs-comment">//        System.out.println(i);</span><br><span class="hljs-comment">//        System.out.println(ac4.get());</span><br><br>        AtomicInteger ac5 = <span class="hljs-keyword">new</span> AtomicInteger(<span class="hljs-number">100</span>);<br>        <span class="hljs-keyword">int</span> andSet = ac5.getAndSet(<span class="hljs-number">20</span>);<br>        System.out.println(andSet);<br>        System.out.println(ac5.get());<br><br><br>    &#125;<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+<p>​        </p>
+<h2 id="并发包"><a href="#并发包" class="headerlink" title="并发包"></a>并发包</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述:"></a>概述:</h3><p>​         并发包就是一些线程安全的集合类.</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类:"></a>分类:</h3><table>
+<thead>
+<tr>
+<th align="center">并发包</th>
+<th align="center">对应的</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ConcurrentHashMap</td>
+<td align="center">//线程安全的HashMap</td>
+</tr>
+<tr>
+<td align="center">CopyOnWriteArrayList</td>
+<td align="center">//线程安全的ArrayList</td>
+</tr>
+<tr>
+<td align="center">CopyOnWriteArraySet</td>
+<td align="center">//线程安全的HashSet</td>
+</tr>
+</tbody></table>
+<h4 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a><code>ConcurrentHashMap</code></h4><p>用hashMap会出错</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.HashMap;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyHashMapDemo</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        HashMap&lt;String, String&gt; hm = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();<br><br>        Thread t1 = <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">25</span>; i++) &#123;<br>                hm.put(i + <span class="hljs-string">&quot;&quot;</span>, i + <span class="hljs-string">&quot;&quot;</span>);<br>            &#125;<br>        &#125;);<br><br><br>        Thread t2 = <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">25</span>; i &lt; <span class="hljs-number">51</span>; i++) &#123;<br>                hm.put(i + <span class="hljs-string">&quot;&quot;</span>, i + <span class="hljs-string">&quot;&quot;</span>);<br>            &#125;<br>        &#125;);<br><br>        t1.start();<br>        t2.start();<br><br>        System.out.println(<span class="hljs-string">&quot;----------------------------&quot;</span>);<br>        <span class="hljs-comment">//为了t1和t2能把数据全部添加完毕</span><br>        Thread.sleep(<span class="hljs-number">1000</span>);<br><br>        <span class="hljs-comment">//0-0 1-1 ..... 50- 50</span><br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">51</span>; i++) &#123;<br>            System.out.println(hm.get(i + <span class="hljs-string">&quot;&quot;</span>));<br>        &#125;<span class="hljs-comment">//0 1 2 3 .... 50</span><br><br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="Hashtable-过时的-悲观锁-效率低"><a href="#Hashtable-过时的-悲观锁-效率低" class="headerlink" title="Hashtable(过时的,悲观锁,效率低)"></a>Hashtable(过时的,悲观锁,效率低)</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.HashMap;<br><span class="hljs-keyword">import</span> java.util.Hashtable;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyHashtableDemo</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        Hashtable&lt;String, String&gt; hm = <span class="hljs-keyword">new</span> Hashtable&lt;&gt;();<br><br>        Thread t1 = <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">25</span>; i++) &#123;<br>                hm.put(i + <span class="hljs-string">&quot;&quot;</span>, i + <span class="hljs-string">&quot;&quot;</span>);<br>            &#125;<br>        &#125;);<br><br><br>        Thread t2 = <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">25</span>; i &lt; <span class="hljs-number">51</span>; i++) &#123;<br>                hm.put(i + <span class="hljs-string">&quot;&quot;</span>, i + <span class="hljs-string">&quot;&quot;</span>);<br>            &#125;<br>        &#125;);<br><br>        t1.start();<br>        t2.start();<br><br>        System.out.println(<span class="hljs-string">&quot;----------------------------&quot;</span>);<br>        <span class="hljs-comment">//为了t1和t2能把数据全部添加完毕</span><br>        Thread.sleep(<span class="hljs-number">1000</span>);<br><br>        <span class="hljs-comment">//0-0 1-1 ..... 50- 50</span><br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">51</span>; i++) &#123;<br>            System.out.println(hm.get(i + <span class="hljs-string">&quot;&quot;</span>));<br>        &#125;<span class="hljs-comment">//0 1 2 3 .... 50</span><br><br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="ConcurrentHashMap-推荐-乐观锁-效率高"><a href="#ConcurrentHashMap-推荐-乐观锁-效率高" class="headerlink" title="ConcurrentHashMap(推荐,乐观锁,效率高)"></a>ConcurrentHashMap(推荐,乐观锁,效率高)</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Hashtable;<br><span class="hljs-keyword">import</span> java.util.concurrent.ConcurrentHashMap;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyConcurrentHashMapDemo</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        ConcurrentHashMap&lt;String, String&gt; hm = <span class="hljs-keyword">new</span> ConcurrentHashMap&lt;&gt;();<br><br>        Thread t1 = <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">25</span>; i++) &#123;<br>                hm.put(i + <span class="hljs-string">&quot;&quot;</span>, i + <span class="hljs-string">&quot;&quot;</span>);<br>            &#125;<br>        &#125;);<br><br><br>        Thread t2 = <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">25</span>; i &lt; <span class="hljs-number">51</span>; i++) &#123;<br>                hm.put(i + <span class="hljs-string">&quot;&quot;</span>, i + <span class="hljs-string">&quot;&quot;</span>);<br>            &#125;<br>        &#125;);<br><br>        t1.start();<br>        t2.start();<br><br>        System.out.println(<span class="hljs-string">&quot;----------------------------&quot;</span>);<br>        <span class="hljs-comment">//为了t1和t2能把数据全部添加完毕</span><br>        Thread.sleep(<span class="hljs-number">1000</span>);<br><br>        <span class="hljs-comment">//0-0 1-1 ..... 50- 50</span><br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">51</span>; i++) &#123;<br>            System.out.println(hm.get(i + <span class="hljs-string">&quot;&quot;</span>));<br>        &#125;<span class="hljs-comment">//0 1 2 3 .... 50</span><br><br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+<p>​            </p>
+<h2 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h2><h3 id="概述-2"><a href="#概述-2" class="headerlink" title="概述:"></a>概述:</h3><p>​        在多线程情况下,可以控制线程的执行顺序的类<br>​        确定某个线程在其他线程执行之后再执行.</p>
+<h3 id="构造-1"><a href="#构造-1" class="headerlink" title="构造:"></a>构造:</h3><table>
+<thead>
+<tr>
+<th align="center">构造方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public CountDownLatch(int num);</td>
+<td align="center">//创建一个对象,指定一个计数器</td>
+</tr>
+</tbody></table>
+<h3 id="方法-1"><a href="#方法-1" class="headerlink" title="方法:"></a>方法:</h3><table>
+<thead>
+<tr>
+<th align="center">方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public void await();</td>
+<td align="center">//当前线程等待,当计数器归零的时候,自动唤醒</td>
+</tr>
+<tr>
+<td align="center">public void countDown();</td>
+<td align="center">//计数器-1</td>
+</tr>
+</tbody></table>
+<h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><h5 id="测试类MyCountDownLatchDemo"><a href="#测试类MyCountDownLatchDemo" class="headerlink" title="测试类MyCountDownLatchDemo"></a>测试类MyCountDownLatchDemo</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.CountDownLatch;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyCountDownLatchDemo</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-comment">//1.创建CountDownLatch的对象，需要传递给四个线程。</span><br>        <span class="hljs-comment">//在底层就定义了一个计数器，此时计数器的值就是3</span><br>        CountDownLatch countDownLatch = <span class="hljs-keyword">new</span> CountDownLatch(<span class="hljs-number">3</span>);<br>        <span class="hljs-comment">//2.创建四个线程对象并开启他们。</span><br>        MotherThread motherThread = <span class="hljs-keyword">new</span> MotherThread(countDownLatch);<br>        motherThread.start();<br><br>        ChileThread1 t1 = <span class="hljs-keyword">new</span> ChileThread1(countDownLatch);<br>        t1.setName(<span class="hljs-string">&quot;小明&quot;</span>);<br><br>        ChileThread2 t2 = <span class="hljs-keyword">new</span> ChileThread2(countDownLatch);<br>        t2.setName(<span class="hljs-string">&quot;小红&quot;</span>);<br><br>        ChileThread3 t3 = <span class="hljs-keyword">new</span> ChileThread3(countDownLatch);<br>        t3.setName(<span class="hljs-string">&quot;小刚&quot;</span>);<br><br>        t1.start();<br>        t2.start();<br>        t3.start();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="线程类MotherThread"><a href="#线程类MotherThread" class="headerlink" title="线程类MotherThread"></a>线程类MotherThread</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.CountDownLatch;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MotherThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> CountDownLatch countDownLatch;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MotherThread</span><span class="hljs-params">(CountDownLatch countDownLatch)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.countDownLatch = countDownLatch;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//1.等待</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//当计数器变成0的时候，会自动唤醒这里等待的线程。</span><br>            countDownLatch.await();<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>        <span class="hljs-comment">//2.收拾碗筷</span><br>        System.out.println(<span class="hljs-string">&quot;妈妈在收拾碗筷&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="线程类ChileThread1"><a href="#线程类ChileThread1" class="headerlink" title="线程类ChileThread1"></a>线程类ChileThread1</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.CountDownLatch;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChileThread1</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> CountDownLatch countDownLatch;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ChileThread1</span><span class="hljs-params">(CountDownLatch countDownLatch)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.countDownLatch = countDownLatch;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//1.吃饺子</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>            System.out.println(getName() + <span class="hljs-string">&quot;在吃第&quot;</span> + i + <span class="hljs-string">&quot;个饺子&quot;</span>);<br>        &#125;<br>        <span class="hljs-comment">//2.吃完说一声</span><br>        <span class="hljs-comment">//每一次countDown方法的时候，就让计数器-1</span><br>        countDownLatch.countDown();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="线程类ChileThread2"><a href="#线程类ChileThread2" class="headerlink" title="线程类ChileThread2"></a>线程类ChileThread2</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.CountDownLatch;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChileThread2</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> CountDownLatch countDownLatch;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ChileThread2</span><span class="hljs-params">(CountDownLatch countDownLatch)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.countDownLatch = countDownLatch;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//1.吃饺子</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">15</span>; i++) &#123;<br>            System.out.println(getName() + <span class="hljs-string">&quot;在吃第&quot;</span> + i + <span class="hljs-string">&quot;个饺子&quot;</span>);<br>        &#125;<br>        <span class="hljs-comment">//2.吃完说一声</span><br>        <span class="hljs-comment">//每一次countDown方法的时候，就让计数器-1</span><br>        countDownLatch.countDown();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="线程类ChileThread3"><a href="#线程类ChileThread3" class="headerlink" title="线程类ChileThread3"></a>线程类ChileThread3</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.CountDownLatch;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChileThread3</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> CountDownLatch countDownLatch;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ChileThread3</span><span class="hljs-params">(CountDownLatch countDownLatch)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.countDownLatch = countDownLatch;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//1.吃饺子</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">20</span>; i++) &#123;<br>            System.out.println(getName() + <span class="hljs-string">&quot;在吃第&quot;</span> + i + <span class="hljs-string">&quot;个饺子&quot;</span>);<br>        &#125;<br>        <span class="hljs-comment">//2.吃完说一声</span><br>        <span class="hljs-comment">//每一次countDown方法的时候，就让计数器-1</span><br>        countDownLatch.countDown();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h2><h3 id="概述-3"><a href="#概述-3" class="headerlink" title="概述:"></a>概述:</h3><p>​        可以控制”同时运行的线程的数量”.<br>​        和synchronized功能类似<br>​        该类允许多个线程同时拥有”锁”的</p>
+<h3 id="构造-2"><a href="#构造-2" class="headerlink" title="构造:"></a>构造:</h3><p>​        public Semaphore(int num);<br>​            //最多允许同时运行num个线程</p>
+<h3 id="方法-2"><a href="#方法-2" class="headerlink" title="方法:"></a>方法:</h3><p>​        void acquire();<br>​            //获取”许可证”,运行线程<br>​        void release();<br>​            //释放”许可证”</p>
+<h4 id="test-1"><a href="#test-1" class="headerlink" title="test"></a>test</h4><h5 id="实现类MyRunnable"><a href="#实现类MyRunnable" class="headerlink" title="实现类MyRunnable"></a>实现类MyRunnable</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.Semaphore;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunnable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span> </span>&#123;<br>    <span class="hljs-comment">//1.获得管理员对象，</span><br>    <span class="hljs-keyword">private</span> Semaphore semaphore = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">2</span>);<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//2.获得通行证</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            semaphore.acquire();<br>            <span class="hljs-comment">//3.开始行驶</span><br>            System.out.println(<span class="hljs-string">&quot;获得了通行证开始行驶&quot;</span>);<br>            Thread.sleep(<span class="hljs-number">2000</span>);<br>            System.out.println(<span class="hljs-string">&quot;归还通行证&quot;</span>);<br>            <span class="hljs-comment">//4.归还通行证</span><br>            semaphore.release();<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="测试类MySemaphoreDemo"><a href="#测试类MySemaphoreDemo" class="headerlink" title="测试类MySemaphoreDemo"></a>测试类MySemaphoreDemo</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MySemaphoreDemo</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        MyRunnable mr = <span class="hljs-keyword">new</span> MyRunnable();<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) &#123;<br>            <span class="hljs-keyword">new</span> Thread(mr).start();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤:"></a>步骤:</h3><h4 id="1-导入jar包-模块根目录下新建lib文件夹-右键add-as-Directory"><a href="#1-导入jar包-模块根目录下新建lib文件夹-右键add-as-Directory" class="headerlink" title="1:导入jar包. (模块根目录下新建lib文件夹,右键add as Directory )"></a>1:导入jar包. (模块根目录下新建lib文件夹,右键add as Directory )</h4><p>​            junit-4.12.jar<br>​            hamcrest-core-1.3.jar</p>
+<h4 id="2-在对应方法上加上-Test注解"><a href="#2-在对应方法上加上-Test注解" class="headerlink" title="2:在对应方法上加上@Test注解"></a>2:在对应方法上加上@Test注解</h4><h3 id="注解"><a href="#注解" class="headerlink" title="注解:"></a>注解:</h3><table>
+<thead>
+<tr>
+<th align="center">用法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">@Test</td>
+<td align="center">//表示测试该方法</td>
+</tr>
+<tr>
+<td align="center">@Before</td>
+<td align="center">//在测试的方法前运行</td>
+</tr>
+<tr>
+<td align="center">@After</td>
+<td align="center">//在测试的方法后运行</td>
+</tr>
+</tbody></table>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><p>​        测试方法必须是”公共的,无返回值的,无参数的”.</p>
+<h4 id="test-2"><a href="#test-2" class="headerlink" title="test"></a>test</h4><h5 id="test1-1"><a href="#test1-1" class="headerlink" title="test1"></a>test1</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.junit.Test;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JunitDemo1</span> </span>&#123;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-number">2</span> / <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">int</span> b = <span class="hljs-number">20</span>;<br>        <span class="hljs-keyword">int</span> sum = a + b;<br>        System.out.println(sum);<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="test2-1"><a href="#test2-1" class="headerlink" title="test2"></a>test2</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.junit.After;<br><span class="hljs-keyword">import</span> org.junit.Before;<br><span class="hljs-keyword">import</span> org.junit.Test;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JunitDemo2</span> </span>&#123;<br><br>    <span class="hljs-meta">@Before</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">before</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;before&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;test&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@After</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">after</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;after&quot;</span>);<br>    &#125;<br><br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><h4 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤:"></a>步骤:</h4><h5 id="1-导入log4j的jar包"><a href="#1-导入log4j的jar包" class="headerlink" title="1:导入log4j的jar包"></a>1:导入log4j的jar包</h5><p>​            log4j-1.2.17.jar<br>​            slf4j-api-1.7.30.jar<br>​            slf4j-log4j12-1.7.26.jar</p>
+<h5 id="2-导入配置文件-放在src目录下"><a href="#2-导入配置文件-放在src目录下" class="headerlink" title="2:导入配置文件(放在src目录下)"></a>2:导入配置文件(放在src目录下)</h5><p>​            log4j.properties</p>
+<h5 id="3-创建日志对象"><a href="#3-创建日志对象" class="headerlink" title="3:创建日志对象"></a>3:创建日志对象</h5><p>​            Logger log = LoggerFactory.getLogger(当前类.class);</p>
+<h5 id="4-输出日志"><a href="#4-输出日志" class="headerlink" title="4:输出日志."></a>4:输出日志.</h5><p>​            log.debug(“debug级别的日志-详细信息”);<br>​            log.info(“info级别的日志-普通信息”);<br>​            log.warn(“warn级别的日志-警告信息”);<br>​            log.error(“error级别的日志-错误信息”);</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置:"></a>配置:</h4><h5 id="log4j-properties"><a href="#log4j-properties" class="headerlink" title="log4j.properties"></a>log4j.properties</h5><figure class="highlight properties"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs properties"><span class="hljs-meta">log4j.rootLogger</span>=<span class="hljs-string">,my,fileAppender</span><br><br><span class="hljs-comment">### direct log messages to my ###</span><br><span class="hljs-meta">log4j.appender.my</span>=<span class="hljs-string">org.apache.log4j.ConsoleAppender</span><br><span class="hljs-meta">log4j.appender.my.ImmediateFlush</span> = <span class="hljs-string">true</span><br><span class="hljs-meta">log4j.appender.my.Target</span>=<span class="hljs-string">System.out</span><br><span class="hljs-meta">log4j.appender.my.layout</span>=<span class="hljs-string">org.apache.log4j.PatternLayout</span><br><span class="hljs-meta">log4j.appender.my.layout.ConversionPattern</span>=<span class="hljs-string">%d %t %5p %c&#123;1&#125;:%L - %m%n</span><br><br><span class="hljs-comment"># fileAppender演示</span><br><span class="hljs-meta">log4j.appender.fileAppender</span>=<span class="hljs-string">org.apache.log4j.FileAppender</span><br><span class="hljs-meta">log4j.appender.fileAppender.ImmediateFlush</span> = <span class="hljs-string">true</span><br><span class="hljs-meta">log4j.appender.fileAppender.Append</span>=<span class="hljs-string">true</span><br><span class="hljs-meta">log4j.appender.fileAppender.File</span>=<span class="hljs-string">D:/log4j-log.log</span><br><span class="hljs-meta">log4j.appender.fileAppender.layout</span>=<span class="hljs-string">org.apache.log4j.PatternLayout</span><br><span class="hljs-meta">log4j.appender.fileAppender.layout.ConversionPattern</span>=<span class="hljs-string">%d %5p %c&#123;1&#125;:%L - %m%n</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="test-3"><a href="#test-3" class="headerlink" title="test"></a>test</h4><h5 id="test1-2"><a href="#test1-2" class="headerlink" title="test1"></a>test1</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.slf4j.Logger;<br><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Log4JTest01</span> </span>&#123;<br><br>    <span class="hljs-comment">//使用log4j的api来获取日志的对象</span><br>    <span class="hljs-comment">//弊端：如果以后我们更换日志的实现类，那么下面的代码就需要跟着改</span><br>    <span class="hljs-comment">//不推荐使用</span><br>    <span class="hljs-comment">//private static final Logger LOGGER = Logger.getLogger(Log4JTest01.class);</span><br><br><br>    <span class="hljs-comment">//使用slf4j里面的api来获取日志的对象</span><br>    <span class="hljs-comment">//好处：如果以后我们更换日志的实现类，那么下面的代码不需要跟着修改</span><br>    <span class="hljs-comment">//推荐使用</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span>  <span class="hljs-keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(Log4JTest01.class);<br><br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-comment">//1.导入jar包</span><br>        <span class="hljs-comment">//2.编写配置文件</span><br>        <span class="hljs-comment">//3.在代码中获取日志的对象</span><br>        <span class="hljs-comment">//4.按照日志级别设置日志信息</span><br><br>        LOGGER.debug(<span class="hljs-string">&quot;debug级别的日志&quot;</span>);<br>        LOGGER.info(<span class="hljs-string">&quot;info级别的日志&quot;</span>);<br>        LOGGER.warn(<span class="hljs-string">&quot;warn级别的日志&quot;</span>);<br>        LOGGER.error(<span class="hljs-string">&quot;error级别的日志&quot;</span>);<br><br><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h5 id="test2-2"><a href="#test2-2" class="headerlink" title="test2"></a>test2</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.slf4j.Logger;<br><span class="hljs-keyword">import</span> org.slf4j.LoggerFactory;<br><br><span class="hljs-keyword">import</span> java.util.Scanner;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyLog4j</span> </span>&#123;<br><br>    <span class="hljs-comment">//获取日志对象</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Logger LOGGER = LoggerFactory.getLogger(MyLog4j.class);<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><br>        Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);<br>        <span class="hljs-comment">//键盘录入一个数字</span><br>        String number = sc.nextLine();<br><br>        <span class="hljs-comment">//类型转换</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">int</span> result = Integer.parseInt(number);<br>           <span class="hljs-comment">// System.out.println(&quot;类型转换成功&quot; + result);</span><br>            LOGGER.info(<span class="hljs-string">&quot;类型转换成功&quot;</span> + result);<br>        &#125; <span class="hljs-keyword">catch</span> (NumberFormatException e) &#123;<br>           <span class="hljs-comment">// System.out.println(&quot;类型转换失败，请录入一个整数&quot;);</span><br>            LOGGER.info(<span class="hljs-string">&quot;类型转换失败，请录入一个整数&quot;</span>,e);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog-public/categories/JavaSE%E8%BF%9B%E9%98%B6/">JavaSE进阶</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog-public/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%A1%A5%E5%85%85/">多线程补充</a>
+                    
+                      <a class="hover-with-bg" href="/blog-public/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a>
+                    
+                      <a class="hover-with-bg" href="/blog-public/tags/%E6%97%A5%E5%BF%97/">日志</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog-public/2017/04/02/SAd16/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaSE进阶-Day16 网络编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog-public/2017/04/02/SAd14/">
+                        <span class="hidden-mobile">JavaSE进阶-Day14多线程2</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/blog-public/img/police_beian.png" srcset="/blog-public/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog-public/js/debouncer.js" ></script>
+<script  src="/blog-public/js/events.js" ></script>
+<script  src="/blog-public/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog-public/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/blog-public/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/blog-public/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/blog-public/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/blog-public/js/caidai.js"></script>
+<script src="/blog-public/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog-public/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>

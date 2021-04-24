@@ -1,0 +1,1070 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog-public/img/favicon.png">
+  <link rel="icon" href="/blog-public/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="出不来图请等一等,图很大,四百多行渲染有点慢">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>JavaSE进阶18天思维导图 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog-public/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog-public/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/blog-public/css/toubudaziji.css">
+<link rel="stylesheet" href="/blog-public/css/gundongtiao.css">
+<link rel="stylesheet" href="/blog-public/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"wxqgm.gitee.io","root":"/blog-public/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/blog-public/js/utils.js" ></script>
+  <script  src="/blog-public/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/blog-public/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog-public/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog-public/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaSE进阶18天思维导图">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2017-04-07 20:38" pubdate>
+        2017年4月7日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      70
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaSE进阶18天思维导图</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：4 天前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>出不来图请等一等,图很大,四百多行渲染有点慢</p>
+<span id="more"></span>
+
+<pre><code class=" mermaid">graph LR
+        id0(JavaSE进阶)---id01(第一天)
+        subgraph day01
+        id01(第一天)---id011(01-案例驱动教学模式介绍)
+        id01(第一天)---id012(02-分类思想)
+        id01(第一天)---id013(03-包的概述和定义)
+        id01(第一天)---id014(04-包的注意事项和类访问)
+        id01(第一天)---id015(05-需求说明和效果演示)
+        id01(第一天)---id016(06-环境搭建)
+        id01(第一天)---id017(07-菜单搭建)
+        id01(第一天)---id018(08-基本添加功能一思路分析)
+        id01(第一天)---id019(09-基本添加功能一代码实现)
+        id01(第一天)---id0110(10-添加功能-加入学号判断)
+        id01(第一天)---id0111(11-添加功能-问题分析)
+        id01(第一天)---id0112(12-statio关键字特点)
+        id01(第一天)---id0113(13-stati注意事项学号存在问题解决)
+        id01(第一天)---id0114(14-查看学生-代码实现)
+        id01(第一天)---id0115(15-删除功能一代码实现)
+        id01(第一天)---id0116(16-修改功能一代码实现)
+        id01(第一天)---id0117(17-学生管理系统代码优化)
+        id01(第一天)---id0118(18-老师管理系统环境搭建)
+        end
+        id0(JavaSE进阶)---id02(第二天)
+        subgraph day02
+        id02(第二天)---id021(01-继承入门)
+        id02(第二天)---id022(02-继承的好处和弊端)
+        id02(第二天)---id023(03-继承的特点)
+        id02(第二天)---id024(04-继承中成员变量的访问特点)
+        id02(第二天)---id025(05-this和super访问成员的格式)
+        id02(第二天)---id026(06-继承中成员方法的访问特点)
+        id02(第二天)---id027(07-方法重写概述和应用场景)
+        id02(第二天)---id028(08-方法重写的注意事项)
+        id02(第二天)---id029(09-权限修饰符)
+        id02(第二天)---id0210(10-继承中构造方法的访问特点)
+        id02(第二天)---id0211(11-构造方法的访问特点-父类没有空参构造方法)
+        id02(第二天)---id0212(12-代码优化和内存图解)
+        id02(第二天)---id0213(13-黑马信息管理系统-集成改进)
+        id02(第二天)---id0214(14-抽象类入门)
+        id02(第二天)---id0215(15-抽象类的注意事项)
+        id02(第二天)---id0216(16-模板设计模式)
+        id02(第二天)---id0217(17-final关键字)
+        id02(第二天)---id0218(18-黑马信息管理-系统抽象类改进)
+        id02(第二天)---id0219(19-代码块)
+        id02(第二天)---id0220(20-黑马信息管理系统一代码块改进)
+        end
+        id0(JavaSE进阶)---id03(第三天)
+        subgraph day03
+        id03(第三天)---id031(01-黑马信息管理系统-集合改进)
+        id03(第三天)---id032(02-黑马信息管理系统-抽取公共Dao)
+        id03(第三天)---id033(03-接口的介绍)
+        id03(第三天)---id034(04-接口的定义和特点)
+        id03(第三天)---id035(05-接口中的成员特点)
+        id03(第三天)---id036(06-JDK8版本中成员的特点-默认方法)
+        id03(第三天)---id037(07-JDK8版本中接口成员的特点-静态方法)
+        id03(第三天)---id038(08-JDK9版本中接口成员的特点私有方法)
+        id03(第三天)---id039(09-类和接口的关系)
+        id03(第三天)---id0310(10-黑马信息管理系统改进一接口改进)
+        id03(第三天)---id0311(11-黑马信息管理系统一问题分析一多态引入)
+        id03(第三天)---id0312(12-多态的前提条件)
+        id03(第三天)---id0313(13-多态中成员访问的特点)
+        id03(第三天)---id0314(14多态的好处和弊端)
+        id03(第三天)---id0315(15-多态中的转型)
+        id03(第三天)---id0316(16-多态中转型存在的风险和解决方案)
+        id03(第三天)---id0317(17-黑马信息管理系统多态改进)
+        end
+        id0(JavaSE进阶)---id04(第四天)
+        subgraph day04
+        id04(第四天)---id041(01-内部类-成员内部类)
+        id04(第四天)---id042(02-私有成员内部类-静态成员内部类)
+        id04(第四天)---id043(03-局部内部类)
+        id04(第四天)---id044(04-匿名内部类)
+        id04(第四天)---id045(05-匿名内部类的使用场景)
+        id04(第四天)---id046(06-Lambda初体验和函数式编程思想)
+        id04(第四天)---id047(07-Lambda表达式的格式说明和前提条件)
+        id04(第四天)---id048(08-Lambda练习-带参数无返回值)
+        id04(第四天)---id049(09-Lambda练习-无参数有返回值)
+        id04(第四天)---id0410(10-Lambd练习-带参数带返回值)
+        id04(第四天)---id0411(11-Lambd的省略模式)
+        id04(第四天)---id0412(12-匿名内部类和Lambda表达式的区别)
+        end
+        id0(JavaSE进阶)---id05(第五天)
+        subgraph day05
+        id05(第五天)---id051(01-API基本使用)
+        id05(第五天)---id052(02-API-Math)
+        id05(第五天)---id053(03-API-system)
+        id05(第五天)---id054(04-Object-toString)
+        id05(第五天)---id055(05-Object-equals)
+        id05(第五天)---id056(06-Object-面试题)
+        id05(第五天)---id057(07-API-Obiects)
+        id05(第五天)---id058(08-BigDecimal-构造)
+        id05(第五天)---id059(09-BigDecimal-四则运算)
+        id05(第五天)---id0510(10-BigDecimal-特殊方法)
+        id05(第五天)---id0511(11-基本数据类型包装类)
+        id05(第五天)---id0512(12-Integer-获得对象)
+        id05(第五天)---id0513(13-Integer-自动装箱和自动拆箱)
+        id05(第五天)---id0514(14-Integer-类型转换)
+        id05(第五天)---id0515(15-Integer-练习)
+        id05(第五天)---id0516(16-数组的高级操作-二分查找思路分析)
+        id05(第五天)---id0517(17-数组的高级操作-二分查找代码实现)
+        id05(第五天)---id0518(18-数组的高级操作-冒泡排序思路分析)
+        id05(第五天)---id0519(19-数组的高级操作-冒泡排序代码实现)
+        id05(第五天)---id0520(20-递归一概念)
+        id05(第五天)---id0521(21-递归一求阶乘代码买现)
+        id05(第五天)---id0522(22-递归-内存图)
+        id05(第五天)---id0523(23-数组的高级操作-快排核心思路分析)
+        id05(第五天)---id0524(24-数组的高级操作-快排核心代码实现)
+        id05(第五天)---id0525(25-数组的高级操作-快排完整实现)
+        id05(第五天)---id0526(26-Arrays)
+        end
+        id0(JavaSE进阶)---id06(第六天)
+        subgraph day06
+        id06(第六天)---id061(01-时间日期类一概述)
+        id06(第六天)---id062(02-时间日期类-Date构造方法)
+        id06(第六天)---id063(03-时间日期类-Date成员方法)
+        id06(第六天)---id064(04-时间日期类-simpledateformat)
+        id06(第六天)---id065(05-时间日期类-练习)
+        id06(第六天)---id066(06-时间日期类-JDK8的体验)
+        id06(第六天)---id067(07-JDK8时间类一获取时间对象)
+        id06(第六天)---id068(08-JDK8时间类-获取时间中的每个值)
+        id06(第六天)---id069(09-JDK8时间类-转换方法)
+        id06(第六天)---id0610(10-JDK8时间类-格式化和解析)
+        id06(第六天)---id0611(11-JDK8时间类-plus系列的方法)
+        id06(第六天)---id0612(12-JDK8时间类-minus系列的方法)
+        id06(第六天)---id0613(13-JDK8时间类-with系列的方法)
+        id06(第六天)---id0614(14-JDK8时间类一时间间隔对象)
+        id06(第六天)---id0615(15-JDK8时间类一小结)
+        id06(第六天)---id0616(16-异常的体系结构和异常的分类)
+        id06(第六天)---id0617(17-虚拟机默认处理异常的方式)
+        id06(第六天)---id0618(18-throws声明异常)
+        id06(第六天)---id0619(19-声明异常的注意事项)
+        id06(第六天)---id0620(20-throw抛出异常)
+        id06(第六天)---id0621(21-try. ..catch自已处理异常)
+        id06(第六天)---id0622(22-try. ..catch的常见问题)
+        id06(第六天)---id0623(23-throwable成员方法)
+        id06(第六天)---id0624(24-异常的小练习)
+        id06(第六天)---id0625(25-自定义异常)
+        end
+        id0(JavaSE进阶)---id07(第七天)
+        subgraph day07
+        id07(第七天)---id071(01-集合概述-集合与数组的对比)
+        id07(第七天)---id072(02-集合概述-集合体系结构)
+        id07(第七天)---id073(03-Collection-常见成员方法)
+        id07(第七天)---id074(04-Collection-迭代器基本使用)
+        id07(第七天)---id075(05-Collection-迭代器原理分析)
+        id07(第七天)---id076(06-Collection-迭代器删除方法)
+        id07(第七天)---id077(07一增强for-基本格式)
+        id07(第七天)---id078(08-增强for-注意点)
+        id07(第七天)---id079(09-Collection-练习)
+        id07(第七天)---id0710(10-List-概述和基本使用)
+        id07(第七天)---id0711(11-List-特有方法)
+        id07(第七天)---id0712(12-数据结构一栈和队列)
+        id07(第七天)---id0713(13-数据结构-数组和链表)
+        id07(第七天)---id0714(14-Arraylist-源码解析)
+        id07(第七天)---id0715(15-LinkedList-基本运用)
+        id07(第七天)---id0716(16-LinkedList-特有功能)
+        id07(第七天)---id0717(17-LinkedList-源码解析)
+        end
+        id0(JavaSE进阶)---id08(第八天)
+        subgraph day08
+        id08(第八天)---id081(01-泛型一概述)
+        id08(第八天)---id082(02-泛型一泛型类的使用)
+        id08(第八天)---id083(03-泛型-自定义泛型类)
+        id08(第八天)---id084(04-泛型-泛型方法的使用)
+        id08(第八天)---id085(05-泛型-自定义泛型方法)
+        id08(第八天)---id086(06-泛型一泛型接口)
+        id08(第八天)---id087(07-泛型-通配符)
+        id08(第八天)---id088(08-Set-概述)
+        id08(第八天)---id089(09-Set-基本使用)
+        id08(第八天)---id0810(10-TreeSet-基本使用)
+        id08(第八天)---id0811(11-TreeSet-自然排序)
+        id08(第八天)---id0812(12-自然排序-练习)
+        id08(第八天)---id0813(13-TreeSet-比较器排序)
+        id08(第八天)---id0814(14-TreeSet两种比较方式的对比)
+        id08(第八天)---id0815(15-数据结构-二叉树)
+        id08(第八天)---id0816(16-数据结构-二叉查找树)
+        id08(第八天)---id0817(17-数据结构一二叉查找树添加节点)
+        id08(第八天)---id0818(18-数据结构-平衡二叉树)
+        id08(第八天)---id0819(19-平衡二叉树一左旋)
+        id08(第八天)---id0820(20-平衡二叉树-右旋)
+        id08(第八天)---id0821(21-平衡二叉树一小结)
+        id08(第八天)---id0822(22-平衡二叉树-左左和左右)
+        id08(第八天)---id0823(23-平衡二叉树-右右和右左)
+        id08(第八天)---id0824(24-小结)
+        end
+        id0(JavaSE进阶)---id09(第九天)
+        subgraph day09
+        id09(第九天)---id091(01-红黑树一概述)
+        id09(第九天)---id092(02-红黑树红黑规则)
+        id09(第九天)---id093(03-红黑树一添加节点的默认颜色)
+        id09(第九天)---id094(04-红黑树一添加节点后如何保证红黑规则1)
+        id09(第九天)---id095(05-红黑树一添加节点后如何保证红黑规则2)
+        id09(第九天)---id096(06-红黑树-练习)
+        id09(第九天)---id097(07-HashSet-基本使用)
+        id09(第九天)---id098(08-HashSet-哈希值)
+        id09(第九天)---id099(09-HashSet-JDK7底层原理解析)
+        id09(第九天)---id0910(10-HashSet-JDK8底层优化)
+        id09(第九天)---id0911(11-HashSet-练习)
+        id09(第九天)---id0912(12-HashSet-小结)
+        id09(第九天)---id0913(13-Map-基本使用)
+        id09(第九天)---id0914(14-Map-常用方法)
+        id09(第九天)---id0915(15-Map-第一种遍历方式)
+        id09(第九天)---id0916(16-Map-第二种遍历方式)
+        id09(第九天)---id0917(17-HashMap-原理解析)
+        id09(第九天)---id0918(18-HashMap-练习)
+        id09(第九天)---id0919(19-TreeMap-原理解析)
+        id09(第九天)---id0920(20-TreeMap-练习)
+        end
+        id0(JavaSE进阶)---id10(第十天)
+        subgraph day10
+        id10(第十天)---id101(01-可变参数)
+        id10(第十天)---id102(02-创建不可变的集合)
+        id10(第十天)---id103(03-Stream流-初体验)
+        id10(第十天)---id104(04-Stream流-思想特点)
+        id10(第十天)---id105(05-Stream流-获取方法)
+        id10(第十天)---id106(06-中间方法-filter)
+        id10(第十天)---id107(07-其他常用中间方法)
+        id10(第十天)---id108(08-Stream流-终结方法)
+        id10(第十天)---id109(09-Stream流一不能直接修改数据源中的数据)
+        id10(第十天)---id1010(10收集方法-toList和toSet)
+        id10(第十天)---id1011(11-收集方法-toMap)
+        id10(第十天)---id1012(12-Stream流-练习)
+        end
+        id0(JavaSE进阶)---id11(第十一天)
+        subgraph day11
+        id11(第十一天)---id111(01-File和IO的概述)
+        id11(第十一天)---id112(02-File的构造方法)
+        id11(第十一天)---id113(03-绝对路径和相对路径)
+        id11(第十一天)---id114(04-Fi1e的创建功能)
+        id11(第十一天)---id115(05-Fie的删除方法)
+        id11(第十一天)---id116(06-File的获取和判断方法)
+        id11(第十一天)---id117(07-File的listFile方法)
+        id11(第十一天)---id118(08-File练习一)
+        id11(第十一天)---id119(09-File练习二)
+        id11(第十一天)---id1110(10-Fie练习二的递归分析)
+        id11(第十一天)---id1111(11-File练习三)
+        id11(第十一天)---id1112(12-IO的概述)
+        id11(第十一天)---id1113(13-IO的分类)
+        id11(第十一天)---id1114(14-字节流-字节输出流快速入门)
+        id11(第十一天)---id1115(15-字节流注意事项)
+        id11(第十一天)---id1116(16-字节流一次写多个数据)
+        id11(第十一天)---id1117(17-字节流-两个问题)
+        id11(第十一天)---id1118(18-字节流-trycatch捕获异常)
+        id11(第十一天)---id1119(19-字节流-小结)
+        id11(第十一天)---id1120(20-字节流-字节输入流基本学习)
+        id11(第十一天)---id1121(21-字节流-读多个字节)
+        id11(第十一天)---id1122(22-字节流-文件复制)
+        id11(第十一天)---id1123(23-字节流定义小数组拷贝)
+        id11(第十一天)---id1124(24-字节流-小数组拷贝原理)
+        id11(第十一天)---id1125(25-缓冲流-次读写一个字节代码实现)
+        id11(第十一天)---id1126(26-缓冲流-一次读写一个字节原理)
+        id11(第十一天)---id1127(27-缓冲流一次读写一个字节数组)
+        id11(第十一天)---id1128(28-小结)
+        end
+        id0(JavaSE进阶)---id12(第十二天)
+        subgraph day12
+        id12(第十二天)---id121(01-字节流操作文本文件出现乱码的问题)
+        id12(第十二天)---id122(02-字符流-编码表)
+        id12(第十二天)---id123(03-字符流编码和解码的方法)
+        id12(第十二天)---id124(04-字节流读取中文出现乱码的原因)
+        id12(第十二天)---id125(05-字符流-读取中文的过程)
+        id12(第十二天)---id126(06-字符流-写出数据)
+        id12(第十二天)---id127(07-字符流-写出数据的注意事项)
+        id12(第十二天)---id128(08-字符流-flush和close方法)
+        id12(第十二天)---id129(09-字符流-读取数据)
+        id12(第十二天)---id1210(10-字符流-练习)
+        id12(第十二天)---id1211(11-字符缓冲输入流-读取数据)
+        id12(第十二天)---id1212(12-字符缓冲输出流-输出数据)
+        id12(第十二天)---id1213(13-缓冲流特有方法)
+        id12(第十二天)---id1214(14-缓冲流-练习)
+        id12(第十二天)---id1215(15-10流-小结)
+        id12(第十二天)---id1216(16-转换流一概念)
+        id12(第十二天)---id1217(17-转换流-指定编码读写)
+        id12(第十二天)---id1218(18-对象操作流-基本特点)
+        id12(第十二天)---id1219(19-对象操作流-序列化)
+        id12(第十二天)---id1220(20-对象操作流-反序列化)
+        id12(第十二天)---id1221(21-对象操作流两个注意点)
+        id12(第十二天)---id1222(22-对象操作流-两个注意点2)
+        id12(第十二天)---id1223(23-对象操作流-练习)
+        id12(第十二天)---id1224(24-Properties-概述)
+        id12(第十二天)---id1225(25-Properties-作为map集合的基本使用)
+        id12(第十二天)---id1226(26-Properties-特有方法)
+        id12(第十二天)---id1227(27-Properties-load)
+        id12(第十二天)---id1228(28-Properties-store)
+        end
+        id0(JavaSE进阶)---id13(第十三天)
+        subgraph day13
+        id13(第十三天)---id131(01-多线程概述-初步了解多线程)
+        id13(第十三天)---id132(02-多线程概述一并发和并行)
+        id13(第十三天)---id133(03-多线程概述一进程和线程)
+        id13(第十三天)---id134(04-多线程的实现方式-继承Thread)
+        id13(第十三天)---id135(05-多线程的实现方式-两个小问题)
+        id13(第十三天)---id136(06-多线的实现方式-实现Runnable接口)
+        id13(第十三天)---id137(07-多线程的实现方式-实现callable接口)
+        id13(第十三天)---id138(08-三种实现方式的对比)
+        id13(第十三天)---id139(09-Thread方法-设置获取名字)
+        id13(第十三天)---id1310(10-Thread方法-获得线程对象)
+        id13(第十三天)---id1311(11-Thread方法-sleep)
+        id13(第十三天)---id1312(12-Thread方法一线程的优先级)
+        id13(第十三天)---id1313(13-Thread方法-守护线程)
+        id13(第十三天)---id1314(14-线程安全问题-卖票案例实现)
+        id13(第十三天)---id1315(15-线程安全问题-原因分析)
+        id13(第十三天)---id1316(16-线程安全问题-同步代码块)
+        id13(第十三天)---id1317(17-线程安全问题一锁对象唯一)
+        id13(第十三天)---id1318(18-线程安全问题-同步方法)
+        id13(第十三天)---id1319(19-线程安全问题-lock)
+        id13(第十三天)---id1320(20-死锁)
+        id13(第十三天)---id1321(21-生产者和消费者思路分析)
+        id13(第十三天)---id1322(22-生产者和消费者-代码实现)
+        id13(第十三天)---id1323(23-生产者和消费者代码改写)
+        id13(第十三天)---id1324(24-阻塞队列基本使用)
+        id13(第十三天)---id1325(25-阻塞队列一实现等待唤醒机制)
+        end
+        id0(JavaSE进阶)---id14(第十四天)
+        subgraph day14
+        id14(第十四天)---id141(01-线程状态)
+        id14(第十四天)---id142(02-线程池一基本原理)
+        id14(第十四天)---id143(03-线程池-Executors默认线程池)
+        id14(第十四天)---id144(04-线程池-Executors创建指定上限的线程池)
+        id14(第十四天)---id145(05-线程池-ThreadPoolExecutor)
+        id14(第十四天)---id146(05-线程池一参数详解)
+        id14(第十四天)---id147(07-线程池一非默认任务拒绝策略)
+        id14(第十四天)---id148(08-volatile-问题)
+        id14(第十四天)---id149(09-volatile解决)
+        id14(第十四天)---id1410(10-synchronized解决)
+        id14(第十四天)---id1411(11-原子性)
+        id14(第十四天)---id1412(12-volatile关键字不能保证原子性)
+        id14(第十四天)---id1413(13-原子性-AtomicInteger)
+        id14(第十四天)---id1414(14-AtomicInteger-内存解析)
+        id14(第十四天)---id1415(15-AtomicInteger-源码解析)
+        id14(第十四天)---id1416(16-悲观锁和乐观锁)
+        id14(第十四天)---id1417(17-并发工具类-Hashtable)
+        id14(第十四天)---id1418(18-并发工具类-ConcurrentHashMap基本使用)
+        id14(第十四天)---id1419(19-并发工具类ConcurrentHashMap1.7原理)
+        id14(第十四天)---id1420(20-并发工具类ConcurrentHashMap1.8原理)
+        id14(第十四天)---id1421(21-并发工具类CountDownLatch)
+        id14(第十四天)---id1422(22-并发工具类-Semaphore)
+        end
+        id0(JavaSE进阶)---id15(第十五天)
+        subgraph day15
+        id15(第十五天)---id151(01-网络编程三要素一概述)
+        id15(第十五天)---id152(02-网络编程三要素-IP)
+        id15(第十五天)---id153(03-网络编程-常见命令)
+        id15(第十五天)---id154(04-网络编程-Inetaddress类)
+        id15(第十五天)---id155(05-网络编程三要素-端口)
+        id15(第十五天)---id156(06-网络编程三要素-协议)
+        id15(第十五天)---id157(07-UDP-发送端)
+        id15(第十五天)---id158(08-UDP一接收端)
+        id15(第十五天)---id159(09-UDP练习)
+        id15(第十五天)---id1510(10-UDP-三种通讯方式)
+        id15(第十五天)---id1511(11-UDP-组播代码实现)
+        id15(第十五天)---id1512(12-UDP-广播代码实现)
+        id15(第十五天)---id1513(13-TCP-客户端)
+        id15(第十五天)---id1514(14-TCP-服务器)
+        id15(第十五天)---id1515(15-TCP-原理分析)
+        id15(第十五天)---id1516(16-TCP-三次握手)
+        id15(第十五天)---id1517(17-TCP-四次挥手)
+        id15(第十五天)---id1518(18-TCP-练习1)
+        id15(第十五天)---id1519(19-TCP-练习2)
+        id15(第十五天)---id1520(20-服务端优化一循环)
+        id15(第十五天)---id1521(21-服务端优化-UUID)
+        id15(第十五天)---id1522(22-服务端优化-多线程)
+        id15(第十五天)---id1523(23-服务端优化一线程池)
+        end
+        id0(JavaSE进阶)---id16(第十六天)
+        subgraph day16
+        id16(第十六天)---id161(01-类加载器-初步了解)
+        id16(第十六天)---id162(02-类加载器一类加载时机)
+        id16(第十六天)---id163(03-类加载的过程-加载)
+        id16(第十六天)---id164(04-类加载的过程-链接)
+        id16(第十六天)---id165(05-类加载的过程-初始化和小结)
+        id16(第十六天)---id166(06-类加载器一分类)
+        id16(第十六天)---id167(07-类加载器一双亲委派模型)
+        id16(第十六天)---id168(08-类加载器-常用方法)
+        id16(第十六天)---id169(09-反射一概述)
+        id16(第十六天)---id1610(10-反射一获取class对象)
+        id16(第十六天)---id1611(11-反射-获取Constructor对象)
+        id16(第十六天)---id1612(12-反射-利用Constructor创建对象)
+        id16(第十六天)---id1613(13-反射一小结)
+        id16(第十六天)---id1614(14-反射一获取Field对象)
+        id16(第十六天)---id1615(15-反射-利用Field赋值和获取值)
+        id16(第十六天)---id1616(16-反射一获取Method对象)
+        id16(第十六天)---id1617(17-反射-利用Method象运行方法)
+        end
+        id0(JavaSE进阶)---id17(第十七天)
+        subgraph day17
+        id17(第十七天)---id171(01-xml-作为配置文件的优势)
+        id17(第十七天)---id172(02-xml一概述)
+        id17(第十七天)---id173(03-xml-标签的规则)
+        id17(第十七天)---id174(04-xml-语法规则)
+        id17(第十七天)---id175(05-xml-DOM解析思想)
+        id17(第十七天)---id176(06-xml-解析的准备工作)
+        id17(第十七天)---id177(07-xml-解析代码实现)
+        id17(第十七天)---id178(08-DTD入门案例-编写DTD)
+        id17(第十七天)---id179(09-DTD入门案例-引入DTD)
+        id17(第十七天)---id1710(10-DTD约束-三种引入方式)
+        id17(第十七天)---id1711(11-DTD语法规则-定义元素)
+        id17(第十七天)---id1712(12-DTD语法规则-定义属性)
+        id17(第十七天)---id1713(13-schema-schema和dtd的区别)
+        id17(第十七天)---id1714(14-schema入门案例-编写schema)
+        id17(第十七天)---id1715(15-schema入门案例-引入schema)
+        id17(第十七天)---id1716(16-schema入门案例-定义属性)
+        id17(第十七天)---id1717(17-枚举-什么是枚举)
+        id17(第十七天)---id1718(18-枚举定义格式)
+        id17(第十七天)---id1719(19-枚举-枚举的特点)
+        id17(第十七天)---id1720(20-枚举-枚举的方法)
+        id17(第十七天)---id1721(21-注解一注解的优势)
+        id17(第十七天)---id1722(22-注解一注解的概述)
+        id17(第十七天)---id1723(23-注解一自定义注解)
+        id17(第十七天)---id1724(24-注解一特殊属性value)
+        id17(第十七天)---id1725(25-注解-自定义注解练习)
+        id17(第十七天)---id1726(26注解-元注解)
+        end
+        id0(JavaSE进阶)---id18(第十八天)
+        subgraph day18
+        id18(第十八天)---id181(01-单元测试一概述)
+        id18(第十八天)---id182(02-单元测试-基本使用)
+        id18(第十八天)---id183(03-单元测试-三个常用注解before, test, after)
+        id18(第十八天)---id184(04-日志技术-日志技术与输出语句的区别)
+        id18(第十八天)---id185(05-日志技术-体系结构和Log4J)
+        id18(第十八天)---id186(06-日志技术-Log4J入门案例)
+        id18(第十八天)---id187(07一日志技术-Log4J三个核心)
+        id18(第十八天)---id188(08-日志技术-配置文件详解)
+        id18(第十八天)---id189(09-日志技术-Log4J在项目中的应用)
+        end
+</code></pre>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog-public/categories/Mermaid/">Mermaid</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog-public/tags/Mermaid/">Mermaid</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog-public/2018/04/02/p1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">jsDeliver-A free CDN for Open Source</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog-public/2017/04/02/SAd18/">
+                        <span class="hidden-mobile">JavaSE进阶-Day18 XML&枚举</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/blog-public/img/police_beian.png" srcset="/blog-public/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog-public/js/debouncer.js" ></script>
+<script  src="/blog-public/js/events.js" ></script>
+<script  src="/blog-public/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/blog-public/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/blog-public/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/blog-public/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/blog-public/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/blog-public/js/caidai.js"></script>
+<script src="/blog-public/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog-public/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>
