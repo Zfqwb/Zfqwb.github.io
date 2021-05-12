@@ -1,0 +1,1263 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>EL&amp;Filter&amp;Listener - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zfqwb.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="EL&Filter&Listener">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-05 19:07" pubdate>
+        2020年5月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.9k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      98
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">EL&amp;Filter&amp;Listener</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：9 天前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="1-EL表达式和JSTL"><a href="#1-EL表达式和JSTL" class="headerlink" title="1 EL表达式和JSTL"></a>1 EL表达式和JSTL</h1><h2 id="1-1-EL表达式"><a href="#1-1-EL表达式" class="headerlink" title="1.1 EL表达式"></a>1.1 EL表达式</h2><h3 id="1-1-1-EL表达式介绍"><a href="#1-1-1-EL表达式介绍" class="headerlink" title="1.1.1 EL表达式介绍"></a>1.1.1 EL表达式介绍</h3><ul>
+<li>EL(Expression Language)：表达式语言</li>
+<li>在 JSP 2.0 规范中加入的内容，也是 Servlet 规范的一部分</li>
+<li>作用：在 JSP 页面中获取数据。让我们的 JSP 脱离 java 代码块和 JSP 表达式</li>
+<li>语法：<code>$&#123; 表达式内容 &#125;</code></li>
+<li>例如：</li>
+</ul>
+<p><img src="/2020/05/05/Javaweb05/img/el%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-1-2-EL表达式的快速入门"><a href="#1-1-2-EL表达式的快速入门" class="headerlink" title="1.1.2 EL表达式的快速入门"></a>1.1.2 EL表达式的快速入门</h3><ol>
+<li><p>创建一个 web 项目：el_demo，虚拟目录/el</p>
+</li>
+<li><p>在 web 目录下创建 el01.jsp</p>
+</li>
+<li><p>在文件中向域对象添加数据</p>
+</li>
+<li><p>使用三种方式获取域对象中的数据(java 代码块、JSP 表达式、EL 表达式)</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;EL表达式快速入门&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--<span class="hljs-number">1.</span>向域对象中添加数据--%&gt;<br>    &lt;% request.setAttribute(<span class="hljs-string">&quot;username&quot;</span>,<span class="hljs-string">&quot;zhangsan&quot;</span>); %&gt;<br><br>    &lt;%--<span class="hljs-number">2.</span>获取数据--%&gt;<br>    Java代码块：&lt;% out.println(request.getAttribute(<span class="hljs-string">&quot;username&quot;</span>)); %&gt; &lt;br&gt;<br><br>    JSP表达式：&lt;%= request.getAttribute(<span class="hljs-string">&quot;username&quot;</span>)%&gt; &lt;br&gt;<br><br>    EL表达式：$&#123;username&#125;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>部署并启动项目</p>
+</li>
+<li><p>通过浏览器测试</p>
+<p><img src="/2020/05/05/Javaweb05/img/el01.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h3 id="1-1-3-EL表达式获取不同类型数据"><a href="#1-1-3-EL表达式获取不同类型数据" class="headerlink" title="1.1.3 EL表达式获取不同类型数据"></a>1.1.3 EL表达式获取不同类型数据</h3><ul>
+<li><p>要获取的数据类型</p>
+<ol>
+<li>获取基本数据类型的数据</li>
+<li>获取自定义对象类型的数据</li>
+<li>获取数组类型的数据</li>
+<li>获取 List 集合类型的数据</li>
+<li>获取 Map 集合类型的数据</li>
+</ol>
+</li>
+<li><p>案例：新建el02.jsp</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;com.itheima.bean.Student&quot;</span> %&gt;<br>&lt;%@ page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.util.ArrayList&quot;</span> %&gt;<br>&lt;%@ page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.util.HashMap&quot;</span> %&gt;<br>&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;EL表达式获取不同类型数据&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--<span class="hljs-number">1.</span>获取基本数据类型--%&gt;<br>    &lt;% pageContext.setAttribute(<span class="hljs-string">&quot;num&quot;</span>,<span class="hljs-number">10</span>); %&gt;<br>    基本数据类型：$&#123;num&#125; &lt;br&gt;<br><br>    &lt;%--<span class="hljs-number">2.</span>获取自定义对象类型--%&gt;<br>    &lt;%<br>        Student stu = <span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;张三&quot;</span>,<span class="hljs-number">23</span>);<br>        pageContext.setAttribute(<span class="hljs-string">&quot;stu&quot;</span>,stu);<br>    %&gt;<br>    自定义对象：$&#123;stu&#125; &lt;br&gt;<br>    &lt;%--stu.name 实现原理 getName()--%&gt;<br>    学生姓名：$&#123;stu.name&#125; &lt;br&gt;<br>    学生年龄：$&#123;stu.age&#125; &lt;br&gt;<br><br>    &lt;%--<span class="hljs-number">3.</span>获取数组类型--%&gt;<br>    &lt;%<br>        String[] arr = &#123;<span class="hljs-string">&quot;hello&quot;</span>,<span class="hljs-string">&quot;world&quot;</span>&#125;;<br>        pageContext.setAttribute(<span class="hljs-string">&quot;arr&quot;</span>,arr);<br>    %&gt;<br>    数组：$&#123;arr&#125;  &lt;br&gt;<br>    <span class="hljs-number">0</span>索引元素：$&#123;arr[<span class="hljs-number">0</span>]&#125; &lt;br&gt;<br>    <span class="hljs-number">1</span>索引元素：$&#123;arr[<span class="hljs-number">1</span>]&#125; &lt;br&gt;<br>    &lt;%--EL表达式中没有字符串拼接--%&gt;<br>    <span class="hljs-number">0</span>索引拼接<span class="hljs-number">1</span>索引的元素：$&#123;arr[<span class="hljs-number">0</span>]&#125; + $&#123;arr[<span class="hljs-number">1</span>]&#125; &lt;br&gt;<br><br>    &lt;%--<span class="hljs-number">4.</span>获取List集合--%&gt;<br>    &lt;%<br>        ArrayList&lt;String&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>        list.add(<span class="hljs-string">&quot;aaa&quot;</span>);<br>        list.add(<span class="hljs-string">&quot;bbb&quot;</span>);<br>        pageContext.setAttribute(<span class="hljs-string">&quot;list&quot;</span>,list);<br>    %&gt;<br>    List集合：$&#123;list&#125; &lt;br&gt;<br>    <span class="hljs-number">0</span>索引元素：$&#123;list[<span class="hljs-number">0</span>]&#125; &lt;br&gt;<br><br>    &lt;%--<span class="hljs-number">5.</span>获取Map集合--%&gt;<br>    &lt;%<br>        HashMap&lt;String,Student&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();<br>        map.put(<span class="hljs-string">&quot;hm01&quot;</span>,<span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;张三&quot;</span>,<span class="hljs-number">23</span>));<br>        map.put(<span class="hljs-string">&quot;hm02&quot;</span>,<span class="hljs-keyword">new</span> Student(<span class="hljs-string">&quot;李四&quot;</span>,<span class="hljs-number">24</span>));<br>        pageContext.setAttribute(<span class="hljs-string">&quot;map&quot;</span>,map);<br>    %&gt;<br>    Map集合：$&#123;map&#125;  &lt;br&gt;<br>    第一个学生对象：$&#123;map.hm01&#125;  &lt;br&gt;<br>    第一个学生对象的姓名：$&#123;map.hm01.name&#125;<br><br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/05/Javaweb05/img/el02.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="1-1-4-EL表达式的注意事项"><a href="#1-1-4-EL表达式的注意事项" class="headerlink" title="1.1.4 EL表达式的注意事项"></a>1.1.4 EL表达式的注意事项</h3><ul>
+<li><p>EL 表达式没有空指针异常</p>
+</li>
+<li><p>EL 表达式没有索引越界异常</p>
+</li>
+<li><p>EL 表达式没有字符串的拼接</p>
+</li>
+<li><p>代码</p>
+<ul>
+<li><p>空指针</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%A9%BA%E6%8C%87%E9%92%88.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>越界和字符串拼接</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E8%B6%8A%E7%95%8C%E5%BC%82%E5%B8%B8.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+</li>
+<li><p>访问</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E5%BC%82%E5%B8%B8%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="1-1-5-EL表达式的运算符"><a href="#1-1-5-EL表达式的运算符" class="headerlink" title="1.1.5 EL表达式的运算符"></a>1.1.5 EL表达式的运算符</h3><ul>
+<li><p>关系运算符</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>逻辑运算符</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>其他运算符</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E5%85%B6%E4%BB%96%E8%BF%90%E7%AE%97%E7%AC%A6.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>容器元素是否为0，就是容器的长度是否为0（其实就是检查容器是否为空）</li>
+</ul>
+</li>
+<li><p>案例：新建el03.jsp</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;EL表达式运算符&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--empty--%&gt;<br>    &lt;%<br>        String str1 = <span class="hljs-keyword">null</span>;<br>        String str2 = <span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-keyword">int</span>[] arr = &#123;&#125;;<br>    %&gt;<br>    $&#123;empty str1&#125; &lt;br&gt;<br>    $&#123;empty str2&#125; &lt;br&gt;<br>    $&#123;empty arr&#125; &lt;br&gt;<br><br>    &lt;%--三元运算符。获取性别的数据，在对应的按钮上进行勾选--%&gt;<br>    &lt;% pageContext.setAttribute(<span class="hljs-string">&quot;gender&quot;</span>,<span class="hljs-string">&quot;men&quot;</span>); %&gt;<br>    &lt;input type=<span class="hljs-string">&quot;radio&quot;</span> name=<span class="hljs-string">&quot;gender&quot;</span> value=<span class="hljs-string">&quot;men&quot;</span> $&#123;gender == <span class="hljs-string">&quot;men&quot;</span> ? <span class="hljs-string">&quot;checked&quot;</span> : <span class="hljs-string">&quot;&quot;</span>&#125;&gt;男<br>    &lt;input type=<span class="hljs-string">&quot;radio&quot;</span> name=<span class="hljs-string">&quot;gender&quot;</span> value=<span class="hljs-string">&quot;women&quot;</span> $&#123;gender == <span class="hljs-string">&quot;women&quot;</span> ? <span class="hljs-string">&quot;checked&quot;</span> : <span class="hljs-string">&quot;&quot;</span>&#125;&gt;女<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/05/Javaweb05/img/el03.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="1-1-6-EL表达式使用细节"><a href="#1-1-6-EL表达式使用细节" class="headerlink" title="1.1.6 EL表达式使用细节"></a>1.1.6 EL表达式使用细节</h3><ul>
+<li><p>EL 表达式能够获取四大域对象的数据，根据名称从小到大在域对象中查找</p>
+</li>
+<li><p>还可以获取 JSP 其他八个隐式对象，并调用对象中的方法</p>
+</li>
+<li><p>案例：el04.jsp</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;EL表达式使用细节&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--获取四大域对象中的数据--%&gt;<br>    &lt;%<br>        <span class="hljs-comment">//pageContext.setAttribute(&quot;username&quot;,&quot;zhangsan&quot;);</span><br>        request.setAttribute(<span class="hljs-string">&quot;username&quot;</span>,<span class="hljs-string">&quot;zhangsan&quot;</span>);<br>        <span class="hljs-comment">//session.setAttribute(&quot;username&quot;,&quot;zhangsan&quot;);</span><br>        <span class="hljs-comment">//application.setAttribute(&quot;username&quot;,&quot;zhangsan&quot;);</span><br>    %&gt;<br>    $&#123;username&#125; &lt;br&gt;<br><br>    &lt;%--获取JSP中其他八个隐式对象  获取虚拟目录名称--%&gt;<br>    &lt;%= request.getContextPath()%&gt;<br>    $&#123;pageContext.request.contextPath&#125;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/05/Javaweb05/img/el04.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="1-1-7-EL表达式的11个隐式对象-了解"><a href="#1-1-7-EL表达式的11个隐式对象-了解" class="headerlink" title="1.1.7 EL表达式的11个隐式对象(了解)"></a>1.1.7 EL表达式的11个隐式对象(了解)</h3><p>EL表达式也为我们提供隐式对象，可以让我们不声明直接来使用，十一个对象见下表，需要注意的是，它和JSP的隐式对象不是一回事：</p>
+<table>
+<thead>
+<tr>
+<th>EL中的隐式对象</th>
+<th>类型</th>
+<th>对应JSP隐式对象</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PageContext</td>
+<td>Javax.serlvet.jsp.PageContext</td>
+<td>PageContext</td>
+<td>完全一样</td>
+</tr>
+<tr>
+<td>ApplicationScope</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>操作应用域对象数据</td>
+</tr>
+<tr>
+<td>SessionScope</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>操作会话域对象数据</td>
+</tr>
+<tr>
+<td>RequestScope</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>操作请求域对象数据</td>
+</tr>
+<tr>
+<td>PageScope</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>操作页面域对象数据</td>
+</tr>
+<tr>
+<td>Header</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>根据key获取请求消息头，值是一个</td>
+</tr>
+<tr>
+<td>HeaderValues</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>根据key获取请求消息头，值是多个（数组）</td>
+</tr>
+<tr>
+<td>Param</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>根据key获取请求参数，值是一个</td>
+</tr>
+<tr>
+<td>ParamValues</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>根据key获取请求参数，值是多个（数组）</td>
+</tr>
+<tr>
+<td>InitParam</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>根据key获取全局参数，value是参数值</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>Java.util.Map</td>
+<td>没有</td>
+<td>根据key获取cookie的值</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>案例</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;EL表达式11个隐式对象&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--pageContext对象 可以获取其他三个域对象和JSP中八个隐式对象--%&gt;<br>    $&#123;pageContext.request.contextPath&#125; &lt;br&gt;<br><br>    &lt;%--applicationScope sessionScope requestScope pageScope 操作四大域对象中的数据--%&gt;<br>    &lt;% request.setAttribute(<span class="hljs-string">&quot;username&quot;</span>,<span class="hljs-string">&quot;zhangsan&quot;</span>); %&gt;<br>    $&#123;username&#125; &lt;br&gt;<br>    $&#123;requestScope.username&#125; &lt;br&gt;<br><br>    &lt;%--header headerValues  获取请求头数据--%&gt;<br>    $&#123;header[<span class="hljs-string">&quot;connection&quot;</span>]&#125; &lt;br&gt;<br>    $&#123;headerValues[<span class="hljs-string">&quot;connection&quot;</span>][<span class="hljs-number">0</span>]&#125; &lt;br&gt;<br><br>    &lt;%--param paramValues 获取请求参数数据--%&gt;<br>    $&#123;param.username&#125; &lt;br&gt;<br>    $&#123;paramValues.hobby[<span class="hljs-number">0</span>]&#125; &lt;br&gt;<br>    $&#123;paramValues.hobby[<span class="hljs-number">1</span>]&#125; &lt;br&gt;<br><br>    &lt;%--initParam 获取全局配置参数--%&gt;<br>    $&#123;initParam[<span class="hljs-string">&quot;pname&quot;</span>]&#125;  &lt;br&gt;<br><br>    &lt;%--cookie 获取cookie信息--%&gt;<br>    $&#123;cookie&#125;  &lt;br&gt; &lt;%--获取Map集合--%&gt;<br>    $&#123;cookie.JSESSIONID&#125;  &lt;br&gt; &lt;%--获取map集合中第二个元素--%&gt;<br>    $&#123;cookie.JSESSIONID.name&#125;  &lt;br&gt; &lt;%--获取cookie对象的名称--%&gt;<br>    $&#123;cookie.JSESSIONID.value&#125; &lt;%--获取cookie对象的值--%&gt;<br><br><br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/05/Javaweb05/img/el05.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h2 id="1-2-JSTL"><a href="#1-2-JSTL" class="headerlink" title="1.2 JSTL"></a>1.2 JSTL</h2><h3 id="1-2-1-JSTL的介绍"><a href="#1-2-1-JSTL的介绍" class="headerlink" title="1.2.1 JSTL的介绍"></a>1.2.1 JSTL的介绍</h3><ul>
+<li>JSTL(Java Server Pages Standarded Tag Library)：JSP 标准标签库</li>
+<li>主要提供给开发人员一个标准通用的标签库</li>
+<li><strong>开发人员可以利用这些标签取代 JSP 页面上的 Java 代码，从而提高程序的可读性，降低程序的维护难度</strong></li>
+<li>它由以下5个部分组成：</li>
+</ul>
+<p><img src="/2020/05/05/Javaweb05/img/jstl.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-2-核心标签库"><a href="#1-2-2-核心标签库" class="headerlink" title="1.2.2 核心标签库"></a>1.2.2 核心标签库</h3><h4 id="1）核心库介绍"><a href="#1）核心库介绍" class="headerlink" title="1）核心库介绍"></a>1）核心库介绍</h4><p>在我们实际开发中，用到的jstl标签库主要以核心标签库为准，偶尔会用到国际化标签库的标签。下表中把我们经常可能用到的标签列在此处，其余标签库请同学们参考【JSTL标签库.doc】文档。</p>
+<table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>功能分类</th>
+<th>分类</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;c:if&gt;</code></td>
+<td>流程控制</td>
+<td>核心标签库</td>
+<td>用于判断</td>
+</tr>
+<tr>
+<td><code>&lt;c:choose&gt; ,&lt;c:when&gt;,&lt;c:otherwise&gt;</code></td>
+<td>流程控制</td>
+<td>核心标签库</td>
+<td>用于多个条件判断</td>
+</tr>
+<tr>
+<td><code>&lt;c:foreache&gt;</code></td>
+<td>迭代操作</td>
+<td>核心标签库</td>
+<td>用于循环遍历</td>
+</tr>
+</tbody></table>
+<h4 id="2）案例"><a href="#2）案例" class="headerlink" title="2）案例"></a>2）案例</h4><ol>
+<li><p>创建一个 web 项目：jstl_demo</p>
+</li>
+<li><p>在 web 目录下创建一个 WEB-INF 目录</p>
+</li>
+<li><p>在 WEB-INF 目录下创建一个 libs 目录，将 JSTL 的 jar 包导入</p>
+<ul>
+<li>（jar包目录：day05_el表达式过滤器监听器\资料\JSTL的jar包）</li>
+<li>添加引用库</li>
+</ul>
+<p><img src="/2020/05/05/Javaweb05/img/jstl%E6%B7%BB%E5%8A%A0.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>创建 JSP 文件，通过 taglib 导入 JSTL 标签库</p>
+</li>
+<li><p>对流程控制和迭代遍历的标签进行使用</p>
+<ul>
+<li><p>新建jstl01.jsp：流程控制</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;!--prefix给jstl core核心库起个前缀名，使用的标签就以c开头--&gt;<br>&lt;%<span class="hljs-meta">@taglib</span> uri=<span class="hljs-string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix=<span class="hljs-string">&quot;c&quot;</span>%&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;流程控制&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--向域对象中添加成绩数据--%&gt;<br>    $&#123;pageContext.setAttribute(<span class="hljs-string">&quot;score&quot;</span>,<span class="hljs-string">&quot;T&quot;</span>)&#125;<br><br>    &lt;%--对成绩进行判断--%&gt;<br>    &lt;c:<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;$&#123;score eq &#x27;A&#x27;&#125;&quot;</span>&gt;<br>        优秀<br>    &lt;/c:if&gt;<br><br>    &lt;%--对成绩进行多条件判断--%&gt;<br>    &lt;c:choose&gt;<br>        &lt;c:when test=&quot;$&#123;score eq &#x27;A&#x27;&#125;&quot;&gt;优秀&lt;/c:when&gt;<br>        &lt;c:when test=&quot;$&#123;score eq &#x27;B&#x27;&#125;&quot;&gt;良好&lt;/c:when&gt;<br>        &lt;c:when test=&quot;$&#123;score eq &#x27;C&#x27;&#125;&quot;&gt;及格&lt;/c:when&gt;<br>        &lt;c:when test=&quot;$&#123;score eq &#x27;D&#x27;&#125;&quot;&gt;较差&lt;/c:when&gt;<br>        &lt;c:otherwise&gt;成绩非法&lt;/c:otherwise&gt;<br>    &lt;/c:choose&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建jstl02.jsp：迭代遍历</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.util.ArrayList&quot;</span> %&gt;<br>&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;%<span class="hljs-meta">@taglib</span> uri=<span class="hljs-string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> prefix=<span class="hljs-string">&quot;c&quot;</span>%&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;循环&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--向域对象中添加集合--%&gt;<br>    &lt;%<br>        ArrayList&lt;String&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>        list.add(<span class="hljs-string">&quot;aa&quot;</span>);<br>        list.add(<span class="hljs-string">&quot;bb&quot;</span>);<br>        list.add(<span class="hljs-string">&quot;cc&quot;</span>);<br>        list.add(<span class="hljs-string">&quot;dd&quot;</span>);<br>        pageContext.setAttribute(<span class="hljs-string">&quot;list&quot;</span>,list);<br>    %&gt;<br><br>    &lt;%--遍历集合--%&gt;<br>    &lt;c:forEach items=<span class="hljs-string">&quot;$&#123;list&#125;&quot;</span> <span class="hljs-keyword">var</span>=<span class="hljs-string">&quot;str&quot;</span>&gt;<br>        $&#123;str&#125; &lt;br&gt;<br>    &lt;/c:forEach&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>部署并启动项目</p>
+</li>
+<li><p>通过浏览器查看</p>
+<ul>
+<li><p>访问jstl01</p>
+<p><img src="/2020/05/05/Javaweb05/img/jstl01.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>访问jstl02</p>
+<p><img src="/2020/05/05/Javaweb05/img/jstl02.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="2-Servlet规范中的过滤器-Filter"><a href="#2-Servlet规范中的过滤器-Filter" class="headerlink" title="2 Servlet规范中的过滤器-Filter"></a>2 Servlet规范中的过滤器-Filter</h1><h2 id="2-1-过滤器入门"><a href="#2-1-过滤器入门" class="headerlink" title="2.1 过滤器入门"></a>2.1 过滤器入门</h2><h3 id="2-1-1-过滤器的介绍"><a href="#2-1-1-过滤器的介绍" class="headerlink" title="2.1.1 过滤器的介绍"></a>2.1.1 过滤器的介绍</h3><ul>
+<li><p>过滤器——Filter，它是JavaWeb三大组件之一。另外两个是Servlet和Listener</p>
+</li>
+<li><p>它可以对web应用中的所有资源进行拦截，并且在拦截之后进行一些特殊的操作</p>
+</li>
+<li><p>在程序中访问服务器资源时，当一个请求到来，服务器首先判断是否有过滤器与请求资源相关联，如果有，过滤器可以将请求拦截下来，完成一些特定的功能，再由过滤器决定是否交给请求资源。如果没有则像之前那样直接请求资源了。响应也是类似的！</p>
+</li>
+<li><p>过滤器一般用于完成通用的操作，例如：登录验证、统一编码处理、敏感字符过滤等等~~~</p>
+</li>
+<li><p>过滤器图示</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E8%BF%87%E6%BB%A4%E5%99%A8.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>生活中的例子</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E8%BF%87%E6%BB%A4%E4%BE%8B%E5%AD%90.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>比如一对新人结婚，规定：只有带红包的客人可以吃酒席，不带的就不能吃</li>
+<li>那么这项工作不可能由新人自己完成，他们请了俩人，一个管收钱，一个管记账（这俩人就是过滤器）</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-2-Filter介绍"><a href="#2-1-2-Filter介绍" class="headerlink" title="2.1.2  Filter介绍"></a>2.1.2  Filter介绍</h3><ul>
+<li><p>Filter 是一个接口，如果想实现过滤器的功能，必须实现该接口</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/fitler%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>配置方式</p>
+<ul>
+<li>注解方式</li>
+<li>配置文件</li>
+</ul>
+</li>
+<li><p>Filter官网介绍</p>
+<p><img src="/2020/05/05/Javaweb05/img/filter%E4%BB%8B%E7%BB%8D.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="2-1-3-FilterChain"><a href="#2-1-3-FilterChain" class="headerlink" title="2.1.3 FilterChain"></a>2.1.3 FilterChain</h3><ul>
+<li><p>FilterChain 是一个接口，代表过滤器链对象。由 Servlet 容器提供实现类对象。直接使用即可</p>
+</li>
+<li><p>过滤器可以定义多个，就会组成过滤器链</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/filterchain.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>官网介绍</p>
+<p><img src="/2020/05/05/Javaweb05/img/filterchain%E5%AE%98%E7%BD%91.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="2-1-4-过滤器的使用"><a href="#2-1-4-过滤器的使用" class="headerlink" title="2.1.4 过滤器的使用"></a>2.1.4 过滤器的使用</h3><ul>
+<li><p>需求说明</p>
+<ul>
+<li>通过 Filter 过滤器解决多个资源写出中文乱码的问题</li>
+</ul>
+</li>
+<li><p>最终目的</p>
+<ul>
+<li>通过本需求，最终掌握 Filter 过滤器的使用</li>
+</ul>
+</li>
+<li><p>实现步骤</p>
+<ol>
+<li><p>创建一个 web 项目：filter_demo，虚拟路径/filter</p>
+</li>
+<li><p>创建两个 Servlet 功能类，都向客户端写出中文数据</p>
+<ul>
+<li><p>新建ServletDemo01：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-meta">@WebServlet(&quot;/servletDemo01&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo01</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;servletDemo01执行了...&quot;</span>);<br>        <span class="hljs-comment">//resp.setContentType(&quot;text/html;charset=UTF-8&quot;);</span><br>        resp.getWriter().write(<span class="hljs-string">&quot;servletDemo01执行了...&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建ServletDemo02：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-meta">@WebServlet(&quot;/servletDemo02&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo02</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;servletDemo02执行了...&quot;</span>);<br>        <span class="hljs-comment">//resp.setContentType(&quot;text/html;charset=UTF-8&quot;);</span><br>        resp.getWriter().write(<span class="hljs-string">&quot;servletDemo02执行了...&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/05/Javaweb05/img/filter01%E4%B9%B1%E7%A0%81.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>发现demo1和demo2都是乱码</p>
+</li>
+<li><p>之前都是在代码里添加：<code>resp.setContentType(&quot;text/html;charset=UTF-8&quot;);</code>去解决乱码问题</p>
+</li>
+<li><p>但是如果有100个Servlet需要解决乱码问题呢？我们要写一百次么？</p>
+</li>
+<li><p>不用，只需要使用过滤器即可</p>
+</li>
+</ul>
+</li>
+<li><p>创建一个 Filter 过滤器实现类，重写 doFilter 核心方法</p>
+</li>
+<li><p>在方法内解决中文乱码，并放行</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.filter;<br><br><span class="hljs-keyword">import</span> javax.servlet.*;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    过滤器基本使用</span><br><span class="hljs-comment">    /*:表明访问当前应用下任何资源，此过滤器都会起作用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebFilter(&quot;/*&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FilterDemo01</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span></span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;filterDemo01执行了...&quot;</span>);<br><br>        <span class="hljs-comment">//处理乱码</span><br>        servletResponse.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br><br>        <span class="hljs-comment">//放行</span><br>        filterChain.doFilter(servletRequest,servletResponse);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>部署并启动项目</p>
+</li>
+<li><p>通过浏览器测试</p>
+<p><img src="/2020/05/05/Javaweb05/img/filter01%E8%A7%A3%E5%86%B3.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="2-1-5-Filter过滤器的使用细节"><a href="#2-1-5-Filter过滤器的使用细节" class="headerlink" title="2.1.5 Filter过滤器的使用细节"></a>2.1.5 Filter过滤器的使用细节</h3><ul>
+<li><p>配置方式</p>
+<ul>
+<li>注解方式   @WebFilter(拦截路径)</li>
+<li>配置文件方式</li>
+</ul>
+<p><img src="/2020/05/05/Javaweb05/img/filter%E7%BB%86%E8%8A%82.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>多个过滤器使用顺序</p>
+<ul>
+<li>如果有多个过滤器，取决于过滤器映射的顺序</li>
+<li>也就是filter-mapping配置的先后顺序</li>
+</ul>
+</li>
+<li><p>案例</p>
+<ul>
+<li><p>将demo1的WebFilter注解屏蔽</p>
+</li>
+<li><p>新建FilterDemo02：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.filter;<br><br><span class="hljs-keyword">import</span> javax.servlet.*;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    过滤器基本使用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">//@WebFilter(&quot;/*&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FilterDemo02</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span></span>&#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;filterDemo02执行了...&quot;</span>);<br><br>        <span class="hljs-comment">//处理乱码</span><br>        servletResponse.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br><br>        <span class="hljs-comment">//放行</span><br>        filterChain.doFilter(servletRequest,servletResponse);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>配置filter</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo01<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>com.itheima.filter.FilterDemo01<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo01<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span><br>    <br>   <span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo02<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>com.itheima.filter.FilterDemo02<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo02<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>访问</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E5%A4%9A%E4%B8%AA%E8%BF%87%E6%BB%A4%E5%99%A8.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="2-1-6-生命周期"><a href="#2-1-6-生命周期" class="headerlink" title="2.1.6 生命周期"></a>2.1.6 生命周期</h3><ul>
+<li><p>创建（出生）</p>
+<ul>
+<li>当应用加载时实例化对象并执行 init 初始化方法</li>
+</ul>
+</li>
+<li><p>服务（活着）</p>
+<ul>
+<li>对象提供服务的过程，执行 doFilter 方法</li>
+<li>只要应用一直提供服务，对象就一直存在</li>
+</ul>
+</li>
+<li><p>销毁（死亡）</p>
+<ul>
+<li>当应用卸载时或服务器停止时对象销毁。执行 destroy 方法</li>
+</ul>
+</li>
+<li><p><strong>Filter的实例对象在内存中也只有一份。所以也是单例的。</strong></p>
+</li>
+</ul>
+<ul>
+<li><p>案例：新建FilterDemo03</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.filter;<br><br><span class="hljs-keyword">import</span> javax.servlet.*;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    过滤器生命周期</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">//@WebFilter(&quot;/*&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FilterDemo03</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span></span>&#123;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        初始化方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(FilterConfig filterConfig)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;对象初始化成功了...&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        提供服务方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;filterDemo03执行了...&quot;</span>);<br><br>        <span class="hljs-comment">//处理乱码</span><br>        servletResponse.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br><br>        <span class="hljs-comment">//放行</span><br>        filterChain.doFilter(servletRequest,servletResponse);<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        对象销毁</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;对象销毁了...&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>配置：为了不影响测试，给之前的俩过滤器的配置代码屏蔽掉</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo03<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>com.itheima.filter.FilterDemo03<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo03<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E8%BF%87%E6%BB%A4%E5%99%A8%E5%A3%B0%E6%98%8E%E5%91%A8%E6%9C%9F.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="2-1-7-FilterConfig过滤器配置对象"><a href="#2-1-7-FilterConfig过滤器配置对象" class="headerlink" title="2.1.7 FilterConfig过滤器配置对象"></a>2.1.7 FilterConfig过滤器配置对象</h3><ul>
+<li><p>FilterConfig 是一个接口。代表过滤器的配置对象，可以加载一些初始化参数。</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/filterconfig.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>官网介绍</p>
+<p><img src="/2020/05/05/Javaweb05/img/filterconfig%E5%AE%98%E7%BD%91%E4%BB%8B%E7%BB%8D.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>案例：新建FilterDemo04</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.filter;<br><br><span class="hljs-keyword">import</span> javax.servlet.*;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    过滤器配置对象的使用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">//@WebFilter(&quot;/*&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FilterDemo04</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span></span>&#123;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        初始化方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(FilterConfig filterConfig)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;对象初始化成功了...&quot;</span>);<br><br>        <span class="hljs-comment">//获取过滤器名称</span><br>        String filterName = filterConfig.getFilterName();<br>        System.out.println(filterName);<br><br>        <span class="hljs-comment">//根据name获取value</span><br>        String username = filterConfig.getInitParameter(<span class="hljs-string">&quot;username&quot;</span>);<br>        System.out.println(username);<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        提供服务方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;filterDemo04执行了...&quot;</span>);<br><br>        <span class="hljs-comment">//处理乱码</span><br>        servletResponse.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br><br>        <span class="hljs-comment">//放行</span><br>        filterChain.doFilter(servletRequest,servletResponse);<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        对象销毁</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;对象销毁了...&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>filter配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo04<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>com.itheima.filter.FilterDemo04<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>username<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>zhangsan<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo04<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>启动tomcat</p>
+<p><img src="/2020/05/05/Javaweb05/img/config%E7%BB%93%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="2-2-8-过滤器的五种拦截行为"><a href="#2-2-8-过滤器的五种拦截行为" class="headerlink" title="2.2.8 过滤器的五种拦截行为"></a>2.2.8 过滤器的五种拦截行为</h3><ul>
+<li><p>Filter 过滤器默认拦截的是请求，但是在实际开发中，我们还有请求转发和请求包含，以及由服务器触发调用的全局错误页面。默认情况下过滤器是不参与过滤的，要想使用，就需要我们配置</p>
+</li>
+<li><p>拦截方式</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E4%BA%94%E7%A7%8D%E6%8B%A6%E6%88%AA%E8%A1%8C%E4%B8%BA.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>案例：新建FilterDemo05</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.filter;<br><br><span class="hljs-keyword">import</span> javax.servlet.*;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    过滤器的拦截行为</span><br><span class="hljs-comment"> */</span><br><span class="hljs-comment">//@WebFilter(&quot;/*&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FilterDemo05</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span></span>&#123;<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        提供服务方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;filterDemo05执行了...&quot;</span>);<br><br>        <span class="hljs-comment">//处理乱码</span><br>        servletResponse.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br><br>        <span class="hljs-comment">//放行</span><br>        filterChain.doFilter(servletRequest,servletResponse);<br>    &#125;<br><br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo05<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>com.itheima.filter.FilterDemo05<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--配置开启异步支持，当dispatcher配置ASYNC时，需要配置此行--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">async-supported</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">async-supported</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>filterDemo05<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--&lt;url-pattern&gt;/error.jsp&lt;/url-pattern&gt;--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/index.jsp<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--过滤请求：默认值。--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dispatcher</span>&gt;</span>REQUEST<span class="hljs-tag">&lt;/<span class="hljs-name">dispatcher</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--过滤全局错误页面：当由服务器调用全局错误页面时，过滤器工作--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dispatcher</span>&gt;</span>ERROR<span class="hljs-tag">&lt;/<span class="hljs-name">dispatcher</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--过滤请求转发：当请求转发时，过滤器工作。--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dispatcher</span>&gt;</span>FORWARD<span class="hljs-tag">&lt;/<span class="hljs-name">dispatcher</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--过滤请求包含：当请求包含时，过滤器工作。它只能过滤动态包含，jsp的include指令是静态包含，过滤器不会起作用--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dispatcher</span>&gt;</span>INCLUDE<span class="hljs-tag">&lt;/<span class="hljs-name">dispatcher</span>&gt;</span><br>    <span class="hljs-comment">&lt;!--过滤异步类型，它要求我们在filter标签中配置开启异步支持--&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dispatcher</span>&gt;</span>ASYNC<span class="hljs-tag">&lt;/<span class="hljs-name">dispatcher</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span><br><span class="hljs-comment">&lt;!--配置全局错误页面--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">error-page</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">exception-type</span>&gt;</span>java.lang.Exception<span class="hljs-tag">&lt;/<span class="hljs-name">exception-type</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">location</span>&gt;</span>/error.jsp<span class="hljs-tag">&lt;/<span class="hljs-name">location</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">error-page</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">error-page</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">error-code</span>&gt;</span>404<span class="hljs-tag">&lt;/<span class="hljs-name">error-code</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">location</span>&gt;</span>/error.jsp<span class="hljs-tag">&lt;/<span class="hljs-name">location</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">error-page</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建：ServletDemo03</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-meta">@WebServlet(&quot;/servletDemo03&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo03</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;servletDemo03执行了...&quot;</span>);<br><br>        <span class="hljs-comment">//int i = 1/ 0;</span><br><br>        <span class="hljs-comment">//请求转发</span><br>        <span class="hljs-comment">//req.getRequestDispatcher(&quot;/index.jsp&quot;).forward(req,resp);</span><br><br>        <span class="hljs-comment">//请求包含</span><br>        <span class="hljs-comment">//req.getRequestDispatcher(&quot;/index.jsp&quot;).include(req,resp);</span><br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建error.jsp</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;自定义错误页面&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    不好意思出错了...<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>测试出错情况</p>
+<ul>
+<li>屏蔽web.xml中的：<code>&lt;dispatcher&gt;ERROR&lt;/dispatcher&gt;</code></li>
+<li>打开ServletDemo03中的：<code>int i = 1/ 0;</code></li>
+</ul>
+</li>
+<li><p>访问：访问demo03，跳转到了error.jsp，但是过滤器并没有执行</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E9%94%99%E8%AF%AF%E7%95%8C%E9%9D%A2.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>打开web.xml中的代码：<code>&lt;dispatcher&gt;ERROR&lt;/dispatcher&gt;</code>，让过滤器拦截错误界面</p>
+<ul>
+<li>再次访问demo3</li>
+</ul>
+<p><img src="/2020/05/05/Javaweb05/img/error%E8%BF%87%E6%BB%A4.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>转发测试：</p>
+<ul>
+<li>打开web.xml中的代码：<code>req.getRequestDispatcher(&quot;/index.jsp&quot;).forward(req,resp);</code></li>
+<li>屏蔽转发的代码</li>
+<li>访问demo3，转发到了index.jsp，然后过滤器也执行了</li>
+<li>这是<code>&lt;dispatcher&gt;FORWARD&lt;/dispatcher&gt;</code>起到的作用</li>
+</ul>
+<p><img src="/2020/05/05/Javaweb05/img/%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>包含测试：</p>
+<ul>
+<li><p>打开web.xml中的代码：<code>req.getRequestDispatcher(&quot;/index.jsp&quot;).include(req,resp);</code></p>
+</li>
+<li><p>访问demo3</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E5%8C%85%E5%90%AB.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-Servlet规范中的监听器-Listener"><a href="#3-Servlet规范中的监听器-Listener" class="headerlink" title="3 Servlet规范中的监听器-Listener"></a>3 Servlet规范中的监听器-Listener</h1><h2 id="3-1-观察者设计模式"><a href="#3-1-观察者设计模式" class="headerlink" title="3.1 观察者设计模式"></a>3.1 观察者设计模式</h2><ul>
+<li><p>在介绍监听器之前，先跟同学们普及一个知识，观察者设计模式。</p>
+</li>
+<li><p>因为所有的监听器都是观察者设计模式的体现。</p>
+</li>
+<li><p>那什么是观察者设计模式呢？</p>
+</li>
+<li><p>它是事件驱动的一种体现形式。就好比在做什么事情的时候被人盯着。当对应做到某件事时，触发事件。</p>
+</li>
+</ul>
+<ul>
+<li><p>观察者模式通常由以下三部分组成：</p>
+<ul>
+<li>事件源：触发事件的对象。</li>
+<li>事件：触发的动作，里面封装了事件源。</li>
+<li>监听器：当事件源触发事件时，要做的事情。一般是一个接口，由使用者来实现。（此处的思想还涉及了一个涉及模式，我们在JDBC的第二天课程中就给同学们讲解，策略模式）</li>
+</ul>
+</li>
+<li><p>生活中的例子</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%9B%91%E5%90%AC.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>老师定了一个规矩，老师一旦发现学生9点之后来的话就算迟到，那就惩罚，9点之前来的学生不惩罚</li>
+<li>在这个例子中，事件源是学生</li>
+<li>事件是迟到</li>
+<li>监听器就是老师</li>
+</ul>
+</li>
+<li><p>监听器介绍</p>
+<ul>
+<li>在程序当中，我们可以对：对象的创建销毁、域对象中属性的变化、会话相关内容进行监听</li>
+<li>Servlet 规范中共计 8 个监听器，监听器都是以接口形式提供，具体功能需要我们自己来完成</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-2-监听对象的监听器"><a href="#3-2-监听对象的监听器" class="headerlink" title="3.2 监听对象的监听器"></a>3.2 监听对象的监听器</h2><h3 id="1-ServletContextListener"><a href="#1-ServletContextListener" class="headerlink" title="1) ServletContextListener"></a>1) ServletContextListener</h3><p>作用:初始化配置</p>
+<ul>
+<li><p>ServletContextListener：用于监听 ServletContext 对象的创建和销毁</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A1.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>参数：ServletContextEvent 代表事件对象</li>
+<li>事件对象中封装了事件源，也就是 ServletContext</li>
+<li>真正的事件指的是创建或销毁 ServletContext 对象的操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-HttpSessionListener"><a href="#2-HttpSessionListener" class="headerlink" title="2) HttpSessionListener"></a>2) HttpSessionListener</h3><ul>
+<li><p>HttpSessionListener：用于监听 HttpSession 对象的创建和销毁</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A102.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>参数：HttpSessionEvent 代表事件对象</li>
+<li>事件对象中封装了事件源，也就是 HttpSession</li>
+<li>真正的事件指的是创建或销毁 HttpSession 对象的操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-ServletRequestListener"><a href="#3-ServletRequestListener" class="headerlink" title="3) ServletRequestListener"></a>3) ServletRequestListener</h3><ul>
+<li><p>ServletRequestListener：用于监听 ServletRequest 对象的创建和销毁</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A103.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>参数：ServletRequestEvent 代表事件对象</li>
+<li>事件对象中封装了事件源，也就是 ServletRequest</li>
+<li>真正的事件指的是创建或销毁 ServletRequest 对象的操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-3-监听域对象属性变化的监听器"><a href="#3-3-监听域对象属性变化的监听器" class="headerlink" title="3.3 监听域对象属性变化的监听器"></a>3.3 监听域对象属性变化的监听器</h2><h3 id="4-ServletContextAttributeListener"><a href="#4-ServletContextAttributeListener" class="headerlink" title="4) ServletContextAttributeListener"></a>4) ServletContextAttributeListener</h3><ul>
+<li><p>ServletContextAttributeListener：用于监听 ServletContext 应用域中属性的变化</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A104.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>参数：ServletContextAttributeEvent 代表事件对象</li>
+<li>事件对象中封装了事件源，也就是 ServletContext</li>
+<li>真正的事件指的是添加、移除、替换应用域中属性的操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-HttpSessionAttributeListener"><a href="#5-HttpSessionAttributeListener" class="headerlink" title="5) HttpSessionAttributeListener"></a>5) HttpSessionAttributeListener</h3><ul>
+<li><p>HttpSessionAttributeListener：用于监听 HttpSession 会话域中属性的变化</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A105.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>参数：HttpSessionBindingEvent 代表事件对象</li>
+<li>事件对象中封装了事件源，也就是 HttpSession</li>
+<li>真正的事件指的是添加、移除、替换会话域中属性的操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-ServletRequestAttributeListener"><a href="#6-ServletRequestAttributeListener" class="headerlink" title="6) ServletRequestAttributeListener"></a>6) ServletRequestAttributeListener</h3><ul>
+<li><p>ServletRequestAttributeListener：用于监听 ServletRequest 请求域中属性的变化</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A106.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>参数：ServletRequestAttributeEvent 代表事件对象</li>
+<li>事件对象中封装了事件源，也就是 ServletRequest</li>
+<li>真正的事件指的是添加、移除、替换请求域中属性的操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-4-监听会话相关的感知性监听器"><a href="#3-4-监听会话相关的感知性监听器" class="headerlink" title="3.4 监听会话相关的感知性监听器"></a>3.4 监听会话相关的感知性监听器</h2><h3 id="7-HttpSessionBindingListener"><a href="#7-HttpSessionBindingListener" class="headerlink" title="7) HttpSessionBindingListener"></a>7) HttpSessionBindingListener</h3><ul>
+<li><p>HttpSessionBindingListener：用于感知对象和会话域绑定的监听器</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A107.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>参数：HttpSessionBindingEvent 代表事件对象</li>
+<li>事件对象中封装了事件源，也就是 HttpSession</li>
+<li>真正的事件指的是添加、移除会话域中数据的操作</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs nginx"><span class="hljs-attribute">HttpSessionBindingListener</span> 和 ServletRequestAttributeListener 的区别<br><span class="hljs-number">1</span>.只有实现了HttpSessionBindingListener的类，在和session绑定、解除绑定时触发其事件。<br><span class="hljs-number">2</span>.实现了HttpSessionAttributeListener后，任何对象（不论其是否实现了AttributeListener)在变化时均触发对应的事件。<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="8-HttpSessionActivationListener"><a href="#8-HttpSessionActivationListener" class="headerlink" title="8) HttpSessionActivationListener"></a>8) HttpSessionActivationListener</h3><ul>
+<li><p>HttpSessionActivationListener：用于感知会话域中对象钝化和活化的监听器</p>
+</li>
+<li><p>核心方法</p>
+<p><img src="/2020/05/05/Javaweb05/img/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A108.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>参数：HttpSessionEvent 代表事件对象</li>
+<li>事件对象中封装了事件源，也就是 HttpSession</li>
+<li>真正的事件指的是会话域中数据钝化、活化的操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-5-监听器的使用"><a href="#3-5-监听器的使用" class="headerlink" title="3.5 监听器的使用"></a>3.5 监听器的使用</h2><ul>
+<li>在实际开发中，我们可以根据具体情况来从这8个监听器中选择使用</li>
+<li>感知型监听器由于无需配置，只需要根据实际需求编写代码，所以此处我们就不再演示了</li>
+<li>我们在剩余6个中分别选择一个监听对象创建销毁和对象域中属性发生变化的监听器演示一下</li>
+<li>演示下边两个</li>
+</ul>
+<p><img src="/2020/05/05/Javaweb05/img/%E4%BD%BF%E7%94%A8.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-4-1-ServletContextListener的使用"><a href="#3-4-1-ServletContextListener的使用" class="headerlink" title="3.4.1 ServletContextListener的使用"></a>3.4.1 ServletContextListener的使用</h3><ol>
+<li><p>创建项目：listener_demo，虚拟路径/listener</p>
+</li>
+<li><p>创建com.itheima.listener.ServletContextListenerDemo</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.listener;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletContext;<br><span class="hljs-keyword">import</span> javax.servlet.ServletContextEvent;<br><span class="hljs-keyword">import</span> javax.servlet.ServletContextListener;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    ServletContext对象的创建和销毁的监听器</span><br><span class="hljs-comment">    //配置监听器：@WebListener</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebListener</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletContextListenerDemo</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ServletContextListener</span></span>&#123;<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        ServletContext对象创建的时候执行此方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">contextInitialized</span><span class="hljs-params">(ServletContextEvent sce)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;监听到了对象的创建...&quot;</span>);<br><br>        <span class="hljs-comment">//获取对象</span><br>        ServletContext servletContext = sce.getServletContext();<br>        System.out.println(servletContext);<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        ServletContext对象销毁的时候执行此方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">contextDestroyed</span><span class="hljs-params">(ServletContextEvent sce)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;监听到了对象的销毁...&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>启动项目：ServletContext是项目启动都会创建的，所以这里只需要启动tomcat</p>
+<p><img src="/2020/05/05/Javaweb05/img/demo01.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h3 id="3-4-2-ServletContextAttributeListener的使用"><a href="#3-4-2-ServletContextAttributeListener的使用" class="headerlink" title="3.4.2 ServletContextAttributeListener的使用"></a>3.4.2 ServletContextAttributeListener的使用</h3><ol>
+<li><p>新建ServletContextAttributeListenerDemo</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.listener;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletContext;<br><span class="hljs-keyword">import</span> javax.servlet.ServletContextAttributeEvent;<br><span class="hljs-keyword">import</span> javax.servlet.ServletContextAttributeListener;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    应用域对象中的属性变化的监听器</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebListener</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletContextAttributeListenerDemo</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ServletContextAttributeListener</span></span>&#123;<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        向应用域对象中添加属性时执行此方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">attributeAdded</span><span class="hljs-params">(ServletContextAttributeEvent scae)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;监听到了属性的添加...&quot;</span>);<br><br>        <span class="hljs-comment">//获取应用域对象</span><br>        ServletContext servletContext = scae.getServletContext();<br>        <span class="hljs-comment">//获取属性</span><br>        Object value = servletContext.getAttribute(<span class="hljs-string">&quot;username&quot;</span>);<br>        System.out.println(value);<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        向应用域对象中替换属性时执行此方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">attributeReplaced</span><span class="hljs-params">(ServletContextAttributeEvent scae)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;监听到了属性的替换...&quot;</span>);<br><br>        <span class="hljs-comment">//获取应用域对象</span><br>        ServletContext servletContext = scae.getServletContext();<br>        <span class="hljs-comment">//获取属性</span><br>        Object value = servletContext.getAttribute(<span class="hljs-string">&quot;username&quot;</span>);<br>        System.out.println(value);<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        向应用域对象中移除属性时执行此方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">attributeRemoved</span><span class="hljs-params">(ServletContextAttributeEvent scae)</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;监听到了属性的移除...&quot;</span>);<br><br>        <span class="hljs-comment">//获取应用域对象</span><br>        ServletContext servletContext = scae.getServletContext();<br>        <span class="hljs-comment">//获取属性</span><br>        Object value = servletContext.getAttribute(<span class="hljs-string">&quot;username&quot;</span>);<br>        System.out.println(value);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>修改ServletContextListenerDemo：在contextInitialized中增加如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//添加属性</span><br>servletContext.setAttribute(<span class="hljs-string">&quot;username&quot;</span>,<span class="hljs-string">&quot;zhangsan&quot;</span>);<br><br><span class="hljs-comment">//替换属性</span><br>servletContext.setAttribute(<span class="hljs-string">&quot;username&quot;</span>,<span class="hljs-string">&quot;lisi&quot;</span>);<br><br><span class="hljs-comment">//移除属性</span><br>servletContext.removeAttribute(<span class="hljs-string">&quot;username&quot;</span>);<br></code></pre></div></td></tr></table></figure></li>
+<li><p>启动tomcat</p>
+<p><img src="/2020/05/05/Javaweb05/img/demo02.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>注解配置监听器，改为xml手动配置</p>
+<ol>
+<li>注释两个demo中的<code>//@WebListener</code></li>
+<li>web.xml增加如下配置</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--配置监听器--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>com.itheima.listener.ServletContextListenerDemo<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>com.itheima.listener.ServletContextAttributeListenerDemo<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaWeb%E6%A0%B8%E5%BF%83/">JavaWeb核心</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaWeb/">JavaWeb</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/04/01/h1/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello Hexo</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/04/mysql04/">
+                        <span class="hidden-mobile">MySQL高级-04</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>

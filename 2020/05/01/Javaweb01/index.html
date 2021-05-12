@@ -1,0 +1,1485 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>Tomcat&amp;Http协议 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zfqwb.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Tomcat&Http协议">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-01 19:07" pubdate>
+        2020年5月1日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      70
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Tomcat&amp;Http协议</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：9 天前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="1-企业开发简介"><a href="#1-企业开发简介" class="headerlink" title="1 企业开发简介"></a>1 企业开发简介</h1><h2 id="1-1-JavaEE规范"><a href="#1-1-JavaEE规范" class="headerlink" title="1.1 JavaEE规范"></a>1.1 JavaEE规范</h2><ul>
+<li><strong>JavaEE(Java Enterprise Edition)：Java 企业版</strong></li>
+<li>它是由 SUN 公司领导、各个厂家共同制定并得到广泛认可的工业标准</li>
+<li>JavaEE 早期叫做 J2EE，但是没有继续采用其命名规则。J2EE 的版本从 1.0 开始到 1.4 结束。而 JavaEE 版本是从JavaEE 5 版本开始，目前最新的版本是 JavaEE 8</li>
+<li>JavaEE 规范是很多 Java 开发技术的总称。这些技术规范都是沿用自 J2EE 的。一共包括了 13 个技术规范</li>
+<li>包括：JDBC，JNDI，EJB，RMI，IDL/CORBA，JSP，Servlet，XML，JMS，JTA，JTS，JavaMail，JAF</li>
+</ul>
+<h2 id="1-2-Web概述和资源分类"><a href="#1-2-Web概述和资源分类" class="headerlink" title="1.2 Web概述和资源分类"></a>1.2 Web概述和资源分类</h2><h3 id="1-2-1-Web概述"><a href="#1-2-1-Web概述" class="headerlink" title="1.2.1 Web概述"></a>1.2.1 Web概述</h3><ul>
+<li>WEB 在计算机领域中代表的是<strong>网络</strong></li>
+<li>像我们之前所用的 WWW，它是 World Wide Web 三个单词的缩写，称为：<strong>万维网</strong></li>
+<li>网络相关技术的出现都是为了让我们在网络的世界中<strong>获取资源</strong>，这些资源的存放之处，我们把它叫做<strong>网站</strong></li>
+<li>我们通过输入网站的地址(网址)，就可以访问网站中提供的资源(不区分局域网或广域网)</li>
+</ul>
+<h3 id="1-2-2-资源分类"><a href="#1-2-2-资源分类" class="headerlink" title="1.2.2 资源分类"></a>1.2.2 资源分类</h3><ul>
+<li>静态资源<ul>
+<li>网站中提供给人们展示的资源是一成不变的，也就是说不同人或者在不同时间，看到的内容都是一样的</li>
+<li>例如：我们看到的新闻，网站的使用手册，网站功能说明文档等等</li>
+<li>作为开发者来说，我们编写的 HTML、CSS、JavaScript 都属于静态资源</li>
+</ul>
+</li>
+<li>动态资源<ul>
+<li>网站中提供给人们展示的资源是由程序产生的，在不同的时间或不同的人由于身份的不同，所看到的内容是不一样的</li>
+<li>例如：我们在12306上购买火车票，火车票的余票数由于时间的变化，会逐渐的减少，直到最后没有余票。</li>
+<li>作为开发者来说，我们编写的 JSP、Servlet 等都属于动态资源</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-3-系统结构"><a href="#1-3-系统结构" class="headerlink" title="1.3 系统结构"></a>1.3 系统结构</h2><h3 id="1-3-1-系统结构简介"><a href="#1-3-1-系统结构简介" class="headerlink" title="1.3.1 系统结构简介"></a>1.3.1 系统结构简介</h3><ul>
+<li><p>在我们前面课程的学习中，开发的都是 Java 工程。这些工程在企业中称之为项目或者产品。它都是有系统架构的</p>
+</li>
+<li><p>基础结构划分：</p>
+<ul>
+<li>C/S 结构</li>
+<li>B/S 结构</li>
+</ul>
+</li>
+<li><p>技术选型划分：</p>
+<ul>
+<li>Model1 模型</li>
+<li>Model2 模型</li>
+<li>MVC 模型</li>
+<li>三层架构+ MVC 模型</li>
+</ul>
+</li>
+<li><p>部署方式划分：</p>
+<ul>
+<li>一体化结构</li>
+<li>垂直拆分结构</li>
+<li>分布式结构</li>
+<li>微服务结构</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-2-C-S结构"><a href="#1-3-2-C-S结构" class="headerlink" title="1.3.2 C/S结构"></a>1.3.2 C/S结构</h3><ul>
+<li><p>CS 结构：(Client Server) 客户端+服务器的方式</p>
+</li>
+<li><p>C/S结构的系统设计图如下：</p>
+</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/assets/CS%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" srcset="/img/loading.gif" lazyload alt="CS结构图"></p>
+<h3 id="1-3-3-B-S结构"><a href="#1-3-3-B-S结构" class="headerlink" title="1.3.3 B/S结构"></a>1.3.3 B/S结构</h3><ul>
+<li>BS 结构：(Browser Server) 浏览器+服务器的方式</li>
+<li>B/S结构的系统设计图如下：</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/assets/BS%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" srcset="/img/loading.gif" lazyload alt="BS结构图"></p>
+<h3 id="1-3-4-两种结构的区别及优略"><a href="#1-3-4-两种结构的区别及优略" class="headerlink" title="1.3.4 两种结构的区别及优略"></a>1.3.4 两种结构的区别及优略</h3><p><strong>两种结构的区别</strong></p>
+<p>第一：硬件环境不同，C/S通常是建立在专用的网络或小范围的网络环境上（即局域网），且必须要安装客户端。而B/S是建立在广域网上的，适应范围强，通常有操作系统和浏览器就行。</p>
+<p>第二：C/S结构比B/S结构更安全，因为用户群相对固定，对信息的保护更强。</p>
+<p>第三：B/S结构维护升级比较简单，而C/S结构维护升级相对困难。</p>
+<p><strong>优略</strong></p>
+<p>1 C/S：是能充分发挥客户端PC的处理能力，很多工作可以在客户端处理后再提交给服务器。对应的优点就是客户端响应速度快。</p>
+<p>2 B/S：总体拥有成本低、维护方便、 分布性强、开发简单，可以不用安装任何专门的软件就能 实现在任何地方进行操作，客户端零维护，系统的扩展非常容易，只要有一台能上网的电脑就能使用。</p>
+<p><strong>关于课程中结构的选择</strong>：我们的课程中涉及的系统结构都是是基于B/S结构。</p>
+<h1 id="2-Tomcat服务器"><a href="#2-Tomcat服务器" class="headerlink" title="2 Tomcat服务器"></a>2 Tomcat服务器</h1><h2 id="2-1-服务器介绍"><a href="#2-1-服务器介绍" class="headerlink" title="2.1. 服务器介绍"></a>2.1. 服务器介绍</h2><ul>
+<li><p>服务器是计算机的一种，它比普通计算机运行更快、负载更高、价格更贵。<strong>服务器在网络中为其它客户机(如 PC 机、智能设备等)提供计算或者应用服务</strong>。服务器具有高速的 CPU 运算能力、长时间的可靠运行、强大的 I/O 外部数据吞吐能力以及更好的扩展性</p>
+<p><img src="/2020/05/01/Javaweb01/assets/image-20200723153121941.png" srcset="/img/loading.gif" lazyload alt="image-20200723153121941"></p>
+</li>
+<li><p>而我们这里所说的服务器，其实是 web 服务器，或者应用服务器。它本质就是一个软件，通过和硬件的相结合，从而达到帮助我们来发布应用的功能，让用户通过客户机访问我们的应用</p>
+</li>
+<li><p>服务器的概念非常的广泛，它可以指代<strong>一台特殊的计算机</strong>（相比普通计算机运行更快、负载更高、价格更贵），也可以指代<strong>用于部署网站的应用</strong>。</p>
+</li>
+<li><p>我们这里说的服务器，其实是web服务器，或者应用服务器。<strong>它本质就是一个软件，一个应用</strong>。<strong>作用就是发布我们的应用（工程），让用户可以通过浏览器访问我们的应用</strong>。</p>
+</li>
+<li><p>常见的应用服务器，请看下表：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>服务器名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>weblogic</td>
+<td>实现了javaEE规范，重量级服务器，又称为javaEE容器</td>
+</tr>
+<tr>
+<td>websphere</td>
+<td>实现了javaEE规范，重量级服务器。</td>
+</tr>
+<tr>
+<td>JBOSS</td>
+<td>实现了JavaEE规范，重量级服务器。免费的。</td>
+</tr>
+<tr>
+<td><strong>Tomcat</strong></td>
+<td><strong>实现了jsp/servlet规范，是一个轻量级服务器，开源免费。</strong></td>
+</tr>
+</tbody></table>
+<h2 id="2-2-Tomcat介绍"><a href="#2-2-Tomcat介绍" class="headerlink" title="2.2 Tomcat介绍"></a>2.2 Tomcat介绍</h2><ul>
+<li><p>Tomcat 是 Apache 软件基金会的 Jakarta 项目组中的一个核心项目，由 Apache、Sun 和其他一些公司及个人共同开发而成。由于有了 Sun 公司的参与和支持，最新的 Servlet、JSP 规范总是能在 Tomcat 中得到体现。因为 Tomcat 技术先进、性能稳定，而且开源免费，所以深受 Java 爱好者的喜爱并得到了部分软件开发商的认可，成为目前比较流行的 Web 应用服务器。</p>
+</li>
+<li><p>Tomcat 官网：<a target="_blank" rel="noopener" href="https://tomcat.apache.org/">https://tomcat.apache.org/</a></p>
+<p><img src="/2020/05/01/Javaweb01/img/tomcat.png" srcset="/img/loading.gif" lazyload alt="tomcat官网"></p>
+<ul>
+<li>这只猫就是tomcat的logo</li>
+</ul>
+</li>
+<li><p>Tomcat各版本所需支持</p>
+</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/assets/Tomcat%E5%90%84%E7%89%88%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81.png" srcset="/img/loading.gif" lazyload alt="Tomcat各版本使用技术支持"></p>
+<p>详解: </p>
+<p><img src="/2020/05/01/Javaweb01/assets/image-20200619223029827.png" srcset="/img/loading.gif" lazyload alt="image-20200619223029827"></p>
+<h2 id="2-2-Tomcat基使用"><a href="#2-2-Tomcat基使用" class="headerlink" title="2.2 Tomcat基使用"></a>2.2 Tomcat基使用</h2><h3 id="2-2-1-Tomcat下载与安装"><a href="#2-2-1-Tomcat下载与安装" class="headerlink" title="2.2.1 Tomcat下载与安装"></a>2.2.1 Tomcat下载与安装</h3><p><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">Tomcat官网下载地址</a></p>
+<h3 id="2-2-2-Tomcat目录结构详解"><a href="#2-2-2-Tomcat目录结构详解" class="headerlink" title="2.2.2 Tomcat目录结构详解"></a>2.2.2 Tomcat目录结构详解</h3><p><img src="/2020/05/01/Javaweb01/assets/tomcat%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3.png" srcset="/img/loading.gif" lazyload alt="tomcat目录结构详解"></p>
+<h3 id="2-2-3-Tomcat启动和停止及问题分析解决"><a href="#2-2-3-Tomcat启动和停止及问题分析解决" class="headerlink" title="2.2.3 Tomcat启动和停止及问题分析解决"></a>2.2.3 Tomcat启动和停止及问题分析解决</h3><h4 id="1）启动和停止"><a href="#1）启动和停止" class="headerlink" title="1）启动和停止"></a>1）启动和停止</h4><p>Tomcat服务器的启动文件在二进制文件目录中：<img src="/2020/05/01/Javaweb01/assets/1574762703742.png" srcset="/img/loading.gif" lazyload alt="1574762703742">，这两个文件就是Tomcat的启动文件。</p>
+<p>Tomcat服务器的停止文件也在二进制文件目录中：<img src="/2020/05/01/Javaweb01/assets/1574762805135.png" srcset="/img/loading.gif" lazyload alt="1574762805135">，这两个文件就是Tomcat的停止文件。</p>
+<p>其中<code>.bat</code>文件是针对<code>windows</code>系统的运行程序，<code>.sh</code>文件是针对<code>linux</code>系统的运行程序。</p>
+<p>启动成功：</p>
+<p><img src="/2020/05/01/Javaweb01/img/tomcat%E6%88%90%E5%8A%9F.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2）启动问题"><a href="#2）启动问题" class="headerlink" title="2）启动问题"></a>2）启动问题</h4><ul>
+<li><p><strong>第一个问题：启动一闪而过</strong></p>
+<p>原因：没有配置环境变量</p>
+<p>解决办法：配置上JAVA_HOME环境变量</p>
+</li>
+<li><p><strong>第二个：Address already in use : JVM_Bind</strong></p>
+</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/assets/1574768107180.png" srcset="/img/loading.gif" lazyload alt="1574768107180"></p>
+<p>​    原因：端口被占用</p>
+<p>​    解决办法：找到占用该端口的应用</p>
+<p>​                   使用cmd命令：netstat -a -o 查看pid  在任务管理器中结束占用端口的进程</p>
+<p>​               </p>
+<ul>
+<li><p><strong>第三个：启动产生很多异常，但能正常启动</strong></p>
+<p>原因：Tomcat中部署着很多项目，每次启动这些项目都会启动。而这些项目中有启动报异常的。</p>
+<p>解决办法：</p>
+<div class="hljs code-wrapper"><pre><code>  能找到报异常的项目，就把它从发布目录(webapps)中移除
+  不能确定报异常的项目，就重新解压一个新的Tomcat
+</code></pre></div>
+</li>
+<li><p><strong>第四个：其它问题</strong></p>
+<p>例如：启动产生异常，但是不能正常启动。此时就需要解压一个新的Tomcat启动，来确定是系统问题，还是Tomcat的问题</p>
+<p>所以，此时就需要具体问题，具体分析，然后再对症解决</p>
+</li>
+</ul>
+<h4 id="3）访问自己的界面"><a href="#3）访问自己的界面" class="headerlink" title="3）访问自己的界面"></a>3）访问自己的界面</h4><ol>
+<li><p>tomcat的项目发布目录：我们可以在webapps目录放入自己的项目，这样tomcat启动之后就可以访问这个项目</p>
+<p><img src="/2020/05/01/Javaweb01/img/root.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>新建项目：新建hello/hello.html</p>
+<p><img src="/2020/05/01/Javaweb01/img/hello%E9%A1%B9%E7%9B%AE.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>编写内容：这里没写html的声明，html基本的结构标签，但是浏览器也可以解析</p>
+<p><img src="/2020/05/01/Javaweb01/img/hellohtml.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>访问</p>
+<p><img src="/2020/05/01/Javaweb01/img/hello%E6%88%90%E5%8A%9F.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h2 id="2-3-Tomcat-乱码问题"><a href="#2-3-Tomcat-乱码问题" class="headerlink" title="2.3 Tomcat 乱码问题"></a>2.3 Tomcat 乱码问题</h2><ul>
+<li><p>问题描述：启动tomcat之后，控制台（命令行）出现乱码</p>
+<p><img src="/2020/05/01/Javaweb01/img/tomcat%E4%B9%B1%E7%A0%81.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>问题解决：</p>
+<ul>
+<li>打开tomcat目录下conf/logging.properties文件</li>
+<li>修改如下：（将UTF-8改为gbk，因为cmd命令行窗口的字符集是gbk，所以要统一）</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/img/gbk.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>重新启动tomcat</p>
+</li>
+</ul>
+<h2 id="2-4-IDEA集成Tomcat服务器"><a href="#2-4-IDEA集成Tomcat服务器" class="headerlink" title="2.4 IDEA集成Tomcat服务器"></a>2.4 IDEA集成Tomcat服务器</h2><ol>
+<li><strong>第一步</strong>：点击 Run -&gt; Edit Configurations</li>
+</ol>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9B%86%E6%88%9001.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="2">
+<li><strong>第二步</strong>：点击 Templates-&gt; Tomcat Server -&gt; Local（往下拖才能看到Tomcat Server）</li>
+</ol>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9B%86%E6%88%9002.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="3">
+<li><strong>第三步</strong>：点击 Configure -&gt; Tomcat Home -&gt; 选择 tomcat 所在路径</li>
+</ol>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9B%86%E6%88%9003.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li><p>通过创建项目，验证Tomcat安装成功</p>
+<ul>
+<li>创建一个Java Enterprise项目</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9B%86%E6%88%9004.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>项目名称</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9B%86%E6%88%9005.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>选择语言级别</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9B%86%E6%88%9006.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>最终：能看到下方的Tomcat即可</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9B%86%E6%88%9007.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h2 id="2-5-Linux系统安装Tomcat"><a href="#2-5-Linux系统安装Tomcat" class="headerlink" title="2.5 Linux系统安装Tomcat"></a>2.5 Linux系统安装Tomcat</h2><p><strong>第一步：找到Tomcat</strong></p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs taggerscript">目录：day01_tomcat和http协议<span class="hljs-symbol">\资</span>料<span class="hljs-symbol">\a</span>pache-tomcat-9.0.29.tar.gz<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>第二步：上传到linux</strong></p>
+<figure class="highlight less"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs less">在<span class="hljs-selector-tag">crt</span>上 使用 <span class="hljs-selector-tag">alt</span>+<span class="hljs-selector-tag">p</span> <br>将<span class="hljs-selector-tag">windows</span>上的软件拖进去即可(root目录)<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>第三步：进入/home/</strong></p>
+<figure class="highlight awk"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs awk">cd <span class="hljs-regexp">/home/</span><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>第四步：移动 tomcat…tar.gz 到 /home/</strong> </p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">mv</span> apache-tomcat-<span class="hljs-number">9</span>.<span class="hljs-number">0</span>.<span class="hljs-number">29</span>.tar.gz /home/<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>第五步：解压Tomcat</strong></p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">tar</span> -zxvf apache-tomcat-<span class="hljs-number">9</span>.<span class="hljs-number">0</span>.<span class="hljs-number">29</span>.tar.gz<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>第六步：进入 apache-tomcat-9.0.29/bin</strong></p>
+<figure class="highlight apache"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs apache"><span class="hljs-attribute">cd</span> /apache-tomcat-<span class="hljs-number">9</span>.<span class="hljs-number">0</span>.<span class="hljs-number">29</span>/bin<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>第七步：启动tomcat</strong></p>
+<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata">方式1:<br>	./startup.<span class="hljs-keyword">sh</span><br>方式2:<br>	<span class="hljs-keyword">sh</span> startup.<span class="hljs-keyword">sh</span><br></code></pre></div></td></tr></table></figure>
+
+<p><strong>第八步：访问：<a target="_blank" rel="noopener" href="http://linuxip地址:8080/">http://linuxip地址:8080</a></strong></p>
+<p>**第九步：修改防火墙的规则 **（如果访问不了，执行此步）</p>
+<figure class="highlight pf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs pf">方式<span class="hljs-number">1</span>:service iptables stop  关闭防火墙(不建议); 用到哪一个端口号就放行哪一个(<span class="hljs-number">80</span>,<span class="hljs-number">8080</span>,<span class="hljs-number">3306</span>...)<br>方式<span class="hljs-number">2</span>:放行<span class="hljs-number">8080</span> 端口<br>	修改配置文件<br>		cd /etc/sysconfig<br>		vi iptables<br>			复制(yy , p)	<br>				-A INPUT -m <span class="hljs-keyword">state</span> --state NEW -m tcp -p tcp --dport <span class="hljs-number">22</span> -j ACCEPT<br>			改成<br>				-A INPUT -m <span class="hljs-keyword">state</span> --state NEW -m tcp -p tcp --dport <span class="hljs-number">8080</span> -j ACCEPT<br>		重启加载防火墙或者重启防火墙<br>			service iptables reload  <br>			或者<br>			service iptables restart<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="2-6-web-项目目录结构"><a href="#2-6-web-项目目录结构" class="headerlink" title="2.6 web 项目目录结构"></a>2.6 web 项目目录结构</h2><p><img src="/2020/05/01/Javaweb01/assets/image-20210420183456712.png" srcset="/img/loading.gif" lazyload alt="image-20210420183456712"></p>
+<h2 id="2-6-JavaWeb项目创建"><a href="#2-6-JavaWeb项目创建" class="headerlink" title="2.6 JavaWeb项目创建"></a>2.6 JavaWeb项目创建</h2><h3 id="2-6-1-JavaWeb工程概述"><a href="#2-6-1-JavaWeb工程概述" class="headerlink" title="2.6.1 JavaWeb工程概述"></a>2.6.1 JavaWeb工程概述</h3><p><code>JavaWeb</code>应用是一个全新的应用种类。这类应用程序指供浏览器访问的程序，通常也简称为web应用。</p>
+<p>一个web应用由多个静态web资源和动态web资源组成，例如：html、css、js文件，jsp文件、java程序、支持jar包、工程配置文件、图片、音视频等等。</p>
+<p>Web应用开发好后，若想供外界访问，需要把web应用所在目录交给Web服务器管理（Tomcat就是Web服务器之一），这个过程称之为虚似目录的映射。</p>
+<h3 id="2-6-2-JavaWeb应用的创建"><a href="#2-6-2-JavaWeb应用的创建" class="headerlink" title="2.6.2 JavaWeb应用的创建"></a>2.6.2 JavaWeb应用的创建</h3><ol>
+<li><p>创建项目</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%88%9B%E5%BB%BA01.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>项目名称</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%88%9B%E5%BB%BA02.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>选择语言级别</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%88%9B%E5%BB%BA03.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>目录结构</p>
+<ul>
+<li>src：存放源代码的</li>
+<li>web：存放项目相关资源的(html、css、js、jsp、图片等)</li>
+<li>WEB-INF：存放相关配置的(web.xml等)</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-6-2-补-JavaWeb应用的部署"><a href="#2-6-2-补-JavaWeb应用的部署" class="headerlink" title="2.6.2(补) JavaWeb应用的部署"></a>2.6.2(补) JavaWeb应用的部署</h3><figure class="highlight basic"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs basic"><span class="hljs-symbol">2020 </span>版本idea <br><span class="hljs-number">1</span>) 创建普通项目<br><span class="hljs-number">2</span>) 模块右键 选择 add framework supports ---&gt; web Application<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="/2020/05/01/Javaweb01/assets/image-20210420142153642.png" srcset="/img/loading.gif" lazyload alt="image-20210420142153642"></p>
+<h3 id="2-6-3-JavaWeb应用的部署"><a href="#2-6-3-JavaWeb应用的部署" class="headerlink" title="2.6.3 JavaWeb应用的部署"></a>2.6.3 JavaWeb应用的部署</h3><ul>
+<li>应用部署，就是项目发布</li>
+</ul>
+<h4 id="1）IDEA部署"><a href="#1）IDEA部署" class="headerlink" title="1）IDEA部署"></a>1）IDEA部署</h4><ol>
+<li><p>点击 Run -&gt; Edit Configurations</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8F%91%E5%B8%8301.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>点击 Tomcat Server -&gt; Deployment</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8F%91%E5%B8%8302.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><strong>Application Context是项目访问路径，/代表默认路径，多个项目中只能有一个默认路径</strong></li>
+</ul>
+</li>
+<li><p>点击 Tomcat Server -&gt; Server</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8F%91%E5%B8%8303.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>After launch：启动tomcat自动以谷歌浏览器打开首页：<a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a> ， 这里的/就是刚刚配置的默认路径</li>
+<li>update resources ， 是tomcat启动之后，我们还可能会修改项目，那这时候不用重新启动tomcat，只需要刷新浏览器，就可以看到修改后的内容</li>
+</ul>
+</li>
+<li><p>启动 tomcat 服务</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8F%91%E5%B8%8304.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>放个发布的项目就已经在Tomcat下方了：MyWeb</li>
+<li>点击  <img src="/2020/05/01/Javaweb01/img/run.png" srcset="/img/loading.gif" lazyload>：，启动Tomcat</li>
+</ul>
+</li>
+<li><p>验证结果：能看到Conneted to Server就说明启动成功，并且会自动打开项目首页</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8F%91%E5%B8%8305.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>这里为啥显示的是一个  $END$，这是他默认访问的是index.jsp</p>
+<p><img src="/2020/05/01/Javaweb01/img/index.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+</li>
+<li><p>根路径设置</p>
+<ul>
+<li>点击 <img src="/2020/05/01/Javaweb01/img/stop.png" srcset="/img/loading.gif" lazyload>，停止tomcat，然后修改</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/img/%E4%BF%AE%E6%94%B9%E6%A0%B9%E8%B7%AF%E5%BE%84.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>修改之后，访问的路径就是/webdemo/</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E4%BF%AE%E6%94%B9%E8%B7%AF%E5%BE%84.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>改一下首页</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E4%BF%AE%E6%94%B9index.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>效果：不用重启tomcat，因为我们已经配置过 update  resources，自动更新资源</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E4%BF%AE%E6%94%B9%E9%A6%96%E9%A1%B5%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h4 id="2）war包发布-常见于运维部署-（了解）"><a href="#2）war包发布-常见于运维部署-（了解）" class="headerlink" title="2）war包发布(常见于运维部署) （了解）"></a>2）war包发布(常见于运维部署) （了解）</h4><ol>
+<li><p><strong>在项目的 web 路径下打 war 包</strong>：<strong>jar -cvf myweb.war .</strong></p>
+<ul>
+<li><code>jar -cvf war包名称 空格 .</code>，最后的一个点代表当前路径</li>
+<li>就是就是将当前路径打包成myweb.war</li>
+<li>注意：视频中演示的项目名称是webdemo，这里是MyWeb</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/img/war01.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>将打好的 war 包剪切到 tomcat 的 webapps 路径下</p>
+<p><img src="/2020/05/01/Javaweb01/img/war02.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>启动 tomcat 服务，自动解压 war 包</p>
+<p><img src="/2020/05/01/Javaweb01/img/war03.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>验证结果</p>
+<p><img src="/2020/05/01/Javaweb01/img/war04.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h2 id="2-7-Tomcat配置"><a href="#2-7-Tomcat配置" class="headerlink" title="2.7 Tomcat配置"></a>2.7 Tomcat配置</h2><h3 id="2-7-1-Tomcat配置文件介绍"><a href="#2-7-1-Tomcat配置文件介绍" class="headerlink" title="2.7.1 Tomcat配置文件介绍"></a>2.7.1 Tomcat配置文件介绍</h3><ol>
+<li><p>主配置文件 server.xml</p>
+<p><img src="/2020/05/01/Javaweb01/img/tomcat%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>8080 端口：tomcat 服务默认端口号。访问 url 地址后必须手动写 :8080</li>
+<li>80 端口：HTTP协议采用的端口号。访问 url 地址后不用写 :80</li>
+<li>一般我们访问人家的网址都是不用添加8080的，这是因为项目发布之后都会将端口改为80，80端口可以省略</li>
+</ul>
+</li>
+<li><p>可以改为80端口，重启tomcat进行测试，访问<a target="_blank" rel="noopener" href="http://localhost/">http://localhost</a></p>
+<ol>
+<li>扩展：在今日资料中有tomcat其他的配置文件，“day01_tomcat和http协议\资料\扩展资料”，感兴趣的可以先自己了解下，我们后边用到的话会详细介绍</li>
+</ol>
+</li>
+<li><p>测试完之后，再改为8080端口</p>
+</li>
+</ol>
+<h3 id="2-7-2-Tomcat配置虚拟目录"><a href="#2-7-2-Tomcat配置虚拟目录" class="headerlink" title="2.7.2 Tomcat配置虚拟目录"></a>2.7.2 Tomcat配置虚拟目录</h3><ul>
+<li>虚拟目录的作用：可以发布任意目录下的项目</li>
+<li>之前我们以war包形式发布的webdemo项目，是必须放到webapps目录下的，那我们能不能将其他目录的项目也发布到tomcat呢？</li>
+<li>可以，需要配置虚拟目录</li>
+<li>步骤：</li>
+</ul>
+<ol>
+<li><p>编辑 server.xml 配置文件，找到&lt;Host&gt;标签</p>
+</li>
+<li><p>加入以下内容</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E8%99%9A%E6%8B%9F%E7%9B%AE%E5%BD%95.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>path 属性：访问资源的虚拟目录名称</li>
+<li>docBase属性：项目真实存在的路径</li>
+</ul>
+</li>
+<li><p>将之前发布的webdemo，copy到D盘，改名字为my</p>
+</li>
+<li><p>重启tomcat，访问：<a target="_blank" rel="noopener" href="http://localhost:8080/my">http://localhost:8080/my</a></p>
+</li>
+</ol>
+<h3 id="2-7-3-Tomcat配置虚拟主机"><a href="#2-7-3-Tomcat配置虚拟主机" class="headerlink" title="2.7.3 Tomcat配置虚拟主机"></a>2.7.3 Tomcat配置虚拟主机</h3><ul>
+<li>虚拟主机的作用：可以指定访问路径的名称</li>
+<li>之前访问的项目地址是：<a target="_blank" rel="noopener" href="http://localhost:8080/webdemo">http://localhost:8080/webdemo</a> , 但是我们能不能访问<a target="_blank" rel="noopener" href="http://www.webdemo.com/">www.webdemo.com</a> ，像访问百度一样：<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></li>
+<li>可以，需要配置虚拟主机</li>
+<li>步骤：</li>
+</ul>
+<ol>
+<li><p>编辑 server.xml 配置文件，找到&lt;Engine&gt;标签</p>
+</li>
+<li><p>加入以下内容</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>name 属性：访问虚拟主机的名称</li>
+<li>appBase 属性：项目存放的路径</li>
+<li>unpackWARs 属性：是否自动解压 war 包</li>
+<li>autoDeploy 属性：是否自动发布</li>
+<li>path不能填写内容，因为我们希望访问<a target="_blank" rel="noopener" href="http://www.webdemo.com就直接找到webdemo/">www.webdemo.com就直接找到webdemo</a></li>
+</ul>
+</li>
+<li><p>修改 hosts 文件：C:\Windows\System32\drivers\etc\hosts</p>
+<p><img src="/2020/05/01/Javaweb01/img/hosts.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>127.0.0.1代表本机回环地址（就是一个固定代表本机的一个ip地址）</li>
+<li><a target="_blank" rel="noopener" href="http://www.webdemo.com/">www.webdemo.com</a> 就是刚刚配置的虚拟主机名称</li>
+<li>因为现在我们并没有真正的注册webdemo.com域名，所以只能在hosts目录中配置一下</li>
+</ul>
+</li>
+<li><p>访问：<a target="_blank" rel="noopener" href="http://www.webdemo.com:8080/">www.webdemo.com:8080</a></p>
+<p><img src="/2020/05/01/Javaweb01/img/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>如果将tomcat的端口改为80，就可以只访问<a target="_blank" rel="noopener" href="http://www.webdemo.com/">www.webdemo.com</a></li>
+</ul>
+</li>
+</ol>
+<h1 id="3-HTTP协议"><a href="#3-HTTP协议" class="headerlink" title="3 HTTP协议"></a>3 HTTP协议</h1><h2 id="3-1-HTTP协议概述"><a href="#3-1-HTTP协议概述" class="headerlink" title="3.1 HTTP协议概述"></a>3.1 HTTP协议概述</h2><h3 id="3-1-1-HTTP协议介绍"><a href="#3-1-1-HTTP协议介绍" class="headerlink" title="3.1.1 HTTP协议介绍"></a>3.1.1 HTTP协议介绍</h3><ul>
+<li><p>HTTP(Hyper Text Transfer Protocol)：<strong>超文本传输协议</strong></p>
+</li>
+<li><p>HTTP 协议是基于 TCP/IP 协议的</p>
+</li>
+<li><p>超文本：比普通文本更加强大</p>
+</li>
+<li><p>传输协议：客户端和服务器端的通信规则(握手规则)</p>
+<p><img src="/2020/05/01/Javaweb01/img/http%E5%8D%8F%E8%AE%AE.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p><strong>注意：JavaScript、CSS、图片资源会自动发起请求</strong></p>
+<p><img src="/2020/05/01/Javaweb01/img/%E8%AE%BF%E9%97%AE%E7%99%BE%E5%BA%A6.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>发现访问百度之后，不仅仅有<a target="_blank" rel="noopener" href="http://www.baidu.com一个请求/">www.baidu.com一个请求</a></p>
+</li>
+<li><p>还有图片等很多请求</p>
+</li>
+<li><p>所以在访问一个网址时（默认访问首页），会请求首页所依赖的所有资源（js，css，图片等资源）</p>
+</li>
+</ul>
+</li>
+<li><p>补充：</p>
+<blockquote>
+<p>HTTP协议概念是客户浏览器和服务器一种一问一答的规则，那么必须要有问有答，而且要先问后答。<br>但是我们使用<code>&lt;script&gt;</code>,<code>&lt;link&gt;</code>和<code>&lt;img&gt;</code>标签，没有手动发起请求，但是仍然能从服务器端拿到数据，原因就是：<strong>在浏览器遇到<code>&lt;script&gt;</code>,<code>&lt;link&gt;</code>,<code>&lt;img&gt;</code>标签时会自动发出请求。</strong></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="3-2-HTTP协议组成"><a href="#3-2-HTTP协议组成" class="headerlink" title="3.2 HTTP协议组成"></a>3.2 HTTP协议组成</h2><ul>
+<li>由HTTP协议的概念可知，它分为问和答两部分</li>
+<li>其中问指的就是请求部分</li>
+<li>而答指的就是响应部分</li>
+</ul>
+<h3 id="3-2-1-请求部分"><a href="#3-2-1-请求部分" class="headerlink" title="3.2.1 请求部分"></a>3.2.1 请求部分</h3><h4 id="1）-介绍"><a href="#1）-介绍" class="headerlink" title="1） 介绍"></a>1） 介绍</h4><ol>
+<li><p>请求的组成部分<br> 请求行<br> 请求头<br> 请求空行<br> 请求体</p>
+</li>
+<li><p>请求的方式<br> GET<br> POST</p>
+</li>
+<li><p><strong>注意：只有 POST 请求方式才有请求体</strong></p>
+</li>
+<li><p>GET请求方式分析</p>
+<p><img src="/2020/05/01/Javaweb01/img/get%E8%AF%B7%E6%B1%82.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><strong>注意</strong>：请求空行和请求体，其实就是一个换行，啥内容都没有</li>
+<li>这里老师添加了一个灰色字体，是想让大家知道这是代表啥</li>
+<li><strong>补充</strong>：请求空行是啥？<ul>
+<li>最后一个请求头之后是一个空行，发送回车符和换行符，通知服务器以下不再有请求头 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>POST请求方式分析</p>
+<p><img src="/2020/05/01/Javaweb01/img/post%E8%AF%B7%E6%B1%82.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h4 id="2）操作"><a href="#2）操作" class="headerlink" title="2）操作"></a>2）操作</h4><p>接下来，我们来实际操作一下，观察一下请求信息在哪看</p>
+<ol>
+<li><p>找到资料，将这三个文件夹copy到webdemo的web目录下</p>
+<p><img src="/2020/05/01/Javaweb01/img/http%E8%B5%84%E6%BA%90.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>login目录下提供了一个login.html</li>
+</ul>
+</li>
+<li><p>访问：</p>
+<p><img src="/2020/05/01/Javaweb01/img/login%E8%AE%BF%E9%97%AE.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>打开调试工具-Network，然后点击确定发起登陆请求，如下图观看：</p>
+<p><img src="/2020/05/01/Javaweb01/img/login%E8%AF%B7%E6%B1%82.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>修改登陆表单的提交方式为POST，然后再次发起请求</p>
+<p><img src="/2020/05/01/Javaweb01/img/post.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>post请求的URL后就没有拼接参数</p>
+</li>
+<li><p>而是以请求体传递了(上图右框中，滚动条，往下滑看到Form Data)</p>
+<p><img src="/2020/05/01/Javaweb01/img/formdata.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-2-2-响应部分"><a href="#3-2-2-响应部分" class="headerlink" title="3.2.2 响应部分"></a>3.2.2 响应部分</h3><ol>
+<li><p>响应的组成部分</p>
+</li>
+<li><p>响应行</p>
+</li>
+<li><p>响应头</p>
+</li>
+<li><p>响应空行</p>
+</li>
+<li><p>响应体</p>
+</li>
+<li><p>响应信息分析</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%93%8D%E5%BA%94%E5%88%86%E6%9E%90.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>响应头具体在哪看，跟请求头在一起，看上一小节即可</p>
+</li>
+</ol>
+<h2 id="3-3-请求部分详解"><a href="#3-3-请求部分详解" class="headerlink" title="3.3 请求部分详解"></a>3.3 请求部分详解</h2><h3 id="3-3-1-请求行详解"><a href="#3-3-1-请求行详解" class="headerlink" title="3.3.1 请求行详解"></a>3.3.1 请求行详解</h3><p>请求行：<code>GET /myapp/2.html HTTP/1.1</code></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>请求的方式。（还有POST）</td>
+</tr>
+<tr>
+<td>/myapp/2.html</td>
+<td>请求的资源。</td>
+</tr>
+<tr>
+<td>HTTP/1.1</td>
+<td>使用的协议，及协议的版本。</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-2-请求消息头详解"><a href="#3-3-2-请求消息头详解" class="headerlink" title="3.3.2 请求消息头详解"></a>3.3.2 请求消息头详解</h3><table>
+<thead>
+<tr>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Accept</td>
+<td>告知服务器，客户浏览器所支持的MIME类型。</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>告知服务器，客户浏览器所支持的压缩编码格式。最常用的就是gzip压缩。</td>
+</tr>
+<tr>
+<td>Accept-Language</td>
+<td>告知服务器，客户浏览器所支持的语言。一般都是zh_CN或en_US等。</td>
+</tr>
+<tr>
+<td>Referer</td>
+<td>告知服务器，当前请求的来源。<br/>只有当前请求有来源的时候，才有这个消息头。从地址栏输入的没有来源。<br/>作用：1 投放广告  2 防盗链</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>告知服务器，请求正文的MIME类型。</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>告知服务器，请求正文的长度。</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>浏览器相关信息</td>
+</tr>
+<tr>
+<td>Connection: Keep-Alive</td>
+<td>连接的状态：保持连接</td>
+</tr>
+<tr>
+<td>If-Modified-Since</td>
+<td>告知服务器，客户浏览器缓存文件的最后修改时间。</td>
+</tr>
+<tr>
+<td>Cookie（********）</td>
+<td>会话管理相关，非常的重要。</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-3-请求空行-amp-请求体"><a href="#3-3-3-请求空行-amp-请求体" class="headerlink" title="3.3.3 请求空行&amp;请求体"></a>3.3.3 请求空行&amp;请求体</h3><ol>
+<li><p>请求空行</p>
+<p>​     普通换行，用于区分请求头和请求体</p>
+</li>
+<li><p>请求体</p>
+<p>​     只有 POST 提交方式才有请求体，用于显示提交参数</p>
+</li>
+</ol>
+<h2 id="3-4-响应部分详解"><a href="#3-4-响应部分详解" class="headerlink" title="3.4 响应部分详解"></a>3.4 响应部分详解</h2><h3 id="3-4-1-响应行详解"><a href="#3-4-1-响应行详解" class="headerlink" title="3.4.1 响应行详解"></a>3.4.1 响应行详解</h3><p>响应行：<code>HTTP/1.1 200 OK</code></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTP/1.1</td>
+<td>使用协议的版本。</td>
+</tr>
+<tr>
+<td>200</td>
+<td>响应状态码</td>
+</tr>
+<tr>
+<td>OK</td>
+<td>状态码描述</td>
+</tr>
+</tbody></table>
+<p>常用状态码介绍：</p>
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>一切都OK&gt;</td>
+</tr>
+<tr>
+<td>302/307</td>
+<td>请求重定向(客户端行为，两次请求，地址栏发生改变)</td>
+</tr>
+<tr>
+<td>304</td>
+<td>请求资源未发生变化，使用缓存</td>
+</tr>
+<tr>
+<td>404</td>
+<td>请求资源未找到</td>
+</tr>
+<tr>
+<td>500</td>
+<td>服务器错误</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-2-响应消息头详解"><a href="#3-4-2-响应消息头详解" class="headerlink" title="3.4.2 响应消息头详解"></a>3.4.2 响应消息头详解</h3><table>
+<thead>
+<tr>
+<th>消息头</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Location</td>
+<td>请求重定向的地址，常与302,307配合使用。</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>服务器相关信息。</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>告知客户浏览器，响应正文的MIME类型。</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>告知客户浏览器，响应正文的长度。</td>
+</tr>
+<tr>
+<td>Content-Encoding</td>
+<td>告知客户浏览器，响应正文使用的压缩编码格式。常用的gzip压缩。</td>
+</tr>
+<tr>
+<td>Content-Language</td>
+<td>告知客户浏览器，响应正文的语言。zh_CN或en_US等等。</td>
+</tr>
+<tr>
+<td>Content-Disposition</td>
+<td>告知客户浏览器，以下载的方式打开响应正文。</td>
+</tr>
+<tr>
+<td>Refresh</td>
+<td>定时刷新</td>
+</tr>
+<tr>
+<td>Last-Modified</td>
+<td>服务器资源的最后修改时间。</td>
+</tr>
+<tr>
+<td>Set-Cookie（*******）</td>
+<td>会话管理相关，非常的重要</td>
+</tr>
+<tr>
+<td>Expires:-1</td>
+<td>服务器资源到客户浏览器后的缓存时间</td>
+</tr>
+<tr>
+<td>Catch-Control: no-catch</td>
+<td>不要缓存，//针对http协议1.1版本</td>
+</tr>
+<tr>
+<td>Pragma:no-catch</td>
+<td>不要缓存，//针对http协议1.0版本</td>
+</tr>
+</tbody></table>
+<h3 id="3-4-3-响应空行-amp-响应体"><a href="#3-4-3-响应空行-amp-响应体" class="headerlink" title="3.4.3 响应空行&amp;响应体"></a>3.4.3 响应空行&amp;响应体</h3><ol>
+<li><p>响应空行</p>
+<p>​     普通换行。用于区分响应头和响应体</p>
+</li>
+<li><p>响应体</p>
+<p>​     将资源文件发送给客户端浏览器进行解析</p>
+</li>
+</ol>
+<h3 id="3-4-4-补-协议说明"><a href="#3-4-4-补-协议说明" class="headerlink" title="3.4.4 补(协议说明)"></a>3.4.4 补(协议说明)</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">http</span> 协议是无状态的,即两次请求之前相互独立,默认情况下不能共享数据<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h1 id="4-综合案例-Tomcat的具体应用"><a href="#4-综合案例-Tomcat的具体应用" class="headerlink" title="4 综合案例-Tomcat的具体应用"></a>4 综合案例-Tomcat的具体应用</h1><h2 id="4-1-静态资源案例-门户类网站的部署和访问"><a href="#4-1-静态资源案例-门户类网站的部署和访问" class="headerlink" title="4.1 静态资源案例-门户类网站的部署和访问"></a>4.1 静态资源案例-门户类网站的部署和访问</h2><h3 id="4-1-1-案例介绍"><a href="#4-1-1-案例介绍" class="headerlink" title="4.1.1 案例介绍"></a>4.1.1 案例介绍</h3><ul>
+<li>需求：</li>
+</ul>
+<p>​        在浏览器中输入地址，访问静态HTML页面</p>
+<ul>
+<li>效果：</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9D%99%E6%80%8101.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>实现步骤<ol>
+<li>创建一个 JavaWEB 项目</li>
+<li>将静态页面所需资源导入到项目的 web 目录下</li>
+<li>修改 web.xml 配置文件，修改默认主页</li>
+<li>将项目部署到 tomcat 中</li>
+<li>启动 tomcat 服务</li>
+<li>打开浏览器测试查看页面</li>
+</ol>
+</li>
+</ul>
+<h3 id="4-1-2-实现步骤"><a href="#4-1-2-实现步骤" class="headerlink" title="4.1.2 实现步骤"></a>4.1.2 实现步骤</h3><ol>
+<li><p>创建项目</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9D%99%E6%80%8102.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>项目名称</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9D%99%E6%80%8103.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>项目语言级别（以上三步，以后不再赘述，每次创建项目的步骤都一样）</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9D%99%E6%80%8104.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>复制资源</p>
+<ul>
+<li>将今日资料“day01_tomcat和http协议\资料\案例一所需资源”，下的所有内容，复制到项目的web目录下</li>
+</ul>
+</li>
+<li><p>修改web.xml，修改默认首页</p>
+<ul>
+<li>默认主页是index.jsp，我们修改为news/news.html</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9D%99%E6%80%8105.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>部署项目，启动tomcat</p>
+</li>
+<li><p>访问</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E9%9D%99%E6%80%8106.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h2 id="4-2-动态资源的案例-学生管理系统的部署和访问"><a href="#4-2-动态资源的案例-学生管理系统的部署和访问" class="headerlink" title="4.2 动态资源的案例-学生管理系统的部署和访问"></a>4.2 动态资源的案例-学生管理系统的部署和访问</h2><h3 id="4-2-1-案例介绍"><a href="#4-2-1-案例介绍" class="headerlink" title="4.2.1 案例介绍"></a>4.2.1 案例介绍</h3><ul>
+<li>需求：</li>
+</ul>
+<p>​        把JavaSE进阶阶段的学生管理系统的服务器改用Tomcat实现。</p>
+<ul>
+<li><p>效果：</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8A%A8%E6%80%8101.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>这里我们访问的studentServelt是一个java类</li>
+<li>可以直接通过路径访问java类的</li>
+<li>然后在控制台打印一句话：“这是我第一个servlet入门案例”</li>
+</ul>
+</li>
+</ul>
+<p><strong>细节说明：</strong></p>
+<p>​        把学生管理系统涉及的HTML和样式以及图片文件拷贝到JavaWeb工程中，在Tomcat中部署工程，然后启动Tomcat服务器，并使用浏览器访问。</p>
+<p>​      注意: 因为我们代码写的是绝对路径,项目的虚拟路径必须使用 crm  否则找不到资源  </p>
+<h3 id="4-2-2-Servlet介绍"><a href="#4-2-2-Servlet介绍" class="headerlink" title="4.2.2 Servlet介绍"></a>4.2.2 Servlet介绍</h3><ul>
+<li><p>Servlet 是运行在 Java 服务器端的程序，用于接收和响应来自客户端基于 HTTP 协议的请求</p>
+</li>
+<li><p>如果想实现 Servlet 的功能，可以通过实现 javax.servlet.Servlet 接口或者继承它的实现类</p>
+</li>
+<li><p>核心方法：service()，任何客户端的请求都会经过该方法</p>
+</li>
+</ul>
+<h3 id="4-2-3-实现步骤"><a href="#4-2-3-实现步骤" class="headerlink" title="4.2.3 实现步骤"></a>4.2.3 实现步骤</h3><ol>
+<li>创建一个 JavaWEB 项目</li>
+<li>将静态页面所需资源导入到项目的 web 目录下</li>
+<li>修改 web.xml 配置文件，修改默认主页</li>
+<li>在项目的 src 路径下编写一个类，实现 Servlet 接口</li>
+<li>重写 service 方法，输出一句话即可</li>
+<li>修改 web.xml 配置文件，配置 servlet 相关资源</li>
+<li>将项目部署到 tomcat 中</li>
+<li>启动 tomcat 服务</li>
+<li>打开浏览器测试功能</li>
+</ol>
+<h3 id="4-2-4-具体操作"><a href="#4-2-4-具体操作" class="headerlink" title="4.2.4 具体操作"></a>4.2.4 具体操作</h3><ol>
+<li><p>创建项目web_test2</p>
+</li>
+<li><p>copy资源</p>
+<ul>
+<li>将“day01_tomcat和http协议\资料\案例二所需资源”下的所有内容，copy为项目的web目录下</li>
+<li>复制的资源中html/frame.html是主页</li>
+</ul>
+</li>
+<li><p>修改主页为frame.html</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8A%A8%E6%80%8102.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>部署项目，启动tomcat，首页iframe自动打开的是crm路径</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8A%A8%E6%80%8103.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>其实复制过来的这个项目，目前没用到，我们主要是要处理下边的逻辑，创建servlet</li>
+</ul>
+</li>
+<li><p>新建动态资源：servlet</p>
+<ul>
+<li><p>在src目录下新建包：com.itheima.servlet，然后新建StudentServlet类</p>
+</li>
+<li><p>编写代码：继承Servlet，并且实现他的所有方法</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8A%A8%E6%80%8108.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>然后我们只修改service方法，打印一句话</p>
+</li>
+</ul>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8A%A8%E6%80%8104.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>配置Servlet</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8A%A8%E6%80%8105.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>首先配置servlet节点<ul>
+<li>servlet-name给servlet起别名</li>
+<li>servlet-class指定servlet类路径</li>
+</ul>
+</li>
+<li>再配置servlet-mapping节点<ul>
+<li>servlet-mapping是给servlet配置访问路径</li>
+<li>servlet-name指定要给哪个servlet配置路径</li>
+<li>url-pattern：servlet访问路径</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>访问，界面没有内容，我们看控制台</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8A%A8%E6%80%8106.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>控制台</p>
+<p><img src="/2020/05/01/Javaweb01/img/%E5%8A%A8%E6%80%8107.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h3 id="4-2-5-servlet执行流程"><a href="#4-2-5-servlet执行流程" class="headerlink" title="4.2.5 servlet执行流程"></a>4.2.5 servlet执行流程</h3><ul>
+<li><p>流程图</p>
+<p><img src="/2020/05/01/Javaweb01/img/servlet%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>访问/studentServlet</li>
+<li>到web.xml里找url-pattern进行匹配</li>
+<li>匹配成功之后，找到servlet-name同名的servlet节点</li>
+<li>然后找到具体的servlet类：StudentServlet</li>
+<li>然后执行内部的service方法</li>
+</ol>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaWeb%E6%A0%B8%E5%BF%83/">JavaWeb核心</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaWeb/">JavaWeb</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/01/mysql01/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MySQL基础-01</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/21/form&amp;css/">
+                        <span class="hidden-mobile">form&css</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>

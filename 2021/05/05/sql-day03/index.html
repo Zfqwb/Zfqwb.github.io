@@ -1,0 +1,663 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>sql-day03 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zfqwb.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="sql-day03">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-05 09:44" pubdate>
+        2021年5月5日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      64
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">sql-day03</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：7 天前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="01视图"><a href="#01视图" class="headerlink" title="01视图"></a>01视图</h2><h3 id="01-视图-数据准备"><a href="#01-视图-数据准备" class="headerlink" title="01_视图_数据准备"></a>01_视图_数据准备</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">-- 创建db7数据库<br>CREATE DATABASE db7;<br><br>-- 使用db7数据库<br>USE db7;<br><br>-- 创建country表<br>CREATE TABLE country (<br>	id INT PRIMARY KEY AUTO_INCREMENT,<br>	-- 国家id<br>	country_name VARCHAR (30) -- 国家名称<br>);<br><br>-- 添加数据<br>INSERT INTO country<br>VALUES<br>	(NULL, &#39;中国&#39;),<br>	(NULL, &#39;美国&#39;),<br>	(NULL, &#39;俄罗斯&#39;);<br><br>-- 创建city表<br>CREATE TABLE city (<br>	id INT PRIMARY KEY AUTO_INCREMENT,<br>	-- 城市id<br>	city_name VARCHAR (30),<br>	-- 城市名称<br>	cid INT,<br>	-- 外键列。关联country表的主键列id<br>	CONSTRAINT cc_fk1 FOREIGN KEY (cid) REFERENCES country (id) -- 添加外键约束<br>);<br><br>-- 添加数据<br>INSERT INTO city<br>VALUES<br>	(NULL, &#39;北京&#39;, 1),<br>	(NULL, &#39;上海&#39;, 1),<br>	(NULL, &#39;纽约&#39;, 2),<br>	(NULL, &#39;莫斯科&#39;, 3);<br><br><br></code></pre></div></td></tr></table></figure>
+<h3 id="02-视图-创建视图"><a href="#02-视图-创建视图" class="headerlink" title="02_视图_创建视图"></a>02_视图_创建视图</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	创建视图<br>	标准语法<br>		CREATE VIEW 视图名称 [(列名列表)] AS 查询语句;<br>*&#x2F;<br>-- 创建city_country视图，保存城市和国家的信息(使用默认列名)<br>CREATE VIEW city_country AS SELECT<br>	t1.*, t2.country_name<br>FROM<br>	city t1,<br>	country t2<br>WHERE<br>	t1.cid &#x3D; t2.id;<br><br>-- 创建city_country2视图，保存城市和国家的信息(使用指定列名)<br>CREATE VIEW city_country2 (<br>	city_id,<br>	city_name,<br>	cid,<br>	country_name<br>) AS SELECT<br>	t1.*, t2.country_name<br>FROM<br>	city t1,<br>	country t2<br>WHERE<br>	t1.cid &#x3D; t2.id;<br></code></pre></div></td></tr></table></figure>
+<h3 id="03-视图-查询视图"><a href="#03-视图-查询视图" class="headerlink" title="03_视图_查询视图"></a>03_视图_查询视图</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	查询视图<br>	标准语法<br>		SELECT * FROM 视图名称;<br>*&#x2F;<br>-- 查询city_country视图<br>SELECT<br>	*<br>FROM<br>	city_country;<br><br>-- 查询city_country2视图<br>SELECT<br>	*<br>FROM<br>	city_country2;<br><br>&#x2F;*<br>	查询创建视图的语句<br>	标准语法<br>		SHOW CREATE VIEW 视图名称;<br>*&#x2F;<br>-- 查询city_country的创建语句<br>SHOW CREATE VIEW city_country;<br></code></pre></div></td></tr></table></figure>
+<h3 id="04-视图-修改视图"><a href="#04-视图-修改视图" class="headerlink" title="04_视图_修改视图"></a>04_视图_修改视图</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	修改视图表数据<br>	标准语法<br>		UPDATE 视图名称 SET 列名&#x3D;值 WHERE 条件;<br>*&#x2F;<br>-- 修改city_country视图中的城市名称北京为北京市<br>UPDATE city_country<br>SET city_name &#x3D; &#39;北京市&#39;<br>WHERE<br>	city_name &#x3D; &#39;北京&#39;;<br><br>-- 查询city_country视图<br>SELECT<br>	*<br>FROM<br>	city_country;<br><br>-- 查询city表<br>SELECT<br>	*<br>FROM<br>	city;<br><br>&#x2F;*<br>	修改视图表结构<br>	标准语法<br>		ALTER VIEW 视图名称 [(列名列表)] AS 查询语句;<br>*&#x2F;<br>-- 修改city_country2视图的列名city_id为id<br>ALTER VIEW city_country2 (<br>	id,<br>	city_name,<br>	cid,<br>	country_name<br>) AS SELECT<br>	t1.*, t2.country_name<br>FROM<br>	city t1,<br>	country t2<br>WHERE<br>	t1.cid &#x3D; t2.id;<br><br>-- 查询city_country2视图<br>SELECT<br>	*<br>FROM<br>	city_country2;<br></code></pre></div></td></tr></table></figure>
+<h3 id="05-视图-删除视图"><a href="#05-视图-删除视图" class="headerlink" title="05_视图_删除视图"></a>05_视图_删除视图</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	删除视图<br>	标准语法<br>		DROP VIEW [IF EXISTS] 视图名称;<br>*&#x2F;<br>-- 删除city_country视图<br>DROP VIEW city_country;<br><br>-- 删除city_country2视图，判断、如果存在则删除<br>DROP VIEW<br>IF EXISTS city_country2;<br></code></pre></div></td></tr></table></figure>
+<h2 id="02存储过程和函数"><a href="#02存储过程和函数" class="headerlink" title="02存储过程和函数"></a>02存储过程和函数</h2><h3 id="01-存储过程-数据准备"><a href="#01-存储过程-数据准备" class="headerlink" title="01_存储过程_数据准备"></a>01_存储过程_数据准备</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">-- 创建db8数据库<br>CREATE DATABASE db8;<br><br>-- 使用db8数据库<br>USE db8;<br><br>-- 创建学生表<br>CREATE TABLE student (<br>	id INT PRIMARY KEY AUTO_INCREMENT,<br>	-- 学生id<br>	NAME VARCHAR (20),<br>	-- 学生姓名<br>	age INT,<br>	-- 学生年龄<br>	gender VARCHAR (5),<br>	-- 学生性别<br>	score INT -- 学生成绩<br>);<br><br>-- 添加数据<br>INSERT INTO student<br>VALUES<br>	(NULL, &#39;张三&#39;, 23, &#39;男&#39;, 95),<br>	(NULL, &#39;李四&#39;, 24, &#39;男&#39;, 98),<br>	(NULL, &#39;王五&#39;, 25, &#39;女&#39;, 100),<br>	(NULL, &#39;赵六&#39;, 26, &#39;女&#39;, 90);<br><br>-- 按照性别进行分组，查询每组学生的总成绩。按照总成绩的升序排序<br>SELECT<br>	gender,<br>	SUM(score) getSum<br>FROM<br>	student<br>GROUP BY<br>	gender<br>ORDER BY<br>	getSum ASC;<br></code></pre></div></td></tr></table></figure>
+<h3 id="02-存储过程-创建存储过程"><a href="#02-存储过程-创建存储过程" class="headerlink" title="02_存储过程_创建存储过程"></a>02_存储过程_创建存储过程</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	创建存储过程<br><br>	-- 修改分隔符为$<br>	DELIMITER $<br><br>	-- 标准语法<br>	CREATE PROCEDURE 存储过程名称(参数...)<br>	BEGIN<br>		sql语句;<br>	END$<br><br>	-- 修改分隔符为分号<br>	DELIMITER ;<br>*&#x2F;<br>-- 创建stu_group()存储过程，封装 分组查询总成绩，并按照总成绩升序排序的功能<br>DELIMITER $<br>CREATE PROCEDURE stu_group ()<br>BEGIN<br>	SELECT<br>		gender,<br>		SUM(score) getSum<br>	FROM<br>		student<br>	GROUP BY<br>		gender<br>	ORDER BY<br>		getSum ASC ; END$<br><br>DELIMITER ;<br></code></pre></div></td></tr></table></figure>
+<h3 id="03-存储过程-调用存储过程"><a href="#03-存储过程-调用存储过程" class="headerlink" title="03_存储过程_调用存储过程"></a>03_存储过程_调用存储过程</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	调用存储过程<br>	标准语法<br>		CALL 存储过程名称(实际参数);<br>*&#x2F;<br>-- 调用stu_group存储过程<br>CALL stu_group ();<br></code></pre></div></td></tr></table></figure>
+<h3 id="04-存储过程-查看存储过程"><a href="#04-存储过程-查看存储过程" class="headerlink" title="04_存储过程_查看存储过程"></a>04_存储过程_查看存储过程</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	查询数据库中所有的存储过程<br>	标准语法<br>		SELECT name FROM mysql.proc WHERE db&#x3D;&#39;数据库名称&#39;;<br>*&#x2F;<br>-- 查看db8数据库中所有的存储过程<br>SELECT<br>	NAME<br>FROM<br>	mysql.proc<br>WHERE<br>	db &#x3D; &#39;db8&#39;;<br><br>&#x2F;*<br>	查看存储过程的状态信息<br>	标准语法<br>		SHOW PROCEDURE STATUS;<br>*&#x2F;<br>-- 查看存储过程的状态信息<br>SHOW PROCEDURE STATUS;<br><br>&#x2F;*<br>	查看存储过程的创建语句<br>	标准语法<br>		SHOW CREATE PROCEDURE 存储过程名称;<br>*&#x2F;<br>-- 查询stu_group存储过程的创建语句<br>SHOW CREATE PROCEDURE stu_group;<br></code></pre></div></td></tr></table></figure>
+<h3 id="05-存储过程-删除存储过程"><a href="#05-存储过程-删除存储过程" class="headerlink" title="05_存储过程_删除存储过程"></a>05_存储过程_删除存储过程</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	删除存储过程<br>	标准语法<br>		DROP PROCEDURE [IF EXISTS] 存储过程名称;<br>*&#x2F;<br>-- 删除stu_group存储过程<br>DROP PROCEDURE<br>IF EXISTS stu_group;<br></code></pre></div></td></tr></table></figure>
+<h3 id="06-存储过程-变量"><a href="#06-存储过程-变量" class="headerlink" title="06_存储过程_变量"></a>06_存储过程_变量</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	定义变量<br>	标准语法<br>		DECLARE 变量名 数据类型 [DEFAULT 默认值];<br>*&#x2F;<br>-- 定义一个int类型变量，并赋默认值为10<br>DELIMITER $<br>CREATE PROCEDURE pro_test1 ()<br>BEGIN<br>	-- 定义变量<br>DECLARE num INT DEFAULT 10 ; -- 查询变量<br>SELECT<br>	num ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test1存储过程<br>CALL pro_test1 ();<br><br><br><br><br>&#x2F;*<br>	变量赋值-方式一<br>	标准语法<br>		SET 变量名 &#x3D; 变量值;<br>*&#x2F;<br>-- 定义一个varchar类型变量并赋值<br>DELIMITER $<br><br><br>CREATE PROCEDURE pro_test2 ()<br>BEGIN<br>	-- 定义变量<br>DECLARE NAME VARCHAR (10) ; -- 为变量赋值<br>SET NAME &#x3D; &#39;存储过程&#39; ; -- 查询变量<br>SELECT<br>	NAME ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test2存储过程<br>CALL pro_test2 ();<br><br><br><br><br><br>&#x2F;*<br>	变量赋值-方式二<br>	标准语法<br>		SELECT 列名 INTO 变量名 FROM 表名 [WHERE 条件];<br>*&#x2F;<br>-- 定义两个int变量，用于存储男女同学的总分数<br>DELIMITER $<br><br><br>CREATE PROCEDURE pro_test3 ()<br>BEGIN<br>	-- 定义变量<br>DECLARE men,<br> women INT ; -- 查询男同学的总分数，为men变量赋值<br>SELECT<br>	SUM(score) INTO men<br>FROM<br>	student<br>WHERE<br>	gender &#x3D; &#39;男&#39; ; -- 查询女同学的总分数，为women变量赋值<br>	SELECT<br>		SUM(score) INTO women<br>	FROM<br>		student<br>	WHERE<br>		gender &#x3D; &#39;女&#39; ; -- 查询变量<br>		SELECT<br>			men,<br>			women ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test3存储过程<br>CALL pro_test3 ();<br></code></pre></div></td></tr></table></figure>
+<h3 id="07-存储过程-if语句"><a href="#07-存储过程-if语句" class="headerlink" title="07_存储过程_if语句"></a>07_存储过程_if语句</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	存储过程-if语句<br>	标准语法<br>		IF 判断条件1 THEN 执行的sql语句1;<br>		[ELSEIF 判断条件2 THEN 执行的sql语句2;]<br>		...<br>		[ELSE 执行的sql语句n;]<br>		END IF;<br>*&#x2F;<br><br>&#x2F;*<br>	定义一个int变量，用于存储班级总成绩<br>	定义一个varchar变量，用于存储分数描述<br>	根据总成绩判断：<br>		380分及以上   学习优秀<br>		320 ~ 380     学习不错<br>		320以下       学习一般<br>*&#x2F;<br>DELIMITER $<br>CREATE PROCEDURE pro_test4 ()<br>BEGIN<br>	-- 定义保存总成绩的变量<br>DECLARE total INT ; -- 定义保存分数描述的变量<br>DECLARE description VARCHAR (10) ; -- 为total赋值<br>SELECT<br>	SUM(score) INTO total<br>FROM<br>	student ; -- 判断总成绩<br>IF total &gt;&#x3D; 380 THEN<br><br>SET description &#x3D; &#39;学习优秀&#39; ;<br>ELSEIF total &gt;&#x3D; 320<br>AND total &lt; 380 THEN<br><br>SET description &#x3D; &#39;学习不错&#39; ;<br>ELSE<br><br>SET description &#x3D; &#39;学习一般&#39; ;<br>END<br>IF ; -- 查询总成绩和描述信息<br>SELECT<br>	total,<br>	description ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test4存储过程<br>CALL pro_test4 ();<br></code></pre></div></td></tr></table></figure>
+<h3 id="08-存储过程-输入参数"><a href="#08-存储过程-输入参数" class="headerlink" title="08_存储过程_输入参数"></a>08_存储过程_输入参数</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	输入参数<br>	<br>	DELIMITER $<br><br>	-- 标准语法<br>	CREATE PROCEDURE 存储过程名称(IN 参数名 数据类型)<br>	BEGIN<br>		执行的sql语句;<br>	END$<br><br>	DELIMITER ;<br>*&#x2F;<br>&#x2F;*<br>	输入总成绩变量，代表学生总成绩<br>	定义一个varchar变量，用于存储分数描述<br>	根据总成绩判断：<br>		380分及以上  学习优秀<br>		320 ~ 380    学习不错<br>		320以下      学习一般<br>*&#x2F;<br>DELIMITER $<br>CREATE PROCEDURE pro_test5 (IN total INT)<br>BEGIN<br>	-- 定义分数描述变量<br>DECLARE description VARCHAR (10) ; -- 判断总成绩<br>IF total &gt;&#x3D; 380 THEN<br><br>SET description &#x3D; &#39;学习优秀&#39; ;<br>ELSEIF total &gt;&#x3D; 320<br>AND total &lt; 380 THEN<br><br>SET description &#x3D; &#39;学习不错&#39; ;<br>ELSE<br><br>SET description &#x3D; &#39;学习一般&#39; ;<br>END<br>IF ; -- 查询总成绩和描述信息<br>SELECT<br>	total,<br>	description ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test5存储过程<br>CALL pro_test5 (310);<br><br>CALL pro_test5 (<br>	(<br>		SELECT<br>			SUM(score)<br>		FROM<br>			student<br>	)<br>);<br></code></pre></div></td></tr></table></figure>
+<h3 id="09-存储过程-输出参数"><a href="#09-存储过程-输出参数" class="headerlink" title="09_存储过程_输出参数"></a>09_存储过程_输出参数</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	输出参数<br>	<br>	DELIMITER $<br><br>	-- 标准语法<br>	CREATE PROCEDURE 存储过程名称(OUT 参数名 数据类型)<br>	BEGIN<br>		执行的sql语句;<br>	END$<br><br>	DELIMITER ;<br>*&#x2F;<br>&#x2F;*<br>	输入总成绩变量，代表学生总成绩<br>	输出分数描述变量，代表学生总成绩的描述<br>	根据总成绩判断：<br>		380分及以上  学习优秀<br>		320 ~ 380    学习不错<br>		320以下      学习一般<br>*&#x2F;<br>DELIMITER $<br>CREATE PROCEDURE pro_test6 (<br>	IN total INT,<br>	OUT description VARCHAR (10)<br>)<br>BEGIN<br>	-- 判断总成绩<br>IF total &gt;&#x3D; 380 THEN<br><br>SET description &#x3D; &#39;学习优秀&#39; ;<br>ELSEIF total &gt;&#x3D; 320<br>AND total &lt; 380 THEN<br><br>SET description &#x3D; &#39;学习不错&#39; ;<br>ELSE<br><br>SET description &#x3D; &#39;学习一般&#39; ;<br>END<br>IF ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test6存储过程<br>CALL pro_test6 (390 ,@description);<br><br>-- 查询总成绩描述信息变量<br>SELECT<br>	@description;<br></code></pre></div></td></tr></table></figure>
+<h3 id="10-存储过程-case语句"><a href="#10-存储过程-case语句" class="headerlink" title="10_存储过程_case语句"></a>10_存储过程_case语句</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	case语句<br>	标准语法<br>		CASE<br>		WHEN 判断条件1 THEN 执行sql语句1;<br>		[WHEN 判断条件2 THEN 执行sql语句2;]<br>		...<br>		[ELSE 执行sql语句n;]<br>		END CASE;<br>*&#x2F;<br>&#x2F;*<br>	输入总成绩变量，代表学生总成绩<br>	定义一个varchar变量，用于存储分数描述<br>	根据总成绩判断：<br>		380分及以上  学习优秀<br>		320 ~ 380    学习不错<br>		320以下      学习一般<br>*&#x2F;<br>DELIMITER $<br>CREATE PROCEDURE pro_test7 (IN total INT)<br>BEGIN<br>	-- 定义总成绩描述信息变量<br>DECLARE description VARCHAR (10) ; -- 判断总成绩<br>CASE<br>WHEN total &gt;&#x3D; 380 THEN<br><br>SET description &#x3D; &#39;学习优秀&#39; ;<br>WHEN total &gt;&#x3D; 320<br>AND total &lt; 380 THEN<br><br>SET description &#x3D; &#39;学习不错&#39; ;<br>ELSE<br><br>SET description &#x3D; &#39;学习一般&#39; ;<br>END CASE ; -- 查询总成绩和描述信息<br>SELECT<br>	total,<br>	description ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test7存储过程<br>CALL pro_test7 (310);<br></code></pre></div></td></tr></table></figure>
+<h3 id="11-存储过程-while循环"><a href="#11-存储过程-while循环" class="headerlink" title="11_存储过程_while循环"></a>11_存储过程_while循环</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	while循环<br>	标准语法<br>		初始化语句;<br>		WHILE 条件判断语句 DO<br>			循环体语句;<br>			条件控制语句;<br>		END WHILE;<br>*&#x2F;<br>-- 计算1~100之间的偶数和<br>DELIMITER $<br>CREATE PROCEDURE pro_test8 ()<br>BEGIN<br>	-- 定义求和变量<br>DECLARE result INT DEFAULT 0 ; -- 定义初始化变量<br>DECLARE num INT DEFAULT 1 ; -- while循环<br>WHILE num &lt;&#x3D; 100 DO<br>	-- 判断num是否是偶数<br>IF num % 2 &#x3D; 0 THEN<br>	-- 让num和result进行累加<br>SET result &#x3D; result + num ;<br>END<br>IF ; -- 让num进行自增<br>SET num &#x3D; num + 1 ;<br>END<br>WHILE ; -- 查询求和结果<br>SELECT<br>	result ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test8存储过程<br>CALL pro_test8 ();<br></code></pre></div></td></tr></table></figure>
+<h3 id="12-存储过程-repeat循环"><a href="#12-存储过程-repeat循环" class="headerlink" title="12_存储过程_repeat循环"></a>12_存储过程_repeat循环</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	repeat循环<br>	标准语法<br>		初始化语句;<br>		REPEAT<br>			循环体语句;<br>			条件控制语句;<br>			UNTIL 条件判断语句<br>		END REPEAT;<br>*&#x2F;<br>-- 计算1~10之间的和<br>DELIMITER $<br>CREATE PROCEDURE pro_test9 ()<br>BEGIN<br>	-- 定义求和变量<br>DECLARE result INT DEFAULT 0 ; -- 定义初始化变量<br>DECLARE num INT DEFAULT 1 ; -- repeat循环<br>REPEAT<br>	-- 累加<br>SET result &#x3D; result + num ; -- 让num+1<br>SET num &#x3D; num + 1 ; -- 停止循环<br>UNTIL num &gt; 10<br>END<br>REPEAT<br>	; -- 查询求和结果<br>	SELECT<br>		result ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test9存储过程<br>CALL pro_test9 ();<br></code></pre></div></td></tr></table></figure>
+<h3 id="13-存储过程-loop循环"><a href="#13-存储过程-loop循环" class="headerlink" title="13_存储过程_loop循环"></a>13_存储过程_loop循环</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	loop循环<br>	标准语法<br>		初始化语句;<br>		[循环名称:] LOOP<br>			条件判断语句<br>				[LEAVE 循环名称;]<br>			循环体语句;<br>			条件控制语句;<br>		END LOOP 循环名称;<br>*&#x2F;<br>-- 计算1~10之间的和<br>DELIMITER $<br>CREATE PROCEDURE pro_test10 ()<br>BEGIN<br>	-- 定义求和变量<br>DECLARE result INT DEFAULT 0 ; -- 定义初始化变量<br>DECLARE num INT DEFAULT 1 ; -- loop循环<br>l :<br>LOOP<br>	-- 条件判断，停止循环<br>IF num &gt; 10 THEN<br>	LEAVE l ;<br>END<br>IF ; -- 累加<br>SET result &#x3D; result + num ; -- 让num+1<br>SET num &#x3D; num + 1 ;<br>END<br>LOOP<br>	l ; -- 查询求和结果<br>	SELECT<br>		result ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test10存储过程<br>CALL pro_test10 ();<br></code></pre></div></td></tr></table></figure>
+<h3 id="14-存储过程-游标"><a href="#14-存储过程-游标" class="headerlink" title="14_存储过程_游标"></a>14_存储过程_游标</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	游标<br>	标准语法<br>		1.创建游标：DECLARE 游标名称 CURSOR FOR 查询sql语句;<br>		2.打开游标：OPEN 游标名称;<br>		3.使用游标：FETCH 游标名称 INTO 变量名1,变量名2,...;<br>		4.关闭游标：CLOSE 游标名称;<br>*&#x2F;<br>-- 创建stu_score表<br>CREATE TABLE stu_score (<br>	id INT PRIMARY KEY AUTO_INCREMENT,<br>	score INT<br>);<br><br><br><br><br>-- 将student表中所有的成绩保存到stu_score表中<br>DELIMITER $<br><br><br>CREATE PROCEDURE pro_test11 ()<br>BEGIN<br>	-- 定义一个保存成绩的变量<br>DECLARE s_score INT ; -- 创建游标<br>DECLARE stu_result CURSOR FOR SELECT<br>	score<br>FROM<br>	student ; -- 开启游标<br>	OPEN stu_result ; -- 使用游标<br>	-- 遍历结果，拿到第1行数据<br>	FETCH stu_result INTO s_score ; -- 将数据保存到stu_score表中<br>	INSERT INTO stu_score<br>VALUES<br>	(NULL, s_score) ; -- 遍历结果，拿到第2行数据<br>	FETCH stu_result INTO s_score ; -- 将数据保存到stu_score表中<br>	INSERT INTO stu_score<br>VALUES<br>	(NULL, s_score) ; -- 遍历结果，拿到第3行数据<br>	FETCH stu_result INTO s_score ; -- 将数据保存到stu_score表中<br>	INSERT INTO stu_score<br>VALUES<br>	(NULL, s_score) ; -- 遍历结果，拿到第4行数据<br>	FETCH stu_result INTO s_score ; -- 将数据保存到stu_score表中<br>	INSERT INTO stu_score<br>VALUES<br>	(NULL, s_score) ; -- 关闭游标<br>	CLOSE stu_result ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test11存储过程<br>CALL pro_test11 ();<br><br>-- 查询stu_score数据表<br>SELECT<br>	*<br>FROM<br>	stu_score;<br></code></pre></div></td></tr></table></figure>
+<h3 id="15-存储过程-游标优化"><a href="#15-存储过程-游标优化" class="headerlink" title="15_存储过程_游标优化"></a>15_存储过程_游标优化</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	当游标结束后，会自动的触发一个事件。就代表游标已经结束了！<br>	加标记的思想：<br>		1.定义一个标记变量，默认值为0（意味着有数据）<br>		2.当游标结束后，将标记变量的值修改为1（意味着没有数据了）	<br>*&#x2F;<br>DELIMITER $<br>CREATE PROCEDURE pro_test12 ()<br>BEGIN<br>	-- 定义一个保存成绩的变量<br>DECLARE s_score INT ; -- 定义一个标记变量，默认值为0（意味着有数据）<br>DECLARE flag INT DEFAULT 0 ; -- 创建游标<br>DECLARE stu_result CURSOR FOR SELECT<br>	score<br>FROM<br>	student ; -- 当游标结束后，将标记变量的值修改为1（意味着没有数据了）<br>DECLARE EXIT HANDLER FOR NOT FOUND<br>SET flag &#x3D; 1 ; -- 开启游标<br>OPEN stu_result ; -- 循环使用游标<br>REPEAT<br>	-- 遍历结果，拿到数据<br>	FETCH stu_result INTO s_score ; -- 将数据保存到stu_score表中<br>	INSERT INTO stu_score<br>VALUES<br>	(NULL, s_score) ; -- 当flag的值是1的时候，就停止循环<br>	UNTIL flag &#x3D; 1<br>END<br>REPEAT<br>	; -- 关闭游标<br>	CLOSE stu_result ; END$<br><br>DELIMITER ;<br><br><br>-- 调用pro_test12存储过程<br>CALL pro_test12 ();<br><br>-- 查询stu_score表<br>SELECT<br>	*<br>FROM<br>	stu_score;<br></code></pre></div></td></tr></table></figure>
+<h3 id="16-存储函数"><a href="#16-存储函数" class="headerlink" title="16_存储函数"></a>16_存储函数</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	创建存储函数<br>	标准语法<br>		CREATE FUNCTION 函数名称([参数 数据类型])<br>		RETURNS 返回值类型<br>		BEGIN<br>			执行的sql语句;<br>			RETURN 结果;<br>		END$<br>*&#x2F;<br>-- 定义存储函数，获取学生表中成绩大于95分的学生数量<br>DELIMITER $<br>CREATE FUNCTION fun_test1 () RETURNS INT<br>BEGIN<br>	-- 定义一个统计变量<br>DECLARE result INT ; -- 查询成绩大于95分的数量<br>SELECT<br>	COUNT(*) INTO result<br>FROM<br>	student<br>WHERE<br>	score &gt; 95 ; -- 将结果返回<br>	RETURN result ; END$<br><br>DELIMITER ;<br><br><br>&#x2F;*<br>	调用函数<br>	标准语法<br>		SELECT 函数名称(实际参数);<br>*&#x2F;<br>-- 调用函数<br>SELECT<br>	fun_test1 ();<br><br>&#x2F;*<br>	删除函数<br>	标准语法<br>		DROP FUNCTION 函数名称;<br>*&#x2F;<br>-- 删除函数<br>DROP FUNCTION fun_test1;<br></code></pre></div></td></tr></table></figure>
+
+<h2 id="03触发器"><a href="#03触发器" class="headerlink" title="03触发器"></a>03触发器</h2><h3 id="01-触发器-触发器的数据准备"><a href="#01-触发器-触发器的数据准备" class="headerlink" title="01_触发器_触发器的数据准备"></a>01_触发器_触发器的数据准备</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">-- 创建db9数据库<br>CREATE DATABASE db9;<br><br>-- 使用db9数据库<br>USE db9;<br><br>-- 创建账户表account<br>CREATE TABLE account (<br>	id INT PRIMARY KEY AUTO_INCREMENT,<br>	-- 账户id<br>	NAME VARCHAR (20),<br>	-- 姓名<br>	money DOUBLE -- 余额<br>);<br><br>-- 添加数据<br>INSERT INTO account<br>VALUES<br>	(NULL, &#39;张三&#39;, 1000),<br>	(NULL, &#39;李四&#39;, 2000);<br><br>-- 创建日志表account_log<br>CREATE TABLE account_log (<br>	id INT PRIMARY KEY AUTO_INCREMENT,<br>	-- 日志id<br>	operation VARCHAR (20),<br>	-- 操作类型 (insert update delete)<br>	operation_time DATETIME,<br>	-- 操作时间<br>	operation_id INT,<br>	-- 操作表的id<br>	operation_params VARCHAR (200) -- 操作参数<br>);<br></code></pre></div></td></tr></table></figure>
+<h3 id="02-触发器-INSERT型触发器"><a href="#02-触发器-INSERT型触发器" class="headerlink" title="02_触发器_INSERT型触发器"></a>02_触发器_INSERT型触发器</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	创建触发器<br>	标准语法<br>		DELIMITER $<br><br>		CREATE TRIGGER 触发器名称<br>		BEFORE|AFTER INSERT|UPDATE|DELETE<br>		ON 表名<br>		FOR EACH ROW<br>		BEGIN<br>			触发器要执行的功能;<br>		END$<br><br>		DELIMITER ;<br>*&#x2F;<br>-- 创建INSERT型触发器。用于对account表新增数据进行日志的记录<br>DELIMITER $<br>CREATE TRIGGER account_insert AFTER INSERT ON account FOR EACH ROW<br>BEGIN<br>	INSERT INTO account_log<br>VALUES<br>	(<br>		NULL,<br>		&#39;INSERT&#39;,<br>		NOW(),<br>		new.id,<br>		CONCAT(<br>			&#39;插入后&#123;id&#x3D;&#39;,<br>			new.id,<br>			&#39;,name&#x3D;&#39;,<br>			new. NAME,<br>			&#39;,money&#x3D;&#39;,<br>			new.money,<br>			&#39;&#125;&#39;<br>		)<br>	) ; END$<br><br>DELIMITER ;<br><br><br>-- 向account表来添加一条记录<br>INSERT INTO account<br>VALUES<br>	(NULL, &#39;王五&#39;, 3000);<br><br>-- 查询account表<br>SELECT<br>	*<br>FROM<br>	account;<br><br>-- 查询account_log表<br>SELECT<br>	*<br>FROM<br>	account_log;<br></code></pre></div></td></tr></table></figure>
+<h3 id="03-触发器-UPDATE型触发器"><a href="#03-触发器-UPDATE型触发器" class="headerlink" title="03_触发器_UPDATE型触发器"></a>03_触发器_UPDATE型触发器</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	创建触发器<br>	标准语法<br>		DELIMITER $<br><br>		CREATE TRIGGER 触发器名称<br>		BEFORE|AFTER INSERT|UPDATE|DELETE<br>		ON 表名<br>		FOR EACH ROW<br>		BEGIN<br>			触发器要执行的功能;<br>		END$<br><br>		DELIMITER ;<br>*&#x2F;<br>-- 创建UPDATE型触发器。用于对account表修改数据进行日志的记录<br>DELIMITER $<br>CREATE TRIGGER account_update AFTER UPDATE ON account FOR EACH ROW<br>BEGIN<br>	INSERT INTO account_log<br>VALUES<br>	(<br>		NULL,<br>		&#39;UPDATE&#39;,<br>		NOW(),<br>		new.id,<br>		CONCAT(<br>			&#39;修改前&#123;id&#x3D;&#39;,<br>			old.id,<br>			&#39;,name&#x3D;&#39;,<br>			old. NAME,<br>			&#39;,money&#x3D;&#39;,<br>			old.money,<br>			&#39;&#125;&#39;,<br>			&#39;修改后&#123;id&#x3D;&#39;,<br>			new.id,<br>			&#39;,name&#x3D;&#39;,<br>			new. NAME,<br>			&#39;,money&#x3D;&#39;,<br>			new.money,<br>			&#39;&#125;&#39;<br>		)<br>	) ; END$<br><br>DELIMITER ;<br><br><br>-- 修改account表中李四的金额为2500<br>UPDATE account<br>SET money &#x3D; 2500<br>WHERE<br>	NAME &#x3D; &#39;李四&#39;;<br><br>-- 查询account表<br>SELECT<br>	*<br>FROM<br>	account;<br><br>-- 查询account_log表<br>SELECT<br>	*<br>FROM<br>	account_log;<br></code></pre></div></td></tr></table></figure>
+<h3 id="04-触发器-DELETE型触发器"><a href="#04-触发器-DELETE型触发器" class="headerlink" title="04_触发器_DELETE型触发器"></a>04_触发器_DELETE型触发器</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	创建触发器<br>	标准语法<br>		DELIMITER $<br><br>		CREATE TRIGGER 触发器名称<br>		BEFORE|AFTER INSERT|UPDATE|DELETE<br>		ON 表名<br>		FOR EACH ROW<br>		BEGIN<br>			触发器要执行的功能;<br>		END$<br><br>		DELIMITER ;<br>*&#x2F;<br>-- 创建DELETE型触发器。用于对account表删除数据进行日志的记录<br>DELIMITER $<br>CREATE TRIGGER account_delete AFTER DELETE ON account FOR EACH ROW<br>BEGIN<br>	INSERT INTO account_log<br>VALUES<br>	(<br>		NULL,<br>		&#39;DELETE&#39;,<br>		NOW(),<br>		old.id,<br>		CONCAT(<br>			&#39;删除前&#123;id&#x3D;&#39;,<br>			old.id,<br>			&#39;,name&#x3D;&#39;,<br>			old. NAME,<br>			&#39;,money&#x3D;&#39;,<br>			old.money,<br>			&#39;&#125;&#39;<br>		)<br>	) ; END$<br><br>DELIMITER ;<br><br><br>-- 删除account表中王五<br>DELETE<br>FROM<br>	account<br>WHERE<br>	NAME &#x3D; &#39;王五&#39;;<br><br>-- 查询account表<br>SELECT<br>	*<br>FROM<br>	account;<br><br>-- 查询account_log表<br>SELECT<br>	*<br>FROM<br>	account_log;<br></code></pre></div></td></tr></table></figure>
+<h3 id="05-触发器-查看触发器"><a href="#05-触发器-查看触发器" class="headerlink" title="05_触发器_查看触发器"></a>05_触发器_查看触发器</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	查看触发器<br>	标准语法<br>		SHOW TRIGGERS;<br>*&#x2F;<br>-- 查看触发器<br>SHOW TRIGGERS;<br></code></pre></div></td></tr></table></figure>
+<h3 id="06-触发器-删除触发器"><a href="#06-触发器-删除触发器" class="headerlink" title="06_触发器_删除触发器"></a>06_触发器_删除触发器</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	删除触发器<br>	标准语法<br>		DROP TRIGGER 触发器名称;<br>*&#x2F;<br>-- 删除触发器<br>DROP TRIGGER account_delete;<br></code></pre></div></td></tr></table></figure>
+<h2 id="04事务"><a href="#04事务" class="headerlink" title="04事务"></a>04事务</h2><h3 id="01-事务-事务的数据准备"><a href="#01-事务-事务的数据准备" class="headerlink" title="01_事务_事务的数据准备"></a>01_事务_事务的数据准备</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">-- 创建db10数据库<br>CREATE DATABASE db10;<br><br>-- 使用db10数据库<br>USE db10;<br><br>-- 创建账户表<br>CREATE TABLE account (<br>	id INT PRIMARY KEY AUTO_INCREMENT,<br>	-- 账户id<br>	NAME VARCHAR (20),<br>	-- 账户名称<br>	money DOUBLE -- 账户余额<br>);<br><br>-- 添加数据<br>INSERT INTO account<br>VALUES<br>	(NULL, &#39;张三&#39;, 1000),<br>	(NULL, &#39;李四&#39;, 1000);<br></code></pre></div></td></tr></table></figure>
+<h3 id="02-事务-未管理事务"><a href="#02-事务-未管理事务" class="headerlink" title="02_事务_未管理事务"></a>02_事务_未管理事务</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">-- 创建db10数据库<br>CREATE DATABASE db10;<br><br>-- 使用db10数据库<br>USE db10;<br><br>-- 创建账户表<br>CREATE TABLE account (<br>	id INT PRIMARY KEY AUTO_INCREMENT,<br>	-- 账户id<br>	NAME VARCHAR (20),<br>	-- 账户名称<br>	money DOUBLE -- 账户余额<br>);<br><br>-- 添加数据<br>INSERT INTO account<br>VALUES<br>	(NULL, &#39;张三&#39;, 1000),<br>	(NULL, &#39;李四&#39;, 1000);<br></code></pre></div></td></tr></table></figure>
+<h3 id="03-事务-管理事务"><a href="#03-事务-管理事务" class="headerlink" title="03_事务_管理事务"></a>03_事务_管理事务</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	开启事务：START TRANSACTION;<br>	回滚事务：ROLLBACK;<br>	提交事务：COMMIT;<br>*&#x2F;<br>-- 张三给李四转账500元<br>-- 1.开启事务<br>START TRANSACTION;<br><br>-- 2.执行转账的操作<br>UPDATE account<br>SET money &#x3D; money - 500<br>WHERE<br>	NAME &#x3D; &#39;张三&#39;;<br><br>出错了... UPDATE account<br>SET money &#x3D; money + 500<br>WHERE<br>	NAME &#x3D; &#39;李四&#39;;<br><br>-- 3.结束事务<br>-- 3.1回滚事务<br>ROLLBACK;<br><br>-- 3.2提交事务<br>COMMIT;<br></code></pre></div></td></tr></table></figure>
+<h3 id="04-事务-事务的提交方式"><a href="#04-事务-事务的提交方式" class="headerlink" title="04_事务_事务的提交方式"></a>04_事务_事务的提交方式</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	事务的提交方式<br>		查询事务提交方式：SELECT @@AUTOCOMMIT;  -- 1代表自动提交    0代表手动提交<br>		修改事务提交方式：SET @@AUTOCOMMIT&#x3D;数字;<br>*&#x2F;<br>-- 查询事务的提交方式<br>SELECT<br>	@@autocommit;<br><br>UPDATE account<br>SET money &#x3D; 1000<br>WHERE<br>	NAME &#x3D; &#39;张三&#39;;<br><br>COMMIT;<br><br>-- 修改事务的提交方式<br>SET @@autocommit &#x3D; 0;<br><br><br></code></pre></div></td></tr></table></figure>
+<h3 id="05-事务-查询和修改事务的隔离级别"><a href="#05-事务-查询和修改事务的隔离级别" class="headerlink" title="05_事务_查询和修改事务的隔离级别"></a>05_事务_查询和修改事务的隔离级别</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	事务的隔离级别<br>		查询隔离级别：SELECT @@TX_ISOLATION;<br>		修改隔离级别：SET GLOBAL TRANSACTION ISOLATION LEVEL 级别字符串;<br>*&#x2F;<br>-- 查询事务隔离级别<br>SELECT<br>	@@tx_isolation;<br><br>-- 修改事务隔离级别<br>SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;<br></code></pre></div></td></tr></table></figure>
+<h3 id="06-事务-脏读的问题演示和解决-窗口1"><a href="#06-事务-脏读的问题演示和解决-窗口1" class="headerlink" title="06_事务_脏读的问题演示和解决_窗口1"></a>06_事务_脏读的问题演示和解决_窗口1</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	脏读的问题演示和解决<br>	脏读：一个事务中读取到了其他事务未提交的数据<br>*&#x2F;<br>-- 设置事务隔离级别为read uncommitted<br>SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;<br><br><br>SET GLOBAL TRANSACTION ISOLATION LEVEL READ COMMITTED;<br><br>-- 开启事务<br>START TRANSACTION;<br><br>-- 转账<br>UPDATE account<br>SET money &#x3D; money - 500<br>WHERE<br>	NAME &#x3D; &#39;张三&#39;;<br><br>UPDATE account<br>SET money &#x3D; money + 500<br>WHERE<br>	NAME &#x3D; &#39;李四&#39;;<br><br>-- 查询account表<br>SELECT<br>	*<br>FROM<br>	account;<br><br>-- 回滚<br>ROLLBACK;<br></code></pre></div></td></tr></table></figure>
+<h3 id="06-事务-脏读的问题演示和解决-窗口2"><a href="#06-事务-脏读的问题演示和解决-窗口2" class="headerlink" title="06_事务_脏读的问题演示和解决_窗口2"></a>06_事务_脏读的问题演示和解决_窗口2</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">-- 查询事务隔离级别<br>SELECT<br>	@@tx_isolation;<br><br>-- 开启事务<br>START TRANSACTION;<br><br>-- 查询account表<br>SELECT<br>	*<br>FROM<br>	account;<br></code></pre></div></td></tr></table></figure>
+<h3 id="07-事务-不可重复读的问题演示和解决-窗口1"><a href="#07-事务-不可重复读的问题演示和解决-窗口1" class="headerlink" title="07_事务_不可重复读的问题演示和解决_窗口1"></a>07_事务_不可重复读的问题演示和解决_窗口1</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	不可重复读的问题演示和解决<br>	不可重复读：一个事务中读取到了其他事务已提交的数据<br>*&#x2F;<br>-- 设置事务隔离级别为read committed<br>SET GLOBAL TRANSACTION ISOLATION LEVEL READ COMMITTED;<br><br><br>SET GLOBAL TRANSACTION ISOLATION LEVEL REPEATABLE READ;<br><br>-- 开启事务<br>START TRANSACTION;<br><br>-- 转账<br>UPDATE account<br>SET money &#x3D; money - 500<br>WHERE<br>	NAME &#x3D; &#39;张三&#39;;<br><br>UPDATE account<br>SET money &#x3D; money + 500<br>WHERE<br>	NAME &#x3D; &#39;李四&#39;;<br><br>-- 查询account表<br>SELECT<br>	*<br>FROM<br>	account;<br><br>-- 提交事务<br>COMMIT;<br></code></pre></div></td></tr></table></figure>
+<h3 id="07-事务-不可重复读的问题演示和解决-窗口2"><a href="#07-事务-不可重复读的问题演示和解决-窗口2" class="headerlink" title="07_事务_不可重复读的问题演示和解决_窗口2"></a>07_事务_不可重复读的问题演示和解决_窗口2</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">-- 查询隔离级别<br>SELECT<br>	@@tx_isolation;<br><br>-- 开启事务<br>START TRANSACTION;<br><br>-- 查询account表<br>SELECT<br>	*<br>FROM<br>	account;<br><br>-- 提交事务<br>COMMIT;<br></code></pre></div></td></tr></table></figure>
+<h3 id="08-事务-幻读的问题演示和解决-窗口1"><a href="#08-事务-幻读的问题演示和解决-窗口1" class="headerlink" title="08_事务_幻读的问题演示和解决_窗口1"></a>08_事务_幻读的问题演示和解决_窗口1</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">&#x2F;*<br>	幻读的问题演示和解决<br>	幻读：<br>	查询某记录是否存在，不存在<br>	准备插入此记录，但执行插入时发现此记录已存在，无法插入<br>	或某记录不存在执行删除，却发现删除成功<br>*&#x2F;<br>-- 设置隔离级别为repeatable read<br>SET GLOBAL TRANSACTION ISOLATION LEVEL REPEATABLE READ;<br><br><br>SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE;<br><br>-- 开启事务<br>START TRANSACTION;<br><br>-- 添加记录<br>INSERT INTO account<br>VALUES<br>	(4, &#39;赵六&#39;, 2000);<br><br>-- 查询account表<br>SELECT<br>	*<br>FROM<br>	account;<br><br>-- 提交事务<br>COMMIT;<br></code></pre></div></td></tr></table></figure>
+<h3 id="08-事务-幻读的问题演示和解决-窗口2"><a href="#08-事务-幻读的问题演示和解决-窗口2" class="headerlink" title="08_事务_幻读的问题演示和解决_窗口2"></a>08_事务_幻读的问题演示和解决_窗口2</h3><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs mysql">-- 查询隔离级别<br>SELECT<br>	@@tx_isolation;<br><br>-- 开启事务<br>START TRANSACTION;<br><br>-- 查询account表<br>SELECT<br>	*<br>FROM<br>	account;<br><br>-- 添加<br>INSERT INTO account<br>VALUES<br>	(3, &#39;王五&#39;, 2000);<br></code></pre></div></td></tr></table></figure>
+
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/05/sql-day04/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">sql-day04</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/05/sql-day02/">
+                        <span class="hidden-mobile">sql-day02</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>

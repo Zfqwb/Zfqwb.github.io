@@ -203,16 +203,34 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/04/14/Linux-day01-%E7%AC%94%E8%AE%B0/">Linux-day01-笔记</a>
+        <a href="/2020/05/04/mysql04/">MySQL高级-04</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/04/14/Linux-day01-%E7%AC%94%E8%AE%B0/">
+        <a href="/2020/05/04/mysql04/">
           
           
             
           
-          Linux-v10.0-01天-课堂笔记
+          一、MySQL存储引擎1. MySQL体系结构
+体系结构的概念
+
+任何一套系统当中，每个部件都能起到一定的作用！
+
+
+MySQL的体系结构
+
+
+
+
+体系结构详解
+客户端连接
+支持接口：支持的客户端连接，例如C、Java、PHP等语言来连接MySQL数据库
+
+
+第一层：网络连接层
+连接池：管理、缓冲用户的连接，线程处理等需要缓存的需求。
+例如：当客户端发送一个请求连接，会从连接池中获取一个连接进行使
         </a>
       </p>
 
@@ -220,8 +238,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-04-14 19:59" pubdate>
-              2019-04-14
+            <time datetime="2020-05-04 19:34" pubdate>
+              2020-05-04
             </time>
           </div>
         
@@ -229,7 +247,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Linux/">Linux</a>
+              <a href="/categories/MySQL/">MySQL</a>
             
           </div>
         
@@ -237,7 +255,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Linux/">Linux</a>
+              <a href="/tags/MySQL/">MySQL</a>
             
           </div>
         
@@ -251,18 +269,26 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/04/14/Linux%E5%91%BD%E4%BB%A4/">Linux-命令</a>
+        <a href="/2020/05/04/jdbc02/">JDBC-02</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/04/14/Linux%E5%91%BD%E4%BB%A4/">
+        <a href="/2020/05/04/jdbc02/">
           
           
             
           
-          1 用户与账户相关1.1 账户管理1.1.1 添加用户123456语法：useradd [参数] 用户名		#添加用户参数： -c&lt;备注&gt;：设置用户帐号的备注。  -e&lt;有效期限&gt;：设置帐号的有效期限。  -g&lt;群组&gt;：设置用户所属的群组。  -n：取消建立以用户名称为名的群组． 
+          一、数据库连接池1. 数据库连接池的概念
+数据库连接背景
+数据库连接是一种关键的、有限的、昂贵的资源，这一点在多用户的网页应用程序中体现得尤为突出
+对数据库连接的管理能显著影响到整个应用程序的伸缩性和健壮性，影响到程序的性能指标
+数据库连接池正是针对这个问题提出来的
 
-1.1.2 密码管理123456语法：passwd [参数] 用户名	#给指定
+
+数据库连接池
+数据库连接池负责分配、管理和释放数据库连接
+它允许应用程序重复使用一个现有的数据库连接，而不是再重新建立一个
+这项
         </a>
       </p>
 
@@ -270,8 +296,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-04-14 19:59" pubdate>
-              2019-04-14
+            <time datetime="2020-05-04 19:19" pubdate>
+              2020-05-04
             </time>
           </div>
         
@@ -279,7 +305,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Linux/">Linux</a>
+              <a href="/categories/JDBC/">JDBC</a>
             
           </div>
         
@@ -287,7 +313,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Linux/">Linux</a>
+              <a href="/tags/JDBC/">JDBC</a>
             
           </div>
         
@@ -301,16 +327,24 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2019/04/13/Linux-day02%E5%A4%A9-%E7%AC%94%E8%AE%B0/">Linux-day02-笔记</a>
+        <a href="/2020/05/04/Javaweb04/">Cookie&amp;Session&amp; Jsp</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2019/04/13/Linux-day02%E5%A4%A9-%E7%AC%94%E8%AE%B0/">
+        <a href="/2020/05/04/Javaweb04/">
           
           
             
           
-          Linux-v10.0-02天-课堂笔记
+          1 会话技术1.1 会话管理概述1.1.1 会话技术介绍
+会话：浏览器和服务器之间的多次请求和响应
+
+为了实现一些功能，浏览器和服务器之间可能会产生多次的请求和响应
+从浏览器访问服务器开始，到访问服务器结束(关闭浏览器、到了过期时间)
+这期间产生的多次请求和响应加在一起就称之为浏览器和服务器之间的一次会话
+
+
+这里的会话，指的是web开发中的一次通话过程，当打开浏览器，访问网站地址后，会话开始，当
         </a>
       </p>
 
@@ -318,8 +352,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2019-04-13 19:59" pubdate>
-              2019-04-13
+            <time datetime="2020-05-04 19:07" pubdate>
+              2020-05-04
             </time>
           </div>
         
@@ -327,7 +361,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Linux/">Linux</a>
+              <a href="/categories/JavaWeb%E6%A0%B8%E5%BF%83/">JavaWeb核心</a>
             
           </div>
         
@@ -335,7 +369,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Linux/">Linux</a>
+              <a href="/tags/JavaWeb/">JavaWeb</a>
             
           </div>
         
@@ -349,16 +383,21 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2018/04/02/p2/">PicGo+GitHub/Gitee搭建个人图床</a>
+        <a href="/2020/05/04/jdbc01/">JDBC-01</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2018/04/02/p2/">
+        <a href="/2020/05/04/jdbc01/">
           
           
             
           
-          新建 public 仓库 -&gt; 创建 token -&gt; 复制 token ,一会填进PicGo插件中
+          一、JDBC快速入门1.jdbc的概念
+JDBC（Java DataBase Connectivity：java数据库连接）是一种用于执行SQL语句的Java API，可以为多种关系型数据库提供统一访问，它是由一组用Java语言编写的类和接口组成的。
+JDBC的作用：可以通过java代码操作数据库
+
+2.jdbc的本质
+其实就是java官方提供的一套规范(接口)。用于帮助开发人员快速实现不同关系型
         </a>
       </p>
 
@@ -366,8 +405,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2018-04-02 09:08" pubdate>
-              2018-04-02
+            <time datetime="2020-05-04 18:19" pubdate>
+              2020-05-04
             </time>
           </div>
         
@@ -375,7 +414,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/PicGo/">PicGo</a>
+              <a href="/categories/JDBC/">JDBC</a>
             
           </div>
         
@@ -383,13 +422,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/GitHub/">GitHub</a>
-            
-              <a href="/tags/PicGo/">PicGo</a>
-            
-              <a href="/tags/%E4%B8%AA%E4%BA%BA%E5%9B%BE%E5%BA%8A/">个人图床</a>
-            
-              <a href="/tags/Gitee/">Gitee</a>
+              <a href="/tags/JDBC/">JDBC</a>
             
           </div>
         
@@ -403,18 +436,26 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2018/04/02/p1/">jsDeliver-A free CDN for Open Source</a>
+        <a href="/2020/05/03/mysql03/">MySQL高级-03</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2018/04/02/p1/">
+        <a href="/2020/05/03/mysql03/">
           
           
             
           
-          注册GitHub并登录
-创建public仓库
-怎么使用参考官网
+          一、MySQL存储过程和函数1. 存储过程和函数的概念
+存储过程和函数是：事先经过编译并存储在数据库中的一段 SQL 语句的集合
+存储过程和函数，类似于java里的方法
+存储过程和函数，是存储了多行sql语句
+java是存储了多行java代码
+
+
+
+2. 存储过程和函数的好处
+存储过程和函数可以重复使用，减轻开发人员的工作量。类似于java中方法可以多次调用
+减少网络流量，存储过程和函数位于服务器
         </a>
       </p>
 
@@ -422,8 +463,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2018-04-02 09:08" pubdate>
-              2018-04-02
+            <time datetime="2020-05-03 19:34" pubdate>
+              2020-05-03
             </time>
           </div>
         
@@ -431,7 +472,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/PicGo/">PicGo</a>
+              <a href="/categories/MySQL/">MySQL</a>
             
           </div>
         
@@ -439,9 +480,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/GitHub/">GitHub</a>
-            
-              <a href="/tags/cdn/">cdn</a>
+              <a href="/tags/MySQL/">MySQL</a>
             
           </div>
         
@@ -455,16 +494,26 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/04/07/Mermaid1/">JavaSE进阶18天思维导图</a>
+        <a href="/2020/05/03/Javaweb03/">Request&amp;Response</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/04/07/Mermaid1/">
+        <a href="/2020/05/03/Javaweb03/">
           
           
             
           
-          出不来图请等一等,图很大,四百多行渲染有点慢
+          1. 请求对象2.1 请求对象介绍
+请求：获取资源。在 BS 架构中，就是客户端浏览器向服务器端发出询问，请求获取资源
+
+请求对象：就是在项目当中用于发送请求的对象(其实是JavaEE 把浏览器请求的数据自动封装好的一个对象,)
+
+我们常用的对象就是ServletRequest和HttpServletRequest，它们的区别就是是否和HTTP协议有关
+
+
+
+2.2 常用方法介绍
+先了解即可，接下
         </a>
       </p>
 
@@ -472,8 +521,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2017-04-07 20:38" pubdate>
-              2017-04-07
+            <time datetime="2020-05-03 19:07" pubdate>
+              2020-05-03
             </time>
           </div>
         
@@ -481,7 +530,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/Mermaid/">Mermaid</a>
+              <a href="/categories/JavaWeb%E6%A0%B8%E5%BF%83/">JavaWeb核心</a>
             
           </div>
         
@@ -489,7 +538,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Mermaid/">Mermaid</a>
+              <a href="/tags/JavaWeb/">JavaWeb</a>
             
           </div>
         
@@ -503,16 +552,26 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/04/02/SAd18/">JavaSE进阶-Day18 XML&amp;枚举</a>
+        <a href="/2020/05/02/mysql02/">MySQL进阶-02</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/04/02/SAd18/">
+        <a href="/2020/05/02/mysql02/">
           
           
             
           
-          XML&amp;枚举
+          一、约束1.外键约束
+外键约束概念
+
+让表和表之间产生关系，从而保证数据的准确性！
+
+
+建表时添加外键约束
+
+为什么要有外键约束
+
+123456789101112131415161718192021222324252627282930-- 创建db2数据库CREATE DATABASE db2;-- 使用db2数据库USE db2;-- 创建user用户表CREATE TABLE USER(	id
         </a>
       </p>
 
@@ -520,8 +579,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2017-04-02 09:28" pubdate>
-              2017-04-02
+            <time datetime="2020-05-02 19:34" pubdate>
+              2020-05-02
             </time>
           </div>
         
@@ -529,7 +588,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/JavaSE%E8%BF%9B%E9%98%B6/">JavaSE进阶</a>
+              <a href="/categories/MySQL/">MySQL</a>
             
           </div>
         
@@ -537,9 +596,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/XML/">XML</a>
-            
-              <a href="/tags/%E6%9E%9A%E4%B8%BE/">枚举</a>
+              <a href="/tags/MySQL/">MySQL</a>
             
           </div>
         
@@ -553,16 +610,23 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/04/02/SAd17/">JavaSE进阶-Day17 反射</a>
+        <a href="/2020/05/02/Javaweb02/">Servlet</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/04/02/SAd17/">
+        <a href="/2020/05/02/Javaweb02/">
           
           
             
           
-          反射
+          Servlet-授课1 Servlet1.1 Servlet概述
+Servlet 是运行在 Java 服务器端的程序，用于接收和响应来自客户端基于 HTTP 协议的请求。
+如果想实现 Servlet 的功能，可以通过实现 javax.servlet.Servlet 接口或者继承它的实现类。
+核心方法：service()，任何客户端的请求都会经过该方法。
+
+
+
+Servlet是SUN公司提供的一套规
         </a>
       </p>
 
@@ -570,8 +634,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2017-04-02 09:28" pubdate>
-              2017-04-02
+            <time datetime="2020-05-02 19:07" pubdate>
+              2020-05-02
             </time>
           </div>
         
@@ -579,7 +643,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/JavaSE%E8%BF%9B%E9%98%B6/">JavaSE进阶</a>
+              <a href="/categories/JavaWeb%E6%A0%B8%E5%BF%83/">JavaWeb核心</a>
             
           </div>
         
@@ -587,7 +651,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%8F%8D%E5%B0%84/">反射</a>
+              <a href="/tags/JavaWeb/">JavaWeb</a>
             
           </div>
         
@@ -601,16 +665,24 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/04/02/SAd16/">JavaSE进阶-Day16 网络编程</a>
+        <a href="/2020/05/01/mysql01/">MySQL基础-01</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/04/02/SAd16/">
+        <a href="/2020/05/01/mysql01/">
           
           
             
           
-          网络编程
+          一、数据库的基本概念1.为什么要学数据库？
+之前我们如果想将一些数据实现永久化存储，可以怎么做呢？没错。使用IO流的技术将数据保存到本地文件中
+但是接下来我有这样一个需求：将下面的user.txt文件中的王五年龄修改为35
+
+12345张三 23 男李四 24 男王五 25 女赵六 26 女周七 27 男
+
+
+我们要如何实现呢？
+可以采用字符缓冲流，将每一行数据读取出来，封装为User对象。将多个
         </a>
       </p>
 
@@ -618,8 +690,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2017-04-02 09:28" pubdate>
-              2017-04-02
+            <time datetime="2020-05-01 19:34" pubdate>
+              2020-05-01
             </time>
           </div>
         
@@ -627,7 +699,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/JavaSE%E8%BF%9B%E9%98%B6/">JavaSE进阶</a>
+              <a href="/categories/MySQL/">MySQL</a>
             
           </div>
         
@@ -635,7 +707,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
+              <a href="/tags/MySQL/">MySQL</a>
             
           </div>
         
@@ -649,16 +721,20 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2017/04/02/SAd15/">JavaSE进阶-Day15多线程补充与单元测试与日志</a>
+        <a href="/2020/05/01/Javaweb01/">Tomcat&amp;Http协议</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2017/04/02/SAd15/">
+        <a href="/2020/05/01/Javaweb01/">
           
           
             
           
-          多线程补充
+          1 企业开发简介1.1 JavaEE规范
+JavaEE(Java Enterprise Edition)：Java 企业版
+它是由 SUN 公司领导、各个厂家共同制定并得到广泛认可的工业标准
+JavaEE 早期叫做 J2EE，但是没有继续采用其命名规则。J2EE 的版本从 1.0 开始到 1.4 结束。而 JavaEE 版本是从JavaEE 5 版本开始，目前最新的版本是 JavaEE 8
+Jav
         </a>
       </p>
 
@@ -666,8 +742,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2017-04-02 09:28" pubdate>
-              2017-04-02
+            <time datetime="2020-05-01 19:07" pubdate>
+              2020-05-01
             </time>
           </div>
         
@@ -675,7 +751,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/JavaSE%E8%BF%9B%E9%98%B6/">JavaSE进阶</a>
+              <a href="/categories/JavaWeb%E6%A0%B8%E5%BF%83/">JavaWeb核心</a>
             
           </div>
         
@@ -683,11 +759,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%A1%A5%E5%85%85/">多线程补充</a>
-            
-              <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a>
-            
-              <a href="/tags/%E6%97%A5%E5%BF%97/">日志</a>
+              <a href="/tags/JavaWeb/">JavaWeb</a>
             
           </div>
         
@@ -699,7 +771,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

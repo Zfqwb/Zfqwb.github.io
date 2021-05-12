@@ -1,0 +1,1281 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>Cookie&amp;Session&amp; Jsp - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zfqwb.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Cookie&Session& Jsp">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-05-04 19:07" pubdate>
+        2020年5月4日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      102
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Cookie&amp;Session&amp; Jsp</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：9 天前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="1-会话技术"><a href="#1-会话技术" class="headerlink" title="1 会话技术"></a>1 会话技术</h1><h2 id="1-1-会话管理概述"><a href="#1-1-会话管理概述" class="headerlink" title="1.1 会话管理概述"></a>1.1 会话管理概述</h2><h3 id="1-1-1-会话技术介绍"><a href="#1-1-1-会话技术介绍" class="headerlink" title="1.1.1 会话技术介绍"></a>1.1.1 会话技术介绍</h3><ul>
+<li><p>会话：浏览器和服务器之间的多次请求和响应</p>
+<ul>
+<li>为了实现一些功能，浏览器和服务器之间可能会产生多次的请求和响应</li>
+<li>从浏览器访问服务器开始，到访问服务器结束(关闭浏览器、到了过期时间)</li>
+<li>这期间产生的多次请求和响应加在一起就称之为浏览器和服务器之间的一次会话</li>
+</ul>
+</li>
+<li><p>这里的会话，指的是web开发中的一次通话过程，当打开浏览器，访问网站地址后，会话开始，当关闭浏览器（或者到了过期时间），会话结束</p>
+</li>
+<li><p>会话过程中所产生的一些数据，可以通过会话技术( Cookie 和 Session )保存</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E4%BC%9A%E8%AF%9D.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>播仔，登陆了黑马论坛（右上角显示：用户名：小播）</li>
+<li>然后点击“Java学科板块” ， 打开新界面“Java学科板块”，在这里发帖 （在这个界面依然保持登陆状态）</li>
+<li>接下来又点击“”前端学科板块“，打开新界面”前端学科板块“，在这里发帖（在这个界面依然保持登陆状态）</li>
+<li>在一次登陆之后，然后打开很对新界面，依然能够保持登陆，就是通过会话技术实现的</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-1-2-会话管理分类"><a href="#1-1-2-会话管理分类" class="headerlink" title="1.1.2 会话管理分类"></a>1.1.2 会话管理分类</h3><ul>
+<li><strong>Cookie：客户端会话管理技术</strong><ul>
+<li>把要共享的数据保存到客户端。</li>
+<li>每次请求时，把会话信息带到服务器端，从而实现多次请求的数据共享！</li>
+</ul>
+</li>
+<li><strong>Session：服务器端会话管理技术</strong><ul>
+<li>本质也是采用客户端会话管理技术。</li>
+<li>只不过在客户端保存的是一个特殊标识，而共享的数据保存到了服务器端的内存对象中。</li>
+<li>每次请求时，会将特殊标识带到服务器端，根据这个标识来找到对应的内存空间，从而实现数据共享！</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight erlang"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs erlang">理解Cookie和Session<br>	例子：<br>假设，我开了个咖啡店,我的咖啡店举办活动,喝<span class="hljs-number">5</span>杯,送一杯,我们希望,把顾客所喝咖啡的数量记录下来。以保证第<span class="hljs-number">5</span>杯的时候，送一杯。<br>		<span class="hljs-number">1</span>:Cookie：<br>		直接给顾客一张小卡片,在卡片上记录次数,每次过来喝咖啡,就把小卡片给店员,店员重新记录次数,之后再把小卡片还给顾客<br>		优点: 咖啡店需要记录的信息很少,所有信息都放在顾客那里.<br>		缺点: 数据不安全,记录信心特点少.<br>		<span class="hljs-number">2</span>:Session：<br>		需要给顾客一张会员卡,这个会员卡上什么都没有,只有一个卡号.等顾客下次来的时候,报这个卡号,店员根据卡号,找到<span class="hljs-string">&quot;小本本&quot;</span>.查找顾客的相关信息,之后该优惠优惠<br>		优点: 数据在服务器端存储,比较安全,可以存储大量数据<br>		缺点: 服务器压力比较大.<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="1-2-客户端会话管理技术"><a href="#1-2-客户端会话管理技术" class="headerlink" title="1.2 客户端会话管理技术"></a>1.2 客户端会话管理技术</h2><h3 id="1-2-1-Cookie概述"><a href="#1-2-1-Cookie概述" class="headerlink" title="1.2.1 Cookie概述"></a>1.2.1 Cookie概述</h3><h4 id="1）Cookie的介绍"><a href="#1）Cookie的介绍" class="headerlink" title="1）Cookie的介绍"></a>1）Cookie的介绍</h4><ul>
+<li><p>Cookie：客户端会话管理技术</p>
+<ul>
+<li>把要共享的数据保存到客户端（浏览器）</li>
+<li>每次请求时，把会话信息带到服务器端，从而实现多次请求的数据共享</li>
+</ul>
+</li>
+<li><p>作用：可以保存客户端访问网站的相关内容，从而保证每次访问时先从本地缓存中获取，以此提高效率！</p>
+</li>
+<li><p>Cookie  API 介绍</p>
+<p><img src="/2020/05/04/Javaweb04/img/cookie.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h4 id="2）Cookie的常见属性"><a href="#2）Cookie的常见属性" class="headerlink" title="2）Cookie的常见属性"></a>2）Cookie的常见属性</h4><table>
+<thead>
+<tr>
+<th>属性名称</th>
+<th>属性作用</th>
+<th>是否重要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>name</td>
+<td>cookie的名称</td>
+<td>必要属性</td>
+</tr>
+<tr>
+<td>value</td>
+<td>cookie的值（不能是中文）</td>
+<td>必要属性</td>
+</tr>
+<tr>
+<td>path</td>
+<td>cookie的路径</td>
+<td>重要</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>cookie的域名</td>
+<td>重要</td>
+</tr>
+<tr>
+<td>maxAge</td>
+<td>cookie的生存时间</td>
+<td>重要</td>
+</tr>
+<tr>
+<td>version</td>
+<td>cookie的版本号</td>
+<td>不重要</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>cookie的说明</td>
+<td>不重要</td>
+</tr>
+</tbody></table>
+<p><strong>细节</strong></p>
+<p>Cookie有大小，个数限制。每个网站最多只能存20个cookie，且大小不能超过4kb。同时，所有网站的cookie总数不超过300个。</p>
+<p>当删除Cookie时，设置maxAge值为0。当不设置maxAge时，使用的是浏览器的内存，当关闭浏览器之后，cookie将丢失。设置了此值，就会保存成缓存文件（值必须是大于0的,以秒为单位）。</p>
+<h4 id="3）Cookie的方法和添加获取"><a href="#3）Cookie的方法和添加获取" class="headerlink" title="3）Cookie的方法和添加获取"></a>3）Cookie的方法和添加获取</h4><ul>
+<li><p>cookie的方法</p>
+<p><img src="/2020/05/04/Javaweb04/img/cookie%E6%96%B9%E6%B3%95.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>Cookie源码</p>
+<p><img src="/2020/05/04/Javaweb04/img/Cookie%E6%BA%90%E7%A0%81.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>添加：HttpServletResponse对象中提供了addCookie()方法</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E6%B7%BB%E5%8A%A0cookie.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>获取：HttpServletRequest对象中提供了getCookies()方法</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E8%8E%B7%E5%8F%96cookie.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p><strong>补充</strong>：为啥是响应对象添加cookie，而获取对象是请求对象？</p>
+<ul>
+<li>因为，cookie是通过服务器端代码将数据保存在浏览器，所以服务器让浏览器做一件事情，肯定是通过响应</li>
+<li>而在浏览器存储的数据，要想告诉服务器都有什么，那肯定是通过请求</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-2-Cookie的使用"><a href="#1-2-2-Cookie的使用" class="headerlink" title="1.2.2 Cookie的使用"></a>1.2.2 Cookie的使用</h3><ul>
+<li><p>需求说明</p>
+<ul>
+<li> 通过 Cookie 记录最后访问时间，并在浏览器上显示出来</li>
+</ul>
+</li>
+<li><p>最终目的</p>
+<ul>
+<li>掌握 Cookie 的基本使用，从创建到保存到客户端，再到从服务器端获取</li>
+</ul>
+</li>
+<li><p>实现步骤</p>
+<ol>
+<li>通过响应对象写出一个提示信息</li>
+<li>创建 Cookie 对象，指定 name 和 value</li>
+<li>设置 Cookie 最大存活时间</li>
+<li>通过响应对象将 Cookie 对象添加到客户端</li>
+<li>通过请求对象获取 Cookie 对象</li>
+<li>将 Cookie 对象中的访问时间写出、</li>
+</ol>
+</li>
+<li><p>案例：新建项目cookie_demo，配置虚拟目录/cookie，新建类com.itheima.servlet.ServletDemo01</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.Cookie;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.PrintWriter;<br><span class="hljs-keyword">import</span> java.text.SimpleDateFormat;<br><span class="hljs-keyword">import</span> java.util.Date;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    Cookie的使用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/servletDemo01&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo01</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        resp.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br>        <br>        <span class="hljs-comment">//1.通过响应对象写出提示信息</span><br>        PrintWriter pw = resp.getWriter();<br>        pw.write(<span class="hljs-string">&quot;欢迎访问本网站，您的最后访问时间为：&lt;br&gt;&quot;</span>);<br><br>        <span class="hljs-comment">//2.创建Cookie对象，用于记录最后访问时间</span><br>        Cookie cookie = <span class="hljs-keyword">new</span> Cookie(<span class="hljs-string">&quot;time&quot;</span>,System.currentTimeMillis()+<span class="hljs-string">&quot;&quot;</span>);<br><br>        <span class="hljs-comment">//3.设置最大存活时间(单位s)</span><br>        cookie.setMaxAge(<span class="hljs-number">3600</span>);<br><br>        <span class="hljs-comment">//4.将cookie对象添加到客户端</span><br>        resp.addCookie(cookie);<br><br>        <span class="hljs-comment">//5.获取cookie</span><br>        Cookie[] arr = req.getCookies();<br>        <span class="hljs-keyword">for</span>(Cookie c : arr) &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;time&quot;</span>.equals(c.getName())) &#123;<br>                <span class="hljs-comment">//6.获取cookie对象中的value，进行写出</span><br>                String value = c.getValue();<br>                SimpleDateFormat sdf = <span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);<br>                pw.write(sdf.format(<span class="hljs-keyword">new</span> Date(Long.parseLong(value))));<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>注意：这里我们为了节省时间，所以在一个Servlet中设置之后，立马又获取了</li>
+<li>其实可以在一个Servlet中设置，另一个Servlet中获取</li>
+</ul>
+</li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/cookie%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>在headers中看到的Data是07:23，这个是xx   时间，我们是东八区的，所以+8小时</li>
+<li>然后set-cookie中可以看到，设置的cookie是time=xxx</li>
+<li>Max-age是1小时</li>
+<li>Expires过期时间是08：23</li>
+</ul>
+</li>
+<li><p>cookie文件</p>
+<ul>
+<li>cookie是保存在浏览器中的，那浏览器将cookie信息保存到缓存文件中了</li>
+</ul>
+<p><img src="/2020/05/04/Javaweb04/img/cookie%E7%BC%93%E5%AD%98%E6%96%87%E4%BB%B6.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>itcast@localhost/cookie/</li>
+<li>本机用户名@本网站ip地址/cookie/</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-3-Cookie的使用细节"><a href="#1-2-3-Cookie的使用细节" class="headerlink" title="1.2.3 Cookie的使用细节"></a>1.2.3 Cookie的使用细节</h3><h4 id="1-细节介绍"><a href="#1-细节介绍" class="headerlink" title="1) 细节介绍"></a>1) 细节介绍</h4><ul>
+<li>数量限制<ul>
+<li> 每个网站最多只能有 20 个 Cookie，且大小不能超过 4KB。所有网站的 Cookie 总数不能超过 300 个。</li>
+</ul>
+</li>
+<li>名称限制<ul>
+<li>Cookie 的名称只能包含 ASCCI 码表中的字母、数字字符。不能包含逗号、分号、空格，不能以 $ 开头。</li>
+<li>Cookie 的值不支持中文。</li>
+</ul>
+</li>
+<li>存活时间限制 setMaxAge() 方法接收数字<ul>
+<li>负整数：当前会话有效，浏览器关闭则清除。</li>
+<li> 0：立即清除。</li>
+<li>正整数：以秒为单位设置存活时间。</li>
+</ul>
+</li>
+<li>访问路径限制<ul>
+<li> 默认路径：取自第一次访问的资源路径前缀。只要以这个路径开头就能访问到</li>
+<li> 设置路径：setPath() 方法设置指定路径</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-存活时间案例"><a href="#2-存活时间案例" class="headerlink" title="2)  存活时间案例"></a>2)  存活时间案例</h4><ul>
+<li><p>在上个案例中修改代码</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//3.设置最大存活时间</span><br><span class="hljs-comment">//cookie.setMaxAge(3600);</span><br>cookie.setMaxAge(<span class="hljs-number">0</span>);    <span class="hljs-comment">// 立即清除</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/cookie%E6%B2%A1%E4%BA%86.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h4 id="3-访问路径限制案例"><a href="#3-访问路径限制案例" class="headerlink" title="3) 访问路径限制案例"></a>3) 访问路径限制案例</h4><ul>
+<li><p>新建ServletDemo02：设置cookie</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.Cookie;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    Cookie的路径限制</span><br><span class="hljs-comment">    取自第一次访问的资源路径前缀</span><br><span class="hljs-comment">    只要以这个前缀为开头(包括子级路径)。获取到</span><br><span class="hljs-comment">    反之获取不到</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/servlet/servletDemo02&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo02</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//创建Cookie并添加</span><br>        Cookie cookie = <span class="hljs-keyword">new</span> Cookie(<span class="hljs-string">&quot;username&quot;</span>,<span class="hljs-string">&quot;zhangsan&quot;</span>);<br>        cookie.setMaxAge(<span class="hljs-number">3600</span>);<br>        resp.addCookie(cookie);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建ServletDemo03：获取cookie</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.Cookie;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    Cookie的路径限制</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/servlet/servletDemo03&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo03</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//获取Cookie</span><br>        Cookie[] arr = req.getCookies();<br>        <span class="hljs-keyword">for</span>(Cookie c : arr) &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;username&quot;</span>.equals(c.getName())) &#123;<br>                String value = c.getValue();<br>                resp.getWriter().write(value);<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建ServletDemo04：获取cookie</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.Cookie;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    Cookie的路径限制</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/servlet/aaa/servletDemo04&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo04</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//获取Cookie</span><br>        Cookie[] arr = req.getCookies();<br>        <span class="hljs-keyword">for</span>(Cookie c : arr) &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;username&quot;</span>.equals(c.getName())) &#123;<br>                String value = c.getValue();<br>                resp.getWriter().write(value);<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建ServletDemo05：获取cookie</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.Cookie;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    Cookie的路径限制</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/bbb/servletDemo05&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo05</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//获取Cookie</span><br>        Cookie[] arr = req.getCookies();<br>        <span class="hljs-keyword">for</span>(Cookie c : arr) &#123;<br>            <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;username&quot;</span>.equals(c.getName())) &#123;<br>                String value = c.getValue();<br>                resp.getWriter().write(value);<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/cookie%E8%B7%AF%E5%BE%84%E9%99%90%E5%88%B6.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>总结：Cookie的路径限制</p>
+<ul>
+<li><p>​    取自第一次访问的资源路径前缀</p>
+</li>
+<li><p>​    只要以这个前缀为开头(包括子级路径)就可以获取到</p>
+</li>
+<li><p>​    反之获取不到</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-3-服务端会话管理概述"><a href="#1-3-服务端会话管理概述" class="headerlink" title="1.3 服务端会话管理概述"></a>1.3 服务端会话管理概述</h2><h3 id="1-3-1-HttpSession概述"><a href="#1-3-1-HttpSession概述" class="headerlink" title="1.3.1 HttpSession概述"></a>1.3.1 HttpSession概述</h3><h4 id="1）HttpSession介绍"><a href="#1）HttpSession介绍" class="headerlink" title="1）HttpSession介绍"></a>1）HttpSession介绍</h4><ul>
+<li><p>HttpSession：服务器端会话管理技术</p>
+<ul>
+<li>本质也是采用客户端会话管理技术</li>
+<li>只不过在客户端保存的是一个特殊标识，而共享的数据保存到了服务器端的内存对象中</li>
+<li>每次请求时，会将特殊标识带到服务器端，根据这个标识来找到对应的内存空间，从而实现数据共享</li>
+<li>是 Servlet 规范中四大域对象之一的会话域对象</li>
+<li>作用：可以实现数据共享</li>
+</ul>
+</li>
+<li><p>域对象API</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E5%9F%9F%E5%AF%B9%E8%B1%A1.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p><strong>补充：</strong></p>
+<ul>
+<li><p>HttpSession，它虽然是服务端会话管理技术的对象，但它本质仍是一个Cookie</p>
+</li>
+<li><p>是一个由服务器自动创建的特殊的Cookie，Cookie的名称就是JSESSIONID，Cookie的值是服务器分配的一个唯一的标识</p>
+</li>
+<li><p>当我们使用HttpSession时，浏览器在没有禁用Cookie的情况下，都会把这个Cookie带到服务器端，然后根据唯一标识去查找对应的HttpSession对象，找到了，我们就可以直接使用了</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2）HttpSession的常用方法"><a href="#2）HttpSession的常用方法" class="headerlink" title="2）HttpSession的常用方法"></a>2）HttpSession的常用方法</h4><p><img src="/2020/05/04/Javaweb04/img/HttpSession%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3）HttpSession的获取"><a href="#3）HttpSession的获取" class="headerlink" title="3）HttpSession的获取"></a>3）HttpSession的获取</h4><ul>
+<li>获取HttpSession是通过HttpServletRequest接口中的两个方法获取的，如下图所示：</li>
+</ul>
+<p><img src="/2020/05/04/Javaweb04/img/%E8%8E%B7%E5%8F%96session.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>这两个方法的区别：</li>
+</ul>
+<p><img src="/2020/05/04/Javaweb04/assets/%E8%8E%B7%E5%8F%96Session%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95.png" srcset="/img/loading.gif" lazyload alt="获取Session的两个方法"></p>
+<h3 id="1-3-2-HttpSession的使用"><a href="#1-3-2-HttpSession的使用" class="headerlink" title="1.3.2 HttpSession的使用"></a>1.3.2 HttpSession的使用</h3><ul>
+<li><p>需求说明</p>
+<ul>
+<li>通过第一个 Servlet 设置共享数据用户名，并在第二个 Servlet 获取到</li>
+</ul>
+</li>
+<li><p>最终目的</p>
+<ul>
+<li>掌握 HttpSession 的基本使用，如何获取和使用</li>
+</ul>
+</li>
+<li><p>实现步骤</p>
+<ol>
+<li>在第一个 Servlet 中获取请求的用户名</li>
+<li>获取 HttpSession 对象</li>
+<li>将用户名设置到共享数据中</li>
+<li>在第二个 Servlet 中获取 HttpSession 对象</li>
+<li>获取共享数据用户名</li>
+<li>将获取到用户名响应给客户端浏览器</li>
+</ol>
+</li>
+<li><p>案例：</p>
+<ul>
+<li>新建项目session_demo，虚拟目录/session</li>
+<li>新建com.itheima.servlet.ServletDemo01：设置共享数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpSession;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    Session的基本使用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/servletDemo01&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo01</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//1.获取请求的用户名</span><br>        String username = req.getParameter(<span class="hljs-string">&quot;username&quot;</span>);<br><br>        <span class="hljs-comment">//2.获取HttpSession的对象</span><br>        HttpSession session = req.getSession();<br><br>        <span class="hljs-comment">//3.将用户名信息添加到共享数据中</span><br>        session.setAttribute(<span class="hljs-string">&quot;username&quot;</span>,username);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建ServletDemo02：获取共享数据</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpSession;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    Session的基本使用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/servletDemo02&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo02</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//1.获取HttpSession对象</span><br>        HttpSession session = req.getSession();<br>        System.out.println(session);<br>        System.out.println(session.getId());<br><br>        <span class="hljs-comment">//2.获取共享数据</span><br>        Object username = session.getAttribute(<span class="hljs-string">&quot;username&quot;</span>);<br><br>        <span class="hljs-comment">//3.将数据响应给浏览器</span><br>        resp.getWriter().write(username+<span class="hljs-string">&quot;&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/session%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>验证：demo1和demo2的session是否是同一个对象</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//两个代码中都添加如下log</span><br>System.out.println(session);<br>System.out.println(session.getId());<br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问：分别访问两个demo，发现一致</p>
+<p><img src="/2020/05/04/Javaweb04/img/sessionid.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="1-3-3-细节"><a href="#1-3-3-细节" class="headerlink" title="1.3.3 细节"></a>1.3.3 细节</h3><h4 id="1-唯一标识查看"><a href="#1-唯一标识查看" class="headerlink" title="1) 唯一标识查看"></a>1) 唯一标识查看</h4><ul>
+<li><p>唯一标识查看(刚刚是打印出来了，其实可以通过Network查看)</p>
+<p><img src="/2020/05/04/Javaweb04/img/sessionid02.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2020/05/04/Javaweb04/img/sessionid03.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h4 id="2-禁用cookie"><a href="#2-禁用cookie" class="headerlink" title="2) 禁用cookie"></a>2) 禁用cookie</h4><ul>
+<li><p>浏览器禁用 Cookie（用户可以设置浏览器来禁止Cookie的使用）</p>
+<ul>
+<li>方式一：通过提示信息告知用户，大部分网站采用的解决方式。(推荐)</li>
+<li>方式二：访问时拼接 jsessionid 标识，通过 encodeURL() 方法重写地址。(了解)</li>
+</ul>
+</li>
+<li><p>如何禁用cookie？</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E5%85%B3%E9%97%ADcookie.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>案例：新建ServletDemo03</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpSession;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    Cookie的禁用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/servletDemo03&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServletDemo03</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//1.获取HttpSession对象</span><br>        HttpSession session = req.getSession();<br>        System.out.println(session);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/session04.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>在demo1中，创建了一个session</li>
+<li>在demo3中，因为禁用cookie了，sessionid没有传递过来，所以又创建了一个新session</li>
+<li>所以俩session不一致</li>
+<li>为了能够看到效果，我们修改一下代码</li>
+</ul>
+</li>
+<li><p>修改</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">HttpSession session = req.getSession(<span class="hljs-keyword">false</span>);<span class="hljs-comment">//改为false，如果没有找到session也不创建</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/session05.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>增加解决呢？看下天猫，也是简单的给出了提升</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E5%A4%A9%E7%8C%AB.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>我们也增加提示</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(session == <span class="hljs-keyword">null</span>) &#123;<br>    resp.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br>    resp.getWriter().write(<span class="hljs-string">&quot;为了不影响正常的使用，请不要禁用浏览器的Cookie~&quot;</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/session06.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>弹框是需要用到js，后续才学习</li>
+</ul>
+</li>
+<li><p>方式二：访问时拼接 jsessionid 标识，通过 encodeURL() 方法重写地址</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//修改demo1</span><br><span class="hljs-comment">//实现url重写  相当于在地址栏后面拼接了一个jsessionid（encodeURL自动会给路径后天就jsessionid）</span><br>resp.getWriter().write(<span class="hljs-string">&quot;&lt;a href=&#x27;&quot;</span>+resp.encodeURL(<span class="hljs-string">&quot;http://localhost:8080/session/servletDemo03&quot;</span>)+<span class="hljs-string">&quot;&#x27;&gt;go servletDemo03&lt;/a&gt;&quot;</span>);<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/session07.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p>方式二不推荐，因为每次跳转都的做url重新，比较麻烦</p>
+</li>
+</ul>
+<h4 id="3）HttpSession的钝化和活化"><a href="#3）HttpSession的钝化和活化" class="headerlink" title="3）HttpSession的钝化和活化"></a>3）HttpSession的钝化和活化</h4><ul>
+<li><p>什么是钝化和活化</p>
+<ul>
+<li>钝化：序列化。把长时间不用，但还不到过期时间的 HttpSession 进行序列化，写到磁盘上</li>
+<li>活化：相反的状态</li>
+</ul>
+</li>
+<li><p>何时钝化</p>
+<ul>
+<li><p>第一种情况：当访问量很大时，服务器会根据 getLastAccessTime 来进行排序，</p>
+<p>​            对长时间不用，但是还没到过期时间的 HttpSession 进行序列化。</p>
+</li>
+<li><p>第二种情况：当服务器进行重启的时候，为了保持客户 HttpSession 中的数据，也要对其进行序列化</p>
+</li>
+</ul>
+</li>
+<li><p>注意</p>
+<ul>
+<li>HttpSession 的序列化由服务器自动完成，我们无需关心</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-页面技术"><a href="#2-页面技术" class="headerlink" title="2 页面技术"></a>2 页面技术</h1><h2 id="2-1-JSP基础"><a href="#2-1-JSP基础" class="headerlink" title="2.1 JSP基础"></a>2.1 JSP基础</h2><h3 id="2-1-1-JSP介绍"><a href="#2-1-1-JSP介绍" class="headerlink" title="2.1.1  JSP介绍"></a>2.1.1  JSP介绍</h3><ul>
+<li><p>JSP 部署在服务器上，可以处理客户端发送的请求，并根据请求内容动态的生成 HTML、XML 或其他格式文档的 Web 网页，然后再响应给客户端</p>
+</li>
+<li><p>JSP 是基于 Java 语言的，它的本质就是 Servlet</p>
+</li>
+<li><p>所学习的相关资源总结（JavaScript后续学习）</p>
+<p><img src="/2020/05/04/Javaweb04/img/jsp%E7%B1%BB%E5%88%AB.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>动态资源：会变化的数据</li>
+<li>动态效果：例如界面上的一些特效，弹框</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-2-JSP快速入门"><a href="#2-1-2-JSP快速入门" class="headerlink" title="2.1.2  JSP快速入门"></a>2.1.2  JSP快速入门</h3><ol>
+<li><p>创建一个 web 项目：jsp_demo，虚拟目录/jsp</p>
+</li>
+<li><p>在 web 目录下创建一个 index.jsp 文件</p>
+<ul>
+<li>默认就有一个index.jsp</li>
+</ul>
+</li>
+<li><p>在文件中写一句内容为：这是我的第一个jsp</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>  &lt;head&gt;<br>    &lt;title&gt;JSP&lt;/title&gt;<br>  &lt;/head&gt;<br>  &lt;body&gt;<br>    &lt;h1&gt;这是我的第一个jsp&lt;/h1&gt;<br>  &lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>部署并启动项目</p>
+</li>
+<li><p>通过浏览器测试</p>
+<p><img src="/2020/05/04/Javaweb04/img/jsp%E8%AE%BF%E9%97%AE.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h3 id="2-1-3-JSP的执行过程"><a href="#2-1-3-JSP的执行过程" class="headerlink" title="2.1.3 JSP的执行过程"></a>2.1.3 JSP的执行过程</h3><ul>
+<li>执行过程图</li>
+</ul>
+<p><img src="/2020/05/04/Javaweb04/img/jsp%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li> 明确JSP就是一个Servlet。是一个特殊的Servlet</li>
+<li>其实在第五步，翻译jsp文件，就是将jsp翻译成了一个Servlet</li>
+</ul>
+<h4 id="2）JSP的-java文件内容分析"><a href="#2）JSP的-java文件内容分析" class="headerlink" title="2）JSP的.java文件内容分析"></a>2）JSP的.java文件内容分析</h4><ul>
+<li>生成的 java 文件目录</li>
+<li> C:\Users\itcast.IntelliJIdea2018.3\system\tomcat_ideaproject\work\Catalina\localhost\jsp\org\apache\jsp</li>
+</ul>
+<p><img src="/2020/05/04/Javaweb04/img/jsp%E5%86%85%E5%AE%B9.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>JSP 本质就是一个 Servlet</p>
+</li>
+<li><p>补充：HttpJspBase.class反编译查看</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E5%8F%8D%E7%BC%96%E8%AF%91.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h2 id="2-2-JSP应用"><a href="#2-2-JSP应用" class="headerlink" title="2.2 JSP应用"></a>2.2 JSP应用</h2><h3 id="2-2-1-JSP语法"><a href="#2-2-1-JSP语法" class="headerlink" title="2.2.1 JSP语法"></a>2.2.1 JSP语法</h3><ul>
+<li><p>JSP 注释</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%-- 注释的内容 --%&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>Java 代码块</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;% Java代码 %&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>JSP 表达式</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%=表达式%&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>JSP 声明</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%! 声明变量或方法 %&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>案例：新建web/jsp语法.jsp</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;jsp语法&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--<br>        <span class="hljs-number">1.</span> 这是注释<br>    --%&gt;<br><br>    &lt;%--<br>        <span class="hljs-number">2.</span>java代码块<br>        System.out.println(<span class="hljs-string">&quot;Hello JSP&quot;</span>); 普通输出语句，输出在控制台<br>        out.println(<span class="hljs-string">&quot;Hello JSP&quot;</span>);out是JspWriter对象，输出在页面上<br>    --%&gt;<br>    &lt;%<br>        System.out.println(<span class="hljs-string">&quot;Hello JSP&quot;</span>);<br>        out.println(<span class="hljs-string">&quot;Hello JSP&lt;br&gt;&quot;</span>);<br>        String str = <span class="hljs-string">&quot;hello&lt;br&gt;&quot;</span>;<br>        out.println(str);<br>    %&gt;<br><br>    &lt;%--<br>        <span class="hljs-number">3.</span>jsp表达式<br>        &lt;%=<span class="hljs-string">&quot;Hello&quot;</span>%&gt;  相当于 out.println(<span class="hljs-string">&quot;Hello&quot;</span>);<br>    --%&gt;<br>    &lt;%=<span class="hljs-string">&quot;Hello&lt;br&gt;&quot;</span>%&gt;<br><br>    &lt;%--<br>        <span class="hljs-number">4.</span>jsp中的声明(变量或方法)<br>        如果加!  代表的是声明的是成员变量<br>        如果不加!  代表的是声明的是局部变量<br>    --%&gt;<br>    &lt;%! String s = <span class="hljs-string">&quot;abc&quot;</span>;%&gt;<br>    &lt;% String s = <span class="hljs-string">&quot;def&quot;</span>;%&gt;<br>    &lt;%=s%&gt;<br>    &lt;%! <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getSum</span><span class="hljs-params">()</span></span>&#123;&#125;%&gt;<br>    &lt;%--&lt;% <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getSum2</span><span class="hljs-params">()</span></span>&#123;&#125;%&gt; 这个是局部方法，相当于是在getSum里再声明方法，所以不允许--%&gt; <br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li></li>
+</ul>
+<h3 id="2-2-2-JSP指令"><a href="#2-2-2-JSP指令" class="headerlink" title="2.2.2 JSP指令"></a>2.2.2 JSP指令</h3><h4 id="1）page指令"><a href="#1）page指令" class="headerlink" title="1）page指令"></a>1）page指令</h4><ul>
+<li>语法：&lt;%@ page 属性名=属性值 属性名=属性值 … %&gt;</li>
+</ul>
+<p><img src="/2020/05/04/Javaweb04/img/page%E6%8C%87%E4%BB%A4.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p><strong>language:</strong> 告知引擎，脚本使用的是java，默认是java，支持java。不写也行。</p>
+</li>
+<li><p><strong>import</strong>：告知引擎，导入哪些包（类）。</p>
+<ul>
+<li>注意：引擎会自动导入：java.lang.*,javax.servlet.*,javax.servlet.http.*,javax.servlet.jsp.</li>
+</ul>
+</li>
+</ul>
+<p>​                    <strong>导入的形式：</strong> </p>
+<p>​                         <strong>&lt;%@page import=”java.util.Date,java.util.UUID”%&gt;或者：</strong></p>
+<p>​                         <strong>&lt;%@page import=”java.util.Date”%&gt;</strong></p>
+<p>​                         <strong>&lt;%@page import=”java.util.UUID”%&gt;</strong>  <strong>用Eclipse：Alt+/ 自动导入</strong></p>
+<ul>
+<li><p><strong>contentType</strong>：告知引擎，响应正文的MIME类型。contentType=”text/html;charset=UTF-8”</p>
+<ul>
+<li>相当于response.setContentType(“text/html;charset=UTF-8”);</li>
+</ul>
+</li>
+<li><p>案例：新建jsp指令.jsp</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%--<br>    <span class="hljs-number">1.</span>page指令<br>--%&gt;<br>&lt;%@ page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.util.ArrayList&quot;</span>%&gt;<br>&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> errorPage=<span class="hljs-string">&quot;/error.jsp&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;jsp指令&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;% <span class="hljs-keyword">int</span> result = <span class="hljs-number">1</span> / <span class="hljs-number">0</span>; %&gt;<br>    &lt;% ArrayList list = <span class="hljs-keyword">new</span> ArrayList() %&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建error.jsp：上述代码中1/0是错误的语法，所以会跳转到errorPage</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;自定义错误页面&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    不好意思，出错了~~~<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h4 id="2）include指令"><a href="#2）include指令" class="headerlink" title="2）include指令"></a>2）include指令</h4><ul>
+<li><p>通过该指令，可以包含其他页面</p>
+</li>
+<li><p>语法格式：<code>&lt;%@include file=&quot;&quot; %&gt; </code></p>
+</li>
+<li><p>属性：file，以/开头，就代表当前应用</p>
+</li>
+<li><p>案例</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%--<br>    <span class="hljs-number">1.</span>page指令<br>--%&gt;<br>&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> errorPage=<span class="hljs-string">&quot;/error.jsp&quot;</span> %&gt;<br><br>&lt;%--<br>    <span class="hljs-number">2.</span>include指令<br>--%&gt;<br>&lt;%@ include file=<span class="hljs-string">&quot;/include.jsp&quot;</span>%&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;jsp指令&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--&lt;% <span class="hljs-keyword">int</span> result = <span class="hljs-number">1</span> / <span class="hljs-number">0</span>; %&gt;--%&gt;<br>    &lt;%=s%&gt; &lt;%--这里用的s是include.jsp中的--%&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>新建include.jsp</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;被包含的页面&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;% String s = <span class="hljs-string">&quot;Hello&quot;</span>; %&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/jsp%E6%8C%87%E4%BB%A4.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h4 id="3）taglib指令"><a href="#3）taglib指令" class="headerlink" title="3）taglib指令"></a>3）taglib指令</h4><ul>
+<li><p>该指令用于引入外部标签库，html标签和jsp标签不用引入</p>
+</li>
+<li><p>语法格式：<code>&lt;%taglib uri=&quot;&quot; prefix=&quot;&quot;%&gt;</code></p>
+</li>
+<li><p>属性：                                                                                   </p>
+<ul>
+<li>uri：外部标签的URI地址</li>
+<li>prefix：使用标签时的前缀</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-3-JSP细节"><a href="#2-2-3-JSP细节" class="headerlink" title="2.2.3 JSP细节"></a>2.2.3 JSP细节</h3><h4 id="1）九大隐式对象"><a href="#1）九大隐式对象" class="headerlink" title="1）九大隐式对象"></a>1）九大隐式对象</h4><ul>
+<li>什么是隐式对象呢？</li>
+<li>它指的是在jsp中，<strong>可以不声明就直接使用的对象</strong></li>
+<li>它只存在于jsp中，因为java类中的变量必须要先声明再使用</li>
+<li>其实jsp中的隐式对象也并非是未声明，只是它是在翻译成.java文件时声明的</li>
+<li>所以我们在jsp中可以直接使用</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>隐式对象名称</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>request</td>
+<td>javax.servlet.http.HttpServletRequest</td>
+<td>请求对象</td>
+</tr>
+<tr>
+<td>response</td>
+<td>javax.servlet.http.HttpServletResponse</td>
+<td>响应对象</td>
+</tr>
+<tr>
+<td>session</td>
+<td>javax.servlet.http.HttpSession</td>
+<td>Page指令可以控制开关</td>
+</tr>
+<tr>
+<td>application</td>
+<td>javax.servlet.ServletContext</td>
+<td>应用域对象</td>
+</tr>
+<tr>
+<td>page</td>
+<td>Java.lang.Object</td>
+<td>当前jsp对应的servlet引用实例</td>
+</tr>
+<tr>
+<td>config</td>
+<td>javax.servlet.ServletConfig</td>
+<td>Servlet配置对象</td>
+</tr>
+<tr>
+<td>exception</td>
+<td>java.lang.Throwable</td>
+<td>异常对象</td>
+</tr>
+<tr>
+<td>out</td>
+<td>javax.servlet.jsp.JspWriter</td>
+<td>字符输出流，相当于printwriter</td>
+</tr>
+<tr>
+<td>pageContext</td>
+<td>javax.servlet.jsp.PageContext</td>
+<td>页面域对象</td>
+</tr>
+</tbody></table>
+<h4 id="2）PageContext对象"><a href="#2）PageContext对象" class="headerlink" title="2）PageContext对象"></a>2）PageContext对象</h4><p><strong>简介</strong></p>
+<ul>
+<li>是 JSP 独有的，Servlet 中没有</li>
+<li>是四大域对象之一的页面域对象，还可以操作其他三个域对象中的属性（应用域，会话域，请求域）</li>
+<li>还可以获取其他八个隐式对象</li>
+<li>生命周期是随着 JSP 的创建而存在，随着 JSP 的结束而消失。每个 JSP 页面都有一个 PageContext对象</li>
+</ul>
+<p><strong>常用方法</strong></p>
+<p><img src="/2020/05/04/Javaweb04/assets/PageContext%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3.png" srcset="/img/loading.gif" lazyload alt="PageContext方法详解"></p>
+<p>在上图中，同学们发现没有页面域操作的方法，其实是定义在了PageContext的父类JspContext中，如下图所示：</p>
+<p><img src="/2020/05/04/Javaweb04/assets/JspContext.png" srcset="/img/loading.gif" lazyload alt="JspContext"></p>
+<h4 id="3）四大域对象"><a href="#3）四大域对象" class="headerlink" title="3）四大域对象"></a>3）四大域对象</h4><table>
+<thead>
+<tr>
+<th>域对象名称</th>
+<th>范围</th>
+<th>级别</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PageContext</td>
+<td>页面范围</td>
+<td>最小，只能在当前页面用</td>
+<td>因范围太小，开发中用的很少</td>
+</tr>
+<tr>
+<td>ServletRequest</td>
+<td>请求范围</td>
+<td>一次请求或当期请求转发用</td>
+<td>当请求转发之后，再次转发时请求域丢失</td>
+</tr>
+<tr>
+<td>HttpSession</td>
+<td>会话范围</td>
+<td>多次请求数据共享时使用</td>
+<td>多次请求共享数据，但不同的客户端不能共享</td>
+</tr>
+<tr>
+<td>ServletContext</td>
+<td>应用范围</td>
+<td>最大，整个应用都可以使用</td>
+<td>尽量少用，如果对数据有修改需要做同步处理</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-4-JSP-MVC模型介绍"><a href="#2-2-4-JSP-MVC模型介绍" class="headerlink" title="2.2.4 JSP-MVC模型介绍"></a>2.2.4 JSP-MVC模型介绍</h3><ul>
+<li><p>M(Model)：模型。用于封装数据，封装的是数据模型</p>
+</li>
+<li><p>V(View)：视图。用于显示数据，动态资源用 JSP 页面，静态资源用 HTML 页面</p>
+</li>
+<li><p>C(Controller)：控制器。用于处理请求和响应，例如 Servlet</p>
+</li>
+<li><p>图示</p>
+<p><img src="/2020/05/04/Javaweb04/img/mvc.png" srcset="/img/loading.gif" lazyload>                                                               </p>
+</li>
+</ul>
+<h1 id="3-综合案例-学生管理系统升级"><a href="#3-综合案例-学生管理系统升级" class="headerlink" title="3 综合案例-学生管理系统升级"></a>3 综合案例-学生管理系统升级</h1><h2 id="3-1-案例效果介绍"><a href="#3-1-案例效果介绍" class="headerlink" title="3.1 案例效果介绍"></a>3.1 案例效果介绍</h2><p><img src="/2020/05/04/Javaweb04/img/%E6%A1%88%E4%BE%8B%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2020/05/04/Javaweb04/img/%E6%A1%88%E4%BE%8B%E6%95%88%E6%9E%9C02.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-登陆功能"><a href="#3-2-登陆功能" class="headerlink" title="3.2 登陆功能"></a>3.2 登陆功能</h3><ol>
+<li><p>创建一个 web 项目：student_manage，虚拟目录/stu</p>
+</li>
+<li><p>在 web 目录下创建一个 index.jsp（默认就有）</p>
+</li>
+<li><p>在页面中获取会话域中的用户名，获取到了就显示添加和查看功能的超链接，没获取到就显示登录功能的超链接</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;学生管理系统首页&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;%--<br>        获取会话域中的数据<br>        如果获取到了则显示添加和查看功能的超链接<br>        如果没获取到则显示登录功能的超链接<br>    --%&gt;<br>    &lt;% Object username = session.getAttribute(<span class="hljs-string">&quot;username&quot;</span>);<br>        <span class="hljs-keyword">if</span>(username == <span class="hljs-keyword">null</span>) &#123;<br>    %&gt;<br>        &lt;a href=&quot;/stu/login.jsp&quot;&gt;请登录&lt;/a&gt;<br>    &lt;%&#125; <span class="hljs-keyword">else</span> &#123;%&gt;<br>        &lt;a href=&quot;/stu/addStudent.jsp&quot;&gt;添加学生&lt;/a&gt;<br>        &lt;a href=&quot;/stu/listStudentServlet&quot;&gt;查看学生&lt;/a&gt;<br>    &lt;%&#125;%&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>在 web 目录下创建一个 login.jsp：实现登录页面</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;学生登录&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;form action=<span class="hljs-string">&quot;/stu/loginStudentServlet&quot;</span> method=<span class="hljs-string">&quot;get&quot;</span> autocomplete=<span class="hljs-string">&quot;off&quot;</span>&gt;<br>        姓名：&lt;input type=<span class="hljs-string">&quot;text&quot;</span> name=<span class="hljs-string">&quot;username&quot;</span>&gt; &lt;br&gt;<br>        密码：&lt;input type=<span class="hljs-string">&quot;password&quot;</span> name=<span class="hljs-string">&quot;password&quot;</span>&gt; &lt;br&gt;<br>        &lt;button type=&quot;submit&quot;&gt;登录&lt;/button&gt;<br>    &lt;/form&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>创建 LoginStudentServlet，获取用户名和密码</p>
+</li>
+<li><p>如果用户名为空，则重定向到登录页面</p>
+</li>
+<li><p>如果不为空，将用户名添加到会话域中，再重定向到首页</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    学生登录</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/loginStudentServlet&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoginStudentServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//1.获取用户名和密码</span><br>        String username = req.getParameter(<span class="hljs-string">&quot;username&quot;</span>);<br>        String password = req.getParameter(<span class="hljs-string">&quot;password&quot;</span>);<br><br>        <span class="hljs-comment">//2.判断用户名</span><br>        <span class="hljs-keyword">if</span>(username == <span class="hljs-keyword">null</span> || <span class="hljs-string">&quot;&quot;</span>.equals(username)) &#123;<br>            <span class="hljs-comment">//2.1用户名为空 重定向到登录页面</span><br>            resp.sendRedirect(<span class="hljs-string">&quot;/stu/login.jsp&quot;</span>);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br>        <span class="hljs-comment">//2.2用户名不为空 将用户名存入会话域中</span><br>        req.getSession().setAttribute(<span class="hljs-string">&quot;username&quot;</span>,username);<br><br>        <span class="hljs-comment">//3.重定向到首页index.jsp</span><br>        resp.sendRedirect(<span class="hljs-string">&quot;/stu/index.jsp&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<ul>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E7%99%BB%E9%99%86.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h3 id="3-3-添加功能"><a href="#3-3-添加功能" class="headerlink" title="3.3 添加功能"></a>3.3 添加功能</h3><ol>
+<li><p>在 web 目录下创建一个 addStudent.jsp，实现添加学生的表单项</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;添加学生&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;form action=<span class="hljs-string">&quot;/stu/addStudentServlet&quot;</span> method=<span class="hljs-string">&quot;get&quot;</span> autocomplete=<span class="hljs-string">&quot;off&quot;</span>&gt;<br>    学生姓名：&lt;input type=<span class="hljs-string">&quot;text&quot;</span> name=<span class="hljs-string">&quot;username&quot;</span>&gt; &lt;br&gt;<br>    学生年龄：&lt;input type=<span class="hljs-string">&quot;number&quot;</span> name=<span class="hljs-string">&quot;age&quot;</span>&gt; &lt;br&gt;<br>    学生成绩：&lt;input type=<span class="hljs-string">&quot;number&quot;</span> name=<span class="hljs-string">&quot;score&quot;</span>&gt; &lt;br&gt;<br>    &lt;button type=&quot;submit&quot;&gt;保存&lt;/button&gt;<br>&lt;/form&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>创建 AddStudentServlet，获取学生信息并保存到文件中</p>
+</li>
+<li><p>通过定时刷新功能 2 秒后跳转到首页</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> com.itheima.bean.Student;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.BufferedWriter;<br><span class="hljs-keyword">import</span> java.io.FileWriter;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    实现添加功能</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/addStudentServlet&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AddStudentServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span></span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//1.获取表单中的数据</span><br>        String username = req.getParameter(<span class="hljs-string">&quot;username&quot;</span>);<br>        String age = req.getParameter(<span class="hljs-string">&quot;age&quot;</span>);<br>        String score = req.getParameter(<span class="hljs-string">&quot;score&quot;</span>);<br><br>        <span class="hljs-comment">//2.创建学生对象并赋值</span><br>        Student stu = <span class="hljs-keyword">new</span> Student();<br>        stu.setUsername(username);<br>        stu.setAge(Integer.parseInt(age));<br>        stu.setScore(Integer.parseInt(score));<br><br>        <span class="hljs-comment">//3.将学生对象的数据保存到d:\\stu.txt文件中</span><br>        BufferedWriter bw = <span class="hljs-keyword">new</span> BufferedWriter(<span class="hljs-keyword">new</span> FileWriter(<span class="hljs-string">&quot;d:\\stu.txt&quot;</span>,<span class="hljs-keyword">true</span>));<br>        bw.write(stu.getUsername() + <span class="hljs-string">&quot;,&quot;</span> + stu.getAge() + <span class="hljs-string">&quot;,&quot;</span> + stu.getScore());<br>        bw.newLine();<br>        bw.close();<br><br>        <span class="hljs-comment">//4.通过定时刷新功能响应给浏览器</span><br>        resp.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br>        resp.getWriter().write(<span class="hljs-string">&quot;添加成功。2秒后自动跳转到首页...&quot;</span>);<br>        resp.setHeader(<span class="hljs-string">&quot;Refresh&quot;</span>,<span class="hljs-string">&quot;2;URL=/stu/index.jsp&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E6%B7%BB%E5%8A%A0%E5%AD%A6%E7%94%9F.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+<h3 id="3-4-查看功能"><a href="#3-4-查看功能" class="headerlink" title="3.4 查看功能"></a>3.4 查看功能</h3><ol>
+<li><p>创建 ListStudentServlet，读取文件中的学生信息到集合中</p>
+</li>
+<li><p>将集合添加到会话域中</p>
+</li>
+<li><p>重定向到 listStudent.jsp 页面上</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.servlet;<br><br><span class="hljs-keyword">import</span> com.itheima.bean.Student;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.BufferedReader;<br><span class="hljs-keyword">import</span> java.io.FileReader;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.util.ArrayList;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    实现查看功能</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@WebServlet(&quot;/listStudentServlet&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListStudentServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//1.创建字符输入流对象，关联读取的文件</span><br>        BufferedReader br = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> FileReader(<span class="hljs-string">&quot;d:\\stu.txt&quot;</span>));<br><br>        <span class="hljs-comment">//2.创建集合对象，用于保存Student对象</span><br>        ArrayList&lt;Student&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br><br>        <span class="hljs-comment">//3.循环读取文件中的数据，将数据封装到Student对象中。再把多个学生对象添加到集合中</span><br>        String line;<br>        <span class="hljs-keyword">while</span>((line = br.readLine()) != <span class="hljs-keyword">null</span>) &#123;<br>            <span class="hljs-comment">//张三,23,95</span><br>            Student stu = <span class="hljs-keyword">new</span> Student();<br>            String[] arr = line.split(<span class="hljs-string">&quot;,&quot;</span>);<br>            stu.setUsername(arr[<span class="hljs-number">0</span>]);<br>            stu.setAge(Integer.parseInt(arr[<span class="hljs-number">1</span>]));<br>            stu.setScore(Integer.parseInt(arr[<span class="hljs-number">2</span>]));<br>            list.add(stu);<br>        &#125;<br><br>        <span class="hljs-comment">//4.将集合对象存入会话域中</span><br>        req.getSession().setAttribute(<span class="hljs-string">&quot;students&quot;</span>,list);<br><br>        <span class="hljs-comment">//5.重定向到学生列表页面</span><br>        resp.sendRedirect(<span class="hljs-string">&quot;/stu/listStudent.jsp&quot;</span>);<br><br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>在 web 目录下创建一个 listStudent.jsp</p>
+</li>
+<li><p>定义表格标签。在表格中获取会话域的集合数据，将数据显示在页面上</p>
+<figure class="highlight jsp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;%@ page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;com.itheima.bean.Student&quot;</span> %&gt;<br>&lt;%@ page <span class="hljs-keyword">import</span>=<span class="hljs-string">&quot;java.util.ArrayList&quot;</span> %&gt;<br>&lt;%@ page contentType=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="hljs-string">&quot;java&quot;</span> %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>    &lt;title&gt;查看学生&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;table width=<span class="hljs-string">&quot;600px&quot;</span> border=<span class="hljs-string">&quot;1px&quot;</span>&gt;<br>        &lt;tr&gt;<br>            &lt;th&gt;学生姓名&lt;/th&gt;<br>            &lt;th&gt;学生年龄&lt;/th&gt;<br>            &lt;th&gt;学生成绩&lt;/th&gt;<br>        &lt;/tr&gt;<br>        &lt;% ArrayList&lt;Student&gt; students = (ArrayList&lt;Student&gt;) session.getAttribute(<span class="hljs-string">&quot;students&quot;</span>);<br>            <span class="hljs-keyword">for</span>(Student stu : students) &#123;<br>        %&gt;<br>            &lt;tr align=<span class="hljs-string">&quot;center&quot;</span>&gt;<br>                &lt;td&gt;&lt;%=stu.getUsername()%&gt;&lt;/td&gt;<br>                &lt;td&gt;&lt;%=stu.getAge()%&gt;&lt;/td&gt;<br>                &lt;td&gt;&lt;%=stu.getScore()%&gt;&lt;/td&gt;<br>            &lt;/tr&gt;<br>        &lt;%&#125;%&gt;<br>    &lt;/table&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;<br><br></code></pre></div></td></tr></table></figure></li>
+<li><p>访问：点击查看学生，进入查看学生界面</p>
+<p><img src="/2020/05/04/Javaweb04/img/%E6%9F%A5%E7%9C%8B%E5%AD%A6%E7%94%9F.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JavaWeb%E6%A0%B8%E5%BF%83/">JavaWeb核心</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaWeb/">JavaWeb</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/04/jdbc02/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JDBC-02</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/04/jdbc01/">
+                        <span class="hidden-mobile">JDBC-01</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>
