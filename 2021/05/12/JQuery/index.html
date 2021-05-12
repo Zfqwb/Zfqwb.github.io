@@ -1,0 +1,915 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>JQuery - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zfqwb.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JQuery">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-12 20:44" pubdate>
+        2021年5月12日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      105
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JQuery</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：37 分钟前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="1、JQuery快速入门"><a href="#1、JQuery快速入门" class="headerlink" title="1、JQuery快速入门"></a>1、JQuery快速入门</h1><h2 id="1-1、JQuery介绍"><a href="#1-1、JQuery介绍" class="headerlink" title="1.1、JQuery介绍"></a>1.1、JQuery介绍</h2><ul>
+<li>jQuery 是一个 JavaScript 库。</li>
+<li>所谓的库，就是一个 JS 文件，里面封装了很多预定义的函数，比如获取元素，执行隐藏、移动等，目的就 是在使用时直接调用，不需要再重复定义，这样就可以极大地简化了 JavaScript 编程。</li>
+<li>jQuery 官网：<a target="_blank" rel="noopener" href="https://www.jquery.com/">https://www.jquery.com</a></li>
+</ul>
+<p><img src="/2021/05/12/JQuery/img/JQuery%E4%BB%8B%E7%BB%8D.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-2、JQuery快速入门"><a href="#1-2、JQuery快速入门" class="headerlink" title="1.2、JQuery快速入门"></a>1.2、JQuery快速入门</h2><ul>
+<li><strong>开发思路</strong></li>
+</ul>
+<ol>
+<li>编写 HTML 文档。 </li>
+<li>引入 jQuery 文件。</li>
+<li>使用 jQuery 获取元素。</li>
+<li>使用浏览器测试。</li>
+</ol>
+<ul>
+<li><strong>代码实现</strong></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>快速入门<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;div&quot;</span>&gt;</span>我是div<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-comment">&lt;!--引入 jQuery 文件--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">// JS方式，通过id属性值来获取div元素</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> jsDiv = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;div&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(jsDiv);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(jsDiv.innerHTML);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// jQuery方式，通过id属性值来获取div元素</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> jqDiv = $(<span class="hljs-string">&quot;#div&quot;</span>);</span><br>    alert(jqDiv);<br>    alert(jqDiv.html());<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h2 id="1-3、小结"><a href="#1-3、小结" class="headerlink" title="1.3、小结"></a>1.3、小结</h2><ul>
+<li>jQuery 是一个 JavaScript 库。</li>
+<li>说白了就是定义好的一个 JS 文件，内部封装了很多功能，可以大大简化我们的 JS 操作步骤。</li>
+<li>jQuery 官网：<a target="_blank" rel="noopener" href="https://www.jquery.com./">https://www.jquery.com。</a></li>
+<li>要想使用，必须要引入该文件。</li>
+<li>jQuery 的核心语法 $();</li>
+</ul>
+<h1 id="2、JQuery基本语法"><a href="#2、JQuery基本语法" class="headerlink" title="2、JQuery基本语法"></a>2、JQuery基本语法</h1><h2 id="2-1、JS对象和JQuery对象转换"><a href="#2-1、JS对象和JQuery对象转换" class="headerlink" title="2.1、JS对象和JQuery对象转换"></a>2.1、JS对象和JQuery对象转换</h2><ul>
+<li><p>jQuery 本质上虽然也是 JS，但如果想使用 jQuery 的属性和方法那么必须保证对象是 jQuery 对象，而不是 JS 方式获得的 DOM 对象，二者的 API 方法不能混合使用，若想使用对方的 API，需要进行对象的转换。</p>
+</li>
+<li><p><strong>JS 的 DOM 对象转换成 jQuery 对象</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//$(JS 的 DOM 对象);</span><br><br><span class="hljs-comment">// JS方式，通过id属性值获取div元素</span><br><span class="hljs-keyword">let</span> jsDiv = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;div&quot;</span>);<br>alert(jsDiv.innerHTML);<br><span class="hljs-comment">//alert(jsDiv.html());  JS对象无法使用jQuery里面的功能</span><br><br><span class="hljs-comment">// 将 JS 对象转换为jQuery对象</span><br><span class="hljs-keyword">let</span> jq = $(jsDiv);<br>alert(jq.html());<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>jQuery 对象转换成 JS 对象</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">/*jQuery 对象[索引];</span><br><span class="hljs-comment">jQuery 对象.get(索引);*/</span><br><br><span class="hljs-comment">// jQuery方式，通过id属性值获取div元素</span><br><span class="hljs-keyword">let</span> jqDiv = $(<span class="hljs-string">&quot;#div&quot;</span>);<br>alert(jqDiv.html());<br><span class="hljs-comment">// alert(jqDiv.innerHTML);   jQuery对象无法使用JS里面的功能</span><br><br><span class="hljs-comment">// 将 jQuery对象转换为JS对象</span><br><span class="hljs-keyword">let</span> js = jqDiv[<span class="hljs-number">0</span>];<br>alert(js.innerHTML);<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="2-2、事件的基本使用"><a href="#2-2、事件的基本使用" class="headerlink" title="2.2、事件的基本使用"></a>2.2、事件的基本使用</h2><ul>
+<li><p><strong>常用的事件</strong></p>
+<p><img src="/2021/05/12/JQuery/img/%E5%B8%B8%E7%94%A8%E4%BA%8B%E4%BB%B6.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p><strong>在 jQuery 中将事件封装成了对应的方法。去掉了 JS 中的 .on 语法。</strong></p>
+</li>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>事件的使用<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;点我&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;input&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">//单击事件</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        alert(<span class="hljs-string">&quot;点我干嘛?&quot;</span>);</span><br>    &#125;);<br><br><span class="javascript">    <span class="hljs-comment">//获取焦点事件</span></span><br><span class="javascript">    <span class="hljs-comment">// $(&quot;#input&quot;).focus(function()&#123;</span></span><br><span class="javascript">    <span class="hljs-comment">//     alert(&quot;你要输入数据啦...&quot;);</span></span><br><span class="javascript">    <span class="hljs-comment">// &#125;);</span></span><br><br><span class="javascript">    <span class="hljs-comment">//失去焦点事件</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#input&quot;</span>).blur(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        alert(<span class="hljs-string">&quot;你输入完成啦...&quot;</span>);</span><br>    &#125;);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="2-3、事件的绑定和解绑"><a href="#2-3、事件的绑定和解绑" class="headerlink" title="2.3、事件的绑定和解绑"></a>2.3、事件的绑定和解绑</h2><ul>
+<li><p><strong>绑定事件</strong></p>
+<p><strong>//jQuery 对象.on(事件名称,执行的功能);</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//给btn1按钮绑定单击事件</span><br>$(<span class="hljs-string">&quot;#btn1&quot;</span>).on(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	alert(<span class="hljs-string">&quot;点我干嘛?&quot;</span>);<br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>解绑事件</strong></p>
+<p>如果不指定事件名称，则会把该对象绑定的所有事件都解绑</p>
+<p><strong>//jQuery 对象.off(事件名称);</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//通过btn2解绑btn1的单击事件</span><br>$(<span class="hljs-string">&quot;#btn2&quot;</span>).on(<span class="hljs-string">&quot;click&quot;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>	$(<span class="hljs-string">&quot;#btn1&quot;</span>).off(<span class="hljs-string">&quot;click&quot;</span>);<br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="2-4、事件的切换"><a href="#2-4、事件的切换" class="headerlink" title="2.4、事件的切换"></a>2.4、事件的切换</h2><p>事件的切换：需要给同一个对象绑定多个事件，而且多个事件还有先后顺序关系。</p>
+<ul>
+<li><p><strong>方式一：单独定义</strong></p>
+<p>$(元素).事件方法名1(要执行的功能); </p>
+<p>$(元素).事件方法名2(要执行的功能);</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//方式一 单独定义</span><br>$(<span class="hljs-string">&quot;#div&quot;</span>).mouseover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-comment">//背景色：红色</span><br>    <span class="hljs-comment">//$(&quot;#div&quot;).css(&quot;background&quot;,&quot;red&quot;);</span><br>    $(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&quot;background&quot;</span>,<span class="hljs-string">&quot;red&quot;</span>);<br>    &#125;);<br>$(<span class="hljs-string">&quot;#div&quot;</span>).mouseout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-comment">//背景色：蓝色</span><br>    <span class="hljs-comment">//$(&quot;#div&quot;).css(&quot;background&quot;,&quot;blue&quot;);</span><br>    $(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&quot;background&quot;</span>,<span class="hljs-string">&quot;blue&quot;</span>);<br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>方式二：链式定义</strong></p>
+<p>$(元素).事件方法名1(要执行的功能) </p>
+<p>.事件方法名2(要执行的功能);</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//方式二 链式定义</span><br>$(<span class="hljs-string">&quot;#div&quot;</span>).mouseover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>   $(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&quot;background&quot;</span>,<span class="hljs-string">&quot;red&quot;</span>);<br>&#125;).mouseout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>   $(<span class="hljs-built_in">this</span>).css(<span class="hljs-string">&quot;background&quot;</span>,<span class="hljs-string">&quot;blue&quot;</span>);<br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="2-5、遍历操作"><a href="#2-5、遍历操作" class="headerlink" title="2.5、遍历操作"></a>2.5、遍历操作</h2><ul>
+<li><p><strong>方式一：传统方式</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tex">for(let i = 0; i &lt; 容器对象长度; i++)&#123;<br>		执行功能;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//方式一：传统方式</span><br>$(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> lis = $(<span class="hljs-string">&quot;li&quot;</span>);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span> ; i &lt; lis.length; i++) &#123;<br>        alert(i + <span class="hljs-string">&quot;:&quot;</span> + lis[i].innerHTML);<br>    &#125;<br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>方式二：对象.each()方法</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tex">容器对象.each(function(index,ele)&#123;<br>	执行功能;<br>&#125;);<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//方式二：对象.each()方法</span><br>$(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> lis = $(<span class="hljs-string">&quot;li&quot;</span>);<br>    lis.each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index,ele</span>)</span>&#123;<br>        alert(index + <span class="hljs-string">&quot;:&quot;</span> + ele.innerHTML);<br>    &#125;);<br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>方式三：$.each()方法</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tex"><span class="hljs-built_in">$</span>.each(容器对象,function(index,ele)&#123;<br>	执行功能;<br>&#125;);<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//方式三：$.each()方法</span><br>$(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> lis = $(<span class="hljs-string">&quot;li&quot;</span>);<br>    $.each(lis,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index,ele</span>)</span>&#123;<br>        alert(index + <span class="hljs-string">&quot;:&quot;</span> + ele.innerHTML);<br>    &#125;);<br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>方式四：for of语句</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tex">for(ele of 容器对象)&#123;<br>	执行功能;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//方式四：for of 语句遍历: 类似于java 的增强for 循环, 是原始JS 提供的功能 </span><br>$(<span class="hljs-string">&quot;#btn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-keyword">let</span> lis = $(<span class="hljs-string">&quot;li&quot;</span>);<br>    <span class="hljs-keyword">for</span>(ele <span class="hljs-keyword">of</span> lis)&#123;<br>        alert(ele.innerHTML);<br>    &#125;<br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="2-6、小结"><a href="#2-6、小结" class="headerlink" title="2.6、小结"></a>2.6、小结</h2><ul>
+<li><strong>JS 对象和 jQuery 对象相互转换</strong><ul>
+<li>$(JS 的 DOM 对象)：将 JS 对象转为 jQuery 对象。</li>
+<li>jQuery 对象[索引] jQuery</li>
+<li>对象.get(索引)：将 jQuery 对象转为 JS 对象。</li>
+</ul>
+</li>
+<li><strong>事件</strong><ul>
+<li>在 jQuery 中将事件封装成了对应的方法。去掉了 JS 中的 .on 语法。</li>
+<li>on(事件名称,执行的功能)：绑定事件。</li>
+<li>off(事件名称)：解绑事件。</li>
+</ul>
+</li>
+<li><strong>遍历</strong><ul>
+<li>传统方式。</li>
+<li>对象.each() 方法。</li>
+<li>$.each() 方法。</li>
+<li>for of 语句。</li>
+</ul>
+</li>
+</ul>
+<h1 id="3、JQuery选择器"><a href="#3、JQuery选择器" class="headerlink" title="3、JQuery选择器"></a>3、JQuery选择器</h1><h2 id="3-1、基本选择器"><a href="#3-1、基本选择器" class="headerlink" title="3.1、基本选择器"></a>3.1、基本选择器</h2><ul>
+<li><p>选择器：类似于 CSS 的选择器，可以帮助我们获取元素。</p>
+</li>
+<li><p>例如：id 选择器、类选择器、元素选择器、属性选择器等等。</p>
+</li>
+<li><p>jQuery 中选择器的语法：$();</p>
+<p><img src="/2021/05/12/JQuery/img/%E5%9F%BA%E6%9C%AC%E9%80%89%E6%8B%A9%E5%99%A8.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>基本选择器<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;div1&quot;</span>&gt;</span>div1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cls&quot;</span>&gt;</span>div2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;cls&quot;</span>&gt;</span>div3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">//1.元素选择器   $(&quot;元素的名称&quot;)</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> divs = $(<span class="hljs-string">&quot;div&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(divs.length);</span></span><br><br><span class="javascript">    <span class="hljs-comment">//2.id选择器    $(&quot;#id的属性值&quot;)</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> div1 = $(<span class="hljs-string">&quot;#div1&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(div1);</span></span><br><br><span class="javascript">    <span class="hljs-comment">//3.类选择器     $(&quot;.class的属性值&quot;)</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> cls = $(<span class="hljs-string">&quot;.cls&quot;</span>);</span><br>    alert(cls.length);<br><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="3-2、层级选择器"><a href="#3-2、层级选择器" class="headerlink" title="3.2、层级选择器"></a>3.2、层级选择器</h2><p><img src="/2021/05/12/JQuery/img/%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>层级选择器<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>s1<br>            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>s1-1<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>s1-2<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>s2<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>p1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>p2<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">// 1. 后代选择器 $(&quot;A B&quot;);      A下的所有B(包括B的子级)</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> spans1 = $(<span class="hljs-string">&quot;div span&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(spans1.length);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 2. 子选择器   $(&quot;A &gt; B&quot;);    A下的所有B(不包括B的子级)</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> spans2 = $(<span class="hljs-string">&quot;div &gt; span&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(spans2.length);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 3. 兄弟选择器 $(&quot;A + B&quot;);    A相邻的下一个B</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> ps1 = $(<span class="hljs-string">&quot;div + p&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(ps1.length);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 4. 兄弟选择器 $(&quot;A ~ B&quot;);    A相邻的所有B</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> ps2 = $(<span class="hljs-string">&quot;div ~ p&quot;</span>);</span><br>    alert(ps2.length);<br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="3-3、属性选择器"><a href="#3-3、属性选择器" class="headerlink" title="3.3、属性选择器"></a>3.3、属性选择器</h2><p><img src="/2021/05/12/JQuery/img/%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>属性选择器<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;password&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">//1.属性名选择器   $(&quot;元素[属性名]&quot;)</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> in1 = $(<span class="hljs-string">&quot;input[type]&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(in1.length);</span></span><br><br><br><span class="javascript">    <span class="hljs-comment">//2.属性值选择器   $(&quot;元素[属性名=属性值]&quot;)</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> in2 = $(<span class="hljs-string">&quot;input[type=&#x27;password&#x27;]&quot;</span>);</span><br>    alert(in2.length);<br><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="3-4、过滤器选择器"><a href="#3-4、过滤器选择器" class="headerlink" title="3.4、过滤器选择器"></a>3.4、过滤器选择器</h2><p><img src="/2021/05/12/JQuery/img/%E8%BF%87%E6%BB%A4%E5%99%A8%E9%80%89%E6%8B%A9%E5%99%A8.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>过滤器选择器<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>div1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;div2&quot;</span>&gt;</span>div2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>div3<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>div4<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">// 1.首元素选择器	$(&quot;A:first&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> div1 = $(<span class="hljs-string">&quot;div:first&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(div1.html());</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 2.尾元素选择器	$(&quot;A:last&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> div4 = $(<span class="hljs-string">&quot;div:last&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(div4.html());</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 3.非元素选择器	$(&quot;A:not(B)&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> divs1 = $(<span class="hljs-string">&quot;div:not(#div2)&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(divs1.length);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 4.偶数选择器	    $(&quot;A:even&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> divs2 = $(<span class="hljs-string">&quot;div:even&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(divs2.length);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(divs2[0].innerHTML);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(divs2[1].innerHTML);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 5.奇数选择器	    $(&quot;A:odd&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> divs3 = $(<span class="hljs-string">&quot;div:odd&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(divs3.length);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(divs3[0].innerHTML);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(divs3[1].innerHTML);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 6.等于索引选择器	 $(&quot;A:eq(index)&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> div3 = $(<span class="hljs-string">&quot;div:eq(2)&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(div3.html());</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 7.大于索引选择器	 $(&quot;A:gt(index)&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> divs4 = $(<span class="hljs-string">&quot;div:gt(1)&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(divs4.length);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(divs4[0].innerHTML);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(divs4[1].innerHTML);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 8.小于索引选择器	 $(&quot;A:lt(index)&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> divs5 = $(<span class="hljs-string">&quot;div:lt(2)&quot;</span>);</span><br>    alert(divs5.length);<br>    alert(divs5[0].innerHTML);<br>    alert(divs5[1].innerHTML);<br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="3-5、表单属性选择器"><a href="#3-5、表单属性选择器" class="headerlink" title="3.5、表单属性选择器"></a>3.5、表单属性选择器</h2><p><img src="/2021/05/12/JQuery/img/%E8%A1%A8%E5%8D%95%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>表单属性选择器<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">disabled</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> &gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;gender&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;men&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>男<br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;gender&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;women&quot;</span>&gt;</span>女<br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;hobby&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;study&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>学习<br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;hobby&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;sleep&quot;</span> <span class="hljs-attr">checked</span>&gt;</span>睡觉<br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>---请选择---<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">selected</span>&gt;</span>本科<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>专科<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">// 1.可用元素选择器  $(&quot;A:enabled&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> ins1 = $(<span class="hljs-string">&quot;input:enabled&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(ins1.length);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 2.不可用元素选择器  $(&quot;A:disabled&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> ins2 = $(<span class="hljs-string">&quot;input:disabled&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(ins2.length);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 3.单选/复选框被选中的元素  $(&quot;A:checked&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> ins3 = $(<span class="hljs-string">&quot;input:checked&quot;</span>);</span><br><span class="javascript">    <span class="hljs-comment">//alert(ins3.length);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(ins3[0].value);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(ins3[1].value);</span></span><br><span class="javascript">    <span class="hljs-comment">//alert(ins3[2].value);</span></span><br><br><span class="javascript">    <span class="hljs-comment">// 4.下拉框被选中的元素   $(&quot;A:selected&quot;);</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> select = $(<span class="hljs-string">&quot;select option:selected&quot;</span>);</span><br>    alert(select.html());<br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="3-6、小结"><a href="#3-6、小结" class="headerlink" title="3.6、小结"></a>3.6、小结</h2><ul>
+<li>选择器：类似于 CSS 的选择器，可以帮助我们获取元素。</li>
+<li>jQuery 中选择器的语法：$(); </li>
+<li>基本选择器<ul>
+<li>$(“元素的名称”);</li>
+<li>$(“#id的属性值”);</li>
+<li>$(“.class的属性值”);</li>
+</ul>
+</li>
+<li>层级选择器<ul>
+<li>$(“A B”);</li>
+<li>$(“A &gt; B”);</li>
+</ul>
+</li>
+<li>属性选择器<ul>
+<li>$(“A[属性名]”);</li>
+<li>$(“A[属性名=属性值]”);</li>
+</ul>
+</li>
+<li>过滤器选择器<ul>
+<li>$(“A:even”);</li>
+<li>$(“A:odd”);</li>
+</ul>
+</li>
+<li>表单属性选择器<ul>
+<li>$(“A:disabled”);</li>
+<li>$(“A:checked”);</li>
+<li>$(“A:selected”);</li>
+</ul>
+</li>
+</ul>
+<h1 id="4、JQuery-DOM"><a href="#4、JQuery-DOM" class="headerlink" title="4、JQuery DOM"></a>4、JQuery DOM</h1><h2 id="4-1、操作文本"><a href="#4-1、操作文本" class="headerlink" title="4.1、操作文本"></a>4.1、操作文本</h2><ul>
+<li><p><strong>常用方法</strong></p>
+<p><img src="/2021/05/12/JQuery/img/%E6%93%8D%E4%BD%9C%E6%96%87%E6%9C%AC.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>操作文本<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;div&quot;</span>&gt;</span>我是div<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn1&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;获取div的文本&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn2&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;设置div的文本&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">     <span class="hljs-comment">//1. html()   获取标签的文本内容</span></span><br><span class="javascript">     $(<span class="hljs-string">&quot;#btn1&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">         <span class="hljs-comment">//获取div标签的文本内容</span></span><br><span class="javascript">         <span class="hljs-keyword">let</span> value = $(<span class="hljs-string">&quot;#div&quot;</span>).html();</span><br>         alert(value);<br>     &#125;);<br><br><span class="javascript">     <span class="hljs-comment">//2. html(value)   设置标签的文本内容，解析标签</span></span><br><span class="javascript">     $(<span class="hljs-string">&quot;#btn2&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">         <span class="hljs-comment">//设置div标签的文本内容</span></span><br><span class="javascript">         <span class="hljs-comment">//$(&quot;#div&quot;).html(&quot;我真的是div&quot;);</span></span><br><span class="javascript">         $(<span class="hljs-string">&quot;#div&quot;</span>).html(<span class="hljs-string">&quot;&lt;b&gt;我真的是div&lt;/b&gt;&quot;</span>);</span><br>     &#125;);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="4-2、操作对象"><a href="#4-2、操作对象" class="headerlink" title="4.2、操作对象"></a>4.2、操作对象</h2><ul>
+<li><p><strong>常用方法</strong></p>
+<p><img src="/2021/05/12/JQuery/img/%E6%93%8D%E4%BD%9C%E5%AF%B9%E8%B1%A1.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>操作对象<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;div&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn1&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;添加一个span到div&quot;</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn2&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;将加油添加到城市列表最下方&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn3&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;将加油添加到城市列表最上方&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn4&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;将雄起添加到上海下方&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn5&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;将雄起添加到上海上方&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;city&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;bj&quot;</span>&gt;</span>北京<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;sh&quot;</span>&gt;</span>上海<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;gz&quot;</span>&gt;</span>广州<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;sz&quot;</span>&gt;</span>深圳<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;desc&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;jy&quot;</span>&gt;</span>加油<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;xq&quot;</span>&gt;</span>雄起<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn6&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;将雄起删除&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn7&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;将描述列表全部删除&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br>    /*<br><span class="javascript">        <span class="hljs-number">1.</span> $(<span class="hljs-string">&quot;元素&quot;</span>)   创建指定元素</span><br>        2. append(element)   添加成最后一个子元素，由添加者对象调用<br>        3. appendTo(element) 添加成最后一个子元素，由被添加者对象调用<br>        4. prepend(element)  添加成第一个子元素，由添加者对象调用<br>        5. prependTo(element) 添加成第一个子元素，由被添加者对象调用<br>        6. before(element)    添加到当前元素的前面，两者之间是兄弟关系，由添加者对象调用<br>        7. after(element)     添加到当前元素的后面，两者之间是兄弟关系，由添加者对象调用<br>        8. remove()           删除指定元素(自己移除自己)<br>        9. empty()            清空指定元素的所有子元素<br>    */<br>    <br><span class="javascript">    <span class="hljs-comment">// 按钮一：添加一个span到div</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn1&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        <span class="hljs-keyword">let</span> span = $(<span class="hljs-string">&quot;&lt;span&gt;span&lt;/span&gt;&quot;</span>);</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#div&quot;</span>).append(span);</span><br>    &#125;);<br>    <br><br><span class="javascript">    <span class="hljs-comment">//按钮二：将加油添加到城市列表最下方</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn2&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        <span class="hljs-comment">//$(&quot;#city&quot;).append($(&quot;#jy&quot;));</span></span><br><span class="javascript">        $(<span class="hljs-string">&quot;#jy&quot;</span>).appendTo($(<span class="hljs-string">&quot;#city&quot;</span>));</span><br>    &#125;);<br><br><span class="javascript">    <span class="hljs-comment">//按钮三：将加油添加到城市列表最上方</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn3&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        <span class="hljs-comment">//$(&quot;#city&quot;).prepend($(&quot;#jy&quot;));</span></span><br><span class="javascript">        $(<span class="hljs-string">&quot;#jy&quot;</span>).prependTo($(<span class="hljs-string">&quot;#city&quot;</span>));</span><br>    &#125;);<br>    <br><br><span class="javascript">    <span class="hljs-comment">//按钮四：将雄起添加到上海下方</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn4&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#sh&quot;</span>).after($(<span class="hljs-string">&quot;#xq&quot;</span>));</span><br>    &#125;);<br>    <br><br><span class="javascript">    <span class="hljs-comment">//按钮五：将雄起添加到上海上方</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn5&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#sh&quot;</span>).before($(<span class="hljs-string">&quot;#xq&quot;</span>));</span><br>    &#125;);<br><br><span class="javascript">    <span class="hljs-comment">//按钮六：将雄起删除</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn6&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#xq&quot;</span>).remove();</span><br>    &#125;);<br>    <br><br><span class="javascript">    <span class="hljs-comment">//按钮七：将描述列表全部删除</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn7&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#desc&quot;</span>).empty();</span><br>    &#125;);<br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="4-3、操作样式"><a href="#4-3、操作样式" class="headerlink" title="4.3、操作样式"></a>4.3、操作样式</h2><ul>
+<li><p><strong>常用方法</strong></p>
+<p><img src="/2021/05/12/JQuery/img/%E6%93%8D%E4%BD%9C%E6%A0%B7%E5%BC%8F.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>操作样式<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br>        .cls1&#123;<br><span class="css">            <span class="hljs-attribute">background</span>: pink;</span><br><span class="css">            <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;</span><br>        &#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: 1px solid red;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;div&quot;</span>&gt;</span>我是div<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn1&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;获取div的样式&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn2&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;设置div的背景色为蓝色&quot;</span>&gt;</span><span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn3&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;给div设置cls1样式&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn4&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;给div删除cls1样式&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn5&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;给div设置或删除cls1样式&quot;</span>&gt;</span> <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">// 1.css(name)   获取css样式</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn1&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        alert($(<span class="hljs-string">&quot;#div&quot;</span>).css(<span class="hljs-string">&quot;border&quot;</span>));</span><br>    &#125;);<br><br><span class="javascript">    <span class="hljs-comment">// 2.css(name,value)   设置CSS样式</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn2&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#div&quot;</span>).css(<span class="hljs-string">&quot;background&quot;</span>,<span class="hljs-string">&quot;blue&quot;</span>);</span><br>    &#125;);<br><br><span class="javascript">    <span class="hljs-comment">// 3.addClass(value)   给指定的对象添加样式类名</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn3&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#div&quot;</span>).addClass(<span class="hljs-string">&quot;cls1&quot;</span>);</span><br>    &#125;);<br><br><span class="javascript">    <span class="hljs-comment">// 4.removeClass(value)  给指定的对象删除样式类名</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn4&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#div&quot;</span>).removeClass(<span class="hljs-string">&quot;cls1&quot;</span>);</span><br>    &#125;);<br><br><span class="javascript">    <span class="hljs-comment">// 5.toggleClass(value)  如果没有样式类名，则添加。如果有，则删除</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn5&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#div&quot;</span>).toggleClass(<span class="hljs-string">&quot;cls1&quot;</span>);</span><br>    &#125;);<br>    <br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="4-4、操作属性"><a href="#4-4、操作属性" class="headerlink" title="4.4、操作属性"></a>4.4、操作属性</h2><ul>
+<li><p><strong>常用方法</strong></p>
+<p><img src="/2021/05/12/JQuery/img/%E6%93%8D%E4%BD%9C%E5%B1%9E%E6%80%A7.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>操作属性<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span> <br>    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn1&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;获取输入框的id属性&quot;</span>&gt;</span>  <span class="hljs-symbol">&amp;nbsp;</span><span class="hljs-symbol">&amp;nbsp;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn2&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;给输入框设置value属性&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;gender1&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;gender&quot;</span>&gt;</span>男<br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;radio&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;gender2&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;gender&quot;</span>&gt;</span>女<br>    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn3&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;选中女&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br>    <br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">option</span>&gt;</span>---请选择---<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;bk&quot;</span>&gt;</span>本科<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;zk&quot;</span>&gt;</span>专科<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;btn4&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;选中本科&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">// 1.attr(name,[value])   获得/设置属性的值</span></span><br><span class="javascript">    <span class="hljs-comment">//按钮一：获取输入框的id属性</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn1&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        alert($(<span class="hljs-string">&quot;#username&quot;</span>).attr(<span class="hljs-string">&quot;id&quot;</span>));</span><br>    &#125;);<br>    <br><span class="javascript">    <span class="hljs-comment">//按钮二：给输入框设置value属性</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn2&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#username&quot;</span>).attr(<span class="hljs-string">&quot;value&quot;</span>,<span class="hljs-string">&quot;hello...&quot;</span>);</span><br>    &#125;);<br>    <br><br><span class="javascript">    <span class="hljs-comment">// 2.prop(name,[value])   获得/设置属性的值(checked，selected)</span></span><br><span class="javascript">    <span class="hljs-comment">//按钮三：选中女</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn3&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#gender2&quot;</span>).prop(<span class="hljs-string">&quot;checked&quot;</span>,<span class="hljs-literal">true</span>);</span><br>    &#125;);<br><br><span class="javascript">    <span class="hljs-comment">//按钮四：选中本科</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#btn4&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        $(<span class="hljs-string">&quot;#bk&quot;</span>).prop(<span class="hljs-string">&quot;selected&quot;</span>,<span class="hljs-literal">true</span>);</span><br>    &#125;);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="4-5、小结"><a href="#4-5、小结" class="headerlink" title="4.5、小结"></a>4.5、小结</h2><ul>
+<li>操作文本<ul>
+<li>html() html(…)：获取或设置标签的文本，解析标签。</li>
+</ul>
+</li>
+<li>操作对象<ul>
+<li>$(“元素”)：创建指定元素。</li>
+<li>append(element)：添加成最后一个子元素，由添加者对象调用。 </li>
+<li>prepend(element)：添加成第一个子元素，由添加者对象调用。 </li>
+<li>before(element)：添加到当前元素的前面，两者之间是兄弟关系，由添加者对象调用。</li>
+<li>after(element)：添加到当前元素的后面，两者之间是兄弟关系，由添加者对象调用。</li>
+<li>remove()：删除指定元素(自己移除自己)。</li>
+</ul>
+</li>
+<li>操作样式<ul>
+<li>addClass(value)：给指定的对象添加样式类名。</li>
+<li>removeClass(value)：给指定的对象删除样式类名。</li>
+</ul>
+</li>
+<li>操作属性<ul>
+<li>attr(name,[value])：获得/设置属性的值。</li>
+<li>prop(name,[value])：获得/设置属性的值(checked，selected)。</li>
+</ul>
+</li>
+</ul>
+<h1 id="5、综合案例-复选框"><a href="#5、综合案例-复选框" class="headerlink" title="5、综合案例 复选框"></a>5、综合案例 复选框</h1><h2 id="5-1、案例效果"><a href="#5-1、案例效果" class="headerlink" title="5.1、案例效果"></a>5.1、案例效果</h2><p><img src="/2021/05/12/JQuery/img/%E5%A4%8D%E9%80%89%E6%A1%86-%E6%A1%88%E4%BE%8B%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-2、分析和实现"><a href="#5-2、分析和实现" class="headerlink" title="5.2、分析和实现"></a>5.2、分析和实现</h2><p><strong>功能分析</strong></p>
+<ul>
+<li>全选<ul>
+<li><ol>
+<li>为全选按钮绑定单击事件。</li>
+<li>获取所有的商品项复选框元素，为其添加 checked 属性，属性值为 true。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>全不选<ul>
+<li><ol>
+<li>为全不选按钮绑定单击事件。</li>
+<li>获取所有的商品项复选框元素，为其添加 checked 属性，属性值为 false。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>反选<ul>
+<li><ol>
+<li>为反选按钮绑定单击事件</li>
+<li>获取所有的商品项复选框元素，为其添加 checked 属性，属性值是目前相反的状态。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>复选框<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;tab1&quot;</span> <span class="hljs-attr">border</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;800&quot;</span> <span class="hljs-attr">align</span>=<span class="hljs-string">&quot;center&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">th</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;text-align: left&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background:lightgreen&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;selectAll&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;全选&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background:lightgreen&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;selectNone&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;全不选&quot;</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background:lightgreen&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;reverse&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;反选&quot;</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>    <br>            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>分类ID<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>分类名称<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>分类描述<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>操作<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>手机数码<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>手机数码类商品<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>修改<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>|<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>删除<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>电脑办公<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>电脑办公类商品<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>修改<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>|<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>删除<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>鞋靴箱包<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>鞋靴箱包类商品<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>修改<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>|<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>删除<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;checkbox&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>家居饰品<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>家居饰品类商品<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>修改<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>|<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>删除<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">//全选</span></span><br><span class="javascript">    <span class="hljs-comment">//1.为全选按钮添加单击事件</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#selectAll&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        <span class="hljs-comment">//2.获取所有的商品复选框元素，为其添加checked属性，属性值true</span></span><br><span class="javascript">        $(<span class="hljs-string">&quot;.item&quot;</span>).prop(<span class="hljs-string">&quot;checked&quot;</span>,<span class="hljs-literal">true</span>);</span><br>    &#125;);<br><br><br><span class="javascript">    <span class="hljs-comment">//全不选</span></span><br><span class="javascript">    <span class="hljs-comment">//1.为全不选按钮添加单击事件</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#selectNone&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        <span class="hljs-comment">//2.获取所有的商品复选框元素，为其添加checked属性，属性值false</span></span><br><span class="javascript">        $(<span class="hljs-string">&quot;.item&quot;</span>).prop(<span class="hljs-string">&quot;checked&quot;</span>,<span class="hljs-literal">false</span>);</span><br>    &#125;);<br><br><br><span class="javascript">    <span class="hljs-comment">//反选</span></span><br><span class="javascript">    <span class="hljs-comment">//1.为反选按钮添加单击事件</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#reverse&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        <span class="hljs-comment">//2.获取所有的商品复选框元素，为其添加checked属性，属性值是目前相反的状态</span></span><br><span class="javascript">        <span class="hljs-keyword">let</span> items = $(<span class="hljs-string">&quot;.item&quot;</span>);</span><br><span class="javascript">        items.each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            $(<span class="hljs-built_in">this</span>).prop(<span class="hljs-string">&quot;checked&quot;</span>,!$(<span class="hljs-built_in">this</span>).prop(<span class="hljs-string">&quot;checked&quot;</span>));</span><br>        &#125;);<br>    &#125;);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h1 id="6、综合案例-随机图片"><a href="#6、综合案例-随机图片" class="headerlink" title="6、综合案例 随机图片"></a>6、综合案例 随机图片</h1><h2 id="6-1、案例效果"><a href="#6-1、案例效果" class="headerlink" title="6.1、案例效果"></a>6.1、案例效果</h2><p><img src="/2021/05/12/JQuery/img/%E9%9A%8F%E5%8D%B3%E5%9B%BE%E7%89%87-%E5%B0%8F%E5%9B%BE%E7%9A%84%E5%88%87%E6%8D%A2&%E5%A4%A7%E5%9B%BE%E7%9A%84%E5%B1%95%E7%A4%BA.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="6-2、动态切换小图的分析和实现"><a href="#6-2、动态切换小图的分析和实现" class="headerlink" title="6.2、动态切换小图的分析和实现"></a>6.2、动态切换小图的分析和实现</h2><ul>
+<li><p><strong>功能分析</strong></p>
+<ol>
+<li>准备一个数组</li>
+<li>定义计数器</li>
+<li>定义定时器对象</li>
+<li>定义图片路径变量</li>
+<li>为开始按钮绑定单击事件</li>
+<li>设置按钮状态 </li>
+<li>设置定时器，循环显示图片 </li>
+<li>循环获取图片路径 </li>
+<li>将当前图片显示到小图片上 </li>
+<li>计数器自增</li>
+</ol>
+</li>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>随机图片<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 小图 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;background-color:red;border: dotted; height: 50px; width: 50px&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;img/01.jpg&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;small&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 50px; height: 50px;&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-comment">&lt;!-- 大图 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;border: double ;width: 400px; height: 400px; position: absolute; left: 500px; top:10px&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;big&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 400px; height: 400px; display:none;&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- 开始和结束按钮 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;startBtn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 150px;height: 150px; font-size: 20px&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;开始&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;stopBtn&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 150px;height: 150px; font-size: 20px&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;停止&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/jquery-3.3.1.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-comment">//1.准备一个数组</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> imgs = [</span><br><span class="javascript">        <span class="hljs-string">&quot;img/01.jpg&quot;</span>,</span><br><span class="javascript">        <span class="hljs-string">&quot;img/02.jpg&quot;</span>,</span><br><span class="javascript">        <span class="hljs-string">&quot;img/03.jpg&quot;</span>,</span><br><span class="javascript">        <span class="hljs-string">&quot;img/04.jpg&quot;</span>,</span><br><span class="javascript">        <span class="hljs-string">&quot;img/05.jpg&quot;</span>,</span><br><span class="javascript">        <span class="hljs-string">&quot;img/06.jpg&quot;</span>,</span><br><span class="javascript">        <span class="hljs-string">&quot;img/07.jpg&quot;</span>,</span><br><span class="javascript">        <span class="hljs-string">&quot;img/08.jpg&quot;</span>,</span><br><span class="javascript">        <span class="hljs-string">&quot;img/09.jpg&quot;</span>,</span><br><span class="javascript">        <span class="hljs-string">&quot;img/10.jpg&quot;</span>];</span><br>		<br><span class="javascript">    <span class="hljs-comment">//2.定义计数器变量</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> count = <span class="hljs-number">0</span>;</span><br>    <br><span class="javascript">    <span class="hljs-comment">//3.声明定时器对象</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> time = <span class="hljs-literal">null</span>;</span><br>    <br><span class="javascript">    <span class="hljs-comment">//4.声明图片路径变量</span></span><br><span class="javascript">    <span class="hljs-keyword">let</span> imgSrc = <span class="hljs-string">&quot;&quot;</span>;</span><br>    <br><span class="javascript">    <span class="hljs-comment">//5.为开始按钮绑定单击事件</span></span><br><span class="javascript">    $(<span class="hljs-string">&quot;#startBtn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">        <span class="hljs-comment">//6.设置按钮状态</span></span><br><span class="javascript">        <span class="hljs-comment">//禁用开始按钮</span></span><br><span class="javascript">        $(<span class="hljs-string">&quot;#startBtn&quot;</span>).prop(<span class="hljs-string">&quot;disabled&quot;</span>,<span class="hljs-literal">true</span>);</span><br><span class="javascript">        <span class="hljs-comment">//启用停止按钮</span></span><br><span class="javascript">        $(<span class="hljs-string">&quot;#stopBtn&quot;</span>).prop(<span class="hljs-string">&quot;disabled&quot;</span>,<span class="hljs-literal">false</span>);</span><br>        <br><span class="javascript">        <span class="hljs-comment">//7.设置定时器，循环显示图片</span></span><br><span class="javascript">        time = <span class="hljs-built_in">setInterval</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-comment">//8.循环获取图片路径</span></span><br><span class="javascript">            <span class="hljs-keyword">let</span> index = count % imgs.length; <span class="hljs-comment">// 0%10=0  1%10=1  2%10=2 .. 9%10=9  10%10=0  </span></span><br>                    <br><span class="javascript">            <span class="hljs-comment">//9.将当前图片显示到小图片上</span></span><br>            imgSrc = imgs[index];<br><span class="javascript">            $(<span class="hljs-string">&quot;#small&quot;</span>).prop(<span class="hljs-string">&quot;src&quot;</span>,imgSrc);</span><br>                    <br><span class="javascript">            <span class="hljs-comment">//10.计数器自增</span></span><br>            count++;<br>        &#125;,10);<br>    &#125;);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="6-3、显示大图的分析和实现"><a href="#6-3、显示大图的分析和实现" class="headerlink" title="6.3、显示大图的分析和实现"></a>6.3、显示大图的分析和实现</h2><ul>
+<li><p><strong>功能分析</strong></p>
+<ol>
+<li>为停止按钮绑定单击事件</li>
+<li>取消定时器</li>
+<li>设置按钮状态 </li>
+<li>将图片显示到大图片上</li>
+</ol>
+</li>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//11.为停止按钮绑定单击事件</span><br>$(<span class="hljs-string">&quot;#stopBtn&quot;</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<br>    <span class="hljs-comment">//12.取消定时器</span><br>    <span class="hljs-built_in">clearInterval</span>(time);<br><br>    <span class="hljs-comment">//13.设置按钮状态</span><br>    <span class="hljs-comment">//启用开始按钮</span><br>    $(<span class="hljs-string">&quot;#startBtn&quot;</span>).prop(<span class="hljs-string">&quot;disabled&quot;</span>,<span class="hljs-literal">false</span>);<br>    <span class="hljs-comment">//禁用停止按钮</span><br>    $(<span class="hljs-string">&quot;#stopBtn&quot;</span>).prop(<span class="hljs-string">&quot;disabled&quot;</span>,<span class="hljs-literal">true</span>);<br><br>    <span class="hljs-comment">//14.将图片显示到大图片上</span><br>    $(<span class="hljs-string">&quot;#big&quot;</span>).prop(<span class="hljs-string">&quot;src&quot;</span>,imgSrc);<br>    $(<span class="hljs-string">&quot;#big&quot;</span>).prop(<span class="hljs-string">&quot;style&quot;</span>,<span class="hljs-string">&quot;width: 400px; height: 400px;&quot;</span>);<br>&#125;);<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JQuery/">JQuery</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JQuery/">JQuery</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/12/mybatis03/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">mybatis高级</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/11/mybatis02/">
+                        <span class="hidden-mobile">mybatis进阶</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>
