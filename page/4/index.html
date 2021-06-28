@@ -203,26 +203,23 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/02/mysql02/">MySQL进阶-02</a>
+        <a href="/2021/04/29/Base64/">将图片内嵌入Markdown文档中</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/02/mysql02/">
+        <a href="/2021/04/29/Base64/">
           
           
             
           
-          一、约束1.外键约束
-外键约束概念
+          Base64.usBase64 在线编码解码
+代码示例
+1234![image][tmp]your document here ...[tmp]:data:image/png;base64, ......
 
-让表和表之间产生关系，从而保证数据的准确性！
+实际效果挺好的，就是编辑器有点卡，图片不要太大了，最好压缩一下
+ 
+your document here … 
 
-
-建表时添加外键约束
-
-为什么要有外键约束
-
-123456789101112131415161718192021222324252627282930-- 创建db2数据库CREATE DATABASE db2;-- 使用db2数据库USE db2;-- 创建user用户表CREATE TABLE USER(	id
         </a>
       </p>
 
@@ -230,8 +227,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-02 19:34" pubdate>
-              2020-05-02
+            <time datetime="2021-04-29 21:05" pubdate>
+              2021-04-29
             </time>
           </div>
         
@@ -239,7 +236,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/MySQL/">MySQL</a>
+              <a href="/categories/PicGo/">PicGo</a>
             
           </div>
         
@@ -247,7 +244,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/MySQL/">MySQL</a>
+              <a href="/tags/Base64/">Base64</a>
             
           </div>
         
@@ -261,23 +258,17 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/02/Javaweb02/">Servlet</a>
+        <a href="/2021/04/19/IO%E6%B5%81/">IO流</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/02/Javaweb02/">
+        <a href="/2021/04/19/IO%E6%B5%81/">
           
           
             
           
-          Servlet-授课1 Servlet1.1 Servlet概述
-Servlet 是运行在 Java 服务器端的程序，用于接收和响应来自客户端基于 HTTP 协议的请求。
-如果想实现 Servlet 的功能，可以通过实现 javax.servlet.Servlet 接口或者继承它的实现类。
-核心方法：service()，任何客户端的请求都会经过该方法。
+          IO流可交互式思维导图,点击标题查看
 
-
-
-Servlet是SUN公司提供的一套规
         </a>
       </p>
 
@@ -285,8 +276,8 @@ Servlet是SUN公司提供的一套规
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-02 19:07" pubdate>
-              2020-05-02
+            <time datetime="2021-04-19 21:05" pubdate>
+              2021-04-19
             </time>
           </div>
         
@@ -294,7 +285,7 @@ Servlet是SUN公司提供的一套规
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/JavaWeb%E6%A0%B8%E5%BF%83/">JavaWeb核心</a>
+              <a href="/categories/JavaSE%E8%BF%9B%E9%98%B6/">JavaSE进阶</a>
             
           </div>
         
@@ -302,7 +293,7 @@ Servlet是SUN公司提供的一套规
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/JavaWeb/">JavaWeb</a>
+              <a href="/tags/IO%E6%B5%81/">IO流</a>
             
           </div>
         
@@ -316,24 +307,16 @@ Servlet是SUN公司提供的一套规
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/01/mysql01/">MySQL基础-01</a>
+        <a href="/2021/04/16/%E5%A4%96%E7%BD%91%E7%A9%BF%E9%80%8F%E5%86%85%E7%BD%91Linux%E7%B3%BB%E7%BB%9F22%E7%AB%AF%E5%8F%A3-SSH-%E6%95%99%E7%A8%8B/">外网穿透内网Linux系统22端口(SSH)教程</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/01/mysql01/">
+        <a href="/2021/04/16/%E5%A4%96%E7%BD%91%E7%A9%BF%E9%80%8F%E5%86%85%E7%BD%91Linux%E7%B3%BB%E7%BB%9F22%E7%AB%AF%E5%8F%A3-SSH-%E6%95%99%E7%A8%8B/">
           
           
             
           
-          一、数据库的基本概念1.为什么要学数据库？
-之前我们如果想将一些数据实现永久化存储，可以怎么做呢？没错。使用IO流的技术将数据保存到本地文件中
-但是接下来我有这样一个需求：将下面的user.txt文件中的王五年龄修改为35
-
-12345张三 23 男李四 24 男王五 25 女赵六 26 女周七 27 男
-
-
-我们要如何实现呢？
-可以采用字符缓冲流，将每一行数据读取出来，封装为User对象。将多个
+          无公网ip 内网穿透实现外网免费连接内网ssh（22）端口
         </a>
       </p>
 
@@ -341,8 +324,8 @@ Servlet是SUN公司提供的一套规
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-01 19:34" pubdate>
-              2020-05-01
+            <time datetime="2021-04-16 10:31" pubdate>
+              2021-04-16
             </time>
           </div>
         
@@ -350,7 +333,7 @@ Servlet是SUN公司提供的一套规
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/MySQL/">MySQL</a>
+              <a href="/categories/Linux/">Linux</a>
             
           </div>
         
@@ -358,7 +341,13 @@ Servlet是SUN公司提供的一套规
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/MySQL/">MySQL</a>
+              <a href="/tags/Linux/">Linux</a>
+            
+              <a href="/tags/%E5%A4%96%E7%BD%91%E7%A9%BF%E9%80%8F%E5%86%85%E7%BD%91/">外网穿透内网</a>
+            
+              <a href="/tags/22%E7%AB%AF%E5%8F%A3/">22端口</a>
+            
+              <a href="/tags/SSH/">SSH</a>
             
           </div>
         
@@ -372,20 +361,16 @@ Servlet是SUN公司提供的一套规
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/05/01/Javaweb01/">Tomcat&amp;Http协议</a>
+        <a href="/2021/04/16/Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/">Docker安装配置及华为云镜像加速并部署Nextcloud</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/05/01/Javaweb01/">
+        <a href="/2021/04/16/Docker%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E5%8F%8A%E5%8D%8E%E4%B8%BA%E4%BA%91%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/">
           
           
             
           
-          1 企业开发简介1.1 JavaEE规范
-JavaEE(Java Enterprise Edition)：Java 企业版
-它是由 SUN 公司领导、各个厂家共同制定并得到广泛认可的工业标准
-JavaEE 早期叫做 J2EE，但是没有继续采用其命名规则。J2EE 的版本从 1.0 开始到 1.4 结束。而 JavaEE 版本是从JavaEE 5 版本开始，目前最新的版本是 JavaEE 8
-Jav
+          docker安装
         </a>
       </p>
 
@@ -393,8 +378,8 @@ Jav
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-05-01 19:07" pubdate>
-              2020-05-01
+            <time datetime="2021-04-16 10:09" pubdate>
+              2021-04-16
             </time>
           </div>
         
@@ -402,7 +387,7 @@ Jav
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/JavaWeb%E6%A0%B8%E5%BF%83/">JavaWeb核心</a>
+              <a href="/categories/Linux/">Linux</a>
             
           </div>
         
@@ -410,7 +395,13 @@ Jav
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/JavaWeb/">JavaWeb</a>
+              <a href="/tags/Docker/">Docker</a>
+            
+              <a href="/tags/%E5%8D%8E%E4%B8%BA%E4%BA%91/">华为云</a>
+            
+              <a href="/tags/%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/">镜像加速</a>
+            
+              <a href="/tags/Nextcloud/">Nextcloud</a>
             
           </div>
         
@@ -424,19 +415,16 @@ Jav
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/21/form&css/">form&amp;css</a>
+        <a href="/2021/04/15/CentOS7%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8Cyum%E6%BA%90/">CentOS7更换阿里yum源</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/21/form&css/">
+        <a href="/2021/04/15/CentOS7%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8Cyum%E6%BA%90/">
           
           
             
           
-          form&amp;css点上面链接查看更方便
-
-
-
+          一句一句执行,亲测可用
         </a>
       </p>
 
@@ -444,8 +432,8 @@ Jav
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-21 19:31" pubdate>
-              2020-04-21
+            <time datetime="2021-04-15 10:19" pubdate>
+              2021-04-15
             </time>
           </div>
         
@@ -453,7 +441,7 @@ Jav
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/HTML-CSS-Nginx/">HTML+CSS+Nginx</a>
+              <a href="/categories/Linux/">Linux</a>
             
           </div>
         
@@ -461,7 +449,7 @@ Jav
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/css/">css</a>
+              <a href="/tags/%E9%98%BF%E9%87%8Cyum%E6%BA%90/">阿里yum源</a>
             
           </div>
         
@@ -475,19 +463,16 @@ Jav
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/20/CSS/">CSS</a>
+        <a href="/2021/04/15/%E5%88%9B%E5%BB%BACentOS%E7%B3%BB%E7%BB%9F%E8%99%9A%E6%8B%9F%E6%9C%BA/">创建CentOS系统虚拟机</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/20/CSS/">
+        <a href="/2021/04/15/%E5%88%9B%E5%BB%BACentOS%E7%B3%BB%E7%BB%9F%E8%99%9A%E6%8B%9F%E6%9C%BA/">
           
           
             
           
-          CSS点上面链接查看更方便
-
-
-
+          虚拟机有两种
         </a>
       </p>
 
@@ -495,8 +480,8 @@ Jav
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-20 19:31" pubdate>
-              2020-04-20
+            <time datetime="2021-04-15 10:17" pubdate>
+              2021-04-15
             </time>
           </div>
         
@@ -504,7 +489,7 @@ Jav
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/HTML-CSS-Nginx/">HTML+CSS+Nginx</a>
+              <a href="/categories/Linux/">Linux</a>
             
           </div>
         
@@ -512,7 +497,9 @@ Jav
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/CSS/">CSS</a>
+              <a href="/tags/CentOS/">CentOS</a>
+            
+              <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">虚拟机</a>
             
           </div>
         
@@ -526,18 +513,16 @@ Jav
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/20/nginx-%E5%AE%89%E8%A3%85/">nginx 安装</a>
+        <a href="/2021/04/15/%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81ip%E5%B9%B6%E8%BF%9E%E6%8E%A5%E5%A4%96%E7%BD%91/">虚拟机配置静态ip并连接外网</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/20/nginx-%E5%AE%89%E8%A3%85/">
+        <a href="/2021/04/15/%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81ip%E5%B9%B6%E8%BF%9E%E6%8E%A5%E5%A4%96%E7%BD%91/">
           
           
             
           
-          ——- 安装Nginx ——1.上传安装包2.解压安装包3.进入Nginx目录4.安装依赖环境1234   yum -y install gcc gcc-c++yum -y install pcre pcre-develyum -y install zlib zlib-develyum -y install openssl openssl-devel
-
-5.安装Nginx123   ./confi
+          配置静态ip
         </a>
       </p>
 
@@ -545,21 +530,121 @@ Jav
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-20 18:23" pubdate>
-              2020-04-20
+            <time datetime="2021-04-15 10:16" pubdate>
+              2021-04-15
             </time>
           </div>
         
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Linux/">Linux</a>
+            
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/04/07/idea1/">Idea常用快捷键</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/04/07/idea1/">
+          
+          
+            
+          
+          
+
+
+
+
+快捷键
+介绍
+
+
+
+Ctrl + O
+重写方法
+
+
+Ctrl + I
+实现方法
+
+
+ctrl + alt + shift + U
+某个类的向上生成UML图
+
+
+Ctrl + Alt + U
+某个类的向上生成UML图
+
+
+Ctrl+Alt+shift+C
+选中类名 copy reference(复制全类名)
+
+
+alt+8
+打开services
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-04-07 11:20" pubdate>
+              2021-04-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Idea/">Idea</a>
+            
+          </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/nginx/">nginx</a>
+              <a href="/tags/Idea/">Idea</a>
             
-              <a href="/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">负载均衡</a>
-            
-              <a href="/tags/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">反向代理</a>
+              <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/">快捷键</a>
             
           </div>
         
@@ -573,19 +658,16 @@ Jav
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/19/HTML/">HTML</a>
+        <a href="/2021/04/06/h2/">Hexo使用过程中遇到的Error及解决办法</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/19/HTML/">
+        <a href="/2021/04/06/h2/">
           
           
             
           
-          HTML点上面链接查看更方便
-
-
-
+          Error1
         </a>
       </p>
 
@@ -593,8 +675,8 @@ Jav
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-19 19:31" pubdate>
-              2020-04-19
+            <time datetime="2021-04-06 17:54" pubdate>
+              2021-04-06
             </time>
           </div>
         
@@ -602,7 +684,9 @@ Jav
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/HTML-CSS-Nginx/">HTML+CSS+Nginx</a>
+              <a href="/categories/Hexo/">Hexo</a>
+            
+              <a href="/categories/Hexo/Error/">Error</a>
             
           </div>
         
@@ -610,7 +694,9 @@ Jav
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/HTML/">HTML</a>
+              <a href="/tags/Hexo/">Hexo</a>
+            
+              <a href="/tags/Error/">Error</a>
             
           </div>
         
@@ -624,22 +710,16 @@ Jav
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2020/04/11/JavaEE-v4.0-HTML-%E6%8E%88%E8%AF%BE/">HTML入门</a>
+        <a href="/2021/04/05/g1/">修改hosts解决GitHub网站无法访问</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/04/11/JavaEE-v4.0-HTML-%E6%8E%88%E8%AF%BE/">
+        <a href="/2021/04/05/g1/">
           
           
             
           
-          1.1 初识HTML1.1.1 概述网络世界已经跟我们息息相关，当我们打开一个网站，首先映入眼帘的就是一个个华丽多彩的网页。这些网页，不仅呈现着基本的内容，还具备优雅的布局和丰富的动态效果，这一切都是如何做到的呢？前端入门课程，为您一层层的揭开网页的面纱。
-
-
-网页的构成
-HTML：通常用来定义网页内容的含义和基本结构。
- CSS：通常用来描述网页的表现与展示效果。
- JavaScript：通常用
+          GitHub官网
         </a>
       </p>
 
@@ -647,8 +727,8 @@ HTML：通常用来定义网页内容的含义和基本结构。
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-11 19:31" pubdate>
-              2020-04-11
+            <time datetime="2021-04-05 15:33" pubdate>
+              2021-04-05
             </time>
           </div>
         
@@ -656,7 +736,7 @@ HTML：通常用来定义网页内容的含义和基本结构。
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/HTML-CSS-Nginx/">HTML+CSS+Nginx</a>
+              <a href="/categories/GitHub/">GitHub</a>
             
           </div>
         
@@ -664,57 +744,9 @@ HTML：通常用来定义网页内容的含义和基本结构。
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/HTML/">HTML</a>
+              <a href="/tags/%E8%BF%9E%E6%8E%A5%E8%B6%85%E6%97%B6/">连接超时</a>
             
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2020/04/10/JavaEE-v4.0-Css+Nginx-%E6%8E%88%E8%AF%BE/">前端入门——CSS</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/04/10/JavaEE-v4.0-Css+Nginx-%E6%8E%88%E8%AF%BE/">
-          
-          
-            
-          
-          1 CSS入门1.1 初识CSS1.1.1 概述在学习了基本HTML标签和样式后，接下来学习前端开发的第二门技术。
-我们发现，虽然标签的属性可以调整一些样式，但是效果不够理想，而我们更愿意把样式编写在&lt;style&gt; 标签中，让页面设计更美观更丰富，实际上，这是通过CSS实现的。那么什么是CSS呢？
-如果说，HTML是网页的”素颜”，那么CSS就是页面的”美妆师”，它就是让网页的外观更漂
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-04-10 19:31" pubdate>
-              2020-04-10
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/HTML-CSS-Nginx/">HTML+CSS+Nginx</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/CSS/">CSS</a>
+              <a href="/tags/GitHub/">GitHub</a>
             
           </div>
         
@@ -726,7 +758,7 @@ HTML：通常用来定义网页内容的含义和基本结构。
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#board">9</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

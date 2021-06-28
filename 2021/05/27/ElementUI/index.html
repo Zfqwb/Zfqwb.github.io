@@ -1,0 +1,837 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>Vue 高级使用 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zfqwb.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Vue 高级使用">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-27 16:53" pubdate>
+        2021年5月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      84
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Vue 高级使用</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="1、Vue-高级使用"><a href="#1、Vue-高级使用" class="headerlink" title="1、Vue 高级使用"></a>1、Vue 高级使用</h1><h2 id="1-1、自定义组件"><a href="#1-1、自定义组件" class="headerlink" title="1.1、自定义组件"></a>1.1、自定义组件</h2><ul>
+<li><p>学完了 Element 组件后，我们会发现组件其实就是自定义的标签。例如 就是对的封装。 </p>
+</li>
+<li><p>本质上，组件是带有一个名字且可复用的 Vue 实例，我们完全可以自己定义。</p>
+</li>
+<li><p>定义格式</p>
+<figure class="highlight tex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tex">Vue.component(组件名称, &#123;<br> props:组件的属性,<br> data: 组件的数据函数,<br> template: 组件解析的标签模板<br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>自定义组件<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;vue/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;div&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">my-button</span>&gt;</span>我的按钮<span class="hljs-tag">&lt;/<span class="hljs-name">my-button</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    Vue.component(<span class="hljs-string">&quot;my-button&quot;</span>,&#123;</span><br><span class="javascript">        <span class="hljs-comment">// 属性</span></span><br><span class="javascript">        props:[<span class="hljs-string">&quot;style&quot;</span>],</span><br><span class="javascript">        <span class="hljs-comment">// 数据函数</span></span><br><span class="javascript">        data: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">            <span class="hljs-keyword">return</span>&#123;</span><br><span class="javascript">                msg:<span class="hljs-string">&quot;我的按钮&quot;</span></span><br>            &#125;<br>        &#125;,<br><span class="javascript">        <span class="hljs-comment">//解析标签模板</span></span><br><span class="handlebars"><span class="xml">        template:&quot;<span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&#x27;color:red&#x27;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">msg</span>&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>&quot;</span></span><br>    &#125;);<br><br><span class="javascript">    <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">        el:<span class="hljs-string">&quot;#div&quot;</span></span><br>    &#125;);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="1-2、Vue的生命周期"><a href="#1-2、Vue的生命周期" class="headerlink" title="1.2、Vue的生命周期"></a>1.2、Vue的生命周期</h2><ul>
+<li><strong>生命周期</strong></li>
+</ul>
+<p><img src="/2021/05/27/ElementUI/img/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p><strong>生命周期的八个阶段</strong></p>
+<p><img src="/2021/05/27/ElementUI/img/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E5%85%AB%E4%B8%AA%E9%98%B6%E6%AE%B5.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p><strong>代码实现</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>生命周期<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;vue/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><br>        &#123;&#123;message&#125;&#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">let</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">				el: <span class="hljs-string">&#x27;#app&#x27;</span>,</span><br>				data: &#123;<br><span class="javascript">					message: <span class="hljs-string">&#x27;Vue的生命周期&#x27;</span></span><br>				&#125;,<br><span class="javascript">				beforeCreate: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;------beforeCreate创建前状态------&#x27;</span>);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;el     : &quot;</span> + <span class="hljs-built_in">this</span>.$el); <span class="hljs-comment">//undefined</span></span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;data   : &quot;</span> + <span class="hljs-built_in">this</span>.$data); <span class="hljs-comment">//undefined </span></span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;message: &quot;</span> + <span class="hljs-built_in">this</span>.message);<span class="hljs-comment">//undefined</span></span><br>				&#125;,<br><span class="javascript">				created: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;------created创建完毕状态------&#x27;</span>);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;el     : &quot;</span> + <span class="hljs-built_in">this</span>.$el); <span class="hljs-comment">//undefined</span></span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;data   : &quot;</span> + <span class="hljs-built_in">this</span>.$data); <span class="hljs-comment">//已被初始化 </span></span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;message: &quot;</span> + <span class="hljs-built_in">this</span>.message); <span class="hljs-comment">//已被初始化</span></span><br>				&#125;,<br><span class="javascript">				beforeMount: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;------beforeMount挂载前状态------&#x27;</span>);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;el     : &quot;</span> + (<span class="hljs-built_in">this</span>.$el)); <span class="hljs-comment">//已被初始化</span></span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;data   : &quot;</span> + <span class="hljs-built_in">this</span>.$data); <span class="hljs-comment">//已被初始化  </span></span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;message: &quot;</span> + <span class="hljs-built_in">this</span>.message); <span class="hljs-comment">//已被初始化  </span></span><br>				&#125;,<br><span class="javascript">				mounted: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;------mounted 挂载结束状态------&#x27;</span>);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;el     : &quot;</span> + <span class="hljs-built_in">this</span>.$el); <span class="hljs-comment">//已被初始化</span></span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;data   : &quot;</span> + <span class="hljs-built_in">this</span>.$data); <span class="hljs-comment">//已被初始化</span></span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;message: &quot;</span> + <span class="hljs-built_in">this</span>.message); <span class="hljs-comment">//已被初始化 </span></span><br>				&#125;,<br><span class="javascript">				beforeUpdate: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;beforeUpdate 更新前状态===============》&#x27;</span>);</span><br><span class="javascript">					<span class="hljs-keyword">let</span> dom = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;app&quot;</span>).innerHTML;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(dom);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;el     : &quot;</span> + <span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;data   : &quot;</span> + <span class="hljs-built_in">this</span>.$data);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;message: &quot;</span> + <span class="hljs-built_in">this</span>.message);</span><br>				&#125;,<br><span class="javascript">				updated: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;updated 更新完成状态===============》&#x27;</span>);</span><br><span class="javascript">					<span class="hljs-keyword">let</span> dom = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;app&quot;</span>).innerHTML;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(dom);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;el     : &quot;</span> + <span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;data   : &quot;</span> + <span class="hljs-built_in">this</span>.$data);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;message: &quot;</span> + <span class="hljs-built_in">this</span>.message);</span><br>				&#125;,<br><span class="javascript">				beforeDestroy: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;beforeDestroy 销毁前状态===============》&#x27;</span>);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;el     : &quot;</span> + <span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;data   : &quot;</span> + <span class="hljs-built_in">this</span>.$data);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;message: &quot;</span> + <span class="hljs-built_in">this</span>.message);</span><br>				&#125;,<br><span class="javascript">				destroyed: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.group(<span class="hljs-string">&#x27;destroyed 销毁完成状态===============》&#x27;</span>);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;el     : &quot;</span> + <span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.$el);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;data   : &quot;</span> + <span class="hljs-built_in">this</span>.$data);</span><br><span class="javascript">					<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;%c%s&quot;</span>, <span class="hljs-string">&quot;color:red&quot;</span>, <span class="hljs-string">&quot;message: &quot;</span> + <span class="hljs-built_in">this</span>.message);</span><br>				&#125;<br>			&#125;);<br><br>		<br><span class="javascript">			<span class="hljs-comment">// 销毁Vue对象</span></span><br><span class="javascript">			<span class="hljs-comment">//vm.$destroy();</span></span><br><span class="javascript">			<span class="hljs-comment">//vm.message = &quot;hehe&quot;;	// 销毁后 Vue 实例会解绑所有内容</span></span><br><br><span class="javascript">			<span class="hljs-comment">// 设置data中message数据值</span></span><br><span class="javascript">			vm.message = <span class="hljs-string">&quot;good...&quot;</span>;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="1-3、Vue异步操作"><a href="#1-3、Vue异步操作" class="headerlink" title="1.3、Vue异步操作"></a>1.3、Vue异步操作</h2><ul>
+<li><p><strong>在Vue中发送异步请求，本质上还是AJAX。我们可以使用axios这个插件来简化操作！</strong></p>
+</li>
+<li><p><strong>使用步骤</strong><br>1.引入axios核心js文件。<br>2.调用axios对象的方法来发起异步请求。<br>3.调用axios对象的方法来处理响应的数据。</p>
+</li>
+<li><p><strong>axios常用方法</strong></p>
+<p><img src="/2021/05/27/ElementUI/img/axios%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+<li><p><strong>代码实现</strong></p>
+<ul>
+<li><strong>html代码</strong></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>异步操作<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/vue.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;js/axios-0.18.0.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;div&quot;</span>&gt;</span><br>        &#123;&#123;name&#125;&#125;<br>        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;send()&quot;</span>&gt;</span>发起请求<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">    <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="javascript">        el:<span class="hljs-string">&quot;#div&quot;</span>,</span><br>        data:&#123;<br><span class="javascript">            name:<span class="hljs-string">&quot;张三&quot;</span></span><br>        &#125;,<br>        methods:&#123;<br><span class="javascript">            <span class="hljs-function"><span class="hljs-title">send</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="javascript">                <span class="hljs-comment">// GET方式请求</span></span><br><span class="javascript">                <span class="hljs-comment">// axios.get(&quot;testServlet?name=&quot; + this.name)</span></span><br><span class="javascript">                <span class="hljs-comment">//     .then(resp =&gt; &#123;</span></span><br><span class="javascript">                <span class="hljs-comment">//         alert(resp.data);</span></span><br><span class="javascript">                <span class="hljs-comment">//     &#125;)</span></span><br><span class="javascript">                <span class="hljs-comment">//     .catch(error =&gt; &#123;</span></span><br><span class="javascript">                <span class="hljs-comment">//         alert(error);</span></span><br><span class="javascript">                <span class="hljs-comment">//     &#125;)</span></span><br><br><span class="javascript">                <span class="hljs-comment">// POST方式请求</span></span><br><span class="javascript">                axios.post(<span class="hljs-string">&quot;testServlet&quot;</span>,<span class="hljs-string">&quot;name=&quot;</span>+<span class="hljs-built_in">this</span>.name)</span><br><span class="javascript">                    .then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> &#123;</span><br>                        alert(resp.data);<br>                    &#125;)<br><span class="javascript">                    .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> &#123;</span><br>                        alert(error);<br>                    &#125;)<br>            &#125;<br>        &#125;<br>    &#125;);<br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><strong>java代码</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-meta">@WebServlet(&quot;/testServlet&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//设置请求和响应的编码</span><br>        req.setCharacterEncoding(<span class="hljs-string">&quot;UTF-8&quot;</span>);<br>        resp.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br><br>        <span class="hljs-comment">//获取请求参数</span><br>        String name = req.getParameter(<span class="hljs-string">&quot;name&quot;</span>);<br>        System.out.println(name);<br><br>        <span class="hljs-comment">//响应客户端</span><br>        resp.getWriter().write(<span class="hljs-string">&quot;请求成功&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-keyword">this</span>.doGet(req,resp);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="1-4、小结"><a href="#1-4、小结" class="headerlink" title="1.4、小结"></a>1.4、小结</h2><ul>
+<li><p>自定义组件：本质上，组件是带有一个名字且可复用的 Vue 实例，我们可以自己来定义。</p>
+<figure class="highlight tex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs tex">Vue.component(组件名称, &#123;<br> props:组件的属性,<br> data: 组件的数据函数,<br> template: 组件解析的标签模板<br>&#125;)<br></code></pre></div></td></tr></table></figure></li>
+<li><p>生命周期：核心八个阶段<br>beforeCreate：创建前<br>created：创建后<br>beforeMount：载入前<br>mounted：载入后<br>beforeUpdate：更新前<br>updated：更新后<br>beforeDestroy：销毁前<br>destroyed：销毁后</p>
+</li>
+<li><p>异步操作：通过 axios 插件来实现。</p>
+<p><img src="/2021/05/27/ElementUI/img/axios%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<h1 id="2、综合案例-学生管理系统"><a href="#2、综合案例-学生管理系统" class="headerlink" title="2、综合案例 学生管理系统"></a>2、综合案例 学生管理系统</h1><h2 id="2-1、效果环境的介绍"><a href="#2-1、效果环境的介绍" class="headerlink" title="2.1、效果环境的介绍"></a>2.1、效果环境的介绍</h2><p><img src="/2021/05/27/ElementUI/img/%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B-%E7%99%BB%E5%BD%95.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/05/27/ElementUI/img/%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B-%E9%A6%96%E9%A1%B5.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-2、登录功能的实现"><a href="#2-2、登录功能的实现" class="headerlink" title="2.2、登录功能的实现"></a>2.2、登录功能的实现</h2><ul>
+<li><p><strong>环境搭建</strong></p>
+<ul>
+<li>从当天的资料中解压《学生管理系统原始项目》，并导入。</li>
+</ul>
+</li>
+<li><p><strong>代码实现</strong></p>
+<ul>
+<li><p><strong>html代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-title">onSubmit</span>(<span class="hljs-params">formName</span>)</span> &#123;<br>                <span class="hljs-comment">// 为表单绑定验证功能</span><br>                <span class="hljs-built_in">this</span>.$refs[formName].validate(<span class="hljs-function">(<span class="hljs-params">valid</span>) =&gt;</span> &#123;<br>                    <span class="hljs-keyword">if</span> (valid) &#123;<br>                        <span class="hljs-comment">//请求服务器完成登录功能</span><br>                        axios.post(<span class="hljs-string">&quot;userServlet&quot;</span>,<span class="hljs-string">&quot;username=&quot;</span> + <span class="hljs-built_in">this</span>.form.username + <span class="hljs-string">&quot;&amp;password=&quot;</span> + <span class="hljs-built_in">this</span>.form.password)<br>                            .then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> &#123;<br>                                <span class="hljs-keyword">if</span>(resp.data == <span class="hljs-literal">true</span>) &#123;<br>                                    <span class="hljs-comment">//登录成功，跳转到首页</span><br>                                    location.href = <span class="hljs-string">&quot;index.html&quot;</span>;<br>                                &#125;<span class="hljs-keyword">else</span> &#123;<br>                                    <span class="hljs-comment">//登录失败，跳转到登录页面</span><br>                                    alert(<span class="hljs-string">&quot;登录失败，请检查用户名和密码&quot;</span>);<br>                                    location.href = <span class="hljs-string">&quot;login.html&quot;</span>;<br>                                &#125;<br>                            &#125;)<br>                    &#125; <span class="hljs-keyword">else</span> &#123;<br>                        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                    &#125;<br>                &#125;);<br>            &#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>java代码</strong></p>
+<ul>
+<li><strong>UserServlet.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.controller;<br><br><span class="hljs-keyword">import</span> com.itheima.bean.User;<br><span class="hljs-keyword">import</span> com.itheima.service.UserService;<br><span class="hljs-keyword">import</span> com.itheima.service.impl.UserServiceImpl;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-meta">@WebServlet(&quot;/userServlet&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> UserService service = <span class="hljs-keyword">new</span> UserServiceImpl();<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//设置请求和响应编码</span><br>        req.setCharacterEncoding(<span class="hljs-string">&quot;UTF-8&quot;</span>);<br>        resp.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br><br>        <span class="hljs-comment">//1.获取请求参数</span><br>        String username = req.getParameter(<span class="hljs-string">&quot;username&quot;</span>);<br>        String password = req.getParameter(<span class="hljs-string">&quot;password&quot;</span>);<br><br>        <span class="hljs-comment">//2.封装User对象</span><br>        User user = <span class="hljs-keyword">new</span> User(username,password);<br><br>        <span class="hljs-comment">//3.调用业务层的登录方法</span><br>        List&lt;User&gt; list = service.login(user);<br><br>        <span class="hljs-comment">//4.判断是否查询出结果</span><br>        <span class="hljs-keyword">if</span>(list.size() != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-comment">//将用户名存入会话域当中</span><br>            req.getSession().setAttribute(<span class="hljs-string">&quot;username&quot;</span>,username);<br>            <span class="hljs-comment">//响应给客户端true</span><br>            resp.getWriter().write(<span class="hljs-string">&quot;true&quot;</span>);<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">//响应给客户端false</span><br>            resp.getWriter().write(<span class="hljs-string">&quot;false&quot;</span>);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><strong>UserService.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.service;<br><br><span class="hljs-keyword">import</span> com.itheima.bean.User;<br><br><span class="hljs-keyword">import</span> java.util.List;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    业务层约束接口</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserService</span> </span>&#123;<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        登录方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> List&lt;User&gt; <span class="hljs-title">login</span><span class="hljs-params">(User user)</span></span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><strong>UserServiceImpl.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.service.impl;<br><br><span class="hljs-keyword">import</span> com.itheima.bean.User;<br><span class="hljs-keyword">import</span> com.itheima.mapper.UserMapper;<br><span class="hljs-keyword">import</span> com.itheima.service.UserService;<br><span class="hljs-keyword">import</span> org.apache.ibatis.io.Resources;<br><span class="hljs-keyword">import</span> org.apache.ibatis.session.SqlSession;<br><span class="hljs-keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;<br><span class="hljs-keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.InputStream;<br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserService</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;User&gt; <span class="hljs-title">login</span><span class="hljs-params">(User user)</span> </span>&#123;<br>        InputStream is = <span class="hljs-keyword">null</span>;<br>        SqlSession sqlSession = <span class="hljs-keyword">null</span>;<br>        List&lt;User&gt; list = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span>&#123;<br>            <span class="hljs-comment">//1.加载核心配置文件</span><br>            is = Resources.getResourceAsStream(<span class="hljs-string">&quot;MyBatisConfig.xml&quot;</span>);<br><br>            <span class="hljs-comment">//2.获取SqlSession工厂对象</span><br>            SqlSessionFactory sqlSessionFactory = <span class="hljs-keyword">new</span> SqlSessionFactoryBuilder().build(is);<br><br>            <span class="hljs-comment">//3.通过SqlSession工厂对象获取SqlSession对象</span><br>            sqlSession = sqlSessionFactory.openSession(<span class="hljs-keyword">true</span>);<br><br>            <span class="hljs-comment">//4.获取UserMapper接口的实现类对象</span><br>            UserMapper mapper = sqlSession.getMapper(UserMapper.class);<br><br>            <span class="hljs-comment">//5.调用实现类对象的登录方法</span><br>            list = mapper.login(user);<br><br>        &#125;<span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-comment">//6.释放资源</span><br>            <span class="hljs-keyword">if</span>(sqlSession != <span class="hljs-keyword">null</span>) &#123;<br>                sqlSession.close();<br>            &#125;<br>            <span class="hljs-keyword">if</span>(is != <span class="hljs-keyword">null</span>) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    is.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">//7.返回结果到控制层</span><br>        <span class="hljs-keyword">return</span> list;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><strong>UserMapper.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.mapper;<br><br><span class="hljs-keyword">import</span> com.itheima.bean.User;<br><span class="hljs-keyword">import</span> org.apache.ibatis.annotations.Select;<br><br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserMapper</span> </span>&#123;<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        登录方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Select(&quot;SELECT * FROM user WHERE username=#&#123;username&#125; AND password=#&#123;password&#125;&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> List&lt;User&gt; <span class="hljs-title">login</span><span class="hljs-params">(User user)</span></span>;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-3、分页查询功能的实现"><a href="#2-3、分页查询功能的实现" class="headerlink" title="2.3、分页查询功能的实现"></a>2.3、分页查询功能的实现</h2><ul>
+<li><p><strong>代码实现</strong></p>
+<ul>
+<li><p><strong>html代码</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js">&lt;script&gt;<br>    <span class="hljs-keyword">new</span> Vue(&#123;<br>        el:<span class="hljs-string">&quot;#div&quot;</span>,<br>        data:&#123;<br>            dialogTableVisible4add: <span class="hljs-literal">false</span>,  <span class="hljs-comment">//添加窗口显示状态</span><br>            dialogTableVisible4edit: <span class="hljs-literal">false</span>, <span class="hljs-comment">//编辑窗口显示状态</span><br>            formData:&#123;&#125;,<span class="hljs-comment">//添加表单的数据</span><br>            editFormData: &#123;&#125;,<span class="hljs-comment">//编辑表单的数据</span><br>            tableData:[],<span class="hljs-comment">//表格数据</span><br>            pagination: &#123;<br>                currentPage: <span class="hljs-number">1</span>, <span class="hljs-comment">//当前页</span><br>                pageSize: <span class="hljs-number">5</span>,    <span class="hljs-comment">//每页显示条数</span><br>                total: <span class="hljs-number">0</span>        <span class="hljs-comment">//总条数</span><br>            &#125;,<br>            rules: &#123;<br>                number: [<br>                    &#123;<span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请输入学号&#x27;</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span>&#125;,<br>                    &#123;<span class="hljs-attr">min</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">max</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;长度在 2 到 10 个字符&#x27;</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span>&#125;<br>                ],<br>                name: [<br>                    &#123;<span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请输入姓名&#x27;</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span>&#125;,<br>                    &#123;<span class="hljs-attr">min</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">max</span>: <span class="hljs-number">10</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;长度在 2 到 10 个字符&#x27;</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span>&#125;<br>                ],<br>                birthday: [<br>                    &#123;<span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请选择日期&#x27;</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;change&#x27;</span>&#125;<br>                ],<br>                address: [<br>                    &#123;<span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;请输入地址&#x27;</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span>&#125;,<br>                    &#123;<span class="hljs-attr">min</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">max</span>: <span class="hljs-number">200</span>, <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;长度在 2 到 200 个字符&#x27;</span>, <span class="hljs-attr">trigger</span>: <span class="hljs-string">&#x27;blur&#x27;</span>&#125;<br>                ],<br>            &#125;<br>        &#125;,<br>        methods:&#123;<br>            <span class="hljs-comment">//分页查询功能</span><br>            <span class="hljs-function"><span class="hljs-title">selectByPage</span>(<span class="hljs-params"></span>)</span>&#123;<br>                axios.post(<span class="hljs-string">&quot;studentServlet&quot;</span>,<span class="hljs-string">&quot;method=selectByPage&amp;currentPage=&quot;</span> + <span class="hljs-built_in">this</span>.pagination.currentPage + <span class="hljs-string">&quot;&amp;pageSize=&quot;</span> + <span class="hljs-built_in">this</span>.pagination.pageSize)<br>                    .then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> &#123;<br>                        <span class="hljs-comment">//将查询出的数据赋值tableData</span><br>                        <span class="hljs-built_in">this</span>.tableData = resp.data.list;<br>                        <span class="hljs-comment">//设置分页参数</span><br>                        <span class="hljs-comment">//当前页</span><br>                        <span class="hljs-built_in">this</span>.pagination.currentPage = resp.data.pageNum;<br>                        <span class="hljs-comment">//总条数</span><br>                        <span class="hljs-built_in">this</span>.pagination.total = resp.data.total;<br>                    &#125;)<br>            &#125;,<br>            <span class="hljs-comment">//改变每页条数时执行的函数</span><br>            <span class="hljs-function"><span class="hljs-title">handleSizeChange</span>(<span class="hljs-params">pageSize</span>)</span> &#123;<br>                <span class="hljs-comment">//修改分页查询的参数</span><br>                <span class="hljs-built_in">this</span>.pagination.pageSize = pageSize;<br>                <span class="hljs-comment">//重新执行查询</span><br>                <span class="hljs-built_in">this</span>.selectByPage();<br>            &#125;,<br>            <span class="hljs-comment">//改变页码时执行的函数</span><br>            <span class="hljs-function"><span class="hljs-title">handleCurrentChange</span>(<span class="hljs-params">pageNum</span>)</span> &#123;<br>                <span class="hljs-comment">//修改分页查询的参数</span><br>                <span class="hljs-built_in">this</span>.pagination.currentPage = pageNum;<br>                <span class="hljs-comment">//重新执行查询</span><br>                <span class="hljs-built_in">this</span>.selectByPage();<br>            &#125;,<br>            <span class="hljs-function"><span class="hljs-title">showAddStu</span>(<span class="hljs-params"></span>)</span> &#123;<br>                <span class="hljs-comment">//弹出窗口</span><br>                <span class="hljs-built_in">this</span>.dialogTableVisible4add = <span class="hljs-literal">true</span>;<br>            &#125;,<br>            <span class="hljs-function"><span class="hljs-title">resetForm</span>(<span class="hljs-params">addForm</span>)</span> &#123;<br>                <span class="hljs-comment">//双向绑定，输入的数据都赋值给了formData， 清空formData数据</span><br>                <span class="hljs-built_in">this</span>.formData = &#123;&#125;;<br>                <span class="hljs-comment">//清除表单的校验数据</span><br>                <span class="hljs-built_in">this</span>.$refs[addForm].resetFields();<br>            &#125;,<br>            <span class="hljs-function"><span class="hljs-title">showEditStu</span>(<span class="hljs-params">row</span>)</span> &#123;<br>                <span class="hljs-comment">//1. 弹出窗口</span><br>                <span class="hljs-built_in">this</span>.dialogTableVisible4edit = <span class="hljs-literal">true</span>;<br><br>                <span class="hljs-comment">//2. 显示表单数据</span><br>                <span class="hljs-built_in">this</span>.editFormData = &#123;<br>                    number:row.number,<br>                    name:row.name,<br>                    birthday:row.birthday,<br>                    address:row.address,<br>                &#125;<br>            &#125;   <br>        &#125;,<br>        <span class="hljs-function"><span class="hljs-title">mounted</span>(<span class="hljs-params"></span>)</span>&#123;<br>            <span class="hljs-comment">//调用分页查询功能</span><br>            <span class="hljs-built_in">this</span>.selectByPage();<br>        &#125;<br>    &#125;);<br>&lt;/script&gt;<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>java代码</strong></p>
+<ul>
+<li><strong>1、创建StudentServlet.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.controller;<br><br><span class="hljs-keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;<br><span class="hljs-keyword">import</span> com.github.pagehelper.Page;<br><span class="hljs-keyword">import</span> com.github.pagehelper.PageInfo;<br><span class="hljs-keyword">import</span> com.itheima.bean.Student;<br><span class="hljs-keyword">import</span> com.itheima.service.StudentService;<br><span class="hljs-keyword">import</span> com.itheima.service.impl.StudentServiceImpl;<br><span class="hljs-keyword">import</span> org.apache.commons.beanutils.BeanUtils;<br><span class="hljs-keyword">import</span> org.apache.commons.beanutils.ConvertUtils;<br><span class="hljs-keyword">import</span> org.apache.commons.beanutils.Converter;<br><br><span class="hljs-keyword">import</span> javax.servlet.ServletException;<br><span class="hljs-keyword">import</span> javax.servlet.annotation.WebServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;<br><span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;<br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.text.ParseException;<br><span class="hljs-keyword">import</span> java.text.SimpleDateFormat;<br><span class="hljs-keyword">import</span> java.util.Date;<br><span class="hljs-keyword">import</span> java.util.Map;<br><br><span class="hljs-meta">@WebServlet(&quot;/studentServlet&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StudentServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> StudentService service = <span class="hljs-keyword">new</span> StudentServiceImpl();<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        <span class="hljs-comment">//设置请求和响应编码</span><br>        req.setCharacterEncoding(<span class="hljs-string">&quot;UTF-8&quot;</span>);<br>        resp.setContentType(<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span>);<br><br>        <span class="hljs-comment">//1.获取方法名</span><br>        String method = req.getParameter(<span class="hljs-string">&quot;method&quot;</span>);<br>        <span class="hljs-keyword">if</span>(method.equals(<span class="hljs-string">&quot;selectByPage&quot;</span>)) &#123;<br>            <span class="hljs-comment">//分页查询功能</span><br>            selectByPage(req,resp);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        分页查询功能</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">selectByPage</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> </span>&#123;<br>        <span class="hljs-comment">//获取请求参数</span><br>        String currentPage = req.getParameter(<span class="hljs-string">&quot;currentPage&quot;</span>);<br>        String pageSize = req.getParameter(<span class="hljs-string">&quot;pageSize&quot;</span>);<br><br>        <span class="hljs-comment">//调用业务层的查询方法</span><br>        Page page = service.selectByPage(Integer.parseInt(currentPage), Integer.parseInt(pageSize));<br><br>        <span class="hljs-comment">//封装PageInfo</span><br>        PageInfo info = <span class="hljs-keyword">new</span> PageInfo(page);<br><br>        <span class="hljs-comment">//将info转成json，响应给客户端</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            String json = <span class="hljs-keyword">new</span> ObjectMapper().writeValueAsString(info);<br>            resp.getWriter().write(json);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doPost</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>        doGet(req,resp);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><strong>2、创建StudentService.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.service;<br><br><span class="hljs-keyword">import</span> com.github.pagehelper.Page;<br><span class="hljs-keyword">import</span> com.itheima.bean.Student;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    学生业务层接口</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StudentService</span> </span>&#123;<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        分页查询方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> Page <span class="hljs-title">selectByPage</span><span class="hljs-params">(Integer currentPage, Integer pageSize)</span></span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><strong>3、创建StudentServiceImpl.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.service.impl;<br><br><span class="hljs-keyword">import</span> com.github.pagehelper.Page;<br><span class="hljs-keyword">import</span> com.github.pagehelper.PageHelper;<br><span class="hljs-keyword">import</span> com.itheima.bean.Student;<br><span class="hljs-keyword">import</span> com.itheima.mapper.StudentMapper;<br><span class="hljs-keyword">import</span> com.itheima.service.StudentService;<br><span class="hljs-keyword">import</span> org.apache.ibatis.io.Resources;<br><span class="hljs-keyword">import</span> org.apache.ibatis.session.SqlSession;<br><span class="hljs-keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;<br><span class="hljs-keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.io.InputStream;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    学生业务层实现类</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StudentServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">StudentService</span> </span>&#123;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        分页查询功能</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Page <span class="hljs-title">selectByPage</span><span class="hljs-params">(Integer currentPage, Integer pageSize)</span> </span>&#123;<br>        InputStream is = <span class="hljs-keyword">null</span>;<br>        SqlSession sqlSession = <span class="hljs-keyword">null</span>;<br>        Page page = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span>&#123;<br>            <span class="hljs-comment">//1.加载核心配置文件</span><br>            is = Resources.getResourceAsStream(<span class="hljs-string">&quot;MyBatisConfig.xml&quot;</span>);<br>            <span class="hljs-comment">//2.获取SqlSession工厂对象</span><br>            SqlSessionFactory sqlSessionFactory = <span class="hljs-keyword">new</span> SqlSessionFactoryBuilder().build(is);<br>            <span class="hljs-comment">//3.通过SqlSession工厂对象获取SqlSession对象</span><br>            sqlSession = sqlSessionFactory.openSession(<span class="hljs-keyword">true</span>);<br>            <span class="hljs-comment">//4.获取StudentMapper接口实现类对象</span><br>            StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);<br>            <span class="hljs-comment">//5.设置分页参数</span><br>            page = PageHelper.startPage(currentPage,pageSize);<br>            <span class="hljs-comment">//6.调用实现类对象查询全部方法</span><br>            mapper.selectAll();<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-comment">//7.释放资源</span><br>            <span class="hljs-keyword">if</span>(sqlSession != <span class="hljs-keyword">null</span>) &#123;<br>                sqlSession.close();<br>            &#125;<br>            <span class="hljs-keyword">if</span>(is != <span class="hljs-keyword">null</span>) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    is.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">//8.返回结果到控制层</span><br>        <span class="hljs-keyword">return</span> page;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><strong>4、创建StudentMapper.java</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.itheima.mapper;<br><br><span class="hljs-keyword">import</span> com.itheima.bean.Student;<br><span class="hljs-keyword">import</span> org.apache.ibatis.annotations.Delete;<br><span class="hljs-keyword">import</span> org.apache.ibatis.annotations.Insert;<br><span class="hljs-keyword">import</span> org.apache.ibatis.annotations.Select;<br><span class="hljs-keyword">import</span> org.apache.ibatis.annotations.Update;<br><br><span class="hljs-keyword">import</span> java.util.List;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">    学生持久层接口</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">StudentMapper</span> </span>&#123;<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        查询全部方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Select(&quot;SELECT * FROM student&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> List&lt;Student&gt; <span class="hljs-title">selectAll</span><span class="hljs-params">()</span></span>;<br>&#125;<br><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-4、添加功能的实现"><a href="#2-4、添加功能的实现" class="headerlink" title="2.4、添加功能的实现"></a>2.4、添加功能的实现</h2><ul>
+<li><p><strong>代码实现</strong></p>
+<ul>
+<li><p><strong>html代码</strong></p>
+<p>在stuList.html中增加“添加功能”代码</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//添加学生功能</span><br>            <span class="hljs-function"><span class="hljs-title">addStu</span>(<span class="hljs-params"></span>)</span>&#123;<br>                <span class="hljs-keyword">let</span> param = <span class="hljs-string">&quot;method=addStu&amp;number=&quot;</span> + <span class="hljs-built_in">this</span>.formData.number + <span class="hljs-string">&quot;&amp;name=&quot;</span> + <span class="hljs-built_in">this</span>.formData.name +<br>                        <span class="hljs-string">&quot;&amp;birthday=&quot;</span> + <span class="hljs-built_in">this</span>.formData.birthday + <span class="hljs-string">&quot;&amp;address=&quot;</span> + <span class="hljs-built_in">this</span>.formData.address +<br>                        <span class="hljs-string">&quot;&amp;currentPage=&quot;</span> + <span class="hljs-built_in">this</span>.pagination.currentPage + <span class="hljs-string">&quot;&amp;pageSize=&quot;</span> + <span class="hljs-built_in">this</span>.pagination.pageSize;<br>                axios.post(<span class="hljs-string">&quot;studentServlet&quot;</span>,param)<br>                    .then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> &#123;<br>                        <span class="hljs-comment">//将查询出的数据赋值tableData</span><br>                        <span class="hljs-built_in">this</span>.tableData = resp.data.list;<br>                        <span class="hljs-comment">//设置分页参数</span><br>                        <span class="hljs-comment">//当前页</span><br>                        <span class="hljs-built_in">this</span>.pagination.currentPage = resp.data.pageNum;<br>                        <span class="hljs-comment">//总条数</span><br>                        <span class="hljs-built_in">this</span>.pagination.total = resp.data.total;<br>                    &#125;)<br>                <span class="hljs-comment">//关闭添加窗口</span><br>                <span class="hljs-built_in">this</span>.dialogTableVisible4add = <span class="hljs-literal">false</span>;<br>            &#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>java代码</strong></p>
+<ul>
+<li>1、在StudentServlet.java中增加“添加功能”代码-addStu</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	*1、直接复制会报错</span><br><span class="hljs-comment">	*2、需要将此行代码需要添加到“doGet”方法中</span><br><span class="hljs-comment">	*3、增加“addStu”方法名的判断	</span><br><span class="hljs-comment">    */</span><br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(method.equals(<span class="hljs-string">&quot;addStu&quot;</span>)) &#123;<br>            <span class="hljs-comment">//添加数据功能</span><br>            addStu(req,resp);<br>     &#125;	<br>==================================================================================<br><br>	<span class="hljs-comment">/*</span><br><span class="hljs-comment">        添加数据功能</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addStu</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> </span>&#123;<br>        <span class="hljs-comment">//获取请求参数</span><br>        Map&lt;String, String[]&gt; map = req.getParameterMap();<br>        String currentPage = req.getParameter(<span class="hljs-string">&quot;currentPage&quot;</span>);<br>        String pageSize = req.getParameter(<span class="hljs-string">&quot;pageSize&quot;</span>);<br><br>        <span class="hljs-comment">//封装Student对象</span><br>        Student stu = <span class="hljs-keyword">new</span> Student();<br><br>        <span class="hljs-comment">//注册日期转换器方法</span><br>        dateConvert();<br><br>        <span class="hljs-keyword">try</span> &#123;<br>            BeanUtils.populate(stu,map);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br><br>        <span class="hljs-comment">//调用业务层的添加方法</span><br>        service.addStu(stu);<br><br>        <span class="hljs-comment">//重定向到分页查询功能</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            resp.sendRedirect(req.getContextPath() + <span class="hljs-string">&quot;/studentServlet?method=selectByPage&amp;currentPage=&quot;</span> + currentPage + <span class="hljs-string">&quot;&amp;pageSize=&quot;</span> + pageSize);<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">        日期转换</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dateConvert</span><span class="hljs-params">()</span> </span>&#123;<br>        ConvertUtils.register(<span class="hljs-keyword">new</span> Converter() &#123;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">convert</span><span class="hljs-params">(Class type, Object value)</span> </span>&#123;<br>                SimpleDateFormat simpleDateFormat = <span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">&quot;yyyy-MM-dd&quot;</span>);<br>                <span class="hljs-keyword">try</span> &#123;<br>                    <span class="hljs-keyword">return</span> simpleDateFormat.parse(value.toString());<br>                &#125; <span class="hljs-keyword">catch</span> (ParseException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>            &#125;<br>        &#125;, Date.class);<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>2、在StudentService.java中增加“添加功能”-addStu</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">    添加数据方法</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addStu</span><span class="hljs-params">(Student stu)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>3、StudentServiceImpl.java中增加“添加功能”-addStu</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">        添加数据方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addStu</span><span class="hljs-params">(Student stu)</span> </span>&#123;<br>        InputStream is = <span class="hljs-keyword">null</span>;<br>        SqlSession sqlSession = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span>&#123;<br>            <span class="hljs-comment">//1.加载核心配置文件</span><br>            is = Resources.getResourceAsStream(<span class="hljs-string">&quot;MyBatisConfig.xml&quot;</span>);<br>            <span class="hljs-comment">//2.获取SqlSession工厂对象</span><br>            SqlSessionFactory sqlSessionFactory = <span class="hljs-keyword">new</span> SqlSessionFactoryBuilder().build(is);<br>            <span class="hljs-comment">//3.通过SqlSession工厂对象获取SqlSession对象</span><br>            sqlSession = sqlSessionFactory.openSession(<span class="hljs-keyword">true</span>);<br>            <span class="hljs-comment">//4.获取StudentMapper接口实现类对象</span><br>            StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);<br>            <span class="hljs-comment">//5.调用实现类对象添加方法</span><br>            mapper.addStu(stu);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-comment">//6.释放资源</span><br>            <span class="hljs-keyword">if</span>(sqlSession != <span class="hljs-keyword">null</span>) &#123;<br>                sqlSession.close();<br>            &#125;<br>            <span class="hljs-keyword">if</span>(is != <span class="hljs-keyword">null</span>) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    is.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>4、StudentMapper.java中增加“添加功能”-addStu</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">    添加数据方法</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Insert(&quot;INSERT INTO student VALUES (#&#123;number&#125;,#&#123;name&#125;,#&#123;birthday&#125;,#&#123;address&#125;)&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addStu</span><span class="hljs-params">(Student stu)</span></span>;<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-5、修改功能的实现"><a href="#2-5、修改功能的实现" class="headerlink" title="2.5、修改功能的实现"></a>2.5、修改功能的实现</h2><ul>
+<li><p><strong>代码实现</strong></p>
+<ul>
+<li><p><strong>html代码</strong></p>
+<p>在stuList.html中增加“修改功能”代码</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//修改数据功能</span><br>            <span class="hljs-function"><span class="hljs-title">updateStu</span>(<span class="hljs-params"></span>)</span> &#123;<br>                <span class="hljs-keyword">let</span> param = <span class="hljs-string">&quot;method=updateStu&amp;number=&quot;</span> + <span class="hljs-built_in">this</span>.editFormData.number + <span class="hljs-string">&quot;&amp;name=&quot;</span> + <span class="hljs-built_in">this</span>.editFormData.name +<br>                    <span class="hljs-string">&quot;&amp;birthday=&quot;</span> + <span class="hljs-built_in">this</span>.editFormData.birthday + <span class="hljs-string">&quot;&amp;address=&quot;</span> + <span class="hljs-built_in">this</span>.editFormData.address +<br>                    <span class="hljs-string">&quot;&amp;currentPage=&quot;</span> + <span class="hljs-built_in">this</span>.pagination.currentPage + <span class="hljs-string">&quot;&amp;pageSize=&quot;</span> + <span class="hljs-built_in">this</span>.pagination.pageSize;<br>                axios.post(<span class="hljs-string">&quot;studentServlet&quot;</span>,param)<br>                    .then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> &#123;<br>                        <span class="hljs-comment">//将查询出的数据赋值tableData</span><br>                        <span class="hljs-built_in">this</span>.tableData = resp.data.list;<br>                        <span class="hljs-comment">//设置分页参数</span><br>                        <span class="hljs-comment">//当前页</span><br>                        <span class="hljs-built_in">this</span>.pagination.currentPage = resp.data.pageNum;<br>                        <span class="hljs-comment">//总条数</span><br>                        <span class="hljs-built_in">this</span>.pagination.total = resp.data.total;<br>                    &#125;)<br>                <span class="hljs-comment">//关闭编辑窗口</span><br>                <span class="hljs-built_in">this</span>.dialogTableVisible4edit = <span class="hljs-literal">false</span>;<br>            &#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>java代码</strong></p>
+<ul>
+<li>1、在StudentServlet.java中增加“修改功能”-updateStu</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">    修改数据功能</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">updateStu</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> </span>&#123;<br>    <span class="hljs-comment">//获取请求参数</span><br>    Map&lt;String, String[]&gt; map = req.getParameterMap();<br>    String currentPage = req.getParameter(<span class="hljs-string">&quot;currentPage&quot;</span>);<br>    String pageSize = req.getParameter(<span class="hljs-string">&quot;pageSize&quot;</span>);<br>    <br>    <span class="hljs-comment">//封装Student对象</span><br>    Student stu = <span class="hljs-keyword">new</span> Student();<br>    <br>    <span class="hljs-comment">//注册日期转换器方法</span><br>    dateConvert();<br>    <br>    <span class="hljs-keyword">try</span> &#123;<br>        BeanUtils.populate(stu,map);<br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>        e.printStackTrace();<br>    &#125;<br>    <br>    <span class="hljs-comment">//调用业务层的修改方法</span><br>    service.updateStu(stu);<br>    <br>    <span class="hljs-comment">//重定向到分页查询功能</span><br>    <span class="hljs-keyword">try</span> &#123;<br>        resp.sendRedirect(req.getContextPath() + <span class="hljs-string">&quot;/studentServlet?method=selectByPage&amp;currentPage=&quot;</span> + currentPage + <span class="hljs-string">&quot;&amp;pageSize=&quot;</span> + pageSize);<br>    &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>        e.printStackTrace();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>2、在StudentService.java中增加“修改功能”-updateStu</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">        修改数据方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">updateStu</span><span class="hljs-params">(Student stu)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>3、StudentServiceImpl.java中增加“修改功能”-updateStu</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	*1、直接复制会报错</span><br><span class="hljs-comment">	*2、需要将此行代码需要添加到“doGet”方法中</span><br><span class="hljs-comment">	*3、增加“updateStu”方法名的判断	</span><br><span class="hljs-comment">    */</span><br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(method.equals(<span class="hljs-string">&quot;updateStu&quot;</span>)) &#123;<br>            <span class="hljs-comment">//添加数据功能</span><br>            updateStu(req,resp);<br>     &#125;	<br>==================================================================================<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">        修改数据方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">updateStu</span><span class="hljs-params">(Student stu)</span> </span>&#123;<br>        InputStream is = <span class="hljs-keyword">null</span>;<br>        SqlSession sqlSession = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span>&#123;<br>            <span class="hljs-comment">//1.加载核心配置文件</span><br>            is = Resources.getResourceAsStream(<span class="hljs-string">&quot;MyBatisConfig.xml&quot;</span>);<br>            <span class="hljs-comment">//2.获取SqlSession工厂对象</span><br>            SqlSessionFactory sqlSessionFactory = <span class="hljs-keyword">new</span> SqlSessionFactoryBuilder().build(is);<br>            <span class="hljs-comment">//3.通过SqlSession工厂对象获取SqlSession对象</span><br>            sqlSession = sqlSessionFactory.openSession(<span class="hljs-keyword">true</span>);<br>            <span class="hljs-comment">//4.获取StudentMapper接口实现类对象</span><br>            StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);<br>            <span class="hljs-comment">//5.调用实现类对象修改方法</span><br>            mapper.updateStu(stu);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-comment">//6.释放资源</span><br>            <span class="hljs-keyword">if</span>(sqlSession != <span class="hljs-keyword">null</span>) &#123;<br>                sqlSession.close();<br>            &#125;<br>            <span class="hljs-keyword">if</span>(is != <span class="hljs-keyword">null</span>) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    is.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>4、StudentMapper.java中增加“修改功能”-updateStu</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">        修改数据方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Update(&quot;UPDATE student SET number=#&#123;number&#125;,name=#&#123;name&#125;,birthday=#&#123;birthday&#125;,address=#&#123;address&#125; WHERE number=#&#123;number&#125;&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">updateStu</span><span class="hljs-params">(Student stu)</span></span>;<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-6、删除功能的实现"><a href="#2-6、删除功能的实现" class="headerlink" title="2.6、删除功能的实现"></a>2.6、删除功能的实现</h2><ul>
+<li><p><strong>代码实现</strong></p>
+<ul>
+<li><p><strong>html代码</strong></p>
+<p>在stuList.html中增加“删除功能”代码</p>
+<figure class="highlight js"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs js"><span class="hljs-comment">//删除数据功能</span><br>            <span class="hljs-function"><span class="hljs-title">deleteStu</span>(<span class="hljs-params">row</span>)</span> &#123;<br>                <span class="hljs-keyword">if</span>(confirm(<span class="hljs-string">&quot;确定要删除&quot;</span> + row.number + <span class="hljs-string">&quot;数据?&quot;</span>)) &#123;<br>                    <span class="hljs-keyword">let</span> param = <span class="hljs-string">&quot;method=deleteStu&amp;number=&quot;</span> + row.number +<br>                        <span class="hljs-string">&quot;&amp;currentPage=&quot;</span> + <span class="hljs-built_in">this</span>.pagination.currentPage + <span class="hljs-string">&quot;&amp;pageSize=&quot;</span> + <span class="hljs-built_in">this</span>.pagination.pageSize;<br>                    axios.post(<span class="hljs-string">&quot;studentServlet&quot;</span>,param)<br>                        .then(<span class="hljs-function"><span class="hljs-params">resp</span> =&gt;</span> &#123;<br>                            <span class="hljs-comment">//将查询出的数据赋值tableData</span><br>                            <span class="hljs-built_in">this</span>.tableData = resp.data.list;<br>                            <span class="hljs-comment">//设置分页参数</span><br>                            <span class="hljs-comment">//当前页</span><br>                            <span class="hljs-built_in">this</span>.pagination.currentPage = resp.data.pageNum;<br>                            <span class="hljs-comment">//总条数</span><br>                            <span class="hljs-built_in">this</span>.pagination.total = resp.data.total;<br>                        &#125;)<br>                &#125;<br>            &#125;<br></code></pre></div></td></tr></table></figure></li>
+<li><p><strong>java代码</strong></p>
+<ul>
+<li>1、在StudentServlet.java中增加“删除功能”-</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	*1、直接复制会报错</span><br><span class="hljs-comment">	*2、需要将此行代码需要添加到“doGet”方法中</span><br><span class="hljs-comment">	*3、增加“deleteStu”方法名的判断	</span><br><span class="hljs-comment">    */</span><br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(method.equals(<span class="hljs-string">&quot;deleteStu&quot;</span>)) &#123;<br>            <span class="hljs-comment">//添加数据功能</span><br>            deleteStu(req,resp);<br>     &#125;	<br>==================================================================================<br><br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">        删除数据功能</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleteStu</span><span class="hljs-params">(HttpServletRequest req, HttpServletResponse resp)</span> </span>&#123;<br>        <span class="hljs-comment">//获取请求参数</span><br>        String number = req.getParameter(<span class="hljs-string">&quot;number&quot;</span>);<br>        String currentPage = req.getParameter(<span class="hljs-string">&quot;currentPage&quot;</span>);<br>        String pageSize = req.getParameter(<span class="hljs-string">&quot;pageSize&quot;</span>);<br><br>        <span class="hljs-comment">//调用业务层的删除方法</span><br>        service.deleteStu(number);<br><br>        <span class="hljs-comment">//重定向到分页查询功能</span><br>        <span class="hljs-keyword">try</span> &#123;<br>            resp.sendRedirect(req.getContextPath() + <span class="hljs-string">&quot;/studentServlet?method=selectByPage&amp;currentPage=&quot;</span> + currentPage + <span class="hljs-string">&quot;&amp;pageSize=&quot;</span> + pageSize);<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>2、在StudentService.java中增加“删除功能”-</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">    删除数据方法</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleteStu</span><span class="hljs-params">(String number)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>3、StudentServiceImpl.java中增加“删除功能”-</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">        删除数据方法</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleteStu</span><span class="hljs-params">(String number)</span> </span>&#123;<br>        InputStream is = <span class="hljs-keyword">null</span>;<br>        SqlSession sqlSession = <span class="hljs-keyword">null</span>;<br>        <span class="hljs-keyword">try</span>&#123;<br>            <span class="hljs-comment">//1.加载核心配置文件</span><br>            is = Resources.getResourceAsStream(<span class="hljs-string">&quot;MyBatisConfig.xml&quot;</span>);<br>            <span class="hljs-comment">//2.获取SqlSession工厂对象</span><br>            SqlSessionFactory sqlSessionFactory = <span class="hljs-keyword">new</span> SqlSessionFactoryBuilder().build(is);<br>            <span class="hljs-comment">//3.通过SqlSession工厂对象获取SqlSession对象</span><br>            sqlSession = sqlSessionFactory.openSession(<span class="hljs-keyword">true</span>);<br>            <span class="hljs-comment">//4.获取StudentMapper接口实现类对象</span><br>            StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);<br>            <span class="hljs-comment">//5.调用实现类对象删除方法</span><br>            mapper.deleteStu(number);<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-comment">//6.释放资源</span><br>            <span class="hljs-keyword">if</span>(sqlSession != <span class="hljs-keyword">null</span>) &#123;<br>                sqlSession.close();<br>            &#125;<br>            <span class="hljs-keyword">if</span>(is != <span class="hljs-keyword">null</span>) &#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    is.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>4、StudentMapper.java中增加“删除功能”-</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/*</span><br><span class="hljs-comment">    删除数据方法</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Delete(&quot;DELETE FROM student WHERE number=#&#123;number&#125;&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleteStu</span><span class="hljs-params">(String number)</span></span>;<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Vue/">Vue</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Element/">Element</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Vue/">Vue</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/27/Maven%E5%9F%BA%E7%A1%80/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Maven基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/27/Vue/">
+                        <span class="hidden-mobile">Vue 快速入门</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>

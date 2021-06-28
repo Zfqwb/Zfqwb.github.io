@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>JavaWeb综合案例04 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zfqwb.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JavaWeb综合案例04">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-27 16:55" pubdate>
+        2021年5月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      67
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaWeb综合案例04</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="web综合案例"><a href="#web综合案例" class="headerlink" title="web综合案例"></a>web综合案例</h1><h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><p>目标1：完成用户与角色的绑定功能</p>
+<p>目标2：完成登陆功能的快速开发</p>
+<p>目标3：完成登陆用户菜单控制的功能</p>
+<p>目标4：完成登陆用户权限校验的功能</p>
+<h2 id="1-用户与角色"><a href="#1-用户与角色" class="headerlink" title="1.  用户与角色"></a>1.  用户与角色</h2><h3 id="1-1-绑定用户与角色关系数据准备"><a href="#1-1-绑定用户与角色关系数据准备" class="headerlink" title="1.1 绑定用户与角色关系数据准备"></a>1.1 绑定用户与角色关系数据准备</h3><p>（1）在用户模块下的<code>\WEB-INF\pages\system\user\list.jsp</code>页面中找到<code>角色</code>按钮，对应的点击事件和函数的绑定都已完成，<code>roleList</code>方法中向后台<code>UserServelt</code>发送请求，执行<code>userRoleList</code>方法，传递参数用户id</p>
+<p>（2）找到<code>UserServlet</code>，添加方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    String operation = request.getParameter(<span class="hljs-string">&quot;operation&quot;</span>);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;list&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.list(request,response);<br>    &#125;<br>    <span class="hljs-comment">//中间的省略</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;userRoleList&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.userRoleList(request,response);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">userRoleList</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    String userId = request.getParameter(<span class="hljs-string">&quot;id&quot;</span>);<br>    User user = userService.findById(userId);<br>    <span class="hljs-comment">//将数据加载到指定区域，供页面获取</span><br>    request.setAttribute(<span class="hljs-string">&quot;user,user);</span><br><span class="hljs-string">    //获取所有的角色列表</span><br><span class="hljs-string">    List&lt;Role&gt; all = roleService.findAllRoleByUserId(userId);</span><br><span class="hljs-string">    request.setAttribute(&quot;</span>roleList<span class="hljs-string">&quot;,all);</span><br><span class="hljs-string">    //跳转页面</span><br><span class="hljs-string">    request.getRequestDispatcher(&quot;</span>/WEB-INF/pages/system/user/role.jsp<span class="hljs-string">&quot;).forward(request,response);</span><br><span class="hljs-string">&#125;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>同时从<code>day03</code>的课程资料中找到：<code>模块页面\user\role.jsp</code>，拷贝到工程<code>/WEB-INF/pages/system/user/</code>目录下</p>
+<p>（3）在<code>RoleService</code>接口中添加查询方法，根据用户id查询角色列表</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function">List&lt;Role&gt; <span class="hljs-title">findAllRoleByUserId</span><span class="hljs-params">(String userId)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>（4）在对应的实现类中去实现该方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Role&gt; <span class="hljs-title">findAllRoleByUserId</span><span class="hljs-params">(String userId)</span> </span>&#123;<br>    SqlSession sqlSession = <span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">try</span>&#123;<br>        <span class="hljs-comment">//1.获取SqlSession</span><br>        sqlSession = MapperFactory.getSqlSession();<br>        <span class="hljs-comment">//2.获取Dao</span><br>        RoleDao roleDao = MapperFactory.getMapper(sqlSession,RoleDao.class);<br>        <span class="hljs-comment">//3.调用Dao层操作</span><br>        <span class="hljs-keyword">return</span> roleDao.findAllRoleByUserId(userId);<br>    &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(e);<br>        <span class="hljs-comment">//记录日志</span><br>    &#125;<span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            TransactionUtil.close(sqlSession);<br>        &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（5）在dao接口<code>RoleDao</code>中添加查询方法<code>findAllRoleByUserId</code></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function">List&lt;Role&gt; <span class="hljs-title">findAllRoleByUserId</span><span class="hljs-params">(String userId)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>（6）在映射配置文件<code>RoleDao.xml</code>中添加对应的查询</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml">    <span class="hljs-comment">&lt;!--配置根据ID查询--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findAllRoleByUserId&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;java.lang.String&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;BaseResultMap&quot;</span>&gt;</span><br>	SELECT<br>		role_id,<br>		NAME,<br>		CASE<br>			WHEN role_id IN (SELECT role_id FROM ss_role_user WHERE user_id = #&#123;&#x27;userId&#x27;&#125;)<br>			THEN &#x27;checked&#x27;<br>			ELSE &#x27;&#x27;<br>		END<br>		AS remark<br>	FROM<br>		ss_role<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>（7）修改页面<code>/WEB-INF/pages/system/user/role.jsp</code>，添加checked</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;form id=<span class="hljs-string">&quot;urform&quot;</span> action=<span class="hljs-string">&quot;$&#123;ctx&#125;/system/user?operation=updateRole&quot;</span> method=<span class="hljs-string">&quot;post&quot;</span>&gt;<br>    &lt;input type=<span class="hljs-string">&quot;hidden&quot;</span> name=<span class="hljs-string">&quot;userId&quot;</span> value=<span class="hljs-string">&quot;$&#123;user.id&#125;&quot;</span>/&gt;<br>    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;textbox&quot;</span> id=<span class="hljs-string">&quot;centerTextbox&quot;</span>&gt;<br>        &lt;div style=<span class="hljs-string">&quot;text-align:left&quot;</span>&gt;<br>            &lt;c:forEach items=<span class="hljs-string">&quot;$&#123;roleList&#125;&quot;</span> <span class="hljs-keyword">var</span>=<span class="hljs-string">&quot;role&quot;</span> varStatus=<span class="hljs-string">&quot;vs&quot;</span>&gt;<br>                &lt;span style=<span class="hljs-string">&quot;padding:3px;margin-right:30px;width: 160px;display: inline-block&quot;</span>&gt;<br>        &lt;input type=<span class="hljs-string">&quot;checkbox&quot;</span> name=<span class="hljs-string">&quot;roleIds&quot;</span> value=<span class="hljs-string">&quot;$&#123;role.id&#125;&quot;</span> $&#123;role.remark&#125;/&gt;$&#123;role.name&#125;<br>                &lt;/span&gt;<br>            &lt;/c:forEach&gt;<br>        &lt;/div&gt;<br>    &lt;/div&gt;<br>&lt;/form&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>（8）启动项目测试！</p>
+<h3 id="1-2-绑定用户与角色关系"><a href="#1-2-绑定用户与角色关系" class="headerlink" title="1.2 绑定用户与角色关系"></a>1.2 绑定用户与角色关系</h3><p>现在要真正去绑定用户与角色的关系，前台页面提交表单后会将用户的id和选择的角色的id传递到后台servlet</p>
+<p>（1）在<code>UserServlet</code>中添加新的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    String operation = request.getParameter(<span class="hljs-string">&quot;operation&quot;</span>);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;list&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.list(request,response);<br>    &#125;<br>    <span class="hljs-comment">//中间的省略</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;userRoleList&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.userRoleList(request,response);<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;updateRole&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.updateRole(request,response);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">updateRole</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> IOException </span>&#123;<br>    String userId = request.getParameter(<span class="hljs-string">&quot;userId&quot;</span>);<br>    String[] roleIds = request.getParameterValues(<span class="hljs-string">&quot;roleIds&quot;</span>);<br>    userService.updateRole(userId,roleIds);<br>    <span class="hljs-comment">//跳转回到页面list</span><br>    response.sendRedirect(request.getContextPath()+<span class="hljs-string">&quot;/system/user?operation=list&quot;</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（2）在<code>UserService</code>接口中添加一个新的方法<code>updateRole</code></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">updateRole</span><span class="hljs-params">(String userId, String[] roleIds)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>（3）在对应的实现类中去实现</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">updateRole</span><span class="hljs-params">(String userId, String[] roleIds)</span> </span>&#123;<br>    SqlSession sqlSession = <span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">try</span>&#123;<br>        <span class="hljs-comment">//1.获取SqlSession</span><br>        sqlSession = MapperFactory.getSqlSession();<br>        <span class="hljs-comment">//2.获取Dao</span><br>        UserDao userDao = MapperFactory.getMapper(sqlSession,UserDao.class);<br>        userDao.deleteRole(userId);<br>        <span class="hljs-keyword">for</span>(String roleId : roleIds)&#123;<br>            userDao.updateRole(userId,roleId);<br>        &#125;<br>        <span class="hljs-comment">//4.提交事务</span><br>        TransactionUtil.commit(sqlSession);<br>    &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>        TransactionUtil.rollback(sqlSession);<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(e);<br>        <span class="hljs-comment">//记录日志</span><br>    &#125;<span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            TransactionUtil.close(sqlSession);<br>        &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（4）在dao接口<code>UserDao</code>中添加两个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteRole</span><span class="hljs-params">(String userId)</span></span>;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">updateRole</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;userId&quot;)</span> String userId, <span class="hljs-meta">@Param(&quot;roleId&quot;)</span>String roleId)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>（5）在该接口对应的映射配置文件中添加两个操作</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--配置根据roleId删除关系表数据--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">delete</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;deleteRole&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;java.lang.String&quot;</span>&gt;</span><br>    delete from ss_role_user<br>    where user_id = #&#123;userId,jdbcType=VARCHAR&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">delete</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--配置全字段插入，当某个字段没有值时，插入null--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">insert</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updateRole&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;map&quot;</span>&gt;</span><br>    insert into ss_role_user (role_id, user_id)<br>    values (#&#123;roleId,jdbcType=VARCHAR&#125;, #&#123;userId,jdbcType=VARCHAR&#125;)<br><span class="hljs-tag">&lt;/<span class="hljs-name">insert</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>（6）启动项目进行测试！</p>
+<h2 id="2-登陆"><a href="#2-登陆" class="headerlink" title="2. 登陆"></a>2. 登陆</h2><h3 id="2-1-登陆功能快速开发"><a href="#2-1-登陆功能快速开发" class="headerlink" title="2.1 登陆功能快速开发"></a>2.1 登陆功能快速开发</h3><p>（1）找到项目<code>webapp/login.jsp</code>登陆页面，修改form表单提交的action路径</p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;$&#123;pageContext.request.contextPath&#125;/login?operation=login&quot;</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>（2）在后台<code>UserServlet</code>添加登陆的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    String operation = request.getParameter(<span class="hljs-string">&quot;operation&quot;</span>);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;list&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.list(request,response);<br>    &#125;<br>    <span class="hljs-comment">//中间省略</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;login&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.login(request,response);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">login</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    String email = request.getParameter(<span class="hljs-string">&quot;email&quot;</span>);<br>    String pwd = request.getParameter(<span class="hljs-string">&quot;password&quot;</span>);<br>    User user = userService.login(email,pwd);<br>    <span class="hljs-keyword">if</span>(user != <span class="hljs-keyword">null</span>) &#123;<br>        request.getSession().setAttribute(<span class="hljs-string">&quot;loginUser&quot;</span>, user);<br>        <span class="hljs-comment">//跳转页面</span><br>        request.getRequestDispatcher(<span class="hljs-string">&quot;/WEB-INF/pages/home/main.jsp&quot;</span>).forward(request, response);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        response.sendRedirect(request.getContextPath()+<span class="hljs-string">&quot;/login.jsp&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（3）在因为层接口<code>UserService</code>中添加登陆的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 根据邮箱和密码登录</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> email</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> pwd</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function">User <span class="hljs-title">login</span><span class="hljs-params">(String email, String pwd)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>（4）在对应的实现类中去实现登陆方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">login</span><span class="hljs-params">(String email, String pwd)</span> </span>&#123;<br>    SqlSession sqlSession = <span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">try</span>&#123;<br>        <span class="hljs-comment">//1.获取SqlSession</span><br>        sqlSession = MapperFactory.getSqlSession();<br>        <span class="hljs-comment">//2.获取Dao</span><br>        UserDao userDao = MapperFactory.getMapper(sqlSession,UserDao.class);<br>        <span class="hljs-comment">//3.调用Dao层操作</span><br>        pwd = MD5Util.md5(pwd);<br>        <span class="hljs-keyword">return</span> userDao.findByEmailAndPwd(email,pwd);<br>    &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(e);<br>        <span class="hljs-comment">//记录日志</span><br>    &#125;<span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            TransactionUtil.close(sqlSession);<br>        &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（5）在<code>UserDao</code>接口中添加查询方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function">User <span class="hljs-title">findByEmailAndPwd</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;email&quot;)</span>String email, <span class="hljs-meta">@Param(&quot;password&quot;)</span>String pwd)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>（6）在<code>UserDao.xml</code>中添加查询</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findByEmailAndPwd&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;map&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;BaseResultMap&quot;</span>&gt;</span><br>    select<br>    <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;Base_Column_List&quot;</span>/&gt;</span><br>    from ss_user<br>    where email = #&#123;email,jdbcType=VARCHAR&#125; and password = #&#123;password,jdbcType=VARCHAR&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>（7）将原本在<code>webapp/pages/home</code>下的所有页面统一挪到<code>/WEB-INF/pages</code>下，注意是连同<code>home</code>目录一起挪</p>
+<p>（8）修改<code>/WEB-INF/pages/home/main.jsp</code>内容区的路径</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;!-- 内容区域 --&gt;<br>&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;content-wrapper&quot;</span>&gt;<br>    &lt;iframe id=<span class="hljs-string">&quot;iframe&quot;</span> name=<span class="hljs-string">&quot;iframe&quot;</span><br>            style=<span class="hljs-string">&quot;overflow:visible;&quot;</span><br>            scrolling=<span class="hljs-string">&quot;auto&quot;</span><br>            frameborder=<span class="hljs-string">&quot;no&quot;</span> height=<span class="hljs-string">&quot;100%&quot;</span> width=<span class="hljs-string">&quot;100%&quot;</span><br>            src=&quot;$&#123;ctx&#125;/system/user?operation=home&quot;&gt;&lt;/iframe&gt;<br>&lt;/div&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>（9）在后台<code>UserServlet</code>中添加方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    String operation = request.getParameter(<span class="hljs-string">&quot;operation&quot;</span>);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;list&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.list(request,response);<br>    &#125;<br>    <span class="hljs-comment">//中间省略</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;home&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.home(request,response);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">home</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    request.getRequestDispatcher(<span class="hljs-string">&quot;/WEB-INF/pages/home/home.jsp&quot;</span>).forward(request, response);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（10）启动项目测试</p>
+<h3 id="2-2-用户菜单控制数据准备"><a href="#2-2-用户菜单控制数据准备" class="headerlink" title="2.2 用户菜单控制数据准备"></a>2.2 用户菜单控制数据准备</h3><p>我们先来完成登陆后的注销操作，这是一套的</p>
+<p>（1）找到<code>/WEB-INF/pages/home/header.jsp</code>中找到注销，添加请求连接</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;pull-right&quot;</span>&gt;<br>    &lt;a href=&quot;$&#123;ctx&#125;/system/user?operation=logout&quot; class=&quot;btn btn-default btn-flat&quot;&gt;注销&lt;/a&gt;<br>&lt;/div&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>（2）在后台<code>UserServlet</code>中添加对应的方法logout</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doGet</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    String operation = request.getParameter(<span class="hljs-string">&quot;operation&quot;</span>);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;list&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.list(request,response);<br>    &#125;<br>    <span class="hljs-comment">//中间的省略</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;login&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.login(request,response);<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;logout&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.logout(request,response);<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;home&quot;</span>.equals(operation))&#123;<br>        <span class="hljs-keyword">this</span>.home(request,response);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">logout</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    request.getSession().removeAttribute(<span class="hljs-string">&quot;loginUser&quot;</span>);<br>    response.sendRedirect(request.getContextPath()+<span class="hljs-string">&quot;/login.jsp&quot;</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（3）在用户登陆的时候需要去查询该用户对应的角色对应的所有模块，因此需要在后台的<code>UserServlet</code>中修改用户登陆的方法，添加数据的查询</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">login</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    String email = request.getParameter(<span class="hljs-string">&quot;email&quot;</span>);<br>    String pwd = request.getParameter(<span class="hljs-string">&quot;password&quot;</span>);<br>    User user = userService.login(email,pwd);<br>    <span class="hljs-keyword">if</span>(user != <span class="hljs-keyword">null</span>) &#123;<br>        request.getSession().setAttribute(<span class="hljs-string">&quot;loginUser&quot;</span>, user);<br>        <span class="hljs-comment">//如果登录成功，加载该用户对应的角色对应的所有模块</span><br>        List&lt;Module&gt; moduleList = userService.findModuleById(user.getId());<br>        request.setAttribute(<span class="hljs-string">&quot;moduleList&quot;</span>,moduleList);<br>        <span class="hljs-comment">//跳转页面</span><br>        request.getRequestDispatcher(<span class="hljs-string">&quot;/WEB-INF/pages/home/main.jsp&quot;</span>).forward(request, response);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        response.sendRedirect(request.getContextPath()+<span class="hljs-string">&quot;/login.jsp&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（4）在<code>UserService</code>接口中添加方法<code>findModuleById</code></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 根据用户id查询所有可以操作的菜单对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> id 用户的id</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-function">List&lt;Module&gt; <span class="hljs-title">findModuleById</span><span class="hljs-params">(String id)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>（5）在实现类中去实现该方法</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Module&gt; <span class="hljs-title">findModuleById</span><span class="hljs-params">(String id)</span> </span>&#123;<br>    SqlSession sqlSession = <span class="hljs-keyword">null</span>;<br>    <span class="hljs-keyword">try</span>&#123;<br>        <span class="hljs-comment">//1.获取SqlSession</span><br>        sqlSession = MapperFactory.getSqlSession();<br>        <span class="hljs-comment">//2.获取Dao</span><br>        ModuleDao moduleDao = MapperFactory.getMapper(sqlSession,ModuleDao.class);<br>        <span class="hljs-comment">//3.调用Dao层操作</span><br>        <span class="hljs-keyword">return</span> moduleDao.findModuleByUserId(id);<br>    &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> RuntimeException(e);<br>        <span class="hljs-comment">//记录日志</span><br>    &#125;<span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            TransactionUtil.close(sqlSession);<br>        &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（6）在<code>ModuleDao</code>接口中添加查询方法<code>findModuleByUserId</code></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function">List&lt;Module&gt; <span class="hljs-title">findModuleByUserId</span><span class="hljs-params">(String id)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<p>（7）在<code>ModuleDao.xml</code>中添加对应的查询</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;findModuleByUserId&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;java.lang.String&quot;</span> <span class="hljs-attr">resultMap</span>=<span class="hljs-string">&quot;BaseResultMap&quot;</span>&gt;</span><br>        /*userid-&gt;用户角色关系表-&gt;roleid-&gt;角色模块关系表-&gt;moduleid-&gt;module信息*/<br>        SELECT DISTINCT<br>          m.module_id, m.parent_id, m.name, m.ctype, m.state, m.curl, m.remark<br>        FROM<br>            ss_module AS m,<br>            ss_role_module AS rm,<br>            ss_role_user AS ru<br>        WHERE<br>            m.module_id = rm.module_id<br>        AND	rm.role_id = ru.role_id<br>        AND	ru.user_id = #&#123;id,jdbcType=VARCHAR&#125;<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>至此：用户的角色对应的模块数据已查询出来了，后续就是要在页面进行控制展示</p>
+<h3 id="2-3-登陆用户菜单控制"><a href="#2-3-登陆用户菜单控制" class="headerlink" title="2.3 登陆用户菜单控制"></a>2.3 登陆用户菜单控制</h3><p>（1）找到<code>/WEB-INF/pages/home/aside.jsp</code>页面，添加用户菜单的展示</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;!-- sidebar menu: : style can be found in sidebar.less --&gt;<br>&lt;ul <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;sidebar-menu&quot;</span>&gt;<br>    &lt;li class=&quot;header&quot;&gt;菜单&lt;/li&gt;<br><br>    &lt;c:forEach items=<span class="hljs-string">&quot;$&#123;moduleList&#125;&quot;</span> <span class="hljs-keyword">var</span>=<span class="hljs-string">&quot;item&quot;</span>&gt;<br>        &lt;c:<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;$&#123;item.ctype==0&#125;&quot;</span>&gt;<br>            &lt;li <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;treeview&quot;</span>&gt;<br>                &lt;a href=<span class="hljs-string">&quot;#&quot;</span>&gt;<br>                    &lt;i class=&quot;fa fa-cube&quot;&gt;&lt;/i&gt; &lt;span&gt;$&#123;item.name&#125;&lt;/span&gt;<br>                    &lt;span class=&quot;pull-right-container&quot;&gt;&lt;i class=&quot;fa fa-angle-left pull-right&quot;&gt;&lt;/i&gt;&lt;/span&gt;<br>                &lt;/a&gt;<br>                &lt;ul <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;treeview-menu&quot;</span>&gt;<br>                    &lt;c:forEach items=<span class="hljs-string">&quot;$&#123;moduleList&#125;&quot;</span> <span class="hljs-keyword">var</span>=<span class="hljs-string">&quot;item2&quot;</span>&gt;<br>                        &lt;c:<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;$&#123;item2.ctype==1 &amp;&amp; item2.parentId == item.id&#125;&quot;</span>&gt;<br>                            &lt;li id=<span class="hljs-string">&quot;$&#123;item2.id&#125;&quot;</span>&gt;<br>                                &lt;a onclick=<span class="hljs-string">&quot;setSidebarActive(this)&quot;</span> href=<span class="hljs-string">&quot;$&#123;ctx&#125;/$&#123;item2.curl&#125;&quot;</span> target=<span class="hljs-string">&quot;iframe&quot;</span>&gt;<br>                                    &lt;i class=&quot;fa fa-circle-o&quot;&gt;&lt;/i&gt;$&#123;item2.name&#125;<br>                                &lt;/a&gt;<br>                            &lt;/li&gt;<br>                        &lt;/c:if&gt;<br>                    &lt;/c:forEach&gt;<br>                &lt;/ul&gt;<br>            &lt;/li&gt;<br>        &lt;/c:if&gt;<br>    &lt;/c:forEach&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>启动项目进行测试</p>
+<h2 id="3-权限校验"><a href="#3-权限校验" class="headerlink" title="3.权限校验"></a>3.权限校验</h2><h3 id="3-1-获取请求url"><a href="#3-1-获取请求url" class="headerlink" title="3.1 获取请求url"></a>3.1 获取请求url</h3><p>（1）创建过滤器：com.itheima.web.filters.AuthorFilter</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@WebFilter(value = &quot;/*&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthorFilter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span> </span>&#123;<br><br>    <span class="hljs-keyword">private</span> FilterConfig filterConfig;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 初始化方法，获取过滤器的配置对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> filterConfig</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@throws</span> ServletException</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(FilterConfig filterConfig)</span> <span class="hljs-keyword">throws</span> ServletException </span>&#123;<br>        <span class="hljs-keyword">this</span>.filterConfig = filterConfig;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest req, ServletResponse resp, FilterChain chain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;<br>        <span class="hljs-comment">//1.定义和协议相关的请求和响应对象</span><br>        HttpServletRequest request ;<br>        HttpServletResponse response;<br>        <span class="hljs-keyword">try</span>&#123;<br>            <span class="hljs-comment">//2.把参数转换成协议相关的对象</span><br>            request = (HttpServletRequest)req;<br>            response = (HttpServletResponse)resp;<br><br>            <span class="hljs-comment">//1.获取本次操作</span><br>            String url = request.getRequestURI();<br>            String queryString = request.getQueryString();<br><br>            <span class="hljs-comment">//1.当前获取到的url：   /system/dept</span><br>            url = url.substring(<span class="hljs-number">1</span>);<br>            <span class="hljs-comment">//2.当前获取到的查询参数：operation=list       operation=toEdit&amp;id=100</span><br>            <span class="hljs-keyword">int</span> index = queryString.indexOf(<span class="hljs-string">&#x27;&amp;&#x27;</span>);<br>            <span class="hljs-keyword">if</span>(index != -<span class="hljs-number">1</span>)&#123;<br>                queryString = queryString.substring(<span class="hljs-number">0</span>,index);<br>            &#125;<br>            url = url + <span class="hljs-string">&quot;?&quot;</span> + queryString;<br><br>            <span class="hljs-comment">//2.获取到当前登录人允许的操作</span><br><br>            <span class="hljs-comment">//3.比对本次操作是否在当前登录人允许的操作范围内</span><br>            <span class="hljs-comment">//3.1如果允许，放行</span><br>            <span class="hljs-comment">//3.2不允许跳转到非法访问页</span><br><br>            <span class="hljs-comment">//6.放行</span><br>            chain.doFilter(request,response);<br>        &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">destroy</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//可以做一些清理操作</span><br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3-2-获取登陆用户可执行操作"><a href="#3-2-获取登陆用户可执行操作" class="headerlink" title="3.2 获取登陆用户可执行操作"></a>3.2 获取登陆用户可执行操作</h3><p>（1）登陆成功后需要将用户的觉得对应的模块信息存放到session，找到<code>UserServlet</code>中的登陆方法<code>login</code>，</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">login</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="hljs-keyword">throws</span> ServletException, IOException </span>&#123;<br>    String email = request.getParameter(<span class="hljs-string">&quot;email&quot;</span>);<br>    String pwd = request.getParameter(<span class="hljs-string">&quot;password&quot;</span>);<br>    User user = userService.login(email,pwd);<br>    <span class="hljs-keyword">if</span>(user != <span class="hljs-keyword">null</span>) &#123;<br>        request.getSession().setAttribute(<span class="hljs-string">&quot;loginUser&quot;</span>, user);<br>        <span class="hljs-comment">//如果登录成功，加载该用户对应的角色对应的所有模块</span><br>        List&lt;Module&gt; moduleList = userService.findModuleById(user.getId());<br>        request.setAttribute(<span class="hljs-string">&quot;moduleList&quot;</span>,moduleList);<br><br>        <span class="hljs-comment">//当前登录用户对应的可操作模块的所有url拼接成一个大的字符串</span><br>        StringBuffer sbf = <span class="hljs-keyword">new</span> StringBuffer();<br>        <span class="hljs-keyword">for</span>(Module m: moduleList)&#123;<br>            sbf.append(m.getCurl());<br>            sbf.append(<span class="hljs-string">&#x27;,&#x27;</span>);<br>        &#125;<br>        request.getSession().setAttribute(<span class="hljs-string">&quot;authorStr&quot;</span>,sbf.toString());<br><br>        <span class="hljs-comment">//跳转页面</span><br>        request.getRequestDispatcher(<span class="hljs-string">&quot;/WEB-INF/pages/home/main.jsp&quot;</span>).forward(request, response);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        response.sendRedirect(request.getContextPath()+<span class="hljs-string">&quot;/login.jsp&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（2）修改<code>AuthorFilter</code></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest req, ServletResponse resp, FilterChain chain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;<br>    <span class="hljs-comment">//1.定义和协议相关的请求和响应对象</span><br>    HttpServletRequest request ;<br>    HttpServletResponse response;<br>    HttpSession session;<br>    <span class="hljs-keyword">try</span>&#123;<br>        <span class="hljs-comment">//2.把参数转换成协议相关的对象</span><br>        request = (HttpServletRequest)req;<br>        response = (HttpServletResponse)resp;<br>        session = request.getSession();<br>        <span class="hljs-comment">//1.获取本次操作</span><br>        String url = request.getRequestURI();<br>        <span class="hljs-comment">//.css   .js    .png   .jpg   .index</span><br>        <span class="hljs-keyword">if</span>(url.endsWith(<span class="hljs-string">&quot;.css&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;.js&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;.png&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;.jpg&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;index.jsp&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;login.jsp&quot;</span>))&#123;<br>            chain.doFilter(request,response);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        String queryString = request.getQueryString();<br>        <span class="hljs-keyword">if</span>(queryString.endsWith(<span class="hljs-string">&quot;operation=login&quot;</span>))&#123;<br>            chain.doFilter(request,response);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br><br><br>        <span class="hljs-comment">//1.当前获取到的url：   /system/dept</span><br>        url = url.substring(<span class="hljs-number">1</span>);<br>        <span class="hljs-comment">//2.当前获取到的查询参数：operation=list       operation=toEdit&amp;id=100</span><br>        <span class="hljs-keyword">int</span> index = queryString.indexOf(<span class="hljs-string">&#x27;&amp;&#x27;</span>);<br>        <span class="hljs-keyword">if</span>(index != -<span class="hljs-number">1</span>)&#123;<br>            queryString = queryString.substring(<span class="hljs-number">0</span>,index);<br>        &#125;<br>        url = url + <span class="hljs-string">&quot;?&quot;</span> + queryString;<br><br>        <span class="hljs-comment">//2.获取到当前登录人允许的操作</span><br>        String authorStr = session.getAttribute(<span class="hljs-string">&quot;authorStr&quot;</span>).toString();<br>        <span class="hljs-comment">//3.比对本次操作是否在当前登录人允许的操作范围内</span><br>        <span class="hljs-comment">//3.1如果允许，放行</span><br>        <span class="hljs-comment">//3.2不允许跳转到非法访问页</span><br><br>        <span class="hljs-comment">//6.放行</span><br>        chain.doFilter(request,response);<br>    &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>        e.printStackTrace();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（3）启动项目在模块管理功能中去添加一些数据，如下所示</p>
+<p><img src="/2021/05/27/JavaWeb%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B04/img/1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/05/27/JavaWeb%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B04/img/2.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/05/27/JavaWeb%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B04/img/3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/05/27/JavaWeb%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B04/img/4.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/05/27/JavaWeb%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B04/img/5.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后需要在角色管理中为对应的角色进行授权</p>
+<h3 id="3-3-权限校验"><a href="#3-3-权限校验" class="headerlink" title="3.3 权限校验"></a>3.3 权限校验</h3><p>开始授权</p>
+<p>（1）从<code>day03</code>的课程资料中找到<code>模块页面/unauthorized.jsp</code>，拷贝到项目的<code>webapp</code>下即可</p>
+<p>（2）更改<code>AuthorFilter</code>，</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest req, ServletResponse resp, FilterChain chain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>&#123;<br>    HttpServletRequest request ;<br>    HttpServletResponse response;<br>    HttpSession session;<br>    <span class="hljs-keyword">try</span>&#123;<br>        request = (HttpServletRequest)req;<br>        response = (HttpServletResponse)resp;<br>        session = request.getSession();<br><br>        <span class="hljs-comment">//1.获取本次操作</span><br>        String url = request.getRequestURI();<br>        <span class="hljs-comment">//.css   .js    .png   .jpg   .index</span><br>        <span class="hljs-keyword">if</span>(url.endsWith(<span class="hljs-string">&quot;.css&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;.js&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;.png&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;.jpg&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;index.jsp&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;unauthorized.jsp&quot;</span>)<br>           || url.endsWith(<span class="hljs-string">&quot;login.jsp&quot;</span>))&#123;<br>            chain.doFilter(request,response);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        String queryString = request.getQueryString();<br>        <span class="hljs-keyword">if</span>(queryString.endsWith(<span class="hljs-string">&quot;operation=login&quot;</span>)<br>           ||queryString.endsWith(<span class="hljs-string">&quot;operation=home&quot;</span>)<br>           ||queryString.endsWith(<span class="hljs-string">&quot;operation=logout&quot;</span>))&#123;<br>            chain.doFilter(request,response);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">//1.当前获取到的url：   /system/dept</span><br>        url = url.substring(<span class="hljs-number">1</span>);<br>        <span class="hljs-comment">//2.当前获取到的查询参数：operation=list       operation=toEdit&amp;id=100</span><br>        <span class="hljs-keyword">int</span> index = queryString.indexOf(<span class="hljs-string">&#x27;&amp;&#x27;</span>);<br>        <span class="hljs-keyword">if</span>(index != -<span class="hljs-number">1</span>)&#123;<br>            queryString = queryString.substring(<span class="hljs-number">0</span>,index);<br>        &#125;<br>        url = url + <span class="hljs-string">&quot;?&quot;</span> + queryString;<br><br>        <span class="hljs-comment">//2.获取到当前登录人允许的操作</span><br>        String authorStr = session.getAttribute(<span class="hljs-string">&quot;authorStr&quot;</span>).toString();<br><br>        <span class="hljs-comment">//3.比对本次操作是否在当前登录人允许的操作范围内</span><br>        <span class="hljs-keyword">if</span>(authorStr.contains(url))&#123;<br>            <span class="hljs-comment">//3.1如果允许，放行</span><br>            chain.doFilter(request,response);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-comment">//3.2不允许跳转到非法访问页</span><br>            response.sendRedirect(request.getContextPath()+<span class="hljs-string">&quot;/unauthorized.jsp&quot;</span>);<br>        &#125;<br>    &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;<br>        e.printStackTrace();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>（3）对于页面上的元素，如果没有操作权限，我们直接让用户看不到即可，怎么操作呢？在页面上做一个判断，我们举一个例子，其他操作都是一样的</p>
+<p>找到<code>/WEB-INF/pages/system/user/list.jsp</code>，</p>
+<figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs jsp">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;btn-group&quot;</span>&gt;<br>    &lt;c:<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;$&#123;sessionScope.authorStr.contains(&#x27;system/user?operation=toAdd&#x27;)&#125;&quot;</span>&gt;<br>        &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; title=&quot;新建&quot; onclick=&#x27;location.href=&quot;$&#123;ctx&#125;/system/user?operation=toAdd&quot;&#x27;&gt;&lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt; 新建&lt;/button&gt;<br>    &lt;/c:if&gt;<br>    &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; title=&quot;删除&quot; onclick=&#x27;deleteById()&#x27;&gt;&lt;i class=&quot;fa fa-trash-o&quot;&gt;&lt;/i&gt; 删除&lt;/button&gt;<br>    &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; title=&quot;刷新&quot; onclick=&quot;window.location.reload();&quot;&gt;&lt;i class=&quot;fa fa-refresh&quot;&gt;&lt;/i&gt; 刷新&lt;/button&gt;<br>    &lt;c:<span class="hljs-keyword">if</span> test=<span class="hljs-string">&quot;$&#123;sessionScope.authorStr.contains(&#x27;system/user?operation=userRoleList&#x27;)&#125;&quot;</span>&gt;<br>        &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; title=&quot;角色&quot; onclick=&quot;roleList()&quot;&gt;&lt;i class=&quot;fa fa-user-circle-o&quot;&gt;&lt;/i&gt; 角色&lt;/button&gt;<br>    &lt;/c:if&gt;<br>&lt;/div&gt;<br></code></pre></div></td></tr></table></figure>
+
+<p>（4）启动项目，测试</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/WEB%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B/">WEB综合案例</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/WEB%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B/">WEB综合案例</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/05/27/redis01/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">第一章 Redis基础</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/27/JavaWeb%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B03/">
+                        <span class="hidden-mobile">JavaWeb综合案例03</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>

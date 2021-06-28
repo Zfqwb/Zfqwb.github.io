@@ -1,0 +1,973 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="nitto">
+  <meta name="keywords" content="">
+  
+  <title>Spring-day04事务 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/toubudaziji.css">
+<link rel="stylesheet" href="/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/shubiao.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zfqwb.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":21111747,"cnzz":null,"leancloud":{"app_id":"bMWk1sw4iFwEPTeRxqFOkxvq-gzGzoHsz","app_key":"sDMo4aGFa1dFrXYs2oXkNaVY","server_url":"https://bmwk1sw4.lc-cn-n1-shared.com"}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  <meta name="baidu-site-verification" content="code-vbtyv0liY1" />
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>nitto</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Spring-day04事务">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-29 15:28" pubdate>
+        2021年5月29日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      37
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Spring-day04事务</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="spring-事务"><a href="#spring-事务" class="headerlink" title="spring 事务"></a>spring 事务</h1><h2 id="1-事务回顾"><a href="#1-事务回顾" class="headerlink" title="1)事务回顾"></a>1)事务回顾</h2><h3 id="1-1-什么是事务？"><a href="#1-1-什么是事务？" class="headerlink" title="1.1)什么是事务？"></a>1.1)什么是事务？</h3><p>事务指数据库中多个操作合并在一起形成的操作序列</p>
+<h3 id="1-2-事务的作用"><a href="#1-2-事务的作用" class="headerlink" title="1.2)事务的作用"></a>1.2)事务的作用</h3><p>1.当数据库操作序列中个别操作失败时，提供一种方式使数据库状态恢复到正常状态（<strong>A</strong>），保障数据库即使在异常状态下仍能保持数据一致性（<strong>C</strong>）（要么操作前状态，要么操作后状态）。</p>
+<p>2.当出现并发访问数据库时，在多个访问间进行相互隔离，防止并发访问操作结果互相干扰（<strong>I</strong>）。</p>
+<ul>
+<li><p>事务特征（ACID）</p>
+<ul>
+<li><p>原子性（Atomicity）指事务是一个不可分割的整体，其中的操作要么全执行或全不执行</p>
+</li>
+<li><p>一致性（Consistency）事务前后数据的完整性必须保持一致</p>
+</li>
+<li><p>隔离性（Isolation）事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离</p>
+</li>
+<li><p>持久性（Durability）持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-事务的隔离级"><a href="#1-3-事务的隔离级" class="headerlink" title="1.3)事务的隔离级"></a>1.3)事务的隔离级</h3><ul>
+<li><p>脏读：允许读取未提交的信息</p>
+<ul>
+<li>原因：Read uncommitted</li>
+</ul>
+<p>解决方案： （表级读锁）</p>
+</li>
+</ul>
+<p><img src="/2021/05/29/spring-day04/assets/1591321851725.png" srcset="/img/loading.gif" lazyload alt="1591321851725"></p>
+<ul>
+<li>不可重复读：读取过程中单个数据发生了变化<ul>
+<li>解决方案： Repeatable read （行级写锁）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/05/29/spring-day04/assets/1591321927034.png" srcset="/img/loading.gif" lazyload alt="1591321927034"></p>
+<ul>
+<li>幻读：读取过程中数据条目发生了变化<ul>
+<li>解决方案： Serializable（表级写锁）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/05/29/spring-day04/assets/1591321959641.png" srcset="/img/loading.gif" lazyload alt="1591321959641"></p>
+<h2 id="2-事务管理"><a href="#2-事务管理" class="headerlink" title="2)事务管理"></a>2)事务管理</h2><h3 id="2-1-Spring事务核心对象"><a href="#2-1-Spring事务核心对象" class="headerlink" title="2.1)Spring事务核心对象"></a>2.1)<strong>Spring</strong>事务核心对象</h3><ul>
+<li><p>J2EE开发使用分层设计的思想进行，对于简单的业务层转调数据层的单一操作，事务开启在业务层或者数据层并无太大差别，当业务中包含多个数据层的调用时，需要在业务层开启事务，对数据层中多个操作进行组合并归属于同一个事务进行处理</p>
+</li>
+<li><p>Spring为业务层提供了整套的事务解决方案</p>
+<ul>
+<li><p>PlatformTransactionManager</p>
+</li>
+<li><p>TransactionDefinition</p>
+</li>
+<li><p>TransactionStatus</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-PlatformTransactionManager"><a href="#2-2-PlatformTransactionManager" class="headerlink" title="2.2)PlatformTransactionManager"></a><strong>2.2)PlatformTransactionManager</strong></h3><ul>
+<li><p>平台事务管理器实现类</p>
+<ul>
+<li><p>DataSourceTransactionManager  适用于Spring JDBC或MyBatis</p>
+</li>
+<li><p>HibernateTransactionManager  适用于Hibernate3.0及以上版本</p>
+</li>
+<li><p>JpaTransactionManager  适用于JPA</p>
+</li>
+<li><p>JdoTransactionManager  适用于JDO</p>
+</li>
+<li><p>JtaTransactionManager  适用于JTA</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>JPA（Java Persistence API）Java EE 标准之一，为POJO提供持久化标准规范，并规范了持久化开发的统一API，符合JPA规范的开发可以在不同的JPA框架下运行</p>
+</li>
+<li><p>JDO(Java Data Object )是Java对象持久化规范，用于存取某种数据库中的对象，并提供标准化API。与JDBC相比，JDBC仅针对关系数据库进行操作，JDO可以扩展到关系数据库、文件、XML、对象数据库（ODBMS）等，可移植性更强</p>
+</li>
+<li><p>JTA（Java Transaction API）Java EE 标准之一，允许应用程序执行分布式事务处理。与JDBC相比，JDBC事务则被限定在一个单一的数据库连接，而一个JTA事务可以有多个参与者，比如JDBC连接、JDO 都可以参与到一个JTA事务中</p>
+</li>
+</ul>
+<p>此接口定义了事务的基本操作</p>
+<ul>
+<li><p>获取事务 ：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function">TransactionStatus <span class="hljs-title">getTransaction</span><span class="hljs-params">(TransactionDefinition definition)</span></span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>提交事务 ：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">commit</span><span class="hljs-params">(TransactionStatus status)</span> </span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>回滚事务 ：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">rollback</span><span class="hljs-params">(TransactionStatus status)</span></span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h3 id="2-3-TransactionDefinition"><a href="#2-3-TransactionDefinition" class="headerlink" title="2.3)TransactionDefinition"></a><strong>2.3)TransactionDefinition</strong></h3><p>此接口定义了事务的基本信息</p>
+<ul>
+<li><p>获取事务定义名称</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function">String <span class="hljs-title">getName</span><span class="hljs-params">()</span></span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>获取事务的读写属性</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">boolean</span> <span class="hljs-title">isReadOnly</span><span class="hljs-params">()</span></span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>获取事务隔离级别</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getIsolationLevel</span><span class="hljs-params">()</span></span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>获事务超时时间</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getTimeout</span><span class="hljs-params">()</span></span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>获取事务传播行为特征</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getPropagationBehavior</span><span class="hljs-params">()</span></span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h3 id="2-4-TransactionStatus"><a href="#2-4-TransactionStatus" class="headerlink" title="2.4)TransactionStatus"></a><strong>2.4)TransactionStatus</strong></h3><p>此接口定义了事务在执行过程中某个时间点上的状态信息及对应的状态操作</p>
+<p><img src="/2021/05/29/spring-day04/assets/1591322466820.png" srcset="/img/loading.gif" lazyload alt="1591322466820"></p>
+<h3 id="2-5-事务控制方式"><a href="#2-5-事务控制方式" class="headerlink" title="2.5)事务控制方式"></a><strong>2.5)事务控制方式</strong></h3><ul>
+<li><p>编程式</p>
+</li>
+<li><p>声明式（XML）</p>
+</li>
+<li><p>声明式（注解）</p>
+</li>
+</ul>
+<h3 id="2-6-案例说明"><a href="#2-6-案例说明" class="headerlink" title="2.6)案例说明"></a><strong>2.6)案例说明</strong></h3><h4 id="2-6-1-案例说明"><a href="#2-6-1-案例说明" class="headerlink" title="2.6.1)案例说明"></a>2.6.1)案例说明</h4><p>银行转账业务说明</p>
+<p>银行转账操作中，涉及从A账户到B账户的资金转移操作。数据层仅提供单条数据的基础操作，未设计多账户间的业务操作。</p>
+<h4 id="2-6-2-案例环境（基于Spring、Mybatis整合）"><a href="#2-6-2-案例环境（基于Spring、Mybatis整合）" class="headerlink" title="2.6.2)案例环境（基于Spring、Mybatis整合）"></a>2.6.2)案例环境（基于Spring、Mybatis整合）</h4><ul>
+<li>业务层接口提供转账操作</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 转账操作</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> outName     出账用户名</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> inName      入账用户名</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> money       转账金额</span><br><span class="hljs-comment">*/</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(String outName,String inName,Double money)</span></span>;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>业务层实现提供转账操作</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(String outName,String inName,Double money)</span></span>&#123;<br>    accountDao.inMoney(outName,money);                                                       accountDao.outMoney(inName,money);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>数据层提供对应的入账与出账操作</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;inMoney&quot;</span>&gt;</span><br>	update account set money = money + #&#123;money&#125; where name = #&#123;name&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;outMoney&quot;</span>&gt;</span><br>	update account set money = money - #&#123;money&#125; where name = #&#123;name&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="2-6-3-编程式事务"><a href="#2-6-3-编程式事务" class="headerlink" title="2.6.3)编程式事务"></a><strong>2.6.3)编程式事务</strong></h4><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">transfer</span><span class="hljs-params">(String outName,String inName,Double money)</span></span>&#123;<br>    <span class="hljs-comment">//创建事务管理器</span><br>    DataSourceTransactionManager dstm = <span class="hljs-keyword">new</span> DataSourceTransactionManager();<br>    <span class="hljs-comment">//为事务管理器设置与数据层相同的数据源</span><br>    dstm.setDataSource(dataSource);<br>    <span class="hljs-comment">//创建事务定义对象</span><br>    TransactionDefinition td = <span class="hljs-keyword">new</span> DefaultTransactionDefinition();<br>    <span class="hljs-comment">//创建事务状态对象，用于控制事务执行</span><br>    TransactionStatus ts = dstm.getTransaction(td);<br>    accountDao.inMoney(outName,money);<br>    <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>/<span class="hljs-number">0</span>;    <span class="hljs-comment">//模拟业务层事务过程中出现错误</span><br>    accountDao.outMoney(inName,money);<br>    <span class="hljs-comment">//提交事务</span><br>    dstm.commit(ts);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-7-使用AOP控制事务"><a href="#2-7-使用AOP控制事务" class="headerlink" title="2.7)使用AOP控制事务"></a>2.7)使用AOP控制事务</h3><p>将业务层的事务处理功能抽取出来制作成AOP通知，利用环绕通知运行期动态织入</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">tx</span><span class="hljs-params">(ProceedingJoinPoint pjp)</span> <span class="hljs-keyword">throws</span> Throwable </span>&#123;<br>    <br>    DataSourceTransactionManager dstm = <span class="hljs-keyword">new</span> DataSourceTransactionManager();<br>    dstm.setDataSource(dataSource);<br>    TransactionDefinition td = <span class="hljs-keyword">new</span> DefaultTransactionDefinition();<br>    TransactionStatus ts = dstm.getTransaction(td);<br>    Object ret = pjp.proceed(pjp.getArgs());<br>    dstm.commit(ts);<br>    <br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>配置AOP通知类，并注入dataSource</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;txAdvice&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.itheima.aop.TxAdvice&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dataSource&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;dataSource&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>使用环绕通知将通知类织入到原始业务对象执行过程中</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;pt&quot;</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">&quot;execution(* *..transfer(..))&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspect</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;txAdvice&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">aop:around</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;tx&quot;</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">&quot;pt&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">aop:aspect</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h3 id="2-8声明式事务（XML）"><a href="#2-8声明式事务（XML）" class="headerlink" title="2.8声明式事务（XML）"></a><strong>2.8声明式事务（XML）</strong></h3><p><strong>AOP</strong>配置事务是否具有特例性？</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">tx</span><span class="hljs-params">(ProceedingJoinPoint pjp)</span> <span class="hljs-keyword">throws</span> Throwable </span>&#123;<br>    DataSourceTransactionManager dstm = <span class="hljs-keyword">new</span> DataSourceTransactionManager();<br>    dstm.setDataSource(dataSource);<br>    TransactionDefinition td = <span class="hljs-keyword">new</span> DefaultTransactionDefinition();<br>    TransactionStatus ts = dstm.getTransaction(td);<br>    Object ret = pjp.proceed(pjp.getArgs());<br>    dstm.commit(ts);<br><br>    <span class="hljs-keyword">return</span> ret;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;txAdvice&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.itheima.aop.TxAdvice&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dataSource&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;dataSource&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>使用tx命名空间配置事务专属通知类</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;txAdvice&quot;</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">&quot;txManager&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;*&quot;</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">&quot;false&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;get*&quot;</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">&quot;true&quot;</span> /&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;find*&quot;</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">&quot;true&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>使用aop:advisor在AOP配置中引用事务专属通知类</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;pt&quot;</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">&quot;execution(* *..*(..))&quot;</span>/&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">aop:advisor</span> <span class="hljs-attr">advice-ref</span>=<span class="hljs-string">&quot;txAdvice&quot;</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">&quot;pt&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="2-8-1-aop-advice与aop-advisor区别"><a href="#2-8-1-aop-advice与aop-advisor区别" class="headerlink" title="2.8.1)aop:advice与aop:advisor区别"></a>2.8.1)<strong>aop:advice与aop:advisor区别</strong></h4><ul>
+<li><p>aop:advice配置的通知类可以是普通java对象，不实现接口，也不使用继承关系</p>
+</li>
+<li><p>aop:advisor配置的通知类必须实现通知接口</p>
+<ul>
+<li><p>MethodBeforeAdvice</p>
+</li>
+<li><p>AfterReturningAdvice</p>
+</li>
+<li><p>ThrowsAdvice</p>
+</li>
+<li><p>……</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-8-2-tx配置—-tx-advice"><a href="#2-8-2-tx配置—-tx-advice" class="headerlink" title="2.8.2)tx配置—-tx:advice"></a>2.8.2)tx配置—-tx:advice</h4><ul>
+<li><p>名称：tx:advice</p>
+</li>
+<li><p>类型：<strong>标签</strong></p>
+</li>
+<li><p>归属：beans标签</p>
+</li>
+<li><p>作用：专用于声明事务通知</p>
+</li>
+<li><p>格式：</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">beans</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;txAdvice&quot;</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">&quot;txManager&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>基本属性：</p>
+<ul>
+<li><p>id ：用于配置aop时指定通知器的id</p>
+</li>
+<li><p>transaction-manager ：指定事务管理器bean</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-8-3-tx配置—-tx-attributes"><a href="#2-8-3-tx配置—-tx-attributes" class="headerlink" title="2.8.3)tx配置—-tx:attributes"></a>2.8.3)tx配置—-tx:attributes</h4><ul>
+<li><p>名称：tx:attributes</p>
+</li>
+<li><p>类型：<strong>标签</strong></p>
+</li>
+<li><p>归属：tx:advice标签</p>
+</li>
+<li><p>作用：定义通知属性</p>
+</li>
+<li><p>格式：</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;txAdvice&quot;</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">&quot;txManager&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>基本属性：</p>
+<ul>
+<li>无</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-8-4-tx配置—-tx-method"><a href="#2-8-4-tx配置—-tx-method" class="headerlink" title="2.8.4)tx配置—-tx:method"></a>2.8.4)tx配置—-tx:method</h4><ul>
+<li><p>名称：tx:method</p>
+</li>
+<li><p>类型：<strong>标签</strong></p>
+</li>
+<li><p>归属：tx:attribute标签</p>
+</li>
+<li><p>作用：设置具体的事务属性</p>
+</li>
+<li><p>格式：</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;*&quot;</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">&quot;false&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;get*&quot;</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">&quot;true&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+<li><p>说明：</p>
+<p>通常事务属性会配置多个，包含1个读写的全事务属性，1个只读的查询类事务属性</p>
+</li>
+</ul>
+<p><strong>tx:method属性</strong></p>
+<p><img src="/2021/05/29/spring-day04/assets/1591367291135.png" srcset="/img/loading.gif" lazyload alt="1591367291135"></p>
+<h3 id="2-9-事务传播行为"><a href="#2-9-事务传播行为" class="headerlink" title="2.9)事务传播行为"></a><strong>2.9)事务传播行为</strong></h3><ul>
+<li><p>事务管理员</p>
+</li>
+<li><p>事务协调员</p>
+</li>
+</ul>
+<p><img src="/2021/05/29/spring-day04/assets/1591367347482.png" srcset="/img/loading.gif" lazyload alt="1591367347482"></p>
+<ul>
+<li>事务传播行为描述的是事务协调员对事务管理员所携带事务的处理态度</li>
+</ul>
+<h3 id="2-10-事务传播行为"><a href="#2-10-事务传播行为" class="headerlink" title="2.10)事务传播行为"></a><strong>2.10)事务传播行为</strong></h3><p><img src="/2021/05/29/spring-day04/assets/1591367375088.png" srcset="/img/loading.gif" lazyload alt="1591367375088"></p>
+<h3 id="2-11-事务传播应用"><a href="#2-11-事务传播应用" class="headerlink" title="2.11)事务传播应用"></a><strong>2.11)事务传播应用</strong></h3><ul>
+<li><p>场景A：生成订单业务</p>
+<ul>
+<li><p>子业务S1：记录日志到数据库表X</p>
+</li>
+<li><p>子业务S2：保存订单数据到数据库表Y</p>
+</li>
+<li><p>子业务S3：……</p>
+</li>
+<li><p>如果S2或S3或……事务提交失败，此时S1是否回滚？如何控制？</p>
+</li>
+<li><p>（S1需要新事务）</p>
+</li>
+</ul>
+</li>
+<li><p>场景B：生成订单业务</p>
+<ul>
+<li><p>背景1：订单号生成依赖数据库中一个专门用于控制订单号编号生成的表M获取</p>
+</li>
+<li><p>背景2：每次获取完订单号，表M中记录的编号自增1</p>
+</li>
+<li><p>子业务S1：从表M中获取订单编号</p>
+</li>
+<li><p>子业务S2：保存订单数据，订单编号来自于表M</p>
+</li>
+<li><p>子业务S3：……</p>
+</li>
+<li><p>如果S2或S3或……事务提交失败，此时S1是否回滚？如何控制？</p>
+</li>
+<li><p>（S1需要新事务）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-12-声明式事务（注解）"><a href="#2-12-声明式事务（注解）" class="headerlink" title="2.12)声明式事务（注解）"></a><strong>2.12)声明式事务（注解）</strong></h3><h4 id="2-12-1-Transactional"><a href="#2-12-1-Transactional" class="headerlink" title="2.12.1)@Transactional"></a>2.12.1)@Transactional</h4><ul>
+<li><p>名称：@Transactional</p>
+</li>
+<li><p>类型：<strong>方法注解，类注解，接口注解</strong></p>
+</li>
+<li><p>位置：方法定义上方，类定义上方，接口定义上方</p>
+</li>
+<li><p>作用：设置当前类/接口中所有方法或具体方法开启事务，并指定相关事务属性</p>
+</li>
+<li><p>范例：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Transactional(</span><br><span class="hljs-meta">    readOnly = false,</span><br><span class="hljs-meta">    timeout = -1,</span><br><span class="hljs-meta">    isolation = Isolation.DEFAULT,</span><br><span class="hljs-meta">    rollbackFor = &#123;ArithmeticException.class, IOException.class&#125;,</span><br><span class="hljs-meta">    noRollbackFor = &#123;&#125;,</span><br><span class="hljs-meta">    propagation = Propagation.REQUIRES_NEW</span><br><span class="hljs-meta">)</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h4 id="2-12-2-tx-annotation-driven"><a href="#2-12-2-tx-annotation-driven" class="headerlink" title="2.12.2)tx:annotation-driven"></a>2.12.2)tx:annotation-driven</h4><ul>
+<li><p>名称：tx:annotation-driven</p>
+</li>
+<li><p>类型：<strong>标签</strong></p>
+</li>
+<li><p>归属：beans标签</p>
+</li>
+<li><p>作用：开启事务注解驱动，并指定对应的事务管理器</p>
+</li>
+<li><p>范例：</p>
+<figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">tx:annotation-driven</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">&quot;txManager&quot;</span>/&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h3 id="2-13-声明式事务（纯注解驱动）"><a href="#2-13-声明式事务（纯注解驱动）" class="headerlink" title="2.13)声明式事务（纯注解驱动）"></a><strong>2.13)声明式事务（纯注解驱动）</strong></h3><ul>
+<li><p>名称：@EnableTransactionManagement</p>
+</li>
+<li><p>类型：<strong>类注解</strong></p>
+</li>
+<li><p>位置：Spring注解配置类上方</p>
+</li>
+<li><p>作用：开启注解驱动，等同XML格式中的注解驱动</p>
+</li>
+<li><p>范例：</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Configuration</span><br><span class="hljs-meta">@ComponentScan(&quot;com.itheima&quot;)</span><br><span class="hljs-meta">@PropertySource(&quot;classpath:jdbc.properties&quot;)</span><br><span class="hljs-meta">@Import(&#123;JDBCConfig.class,MyBatisConfig.class,TransactionManagerConfig.class&#125;)</span><br><span class="hljs-meta">@EnableTransactionManagement</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpringConfig</span> </span>&#123;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TransactionManagerConfig</span> </span>&#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> PlatformTransactionManager <span class="hljs-title">getTransactionManager</span><span class="hljs-params">(<span class="hljs-meta">@Autowired</span> DataSource dataSource)</span></span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> DataSourceTransactionManager(dataSource);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="3-模板对象"><a href="#3-模板对象" class="headerlink" title="3)模板对象"></a>3)模板对象</h2><h3 id="3-1-Spring模块对象"><a href="#3-1-Spring模块对象" class="headerlink" title="3.1)Spring模块对象"></a>3.1)Spring模块对象</h3><p><img src="/2021/05/29/spring-day04/assets/1591368087398.png" srcset="/img/loading.gif" lazyload alt="1591368087398"></p>
+<ul>
+<li><p>TransactionTemplate</p>
+</li>
+<li><p>JdbcTemplate</p>
+</li>
+<li><p>RedisTemplate</p>
+</li>
+<li><p>RabbitTemplate</p>
+</li>
+<li><p>JmsTemplate</p>
+</li>
+<li><p>HibernateTemplate</p>
+</li>
+<li><p>RestTemplate</p>
+</li>
+</ul>
+<h3 id="3-2-JdbcTemplate（了解）"><a href="#3-2-JdbcTemplate（了解）" class="headerlink" title="3.2)JdbcTemplate（了解）"></a>3.2)JdbcTemplate（了解）</h3><p>提供标准的sql语句操作API</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">save</span><span class="hljs-params">(Account account)</span> </span>&#123;<br>    String sql = <span class="hljs-string">&quot;insert into account(name,money)values(?,?)&quot;</span>;<br>    jdbcTemplate.update(sql,account.getName(),account.getMoney());<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3-3-NamedParameterJdbcTemplate-了解）"><a href="#3-3-NamedParameterJdbcTemplate-了解）" class="headerlink" title="3.3)NamedParameterJdbcTemplate(了解）"></a>3.3)NamedParameterJdbcTemplate(了解）</h3><p>提供标准的具名sql语句操作API</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">save</span><span class="hljs-params">(Account account)</span> </span>&#123;<br>    String sql = <span class="hljs-string">&quot;insert into account(name,money)values(:name,:money)&quot;</span>;<br>    Map pm = <span class="hljs-keyword">new</span> HashMap();<br>    pm.put(<span class="hljs-string">&quot;name&quot;</span>,account.getName());<br>    pm.put(<span class="hljs-string">&quot;money&quot;</span>,account.getMoney());<br>    jdbcTemplate.update(sql,pm);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="3-4-RedisTemplate"><a href="#3-4-RedisTemplate" class="headerlink" title="3.4)RedisTemplate"></a><strong>3.4)RedisTemplate</strong></h3><p>RedisTemplate对象结构</p>
+<p><img src="/2021/05/29/spring-day04/assets/1591368270508.png" srcset="/img/loading.gif" lazyload alt="1591368270508"></p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">changeMoney</span><span class="hljs-params">(Integer id, Double money)</span> </span>&#123;<br>    redisTemplate.opsForValue().set(<span class="hljs-string">&quot;account:id:&quot;</span>+id,money);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">findMondyById</span><span class="hljs-params">(Integer id)</span> </span>&#123;<br>    Object money = redisTemplate.opsForValue().get(<span class="hljs-string">&quot;account:id:&quot;</span> + id);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Double(money.toString());<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h2 id="4-事务底层原理解析"><a href="#4-事务底层原理解析" class="headerlink" title="4)事务底层原理解析"></a>4)事务底层原理解析</h2><h3 id="4-1-策略模式应用"><a href="#4-1-策略模式应用" class="headerlink" title="4.1)策略模式应用"></a><strong>4.1)策略模式应用</strong></h3><p>策略模式（Strategy Pattern）使用不同策略的对象实现不同的行为方式，策略对象的变化导致行为的变化。</p>
+<p><img src="/2021/05/29/spring-day04/assets/1591368340720.png" srcset="/img/loading.gif" lazyload alt="1591368340720"></p>
+<p>策略模式（Strategy Pattern）使用不同策略的对象实现不同的行为方式，策略对象的变化导致行为的变化。</p>
+<p><img src="/2021/05/29/spring-day04/assets/1591368370924.png" srcset="/img/loading.gif" lazyload alt="1591368370924"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Spring/">Spring</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Spring/">Spring</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BA%8B%E5%8A%A1/">事务</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/06/21/SpringMVC-day01/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SpringMVC-day01</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/05/29/Spring-day03/">
+                        <span class="hidden-mobile">Spring-day03AOP</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#valine",
+          app_id: "7FicXKczRMSUD3slGCpiLLto-gzGzoHsz",
+          app_key: "L7N1wkygdm2UHsrq5DHTuMMk",
+          placeholder: "说点什么",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: true,
+          serverURLs: "https://7ficxkcz.lc-cn-n1-shared.com",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <a target="_blank" href="https://www.12377.cn/" rel="nofollow noopener noopener">中央网信办（国家互联网信息办公室）违法和不良信息举报中心</a>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        京ICP证123456号
+      </a>
+    </span>
+    
+      
+        <span>
+          <a
+            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+            rel="nofollow noopener"
+            class="beian-police"
+            target="_blank"
+          >
+            
+              <span style="visibility: hidden; width: 0">|</span>
+              <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+            
+            <span>京公网安备12345678号</span>
+          </a>
+        </span>
+      
+    
+  </div>
+
+
+  
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    <!-- 51.la Analytics -->
+    <script defer type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+  
+
+  
+
+
+
+
+  
+<script src="/js/caidai.js"></script>
+<script src="/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+  <script type="text/javascript" src="//js.users.51.la/21111747.js"></script>
+</body>
+</html>
